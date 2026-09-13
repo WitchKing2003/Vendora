@@ -1,5 +1,7 @@
 {
     "welcome": "Xin chào",
     "home": "Trang chủ",
-    "about": "Giới thiệu"
+    "about": "Giới thiệu",
+    "welcomeToVendora": "Chào mừng đến với Vendora",
+    "vendoraDescription": "Vendora là một nền tảng cho phép người dùng dễ dàng tạo và quản lý các cửa hàng trực tuyến của họ. Nó cung cấp một giao diện thân thiện với người dùng, các mẫu có thể tùy chỉnh, và một loạt tính năng để giúp các doanh nghiệp bán sản phẩm của họ trực tuyến. Với Vendora, người dùng có thể thiết lập cửa hàng của họ, quản lý tồn kho, xử lý thanh toán, và theo dõi đơn hàng tất cả trong một nơi."
 }

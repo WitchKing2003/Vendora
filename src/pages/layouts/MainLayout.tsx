@@ -1,9 +1,12 @@
 import { Outlet } from "react-router-dom";
+import HeaderPage from "../components/Home/Header/HeaderPage";
 
 const MainLayout = () => {
   return (
     <>
-      <div className="Header">Header</div>
+      <div className="Header">
+        <HeaderPage />
+      </div>
 
       <Outlet />
 

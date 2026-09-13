@@ -1,5 +1,7 @@
 {
     "welcome": "Hello",
     "home": "Home",
-    "about": "About"
+    "about": "About",
+    "welcomeToVendora": "Welcome to Vendora",
+    "vendoraDescription": "Vendora is a platform that allows users to easily create and manage their online stores. It provides a user-friendly interface, customizable templates, and a range of features to help businesses sell their products online. With Vendora, users can set up their store, manage inventory, process payments, and track orders all in one place."
 }
