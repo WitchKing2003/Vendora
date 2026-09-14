@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import InputCustom from "../../../../components/InputComponent/InputCustom";
+import CategoryBar from "./CategoryBar";
 
 const CART_ITEM_COUNT = 3;
 
@@ -9,6 +10,7 @@ const HeaderPage = () => {
   const [accountOpen, setAccountOpen] = useState(false);
 
   return (
+    <header>
     <div className="flex items-center gap-4 px-4 py-4 lg:gap-8 lg:px-6">
       <div className="shrink-0">
         <p className="text-3xl italic">
@@ -135,6 +137,8 @@ const HeaderPage = () => {
         </div>
       </div>
     </div>
+    <CategoryBar />
+    </header>
   );
 };
 

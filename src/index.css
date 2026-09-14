@@ -7,6 +7,7 @@
     --color-gold: #C68A2E;
     --color-gold-deep: #9C6B1F;
     --color-teal: #2C4A43;
+    --color-teal-light: #9DB8B2;
     --color-line: #D9D0BC;
 }
 
@@ -28,4 +29,12 @@
 
 body {
     background-color: var(--paper);
+}
+
+/* Hide horizontal scrollbar on the category strip while keeping it scrollable */
+.no-scrollbar {
+    scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
 }

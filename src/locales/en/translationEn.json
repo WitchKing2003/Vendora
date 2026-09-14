@@ -14,6 +14,79 @@
         "signIn": "Sign in",
         "signUp": "Sign up"
     },
+    "category": {
+        "sellWithVendora": "Sell with Vendora",
+        "fashion": {
+            "label": "Fashion",
+            "items": {
+                "men": "Men",
+                "women": "Women",
+                "clothesShoes": "Clothes & Shoes",
+                "hats": "Hats",
+                "accessories": "Accessories"
+            }
+        },
+        "electronics": {
+            "label": "Electronics",
+            "items": {
+                "phones": "Phones",
+                "laptops": "Laptops",
+                "audio": "Headphones & Speakers",
+                "accessories": "Electronics Accessories"
+            }
+        },
+        "homeLiving": {
+            "label": "Home & Living",
+            "items": {
+                "furniture": "Furniture",
+                "kitchen": "Kitchen",
+                "decor": "Decor",
+                "bedding": "Bedding"
+            }
+        },
+        "beauty": {
+            "label": "Beauty",
+            "items": {
+                "skincare": "Skincare",
+                "makeup": "Makeup",
+                "fragrance": "Fragrance"
+            }
+        },
+        "motherBaby": {
+            "label": "Mother & Baby",
+            "items": {
+                "diapers": "Diapers & Wipes",
+                "formula": "Formula Milk",
+                "toys": "Toys",
+                "clothes": "Kids Clothes"
+            }
+        },
+        "sports": {
+            "label": "Sports",
+            "items": {
+                "gym": "Gym & Yoga",
+                "football": "Football",
+                "bicycle": "Bicycle",
+                "swimming": "Swimming"
+            }
+        },
+        "booksOffice": {
+            "label": "Books & Stationery",
+            "items": {
+                "books": "Books",
+                "stationery": "Stationery",
+                "schoolSupplies": "School Supplies"
+            }
+        },
+        "handmade": {
+            "label": "Handmade",
+            "items": {
+                "decor": "Handmade Decor",
+                "jewelry": "Jewelry",
+                "gifts": "Gifts"
+            }
+        }
+    },
     "welcome": "Hello",
     "home": "Home",
     "about": "About",

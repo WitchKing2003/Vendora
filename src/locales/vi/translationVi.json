@@ -14,6 +14,79 @@
         "signIn": "Đăng nhập",
         "signUp": "Đăng ký"
     },
+    "category": {
+        "sellWithVendora": "Bán hàng cùng Vendora",
+        "fashion": {
+            "label": "Thời trang",
+            "items": {
+                "men": "Thời trang nam",
+                "women": "Thời trang nữ",
+                "clothesShoes": "Quần áo, giày dép",
+                "hats": "Mũ, nón",
+                "accessories": "Phụ kiện đi kèm"
+            }
+        },
+        "electronics": {
+            "label": "Điện tử",
+            "items": {
+                "phones": "Điện thoại",
+                "laptops": "Laptop",
+                "audio": "Tai nghe, loa",
+                "accessories": "Phụ kiện điện tử"
+            }
+        },
+        "homeLiving": {
+            "label": "Nhà cửa & Đời sống",
+            "items": {
+                "furniture": "Nội thất",
+                "kitchen": "Nhà bếp",
+                "decor": "Trang trí",
+                "bedding": "Chăn ga, nệm"
+            }
+        },
+        "beauty": {
+            "label": "Làm đẹp",
+            "items": {
+                "skincare": "Chăm sóc da",
+                "makeup": "Trang điểm",
+                "fragrance": "Nước hoa"
+            }
+        },
+        "motherBaby": {
+            "label": "Mẹ & Bé",
+            "items": {
+                "diapers": "Tã, khăn ướt",
+                "formula": "Sữa bột",
+                "toys": "Đồ chơi",
+                "clothes": "Quần áo trẻ em"
+            }
+        },
+        "sports": {
+            "label": "Thể thao",
+            "items": {
+                "gym": "Gym, yoga",
+                "football": "Bóng đá",
+                "bicycle": "Xe đạp",
+                "swimming": "Bơi lội"
+            }
+        },
+        "booksOffice": {
+            "label": "Sách & Văn phòng phẩm",
+            "items": {
+                "books": "Sách",
+                "stationery": "Văn phòng phẩm",
+                "schoolSupplies": "Đồ dùng học tập"
+            }
+        },
+        "handmade": {
+            "label": "Đồ handmade",
+            "items": {
+                "decor": "Trang trí handmade",
+                "jewelry": "Trang sức",
+                "gifts": "Quà tặng"
+            }
+        }
+    },
     "welcome": "Xin chào",
     "home": "Trang chủ",
     "about": "Giới thiệu",
