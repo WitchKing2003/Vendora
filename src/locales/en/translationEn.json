@@ -1,4 +1,19 @@
 {
+    "header": {
+        "search": {
+            "allCategories": "All categories",
+            "fashion": "Fashion",
+            "electronics": "Electronics",
+            "homeLiving": "Home & Living",
+            "beauty": "Beauty",
+            "placeholder": "Search products, brands or sellers...",
+            "submit": "Search"
+        },
+        "cart": "Cart",
+        "account": "Account",
+        "signIn": "Sign in",
+        "signUp": "Sign up"
+    },
     "welcome": "Hello",
     "home": "Home",
     "about": "About",

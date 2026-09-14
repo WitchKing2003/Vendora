@@ -1,4 +1,19 @@
 {
+    "header": {
+        "search": {
+            "allCategories": "Tất cả danh mục",
+            "fashion": "Thời trang",
+            "electronics": "Điện tử",
+            "homeLiving": "Nhà cửa",
+            "beauty": "Làm đẹp",
+            "placeholder": "Tìm sản phẩm, thương hiệu hoặc người bán...",
+            "submit": "Tìm kiếm"
+        },
+        "cart": "Giỏ hàng",
+        "account": "Tài khoản",
+        "signIn": "Đăng nhập",
+        "signUp": "Đăng ký"
+    },
     "welcome": "Xin chào",
     "home": "Trang chủ",
     "about": "Giới thiệu",
