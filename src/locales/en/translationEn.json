@@ -15,6 +15,7 @@
         "signUp": "Sign up"
     },
     "category": {
+        "toggle": "Categories",
         "sellWithVendora": "Sell with Vendora",
         "fashion": {
             "label": "Fashion",

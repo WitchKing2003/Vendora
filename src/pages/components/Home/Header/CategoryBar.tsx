@@ -66,15 +66,28 @@ interface Hovered {
   id: string;
   left: number;
   width: number;
-  hasSubs: boolean;
 }
+
+const ChevronIcon = ({ open }: { open: boolean }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    className={`h-4 w-4 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+  >
+    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 const CategoryBar = () => {
   const { t } = useTranslation();
   const barRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState<Hovered | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [expandedCat, setExpandedCat] = useState<string | null>(null);
 
-  const handleItemEnter = (catId: string, hasSubs: boolean) => (e: React.MouseEvent<HTMLElement>) => {
+  const handleItemEnter = (catId: string) => (e: React.MouseEvent<HTMLElement>) => {
     const bar = barRef.current;
     const item = e.currentTarget;
     if (!bar) return;
@@ -84,7 +97,6 @@ const CategoryBar = () => {
       id: catId,
       left: itemRect.left - barRect.left,
       width: itemRect.width,
-      hasSubs,
     });
   };
 
@@ -98,64 +110,145 @@ const CategoryBar = () => {
     return Math.min(Math.max(center, half + 8), Math.max(barWidth - half - 8, half + 8));
   })();
 
+  const toggleCat = (catId: string) =>
+    setExpandedCat((current) => (current === catId ? null : catId));
+
   return (
     <div
       ref={barRef}
       className="relative bg-ink text-white"
       onMouseLeave={() => setHovered(null)}
     >
-      <div className="flex flex-wrap items-center justify-start gap-x-8 gap-y-1 px-6 py-3 whitespace-nowrap lg:justify-center lg:gap-x-10">
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat.id}
-            type="button"
-            onMouseEnter={handleItemEnter(cat.id, !!cat.subs)}
-            className={`block py-1 text-sm transition-colors ${
-              hovered?.id === cat.id ? "text-gold" : "text-white hover:text-gold"
-            }`}
-          >
-            {t(cat.labelKey)}
-          </button>
-        ))}
-
+      {/* Mobile / iPad (<lg): compact collapsed bar — tap "Danh mục" to expand vertically */}
+      <div className="lg:hidden">
         <button
           type="button"
-          onMouseEnter={handleItemEnter("sell", false)}
-          className={`block py-1 text-sm font-semibold transition-colors ${
-            hovered?.id === "sell" ? "text-gold-deep" : "text-gold hover:text-gold-deep"
-          }`}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((open) => !open)}
+          className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-white sm:px-6"
         >
-          {t("category.sellWithVendora")} <span aria-hidden>→</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            className="h-5 w-5"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" />
+          </svg>
+          {t("category.toggle")}
+          <ChevronIcon open={mobileOpen} />
         </button>
+
+        {mobileOpen && (
+          <div className="max-h-[60vh] overflow-y-auto border-t border-white/10 px-2 pb-2 sm:px-4">
+            {CATEGORIES.map((cat) => {
+              const expanded = expandedCat === cat.id;
+              return (
+                <div key={cat.id} className="border-b border-white/5 last:border-b-0">
+                  {cat.subs ? (
+                    <button
+                      type="button"
+                      aria-expanded={expanded}
+                      onClick={() => toggleCat(cat.id)}
+                      className="flex w-full items-center justify-between py-3 text-left text-sm text-white transition-colors hover:text-gold"
+                    >
+                      {t(cat.labelKey)}
+                      <ChevronIcon open={expanded} />
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className="block w-full py-3 text-left text-sm text-white transition-colors hover:text-gold"
+                    >
+                      {t(cat.labelKey)}
+                    </button>
+                  )}
+
+                  {expanded && cat.subs && (
+                    <div className="pb-2 pl-4">
+                      {cat.subs.map((sub) => (
+                        <button
+                          key={sub.key}
+                          type="button"
+                          className="block w-full py-2 text-left text-sm text-white/70 transition-colors hover:text-gold"
+                        >
+                          {t(`category.${cat.id}.items.${sub.key}`)}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            <button
+              type="button"
+              className="block w-full py-3 text-left text-sm font-semibold text-gold transition-colors hover:text-gold-deep"
+            >
+              {t("category.sellWithVendora")} <span aria-hidden>→</span>
+            </button>
+          </div>
+        )}
       </div>
 
-      {hovered && (
-        <span
-          className="absolute bottom-0 h-[3px] bg-teal-light transition-none"
-          style={{ left: hovered.left, width: hovered.width }}
-        />
-      )}
-
-      {hoveredCat?.subs && (
-        <div
-          className="absolute top-full z-30 border-t border-line bg-white py-2 text-ink shadow-xl"
-          style={{
-            width: PANEL_WIDTH,
-            left: panelLeft,
-            transform: "translateX(-50%)",
-          }}
-        >
-          {hoveredCat.subs.map((sub) => (
+      {/* Desktop (lg+): single-row hover bar with hanging panels */}
+      <div className="hidden lg:block">
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-1 px-6 py-3 whitespace-nowrap">
+          {CATEGORIES.map((cat) => (
             <button
-              key={sub.key}
+              key={cat.id}
               type="button"
-              className="block w-full px-4 py-2 text-left text-sm text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+              onMouseEnter={handleItemEnter(cat.id)}
+              className={`block py-1 text-sm transition-colors ${
+                hovered?.id === cat.id ? "text-gold" : "text-white hover:text-gold"
+              }`}
             >
-              {t(`category.${hoveredCat.id}.items.${sub.key}`)}
+              {t(cat.labelKey)}
             </button>
           ))}
+
+          <button
+            type="button"
+            onMouseEnter={handleItemEnter("sell")}
+            className={`block py-1 text-sm font-semibold transition-colors ${
+              hovered?.id === "sell" ? "text-gold-deep" : "text-gold hover:text-gold-deep"
+            }`}
+          >
+            {t("category.sellWithVendora")} <span aria-hidden>→</span>
+          </button>
         </div>
-      )}
+
+        {/* Teal contact strip */}
+        {hovered && (
+          <span
+            className="absolute bottom-0 h-[3px] bg-teal-light transition-none"
+            style={{ left: hovered.left, width: hovered.width }}
+          />
+        )}
+
+        {/* Hanging subcategory panel */}
+        {hoveredCat?.subs && (
+          <div
+            className="absolute top-full z-30 border-t border-line bg-white py-2 text-ink shadow-xl"
+            style={{
+              width: PANEL_WIDTH,
+              left: panelLeft,
+              transform: "translateX(-50%)",
+            }}
+          >
+            {hoveredCat.subs.map((sub) => (
+              <button
+                key={sub.key}
+                type="button"
+                className="block w-full px-4 py-2 text-left text-sm text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+              >
+                {t(`category.${hoveredCat.id}.items.${sub.key}`)}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

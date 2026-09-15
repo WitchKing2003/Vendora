@@ -15,6 +15,7 @@
         "signUp": "Đăng ký"
     },
     "category": {
+        "toggle": "Danh mục",
         "sellWithVendora": "Bán hàng cùng Vendora",
         "fashion": {
             "label": "Thời trang",
