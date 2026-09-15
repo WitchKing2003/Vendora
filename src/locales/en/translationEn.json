@@ -88,7 +88,50 @@
             }
         }
     },
-    "welcome": "Hello",
+    "highlight": {
+        "goTo": "Go to slide {{index}}",
+        "prev": "Previous slide",
+        "next": "Next slide",
+        "s1": {
+            "kicker": "Over 4,200 independent sellers",
+            "titleLine1": "One marketplace,",
+            "titlePrefix": "a ",
+            "titleItalic": "stall of your own",
+            "titleSuffix": ".",
+            "desc": "Vendora brings together small sellers, craft workshops and independent brands across Vietnam — every stall with a story and a style of its own.",
+            "ctaPrimary": "Explore stalls",
+            "ctaSecondary": "Open your stall",
+            "tile1": "Bát Tràng Ceramics — Minh Studio",
+            "tile2": "Modern Áo Dài — Lụa & Chi",
+            "tile3": "Hand-roasted Coffee — Vỏi"
+        },
+        "s2": {
+            "kicker": "Fresh every morning from the farms",
+            "titleLine1": "Back to the countryside,",
+            "titlePrefix": "a taste of ",
+            "titleItalic": "the homeland",
+            "titleSuffix": ".",
+            "desc": "Clean vegetables, seasonal fruit and regional specialties sourced from small cooperatives and family farms — delivered to your door the same day.",
+            "ctaPrimary": "Shop farm goods",
+            "ctaSecondary": "See where it grows",
+            "tile1": "Oolong Tea — Mộc Châu hills",
+            "tile2": "Arabica Coffee — Cầu Đất",
+            "tile3": "12-month Fish Sauce — Phú Quốc"
+        },
+        "s3": {
+            "kicker": "Festive collection 2026",
+            "titleLine1": "Going out,",
+            "titlePrefix": "with a touch of ",
+            "titleItalic": "sparkle",
+            "titleSuffix": ".",
+            "desc": "Handmade flowers, scented candles and accessories from recycled materials — small gifts crafted specially for this festive season.",
+            "ctaPrimary": "View the collection",
+            "ctaSecondary": "Find gifts by budget",
+            "tile1": "Handmade Wax Flowers — Petal House",
+            "tile2": "Hand-poured Candles — Nhà Nến",
+            "tile3": "Hand-printed Tote — Gánh Hàng"
+        }
+    },
     "home": "Home",
     "about": "About",
     "welcomeToVendora": "Welcome to Vendora",

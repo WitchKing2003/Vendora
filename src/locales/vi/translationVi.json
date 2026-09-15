@@ -88,6 +88,50 @@
             }
         }
     },
+    "highlight": {
+        "goTo": "Chuyển đến slide {{index}}",
+        "prev": "Slide trước",
+        "next": "Slide sau",
+        "s1": {
+            "kicker": "Hơn 4.200 người bán độc lập",
+            "titleLine1": "Một khu chợ,",
+            "titlePrefix": "muốn ",
+            "titleItalic": "gian hàng riêng",
+            "titleSuffix": ".",
+            "desc": "Vendora quy tụ những người bán nhỏ, xưởng thủ công và thương hiệu độc lập trên khắp Việt Nam — mỗi gian hàng một câu chuyện, một phong cách riêng.",
+            "ctaPrimary": "Khám phá gian hàng",
+            "ctaSecondary": "Mở gian hàng của bạn",
+            "tile1": "Gốm Bát Tràng — Minh Studio",
+            "tile2": "Áo dài cách tân — Lụa & Chi",
+            "tile3": "Cà phê rang thủ công — Vỏi"
+        },
+        "s2": {
+            "kicker": "Tươi mỗi sáng từ chợ đầu mối",
+            "titleLine1": "Về quê,",
+            "titlePrefix": "gọi ",
+            "titleItalic": "món quà đất",
+            "titleSuffix": ".",
+            "desc": "Rau củ sạch, trái cây theo mùa, đặc sản vùng miền được tuyển chọn từ các hợp tác xã và nông trại nhỏ — giao đến tận nhà trong ngày.",
+            "ctaPrimary": "Mua nông sản",
+            "ctaSecondary": "Xem nguồn gốc vùng trồng",
+            "tile1": "Trà Ô Long — đồi Mộc Châu",
+            "tile2": "Cà phê Arabica — Cầu Đất",
+            "tile3": "Nước mắm 12 tháng — Phú Quốc"
+        },
+        "s3": {
+            "kicker": "Bộ sưu tập lễ hội 2026",
+            "titleLine1": "Đi chơi,",
+            "titlePrefix": "cần ",
+            "titleItalic": "một chút rực rỡ",
+            "titleSuffix": ".",
+            "desc": "Hoa thủ công, nến thơm và phụ kiện làm từ chất liệu tái chế — những món quà nhỏ được chế tác riêng cho mùa lễ hội năm nay.",
+            "ctaPrimary": "Xem bộ sưu tập",
+            "ctaSecondary": "Tìm quà theo ngân sách",
+            "tile1": "Hoa sáp thủ công — Petal House",
+            "tile2": "Nến đúc tay — Nhà Nến",
+            "tile3": "Túi vải in tay — Gánh Hàng"
+        }
+    },
     "welcome": "Xin chào",
     "home": "Trang chủ",
     "about": "Giới thiệu",
