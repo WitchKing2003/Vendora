@@ -132,6 +132,21 @@
             "tile3": "Túi vải in tay — Gánh Hàng"
         }
     },
+    "products": {
+        "featuredTitle": "Mới về gian hàng",
+        "saleTitle": "Đang được giảm giá",
+        "viewAll": "Xem tất cả sản phẩm"
+    },
+    "product": {
+        "badgeNew": "Mới",
+        "badgeSale": "-{{percent}}%"
+    },
+    "trust": {
+        "shipping": { "title": "Giao hàng toàn quốc", "sub": "2-4 ngày làm việc" },
+        "seller": { "title": "Đảm bảo người bán", "sub": "Xác minh & bảo vệ đơn hàng" },
+        "returns": { "title": "Đổi trả trong 7 ngày", "sub": "Miễn phí đổi trả" },
+        "payment": { "title": "Thanh toán linh hoạt", "sub": "COD, chuyển khoản, ví điện tử" }
+    },
     "welcome": "Xin chào",
     "home": "Trang chủ",
     "about": "Giới thiệu",

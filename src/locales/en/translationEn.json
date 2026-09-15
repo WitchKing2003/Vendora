@@ -132,6 +132,21 @@
             "tile3": "Hand-printed Tote — Gánh Hàng"
         }
     },
+    "products": {
+        "featuredTitle": "New in the stalls",
+        "saleTitle": "On sale now",
+        "viewAll": "View all products"
+    },
+    "product": {
+        "badgeNew": "New",
+        "badgeSale": "-{{percent}}%"
+    },
+    "trust": {
+        "shipping": { "title": "Nationwide shipping", "sub": "2-4 working days" },
+        "seller": { "title": "Seller guarantee", "sub": "Verified & order-protected" },
+        "returns": { "title": "7-day returns", "sub": "Free returns" },
+        "payment": { "title": "Flexible payment", "sub": "COD, bank transfer, e-wallet" }
+    },
     "home": "Home",
     "about": "About",
     "welcomeToVendora": "Welcome to Vendora",
