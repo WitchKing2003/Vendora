@@ -147,6 +147,41 @@
         "returns": { "title": "Đổi trả trong 7 ngày", "sub": "Miễn phí đổi trả" },
         "payment": { "title": "Thanh toán linh hoạt", "sub": "COD, chuyển khoản, ví điện tử" }
     },
+    "footer": {
+        "description": "Nền tảng kết nối người mua với hàng nghìn người bán độc lập, xưởng thủ công và thương hiệu nhỏ trên khắp Việt Nam.",
+        "copyright": "© 2026 Vendora. Bảo lưu mọi quyền.",
+        "langVi": "Tiếng Việt",
+        "langEn": "English",
+        "currency": "VND ₫",
+        "buyer": {
+            "title": "Dành cho người mua",
+            "howToOrder": "Cách đặt hàng",
+            "trackOrder": "Theo dõi đơn hàng",
+            "returnsRefunds": "Đổi trả & hoàn tiền",
+            "paymentMethods": "Phương thức thanh toán"
+        },
+        "seller": {
+            "title": "Dành cho người bán",
+            "openStall": "Mở gian hàng",
+            "feesCommission": "Phí & hoa hồng",
+            "sellerTools": "Công cụ người bán",
+            "successStories": "Câu chuyện thành công"
+        },
+        "about": {
+            "title": "Về Vendora",
+            "introduction": "Giới thiệu",
+            "careers": "Tuyển dụng",
+            "press": "Báo chí",
+            "terms": "Điều khoản dịch vụ"
+        },
+        "support": {
+            "title": "Hỗ trợ",
+            "helpCenter": "Trung tâm trợ giúp",
+            "contact": "Liên hệ",
+            "privacy": "Chính sách bảo mật",
+            "transactionSafety": "An toàn giao dịch"
+        }
+    },
     "welcome": "Xin chào",
     "home": "Trang chủ",
     "about": "Giới thiệu",
