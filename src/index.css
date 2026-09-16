@@ -38,3 +38,58 @@ body {
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
+
+/* Product card placeholder texture (diagonal hatch like the mockup) */
+.placeholder-diagonal {
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(26, 27, 30, 0.06) 10px,
+        rgba(26, 27, 30, 0.06) 11px
+    );
+}
+
+/* Highlight slider: fade + rise when the slide changes */
+@keyframes highlight-slide-enter {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.highlight-slide-enter {
+    animation: highlight-slide-enter 600ms ease-out both;
+}
+
+/* Dual range slider: transparent tracks so the shared gold segment shows through,
+   thumbs remain draggable (classic two-input overlay pattern) */
+.range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    height: 20px;
+}
+.range-thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: auto;
+    height: 16px;
+    width: 16px;
+    border-radius: 9999px;
+    background: var(--ink);
+    border: 2px solid var(--paper);
+    cursor: pointer;
+}
+.range-thumb::-moz-range-thumb {
+    pointer-events: auto;
+    height: 16px;
+    width: 16px;
+    border-radius: 9999px;
+    background: var(--ink);
+    border: 2px solid var(--paper);
+    cursor: pointer;
+}

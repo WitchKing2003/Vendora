@@ -15,6 +15,7 @@
         "signUp": "Sign up"
     },
     "category": {
+        "toggle": "Categories",
         "sellWithVendora": "Sell with Vendora",
         "fashion": {
             "label": "Fashion",
@@ -87,7 +88,149 @@
             }
         }
     },
-    "welcome": "Hello",
+    "highlight": {
+        "goTo": "Go to slide {{index}}",
+        "prev": "Previous slide",
+        "next": "Next slide",
+        "s1": {
+            "kicker": "Over 4,200 independent sellers",
+            "titleLine1": "One marketplace,",
+            "titlePrefix": "a ",
+            "titleItalic": "stall of your own",
+            "titleSuffix": ".",
+            "desc": "Vendora brings together small sellers, craft workshops and independent brands across Vietnam — every stall with a story and a style of its own.",
+            "ctaPrimary": "Explore stalls",
+            "ctaSecondary": "Open your stall",
+            "tile1": "Bát Tràng Ceramics — Minh Studio",
+            "tile2": "Modern Áo Dài — Lụa & Chi",
+            "tile3": "Hand-roasted Coffee — Vỏi"
+        },
+        "s2": {
+            "kicker": "Fresh every morning from the farms",
+            "titleLine1": "Back to the countryside,",
+            "titlePrefix": "a taste of ",
+            "titleItalic": "the homeland",
+            "titleSuffix": ".",
+            "desc": "Clean vegetables, seasonal fruit and regional specialties sourced from small cooperatives and family farms — delivered to your door the same day.",
+            "ctaPrimary": "Shop farm goods",
+            "ctaSecondary": "See where it grows",
+            "tile1": "Oolong Tea — Mộc Châu hills",
+            "tile2": "Arabica Coffee — Cầu Đất",
+            "tile3": "12-month Fish Sauce — Phú Quốc"
+        },
+        "s3": {
+            "kicker": "Festive collection 2026",
+            "titleLine1": "Going out,",
+            "titlePrefix": "with a touch of ",
+            "titleItalic": "sparkle",
+            "titleSuffix": ".",
+            "desc": "Handmade flowers, scented candles and accessories from recycled materials — small gifts crafted specially for this festive season.",
+            "ctaPrimary": "View the collection",
+            "ctaSecondary": "Find gifts by budget",
+            "tile1": "Handmade Wax Flowers — Petal House",
+            "tile2": "Hand-poured Candles — Nhà Nến",
+            "tile3": "Hand-printed Tote — Gánh Hàng"
+        }
+    },
+    "products": {
+        "featuredTitle": "New in the stalls",
+        "saleTitle": "On sale now",
+        "viewAll": "View all products"
+    },
+    "product": {
+        "badgeNew": "New",
+        "badgeSale": "-{{percent}}%"
+    },
+    "trust": {
+        "shipping": { "title": "Nationwide shipping", "sub": "2-4 working days" },
+        "seller": { "title": "Seller guarantee", "sub": "Verified & order-protected" },
+        "returns": { "title": "7-day returns", "sub": "Free returns" },
+        "payment": { "title": "Flexible payment", "sub": "COD, bank transfer, e-wallet" }
+    },
+    "listing": {
+        "breadcrumbHome": "Home",
+        "resultCount": "products from {{sellers}} independent stalls",
+        "showing": "Showing {{from}}–{{to}} / {{total}}",
+        "sortLabel": "Sort by",
+        "sort": {
+            "relevant": "Most relevant",
+            "newest": "Newest",
+            "priceAsc": "Price: low to high",
+            "priceDesc": "Price: high to low"
+        },
+        "viewGrid": "Grid view",
+        "viewList": "List view",
+        "openFilters": "Filters",
+        "closeFilters": "Close filters",
+        "filtersTitle": "Filters",
+        "showResults": "View {{count}} products",
+        "clearAll": "Clear all",
+        "empty": "No products match the current filters.",
+        "notFound": "Category not found",
+        "backHome": "Back to home",
+        "addToWishlist": "Add to wishlist",
+        "shortDesc": "Handmade by {{seller}}, shipped nationwide.",
+        "colors": {
+            "black": "Black",
+            "white": "White",
+            "red": "Red",
+            "green": "Green",
+            "gold": "Gold",
+            "brown": "Brown",
+            "blue": "Blue"
+        },
+        "filters": {
+            "category": "Category",
+            "allInCategory": "All {{category}}",
+            "priceRange": "Price range",
+            "priceFrom": "Price from",
+            "priceTo": "Price to",
+            "sellers": "Sellers",
+            "colors": "Colors",
+            "rating": "Rating",
+            "ratingUp": "& up",
+            "status": "Status",
+            "inStock": "In stock",
+            "onSale": "On sale",
+            "isNew": "New arrivals",
+            "clearAll": "Clear all filters"
+        }
+    },
+    "footer": {
+        "description": "The platform connecting buyers with thousands of independent sellers, craft workshops and small brands across Vietnam.",
+        "copyright": "© 2026 Vendora. All rights reserved.",
+        "langVi": "Tiếng Việt",
+        "langEn": "English",
+        "currency": "VND ₫",
+        "buyer": {
+            "title": "For buyers",
+            "howToOrder": "How to order",
+            "trackOrder": "Track your order",
+            "returnsRefunds": "Returns & refunds",
+            "paymentMethods": "Payment methods"
+        },
+        "seller": {
+            "title": "For sellers",
+            "openStall": "Open a stall",
+            "feesCommission": "Fees & commission",
+            "sellerTools": "Seller tools",
+            "successStories": "Success stories"
+        },
+        "about": {
+            "title": "About Vendora",
+            "introduction": "Introduction",
+            "careers": "Careers",
+            "press": "Press",
+            "terms": "Terms of service"
+        },
+        "support": {
+            "title": "Support",
+            "helpCenter": "Help center",
+            "contact": "Contact us",
+            "privacy": "Privacy policy",
+            "transactionSafety": "Transaction safety"
+        }
+    },
     "home": "Home",
     "about": "About",
     "welcomeToVendora": "Welcome to Vendora",
