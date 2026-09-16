@@ -147,6 +147,55 @@
         "returns": { "title": "Đổi trả trong 7 ngày", "sub": "Miễn phí đổi trả" },
         "payment": { "title": "Thanh toán linh hoạt", "sub": "COD, chuyển khoản, ví điện tử" }
     },
+    "listing": {
+        "breadcrumbHome": "Trang chủ",
+        "resultCount": "sản phẩm từ {{sellers}} gian hàng độc lập",
+        "showing": "Hiển thị {{from}}–{{to}} / {{total}}",
+        "sortLabel": "Sắp xếp theo",
+        "sort": {
+            "relevant": "Liên quan nhất",
+            "newest": "Mới nhất",
+            "priceAsc": "Giá thấp đến cao",
+            "priceDesc": "Giá cao đến thấp"
+        },
+        "viewGrid": "Xem dạng lưới",
+        "viewList": "Xem dạng danh sách",
+        "openFilters": "Bộ lọc",
+        "closeFilters": "Đóng bộ lọc",
+        "filtersTitle": "Bộ lọc",
+        "showResults": "Xem {{count}} sản phẩm",
+        "clearAll": "Xoá hết",
+        "empty": "Không có sản phẩm nào phù hợp với bộ lọc.",
+        "notFound": "Không tìm thấy danh mục",
+        "backHome": "Về trang chủ",
+        "addToWishlist": "Thêm vào yêu thích",
+        "shortDesc": "Được làm thủ công bởi {{seller}}, giao hàng toàn quốc.",
+        "colors": {
+            "black": "Đen",
+            "white": "Trắng",
+            "red": "Đỏ",
+            "green": "Xanh lá",
+            "gold": "Vàng",
+            "brown": "Nâu",
+            "blue": "Xanh dương"
+        },
+        "filters": {
+            "category": "Danh mục",
+            "allInCategory": "Tất cả {{category}}",
+            "priceRange": "Khoảng giá",
+            "priceFrom": "Giá từ",
+            "priceTo": "Giá đến",
+            "sellers": "Người bán",
+            "colors": "Màu sắc",
+            "rating": "Đánh giá",
+            "ratingUp": "trở lên",
+            "status": "Tình trạng",
+            "inStock": "Còn hàng",
+            "onSale": "Đang giảm giá",
+            "isNew": "Hàng mới về",
+            "clearAll": "Xoá tất cả bộ lọc"
+        }
+    },
     "footer": {
         "description": "Nền tảng kết nối người mua với hàng nghìn người bán độc lập, xưởng thủ công và thương hiệu nhỏ trên khắp Việt Nam.",
         "copyright": "© 2026 Vendora. Bảo lưu mọi quyền.",

@@ -1,7 +1,0 @@
-[2m9:55:33 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: EOF while parsing an object at line 100 column 0
-  Plugin: [35mbuiltin:vite-json[39m
-  File: [36m[object Object][39m
-[2m9:55:33 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: EOF while parsing an object at line 100 column 0[39m
-  Plugin: [35mbuiltin:vite-json[39m
-  File: [36m[object Object][39m
-  

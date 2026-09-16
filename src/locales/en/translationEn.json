@@ -147,6 +147,55 @@
         "returns": { "title": "7-day returns", "sub": "Free returns" },
         "payment": { "title": "Flexible payment", "sub": "COD, bank transfer, e-wallet" }
     },
+    "listing": {
+        "breadcrumbHome": "Home",
+        "resultCount": "products from {{sellers}} independent stalls",
+        "showing": "Showing {{from}}–{{to}} / {{total}}",
+        "sortLabel": "Sort by",
+        "sort": {
+            "relevant": "Most relevant",
+            "newest": "Newest",
+            "priceAsc": "Price: low to high",
+            "priceDesc": "Price: high to low"
+        },
+        "viewGrid": "Grid view",
+        "viewList": "List view",
+        "openFilters": "Filters",
+        "closeFilters": "Close filters",
+        "filtersTitle": "Filters",
+        "showResults": "View {{count}} products",
+        "clearAll": "Clear all",
+        "empty": "No products match the current filters.",
+        "notFound": "Category not found",
+        "backHome": "Back to home",
+        "addToWishlist": "Add to wishlist",
+        "shortDesc": "Handmade by {{seller}}, shipped nationwide.",
+        "colors": {
+            "black": "Black",
+            "white": "White",
+            "red": "Red",
+            "green": "Green",
+            "gold": "Gold",
+            "brown": "Brown",
+            "blue": "Blue"
+        },
+        "filters": {
+            "category": "Category",
+            "allInCategory": "All {{category}}",
+            "priceRange": "Price range",
+            "priceFrom": "Price from",
+            "priceTo": "Price to",
+            "sellers": "Sellers",
+            "colors": "Colors",
+            "rating": "Rating",
+            "ratingUp": "& up",
+            "status": "Status",
+            "inStock": "In stock",
+            "onSale": "On sale",
+            "isNew": "New arrivals",
+            "clearAll": "Clear all filters"
+        }
+    },
     "footer": {
         "description": "The platform connecting buyers with thousands of independent sellers, craft workshops and small brands across Vietnam.",
         "copyright": "© 2026 Vendora. All rights reserved.",

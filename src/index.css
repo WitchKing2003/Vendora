@@ -64,3 +64,32 @@ body {
 .highlight-slide-enter {
     animation: highlight-slide-enter 600ms ease-out both;
 }
+
+/* Dual range slider: transparent tracks so the shared gold segment shows through,
+   thumbs remain draggable (classic two-input overlay pattern) */
+.range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    height: 20px;
+}
+.range-thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: auto;
+    height: 16px;
+    width: 16px;
+    border-radius: 9999px;
+    background: var(--ink);
+    border: 2px solid var(--paper);
+    cursor: pointer;
+}
+.range-thumb::-moz-range-thumb {
+    pointer-events: auto;
+    height: 16px;
+    width: 16px;
+    border-radius: 9999px;
+    background: var(--ink);
+    border: 2px solid var(--paper);
+    cursor: pointer;
+}

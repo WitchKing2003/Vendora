@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 interface SubItem {
   key: string;
@@ -82,6 +83,7 @@ const ChevronIcon = ({ open }: { open: boolean }) => (
 
 const CategoryBar = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const barRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState<Hovered | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -159,6 +161,10 @@ const CategoryBar = () => {
                   ) : (
                     <button
                       type="button"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        navigate(`/category/${cat.id}`);
+                      }}
                       className="block w-full py-3 text-left text-sm text-white transition-colors hover:text-gold"
                     >
                       {t(cat.labelKey)}
@@ -171,6 +177,10 @@ const CategoryBar = () => {
                         <button
                           key={sub.key}
                           type="button"
+                          onClick={() => {
+                            setMobileOpen(false);
+                            navigate(`/category/${cat.id}/${sub.key}`);
+                          }}
                           className="block w-full py-2 text-left text-sm text-white/70 transition-colors hover:text-gold"
                         >
                           {t(`category.${cat.id}.items.${sub.key}`)}
@@ -200,6 +210,7 @@ const CategoryBar = () => {
               key={cat.id}
               type="button"
               onMouseEnter={handleItemEnter(cat.id)}
+              onClick={() => navigate(`/category/${cat.id}`)}
               className={`block py-1 text-sm transition-colors ${
                 hovered?.id === cat.id ? "text-gold" : "text-white hover:text-gold"
               }`}
@@ -241,6 +252,7 @@ const CategoryBar = () => {
               <button
                 key={sub.key}
                 type="button"
+                onClick={() => navigate(`/category/${hoveredCat.id}/${sub.key}`)}
                 className="block w-full px-4 py-2 text-left text-sm text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
               >
                 {t(`category.${hoveredCat.id}.items.${sub.key}`)}
