@@ -85,33 +85,32 @@ const FooterPage = () => {
   return (
     <footer className="border-t-4 border-gold bg-ink text-white">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_2fr] lg:gap-12">
-          {/* Brand */}
-          <div>
-            <p className="font-serif text-3xl font-semibold">
-              Vendor<span className="text-gold">a</span>
-            </p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
-              {t("footer.description")}
-            </p>
-            <div className="mt-6 flex gap-3">
-              {SOCIALS.map((s) => (
-                <button
-                  key={s.name}
-                  type="button"
-                  aria-label={s.name}
-                  className="flex h-9 w-9 items-center justify-center border border-white/25 text-white/80 transition-colors hover:border-gold hover:text-gold"
-                >
-                  {s.icon}
-                </button>
-              ))}
-            </div>
+        {/* Row 1 — brand */}
+        <div>
+          <p className="font-serif text-3xl font-semibold">
+            Vendor<span className="text-gold">a</span>
+          </p>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
+            {t("footer.description")}
+          </p>
+          <div className="mt-6 flex gap-3">
+            {SOCIALS.map((s) => (
+              <button
+                key={s.name}
+                type="button"
+                aria-label={s.name}
+                className="flex h-9 w-9 items-center justify-center border border-white/25 text-white/80 transition-colors hover:border-gold hover:text-gold"
+              >
+                {s.icon}
+              </button>
+            ))}
           </div>
+        </div>
 
-          {/* Link columns — vertical stack on phones, 2x2 grid from sm up,
-              brand sits to the left on desktop (lg+) */}
-          <div className="grid gap-8 sm:grid-cols-2 lg:gap-x-10 lg:gap-y-10">
-            {COLUMNS.map((col) => (
+        {/* Row 2 — link groups: vertical stack on phones, 2 across on sm,
+            all 4 lying horizontally on lg+ */}
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          {COLUMNS.map((col) => (
             <div key={col.titleKey}>
               <p className="text-sm font-bold">{t(col.titleKey)}</p>
               <ul className="mt-5 space-y-3.5">
@@ -127,8 +126,7 @@ const FooterPage = () => {
                 ))}
               </ul>
             </div>
-            ))}
-          </div>
+          ))}
         </div>
 
         {/* Bottom bar */}
