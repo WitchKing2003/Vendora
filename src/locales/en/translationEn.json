@@ -231,6 +231,80 @@
             "transactionSafety": "Transaction safety"
         }
     },
+    "detail": {
+        "wishlist": "Wishlist",
+        "share": "Share",
+        "compare": "Compare",
+        "prevImage": "Previous image",
+        "nextImage": "Next image",
+        "zoomHint": "Hover to zoom",
+        "sellerLabel": "Stall",
+        "reviewsCount": "{{count}} reviews",
+        "sold": "{{count}} sold",
+        "save": "Save {{amount}}",
+        "promoTitle": "Offers for this product",
+        "vouchers": {
+            "combo": "Extra 10% off orders of 2+ items",
+            "freeShip": "Free shipping on orders from 300.000đ",
+            "momo": "30.000đ off when paying with MoMo wallet"
+        },
+        "colorLabel": "Color:",
+        "sizeLabel": "Size:",
+        "sizeGuide": "Size guide",
+        "decrease": "Decrease quantity",
+        "increase": "Increase quantity",
+        "lowStock": "Only {{count}} left",
+        "addToCart": "Add to cart",
+        "buyNow": "Buy now",
+        "shipEta": "Delivery Sep 24–26",
+        "freeShipThreshold": "Free from 300.000đ",
+        "returnFree": "Free returns within 7 days",
+        "guarantee": "Guaranteed & purchase-protected by Vendora",
+        "tabs": {
+            "desc": "Description",
+            "specs": "Specifications",
+            "reviews": "Reviews ({{count}})",
+            "shipping": "Shipping & returns"
+        },
+        "desc": {
+            "p1": "{{name}} is curated and shipped from {{seller}} — where every product is handmade or carefully selected to Vendora's standard: real materials, meticulous craftsmanship, made to last."
+        },
+        "highlights": {
+            "p1": "Premium materials, carefully sourced from the seller's workshop",
+            "p2": "Meticulous workmanship, hand-finished details",
+            "p3": "Careful packaging, inspected before dispatch",
+            "p4": "Guaranteed & purchase-protected by Vendora until delivery"
+        },
+        "specs": {
+            "material": "Material",
+            "origin": "Origin",
+            "weight": "Weight",
+            "warranty": "Warranty & returns",
+            "dimensions": "Dimensions",
+            "model": "Product code"
+        },
+        "reviews": {
+            "r1": "Very careful packaging; the product matches the description. Material is smooth and the stitching is even.",
+            "r2": "Delivered faster than expected, colors true to the photos. Will buy from this stall again.",
+            "r3": "Beautiful product, well made. Slightly pricey but worth the quality received."
+        },
+        "shipping": {
+            "p1": "Orders are packed and dispatched within 24 business hours of payment confirmation.",
+            "p2": "Free shipping on orders from 300.000đ; smaller orders are charged by distance.",
+            "p3": "Free returns within 7 days if the item is defective, misdescribed or damaged in transit."
+        },
+        "colors": {
+            "black": "Black",
+            "white": "White",
+            "red": "Rust red",
+            "green": "Forest green",
+            "gold": "Antique gold",
+            "brown": "Earth brown",
+            "blue": "Teal blue"
+        },
+        "related": "Related products",
+        "viewAll": "View all {{sub}}"
+    },
     "home": "Home",
     "about": "About",
     "welcomeToVendora": "Welcome to Vendora",

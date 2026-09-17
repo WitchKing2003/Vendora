@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import type { ListingProduct } from "../../../data/categoryData";
 import { formatVnd } from "../Home/Products/ProductSection";
 
@@ -82,7 +83,10 @@ const ListingCard = ({ product, variant = "grid" }: ListingCardProps) => {
 
   if (variant === "list") {
     return (
-      <div className="group flex cursor-pointer gap-5 border border-line bg-white p-4 transition-colors hover:border-ink/40">
+      <Link
+        to={`/product/${product.id}`}
+        className="group flex cursor-pointer gap-5 border border-line bg-white p-4 transition-colors hover:border-ink/40"
+      >
         {image}
         <div className="flex min-w-0 flex-1 flex-col">
           <p className="text-sm text-ink/60">{product.seller}</p>
@@ -105,12 +109,15 @@ const ListingCard = ({ product, variant = "grid" }: ListingCardProps) => {
             )}
           </div>
         </div>
-      </div>
+      </Link>
     );
   }
 
   return (
-    <div className="group cursor-pointer">
+    <Link
+      to={`/product/${product.id}`}
+      className="group block cursor-pointer"
+    >
       {image}
       <p className="mt-3 text-sm text-ink/60">{product.seller}</p>
       <h3 className="mt-0.5 text-base font-semibold text-ink transition-colors group-hover:text-gold-deep">
@@ -128,7 +135,7 @@ const ListingCard = ({ product, variant = "grid" }: ListingCardProps) => {
           </span>
         )}
       </div>
-    </div>
+    </Link>
   );
 };
 

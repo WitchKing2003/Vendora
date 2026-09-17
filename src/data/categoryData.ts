@@ -314,3 +314,123 @@ export const countStatus = (slug: string) => {
 
 export const countByColor = (slug: string, hex: string) =>
   (PRODUCTS_BY_CATEGORY[slug] ?? []).filter((p) => p.colorHex === hex).length;
+
+/* ------------------------------------------------------------------ */
+/* Product detail (mock)                                               */
+/* ------------------------------------------------------------------ */
+
+export interface ProductDetail extends ListingProduct {
+  slug: string; // category slug, e.g. "fashion"
+  stock: number;
+  /** Variant colors: first is the product's own swatch. */
+  variantColors: { hex: string; nameKey: string }[];
+  /** Sizes with a disabled (sold-out) flag. */
+  sizes: { label: string; disabled: boolean }[];
+  specs: { labelKey: string; value: string }[];
+  highlights: string[];
+  /** Voucher rows rendered in the dashed promo box. */
+  vouchers: { label: string; code?: string }[];
+}
+
+const VARIANT_COLOR_POOL = ["#5B4636", "#1A1B1E", "#FFFFFF", "#8B3A2B", "#2C4A43", "#C68A2E", "#3E5C76"];
+
+const VARIANT_COLOR_NAMES: Record<string, string> = {
+  "#5B4636": "detail.colors.brown",
+  "#1A1B1E": "detail.colors.black",
+  "#FFFFFF": "detail.colors.white",
+  "#8B3A2B": "detail.colors.red",
+  "#2C4A43": "detail.colors.green",
+  "#C68A2E": "detail.colors.gold",
+  "#3E5C76": "detail.colors.blue",
+};
+
+const ALL_SIZES = ["S", "M", "L", "XL"];
+
+const SPEC_TEMPLATES: Record<string, { labelKey: string; value: (name: string, seller: string) => string }[]> = {
+  default: [
+    { labelKey: "detail.specs.material", value: () => "Tự nhiên 100%" },
+    { labelKey: "detail.specs.origin", value: (_n, s) => `Xưởng ${s}` },
+    { labelKey: "detail.specs.weight", value: (n) => `${120 + (n.length % 30) * 10}g` },
+    { labelKey: "detail.specs.warranty", value: () => "7 ngày miễn phí" },
+  ],
+  electronics: [
+    { labelKey: "detail.specs.material", value: () => "Nhôm & PC/ABS" },
+    { labelKey: "detail.specs.origin", value: (_n, s) => `Xưởng ${s}` },
+    { labelKey: "detail.specs.weight", value: () => "260g" },
+    { labelKey: "detail.specs.warranty", value: () => "12 tháng" },
+  ],
+  beauty: [
+    { labelKey: "detail.specs.material", value: () => "Thành phần tự nhiên 96%" },
+    { labelKey: "detail.specs.origin", value: (_n, s) => `Xưởng ${s}` },
+    { labelKey: "detail.specs.weight", value: () => "50ml" },
+    { labelKey: "detail.specs.warranty", value: () => "HSD 24 tháng" },
+  ],
+};
+
+/**
+ * Build the full detail for one product. Deterministic per product id, so
+ * every navigation shows the same variants/specs.
+ */
+export const getProductDetail = (id: string | undefined): ProductDetail | null => {
+  if (!id) return null;
+  for (const def of CATEGORY_DEFS) {
+    const product = (PRODUCTS_BY_CATEGORY[def.slug] ?? []).find((p) => p.id === id);
+    if (!product) continue;
+
+    const rand = mulberry32(
+      id.split("").reduce((acc, ch) => acc + ch.charCodeAt(0) * 31, 7)
+    );
+
+    const variantCount = 3 + Math.floor(rand() * 2); // 3–4 colors
+    const variantColors = [product.colorHex];
+    for (const hex of VARIANT_COLOR_POOL) {
+      if (variantColors.length >= variantCount) break;
+      if (hex !== product.colorHex) variantColors.push(hex);
+    }
+
+    const isFashion = def.slug === "fashion" || def.slug === "motherBaby" || def.slug === "sports";
+    const sizes = isFashion
+      ? ALL_SIZES.map((label, i) => ({ label, disabled: i === ALL_SIZES.length - 1 && rand() < 0.8 }))
+      : [];
+
+    const specs = (SPEC_TEMPLATES[def.slug] ?? SPEC_TEMPLATES.default).map((s) => ({
+      labelKey: s.labelKey,
+      value: s.value(product.name, product.seller),
+    }));
+
+    const stock = 3 + Math.floor(rand() * 20);
+
+    const vouchers = [
+      { label: "detail.vouchers.combo", code: "COMBO10" },
+      { label: "detail.vouchers.freeShip", code: undefined },
+      { label: "detail.vouchers.momo", code: "MOMO30" },
+    ];
+
+    const highlights = [
+      "detail.highlights.p1",
+      "detail.highlights.p2",
+      "detail.highlights.p3",
+      "detail.highlights.p4",
+    ];
+
+    return {
+      ...product,
+      slug: def.slug,
+      stock,
+      variantColors: variantColors.map((hex) => ({ hex, nameKey: VARIANT_COLOR_NAMES[hex] ?? "detail.colors.brown" })),
+      sizes,
+      specs,
+      highlights,
+      vouchers,
+    };
+  }
+  return null;
+};
+
+/** Products of the same category (same sub first), excluding the current one. */
+export const getRelatedProducts = (detail: ProductDetail, limit = 4): ListingProduct[] => {
+  const pool = PRODUCTS_BY_CATEGORY[detail.slug] ?? [];
+  const sameSub = pool.filter((p) => p.id !== detail.id && p.subSlug === detail.subSlug);
+  const rest = pool.filter((p) => p.id !== detail.id && p.subSlug !== detail.subSlug);
+  return [...sameSub, ...rest].slice(0, limit);
+};

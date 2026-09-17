@@ -231,6 +231,80 @@
             "transactionSafety": "An toàn giao dịch"
         }
     },
+    "detail": {
+        "wishlist": "Yêu thích",
+        "share": "Chia sẻ",
+        "compare": "So sánh",
+        "prevImage": "Ảnh trước",
+        "nextImage": "Ảnh sau",
+        "zoomHint": "Di chuột để phóng to",
+        "sellerLabel": "Gian hàng",
+        "reviewsCount": "{{count}} đánh giá",
+        "sold": "Đã bán {{count}}",
+        "save": "Tiết kiệm {{amount}}",
+        "promoTitle": "Ưu đãi cho sản phẩm này",
+        "vouchers": {
+            "combo": "Giảm thêm 10% cho đơn từ 2 sản phẩm",
+            "freeShip": "Miễn phí vận chuyển cho đơn từ 300.000đ",
+            "momo": "Giảm 30.000đ khi thanh toán qua ví MoMo"
+        },
+        "colorLabel": "Màu sắc:",
+        "sizeLabel": "Kích cỡ:",
+        "sizeGuide": "Hướng dẫn chọn size",
+        "decrease": "Giảm số lượng",
+        "increase": "Tăng số lượng",
+        "lowStock": "Chỉ còn {{count}} sản phẩm",
+        "addToCart": "Thêm vào giỏ",
+        "buyNow": "Mua ngay",
+        "shipEta": "Giao hàng dự kiến 24–26/9",
+        "freeShipThreshold": "Miễn phí từ 300.000đ",
+        "returnFree": "Đổi trả miễn phí trong 7 ngày",
+        "guarantee": "Được Vendora đảm bảo & bảo vệ đơn hàng",
+        "tabs": {
+            "desc": "Mô tả sản phẩm",
+            "specs": "Thông số",
+            "reviews": "Đánh giá ({{count}})",
+            "shipping": "Vận chuyển & đổi trả"
+        },
+        "desc": {
+            "p1": "{{name}} được tuyển chọn và gửi đi từ gian hàng {{seller}} — nơi từng sản phẩm được làm thủ công hoặc tuyển kỹ theo tiêu chí của Vendora: chất liệu thật, gia công tỉ mỉ và bền với thời gian."
+        },
+        "highlights": {
+            "p1": "Chất liệu cao cấp, tuyển chọn kỹ lưỡng từ xưởng của người bán",
+            "p2": "Gia công tỉ mỉ, hoàn thiện thủ công từng chi tiết",
+            "p3": "Đóng gói cẩn thận, kiểm tra trước khi giao",
+            "p4": "Được Vendora đảm bảo & bảo vệ đơn hàng đến khi nhận"
+        },
+        "specs": {
+            "material": "Chất liệu",
+            "origin": "Xuất xứ",
+            "weight": "Trọng lượng",
+            "warranty": "Bảo hành đổi trả",
+            "dimensions": "Kích thước",
+            "model": "Mã sản phẩm"
+        },
+        "reviews": {
+            "r1": "Đóng gói rất cẩn thận, sản phẩm đúng như mô tả. Chất liệu đếm mịn, đường may đều đẹp.",
+            "r2": "Giao hàng nhanh hơn dự kiến, màu sắc chuẩn như hình. Sẽ ủng hộ gian hàng thêm nhiều lần nữa.",
+            "r3": "Sản phẩm đẹp, gia công cẩn thận. Giá hơi cao nhưng xứng đáng với chất lượng nhận được."
+        },
+        "shipping": {
+            "p1": "Đơn hàng được đóng gói và gửi đi trong vòng 24 giờ làm việc kể từ khi xác nhận thanh toán.",
+            "p2": "Miễn phí vận chuyển cho đơn từ 300.000đ; đơn dưới ngưỡng tính phí theo khoảng cách địa lý.",
+            "p3": "Đổi trả miễn phí trong 7 ngày nếu sản phẩm lỗi, sai mô tả hoặc hư hỏng khi vận chuyển."
+        },
+        "colors": {
+            "black": "Đen",
+            "white": "Trắng",
+            "red": "Đỏ đất",
+            "green": "Xanh rêu",
+            "gold": "Vàng đồng",
+            "brown": "Nâu đất",
+            "blue": "Xanh cổ vịt"
+        },
+        "related": "Sản phẩm cùng danh mục",
+        "viewAll": "Xem tất cả {{sub}}"
+    },
     "welcome": "Xin chào",
     "home": "Trang chủ",
     "about": "Giới thiệu",
