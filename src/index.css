@@ -93,3 +93,18 @@ body {
     border: 2px solid var(--paper);
     cursor: pointer;
 }
+
+/* Product detail tab content: fade + rise */
+@keyframes tab-panel-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.tab-panel-enter {
+    animation: tab-panel-enter 400ms ease-out both;
+}
