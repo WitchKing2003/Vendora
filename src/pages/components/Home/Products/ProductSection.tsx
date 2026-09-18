@@ -1,4 +1,6 @@
 import { useTranslation } from "react-i18next";
+import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
+import TextCustom from "../../../../components/TextComponent/TextCustom";
 
 export interface Product {
   id: string;
@@ -44,18 +46,14 @@ const ProductCard = ({ product }: { product: Product }) => {
       </div>
 
       {/* Info */}
-      <p className="mt-3 text-sm text-ink/60">{product.seller}</p>
-      <h3 className="mt-0.5 text-base font-semibold text-ink transition-colors group-hover:text-gold-deep">
+      <TextCustom as="p" variant="caption" className="mt-3 text-sm">{product.seller}</TextCustom>
+      <TextCustom variant="card-title" className="mt-0.5">
         {product.name}
-      </h3>
+      </TextCustom>
       <div className="mt-1 flex items-baseline gap-2">
-        <span className="text-lg font-bold text-ink">
-          {formatVnd(product.price)}
-        </span>
+        <TextCustom variant="price-sm">{formatVnd(product.price)}</TextCustom>
         {product.oldPrice && (
-          <span className="text-sm text-ink/40 line-through decoration-ink/40">
-            {formatVnd(product.oldPrice)}
-          </span>
+          <TextCustom variant="price-old-sm">{formatVnd(product.oldPrice)}</TextCustom>
         )}
       </div>
     </div>
@@ -75,15 +73,13 @@ const ProductSection = ({ titleKey, viewAllKey, products }: ProductSectionProps)
     <section className="bg-paper">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-10">
         <div className="flex items-end justify-between gap-4">
-          <h2 className="font-serif text-3xl text-ink sm:text-4xl">
-            {t(titleKey)}
-          </h2>
-          <button
-            type="button"
+          <TextCustom variant="h2">{t(titleKey)}</TextCustom>
+          <ButtonCustom
+            variant="raw"
             className="shrink-0 text-sm font-semibold text-ink underline decoration-ink underline-offset-8 transition-colors hover:text-gold-deep"
           >
             {t(viewAllKey)}
-          </button>
+          </ButtonCustom>
         </div>
 
         <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4">

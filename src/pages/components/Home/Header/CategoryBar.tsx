@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
 
 interface SubItem {
   key: string;
@@ -123,8 +124,8 @@ const CategoryBar = () => {
     >
       {/* Mobile / iPad (<lg): compact collapsed bar — tap "Danh mục" to expand vertically */}
       <div className="lg:hidden">
-        <button
-          type="button"
+        <ButtonCustom
+          variant="raw"
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((open) => !open)}
           className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-white sm:px-6"
@@ -140,7 +141,7 @@ const CategoryBar = () => {
           </svg>
           {t("category.toggle")}
           <ChevronIcon open={mobileOpen} />
-        </button>
+        </ButtonCustom>
 
         {mobileOpen && (
           <div className="max-h-[60vh] overflow-y-auto border-t border-white/10 px-2 pb-2 sm:px-4">
@@ -149,42 +150,44 @@ const CategoryBar = () => {
               return (
                 <div key={cat.id} className="border-b border-white/5 last:border-b-0">
                   {cat.subs ? (
-                    <button
-                      type="button"
+                    <ButtonCustom
+                      variant="raw"
                       aria-expanded={expanded}
                       onClick={() => toggleCat(cat.id)}
-                      className="flex w-full items-center justify-between py-3 text-left text-sm text-white transition-colors hover:text-gold"
+                      className="flex w-full items-center justify-between py-3 text-left text-sm font-normal text-white transition-colors hover:text-gold"
                     >
                       {t(cat.labelKey)}
                       <ChevronIcon open={expanded} />
-                    </button>
+                    </ButtonCustom>
                   ) : (
-                    <button
-                      type="button"
+                    <ButtonCustom
+                      variant="raw"
+                      fullWidth
                       onClick={() => {
                         setMobileOpen(false);
                         navigate(`/category/${cat.id}`);
                       }}
-                      className="block w-full py-3 text-left text-sm text-white transition-colors hover:text-gold"
+                      className="block py-3 text-left text-sm font-normal text-white transition-colors hover:text-gold"
                     >
                       {t(cat.labelKey)}
-                    </button>
+                    </ButtonCustom>
                   )}
 
                   {expanded && cat.subs && (
                     <div className="pb-2 pl-4">
                       {cat.subs.map((sub) => (
-                        <button
+                        <ButtonCustom
                           key={sub.key}
-                          type="button"
+                          variant="raw"
+                          fullWidth
                           onClick={() => {
                             setMobileOpen(false);
                             navigate(`/category/${cat.id}/${sub.key}`);
                           }}
-                          className="block w-full py-2 text-left text-sm text-white/70 transition-colors hover:text-gold"
+                          className="block py-2 text-left text-sm font-normal text-white/70 transition-colors hover:text-gold"
                         >
                           {t(`category.${cat.id}.items.${sub.key}`)}
-                        </button>
+                        </ButtonCustom>
                       ))}
                     </div>
                   )}
@@ -192,12 +195,13 @@ const CategoryBar = () => {
               );
             })}
 
-            <button
-              type="button"
-              className="block w-full py-3 text-left text-sm font-semibold text-gold transition-colors hover:text-gold-deep"
+            <ButtonCustom
+              variant="raw"
+              fullWidth
+              className="block py-3 text-left text-sm font-semibold text-gold transition-colors hover:text-gold-deep"
             >
               {t("category.sellWithVendora")} <span aria-hidden>→</span>
-            </button>
+            </ButtonCustom>
           </div>
         )}
       </div>
@@ -206,28 +210,28 @@ const CategoryBar = () => {
       <div className="hidden lg:block">
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-1 px-6 py-3 whitespace-nowrap">
           {CATEGORIES.map((cat) => (
-            <button
+            <ButtonCustom
               key={cat.id}
-              type="button"
+              variant="raw"
               onMouseEnter={handleItemEnter(cat.id)}
               onClick={() => navigate(`/category/${cat.id}`)}
-              className={`block py-1 text-sm transition-colors ${
+              className={`block py-1 text-sm font-normal transition-colors ${
                 hovered?.id === cat.id ? "text-gold" : "text-white hover:text-gold"
               }`}
             >
               {t(cat.labelKey)}
-            </button>
+            </ButtonCustom>
           ))}
 
-          <button
-            type="button"
+          <ButtonCustom
+            variant="raw"
             onMouseEnter={handleItemEnter("sell")}
             className={`block py-1 text-sm font-semibold transition-colors ${
               hovered?.id === "sell" ? "text-gold-deep" : "text-gold hover:text-gold-deep"
             }`}
           >
             {t("category.sellWithVendora")} <span aria-hidden>→</span>
-          </button>
+          </ButtonCustom>
         </div>
 
         {/* Teal contact strip */}
@@ -249,14 +253,15 @@ const CategoryBar = () => {
             }}
           >
             {hoveredCat.subs.map((sub) => (
-              <button
+              <ButtonCustom
                 key={sub.key}
-                type="button"
+                variant="raw"
+                fullWidth
                 onClick={() => navigate(`/category/${hoveredCat.id}/${sub.key}`)}
-                className="block w-full px-4 py-2 text-left text-sm text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                className="block px-4 py-2 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
               >
                 {t(`category.${hoveredCat.id}.items.${sub.key}`)}
-              </button>
+              </ButtonCustom>
             ))}
           </div>
         )}

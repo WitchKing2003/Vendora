@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
+import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
+import TextCustom from "../../../components/TextComponent/TextCustom";
 import {
   PRICE_BOUNDS,
   PRODUCTS_BY_CATEGORY,
@@ -88,7 +90,7 @@ const CategoryPage = () => {
   if (!cat) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-10">
-        <h1 className="font-serif text-3xl text-ink">{t("listing.notFound")}</h1>
+        <TextCustom variant="h2">{t("listing.notFound")}</TextCustom>
         <Link to="/" className="mt-4 inline-block text-sm text-gold-deep underline underline-offset-4">
           {t("listing.backHome")}
         </Link>
@@ -219,15 +221,15 @@ const CategoryPage = () => {
         </nav>
 
         {/* Title */}
-        <h1 className="mt-4 font-serif text-4xl text-ink sm:text-5xl">
+        <TextCustom variant="h1" className="mt-4">
           {filters.subSlug
             ? t(cat.subs.find((s) => s.slug === filters.subSlug)?.labelKey ?? cat.labelKey)
             : t(cat.labelKey)}
-        </h1>
-        <p className="mt-3 text-sm text-ink/60">
+        </TextCustom>
+        <TextCustom as="p" variant="body-sm" color="!text-ink/60" className="mt-3">
           <strong className="font-bold text-ink">{sorted.length.toLocaleString("vi-VN")}</strong>{" "}
           {t("listing.resultCount", { sellers: uniqueSellerCount })}
-        </p>
+        </TextCustom>
 
         <hr className="mt-6 border-line" />
 
@@ -240,36 +242,36 @@ const CategoryPage = () => {
             {/* Chips + Xoá hết */}
             <div className="flex flex-wrap items-center gap-2">
               {chips.map((chip) => (
-                <button
+                <ButtonCustom
                   key={chip.key}
-                  type="button"
+                  variant="raw"
                   onClick={chip.onRemove}
-                  className="flex items-center gap-1.5 border border-ink bg-white px-3 py-1.5 text-sm text-ink transition-colors hover:bg-paper-2"
+                  className="flex items-center gap-1.5 border border-ink bg-white px-3 py-1.5 text-sm font-normal text-ink transition-colors hover:bg-paper-2"
                 >
                   {chip.label}
                   <XIcon />
-                </button>
+                </ButtonCustom>
               ))}
               {chips.length > 1 && (
-                <button
-                  type="button"
+                <ButtonCustom
+                  variant="raw"
                   onClick={clearAll}
                   className="px-1 text-sm font-semibold text-gold-deep underline underline-offset-4 transition-colors hover:text-ink"
                 >
                   {t("listing.clearAll")}
-                </button>
+                </ButtonCustom>
               )}
             </div>
 
             {/* Toolbar: result range, sort, view toggle */}
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-              <p className="text-sm text-ink/70">
+              <TextCustom as="p" variant="body-sm" color="!text-ink/70">
                 {t("listing.showing", {
                   from: (pageSafe - 1) * PER_PAGE_GRID + 1,
                   to: Math.min(pageSafe * PER_PAGE_GRID, sorted.length),
                   total: sorted.length.toLocaleString("vi-VN"),
                 })}
-              </p>
+              </TextCustom>
 
               <div className="flex items-center gap-3">
                 <select
@@ -289,10 +291,10 @@ const CategoryPage = () => {
                 </select>
 
                 <div className="hidden border border-ink sm:flex">
-                  <button
-                    type="button"
+                  <ButtonCustom
+                    variant="raw"
                     aria-pressed={view === "grid"}
-                    aria-label={t("listing.viewGrid")}
+                    ariaLabel={t("listing.viewGrid")}
                     onClick={() => setView("grid")}
                     className={`flex h-10 w-12 items-center justify-center ${
                       view === "grid" ? "bg-ink text-white" : "bg-white text-ink hover:bg-paper-2"
@@ -301,11 +303,11 @@ const CategoryPage = () => {
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
                       <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
                     </svg>
-                  </button>
-                  <button
-                    type="button"
+                  </ButtonCustom>
+                  <ButtonCustom
+                    variant="raw"
                     aria-pressed={view === "list"}
-                    aria-label={t("listing.viewList")}
+                    ariaLabel={t("listing.viewList")}
                     onClick={() => setView("list")}
                     className={`flex h-10 w-12 items-center justify-center ${
                       view === "list" ? "bg-ink text-white" : "bg-white text-ink hover:bg-paper-2"
@@ -314,17 +316,17 @@ const CategoryPage = () => {
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
                       <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" />
                     </svg>
-                  </button>
+                  </ButtonCustom>
                 </div>
 
                 {/* Mobile filter toggle */}
-                <button
-                  type="button"
+                <ButtonCustom
+                  variant="outline"
                   onClick={() => setMobileFiltersOpen(true)}
-                  className="border border-ink bg-white px-4 py-2.5 text-sm font-semibold text-ink lg:hidden"
+                  className="lg:hidden"
                 >
                   {t("listing.openFilters")}
-                </button>
+                </ButtonCustom>
               </div>
             </div>
 
@@ -353,33 +355,36 @@ const CategoryPage = () => {
       {/* Mobile filter drawer */}
       {mobileFiltersOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <button
-            type="button"
-            aria-label={t("listing.closeFilters")}
+          <ButtonCustom
+            variant="raw"
+            ariaLabel={t("listing.closeFilters")}
             onClick={() => setMobileFiltersOpen(false)}
             className="absolute inset-0 bg-ink/40"
           />
           <div className="absolute inset-y-0 right-0 flex w-[85%] max-w-sm flex-col bg-paper shadow-2xl">
             <div className="flex items-center justify-between border-b border-line px-5 py-4">
-              <h2 className="text-base font-bold text-ink">{t("listing.filtersTitle")}</h2>
-              <button
-                type="button"
-                aria-label={t("listing.closeFilters")}
+              <TextCustom variant="label" className="text-base">
+                {t("listing.filtersTitle")}
+              </TextCustom>
+              <ButtonCustom
+                variant="raw"
+                ariaLabel={t("listing.closeFilters")}
                 onClick={() => setMobileFiltersOpen(false)}
                 className="flex h-9 w-9 items-center justify-center border border-line text-ink"
               >
                 <XIcon />
-              </button>
+              </ButtonCustom>
             </div>
             <div className="flex-1 overflow-y-auto px-5 py-2">{sidebar}</div>
             <div className="border-t border-line p-4">
-              <button
-                type="button"
+              <ButtonCustom
+                variant="primary"
+                fullWidth
                 onClick={() => setMobileFiltersOpen(false)}
-                className="w-full bg-ink py-3 text-sm font-semibold text-white"
+                className="py-3"
               >
                 {t("listing.showResults", { count: sorted.length.toLocaleString("vi-VN") })}
-              </button>
+              </ButtonCustom>
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
+import TextCustom from "../../../../components/TextComponent/TextCustom";
 
 const INTERVAL_MS = 30_000;
 
@@ -55,13 +57,16 @@ const HighlightTile = ({ tile, big, t }: { tile: Tile; big?: boolean; t: (key: s
     }`}
     style={{ backgroundImage: tile.gradient }}
   >
-    <span
-      className={`absolute bottom-4 left-5 z-10 font-medium text-white drop-shadow-sm ${
+    <TextCustom
+      as="span"
+      variant="body-sm"
+      color="!text-white"
+      className={`absolute bottom-4 left-5 z-10 font-medium drop-shadow-sm ${
         big ? "text-base sm:text-lg" : "text-sm"
       }`}
     >
       {t(tile.captionKey)}
-    </span>
+    </TextCustom>
   </div>
 );
 
@@ -74,9 +79,9 @@ const ArrowButton = ({
   onClick: () => void;
   label: string;
 }) => (
-  <button
-    type="button"
-    aria-label={label}
+  <ButtonCustom
+    variant="raw"
+    ariaLabel={label}
     onClick={onClick}
     className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-ink shadow-sm transition-colors hover:bg-ink hover:text-white"
   >
@@ -93,7 +98,7 @@ const ArrowButton = ({
         <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
       )}
     </svg>
-  </button>
+  </ButtonCustom>
 );
 
 const HighlightSlider = () => {
@@ -144,10 +149,10 @@ const HighlightSlider = () => {
         >
           {/* Text side */}
           <div>
-            <p className="text-sm font-bold text-gold-deep">
+            <TextCustom as="p" variant="body-sm" color="!text-gold-deep" className="font-bold">
               {t(`highlight.${slide.key}.kicker`)}
-            </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight text-ink sm:text-5xl lg:text-6xl">
+            </TextCustom>
+            <TextCustom as="h2" variant="h1" className="mt-4 lg:text-6xl">
               {t(`highlight.${slide.key}.titleLine1`)}
               <br />
               {t(`highlight.${slide.key}.titlePrefix`)}
@@ -155,33 +160,39 @@ const HighlightSlider = () => {
                 {t(`highlight.${slide.key}.titleItalic`)}
               </em>
               {t(`highlight.${slide.key}.titleSuffix`)}
-            </h2>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/70 sm:text-lg">
+            </TextCustom>
+            <TextCustom
+              as="p"
+              variant="body"
+              color="!text-ink/70"
+              className="mt-6 max-w-xl sm:text-lg"
+            >
               {t(`highlight.${slide.key}.desc`)}
-            </p>
+            </TextCustom>
             <div className="mt-8 flex flex-wrap items-center gap-6">
-              <button
-                type="button"
-                className="bg-ink px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal"
+              <ButtonCustom
+                variant="primary"
+                size="lg"
+                className="px-6 hover:bg-teal"
               >
                 {t(`highlight.${slide.key}.ctaPrimary`)}
-              </button>
-              <button
-                type="button"
+              </ButtonCustom>
+              <ButtonCustom
+                variant="raw"
                 className="text-sm font-semibold text-ink underline decoration-line underline-offset-8 transition-colors hover:text-gold-deep"
               >
                 {t(`highlight.${slide.key}.ctaSecondary`)}
-              </button>
+              </ButtonCustom>
             </div>
 
             {/* Controls: dots + prev/next arrows */}
             <div className="mt-10 flex items-center justify-between gap-4 sm:justify-start sm:gap-8">
               <div className="flex items-center gap-2.5">
                 {SLIDES.map((s, i) => (
-                  <button
+                  <ButtonCustom
                     key={s.key}
-                    type="button"
-                    aria-label={t("highlight.goTo", { index: i + 1 })}
+                    variant="raw"
+                    ariaLabel={t("highlight.goTo", { index: i + 1 })}
                     aria-current={i === index}
                     onClick={() => goTo(i)}
                     className={`h-2 rounded-full transition-all duration-300 ${
