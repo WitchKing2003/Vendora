@@ -1,6 +1,10 @@
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
+import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
+import TextCustom from "../../../components/TextComponent/TextCustom";
+import { useNavigate } from "react-router-dom";
+import { useCartStore } from "../../../stores/cartStore";
 import {
   getCategory,
   getProductDetail,
@@ -112,9 +116,11 @@ const REVIEW_AUTHORS = ["Nguyễn Thu Hà", "Trần Minh Quân", "Lê Phương T
 
 const ProductDetailPage = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { id } = useParams();
   const detail = useMemo(() => getProductDetail(id), [id]);
   const related = useMemo(() => (detail ? getRelatedProducts(detail, 4) : []), [detail]);
+  const addToCart = useCartStore((s) => s.addItem);
 
   const [liked, setLiked] = useState(false);
   const [comparing, setComparing] = useState(false);
@@ -122,11 +128,10 @@ const ProductDetailPage = () => {
   const [sizeIdx, setSizeIdx] = useState<number | null>(null);
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<TabKey>("desc");
-
   if (!detail) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-10">
-        <h1 className="font-serif text-3xl text-ink">{t("listing.notFound")}</h1>
+        <TextCustom variant="h2">{t("listing.notFound")}</TextCustom>
         <Link to="/" className="mt-4 inline-block text-sm text-gold-deep underline underline-offset-4">
           {t("listing.backHome")}
         </Link>
@@ -155,6 +160,24 @@ const ProductDetailPage = () => {
         : null;
 
   const selectedColor = detail.variantColors[colorIdx] ?? detail.variantColors[0];
+
+  const handleAddToCart = () => {
+    if (!detail) return;
+    addToCart({
+      productId: detail.id,
+      name: detail.name,
+      seller: detail.seller,
+      price: detail.price,
+      oldPrice: detail.oldPrice,
+      colorHex: selectedColor.hex,
+      colorKey: selectedColor.nameKey,
+      size: effectiveSizeIdx !== null ? detail.sizes[effectiveSizeIdx]?.label : undefined,
+      qty,
+      stock: detail.stock,
+      inStock: true,
+    });
+    navigate("/cart");
+  };
 
   const thumbs = detail.variantColors;
 
@@ -194,20 +217,20 @@ const ProductDetailPage = () => {
           <div className="flex gap-3">
             {/* Action rail */}
             <div className="hidden flex-col gap-3 md:flex">
-              <button
-                type="button"
+              <ButtonCustom
+                variant="raw"
                 aria-pressed={liked}
-                aria-label={t("detail.wishlist")}
+                ariaLabel={t("detail.wishlist")}
                 onClick={() => setLiked((v) => !v)}
                 className={`flex h-12 w-12 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-ink ${
                   liked ? "border-[#8B3A2B]/40" : ""
                 }`}
               >
                 <HeartIcon filled={liked} />
-              </button>
-              <button
-                type="button"
-                aria-label={t("detail.share")}
+              </ButtonCustom>
+              <ButtonCustom
+                variant="raw"
+                ariaLabel={t("detail.share")}
                 onClick={() => {
                   try {
                     void navigator.clipboard?.writeText(window.location.href);
@@ -218,18 +241,18 @@ const ProductDetailPage = () => {
                 className="flex h-12 w-12 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-ink"
               >
                 <ShareIcon />
-              </button>
-              <button
-                type="button"
+              </ButtonCustom>
+              <ButtonCustom
+                variant="raw"
                 aria-pressed={comparing}
-                aria-label={t("detail.compare")}
+                ariaLabel={t("detail.compare")}
                 onClick={() => setComparing((v) => !v)}
                 className={`flex h-12 w-12 items-center justify-center border border-line bg-white transition-colors hover:border-ink ${
                   comparing ? "bg-ink text-white" : "text-ink"
                 }`}
               >
                 <CompareIcon />
-              </button>
+              </ButtonCustom>
             </div>
 
             {/* Gallery */}
@@ -251,22 +274,22 @@ const ProductDetailPage = () => {
 
                 {thumbs.length > 1 && (
                   <>
-                    <button
-                      type="button"
-                      aria-label={t("detail.prevImage")}
+                    <ButtonCustom
+                      variant="raw"
+                      ariaLabel={t("detail.prevImage")}
                       onClick={() => setColorIdx((i) => (i - 1 + thumbs.length) % thumbs.length)}
                       className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-line bg-white/90 text-ink transition-colors hover:bg-white"
                     >
                       <ChevronIcon dir="left" />
-                    </button>
-                    <button
-                      type="button"
-                      aria-label={t("detail.nextImage")}
+                    </ButtonCustom>
+                    <ButtonCustom
+                      variant="raw"
+                      ariaLabel={t("detail.nextImage")}
                       onClick={() => setColorIdx((i) => (i + 1) % thumbs.length)}
                       className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-line bg-white/90 text-ink transition-colors hover:bg-white"
                     >
                       <ChevronIcon dir="right" />
-                    </button>
+                    </ButtonCustom>
                   </>
                 )}
 
@@ -279,10 +302,10 @@ const ProductDetailPage = () => {
               {/* Thumbs */}
               <div className="mt-4 flex flex-wrap gap-3">
                 {thumbs.map((v, i) => (
-                  <button
+                  <ButtonCustom
                     key={v.hex}
-                    type="button"
-                    aria-label={t(v.nameKey)}
+                    variant="raw"
+                    ariaLabel={t(v.nameKey)}
                     aria-pressed={i === colorIdx}
                     onClick={() => setColorIdx(i)}
                     className={`relative h-24 w-24 overflow-hidden border-2 transition-colors ${
@@ -292,29 +315,29 @@ const ProductDetailPage = () => {
                   >
                     <span className="absolute inset-0 bg-white/55" />
                     <span className="placeholder-diagonal absolute inset-4 opacity-50" />
-                  </button>
+                  </ButtonCustom>
                 ))}
-                <button
-                  type="button"
+                <ButtonCustom
+                  variant="raw"
                   className="flex h-24 w-24 items-center justify-center bg-ink/60 text-lg font-bold text-white transition-colors hover:bg-ink"
                 >
                   +6
-                </button>
+                </ButtonCustom>
               </div>
             </div>
           </div>
 
           {/* ---------- Right: info ---------- */}
           <div>
-            <p className="flex items-center gap-2 text-sm">
+            <TextCustom as="p" variant="body-sm" className="flex items-center gap-2">
               <span className="text-ink/60">{t("detail.sellerLabel")}</span>
               <span className="h-1 w-1 rounded-full bg-gold" aria-hidden />
               <span className="font-medium text-gold-deep">{detail.seller}</span>
-            </p>
+            </TextCustom>
 
-            <h1 className="mt-2 font-serif text-3xl leading-tight text-ink sm:text-4xl">
+            <TextCustom variant="h2" as="h1" className="mt-2 sm:text-4xl">
               {detail.name}
-            </h1>
+            </TextCustom>
 
             <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
               <Stars value={detail.rating} />
@@ -332,11 +355,9 @@ const ProductDetailPage = () => {
 
             {/* Price */}
             <div className="mt-5 flex flex-wrap items-baseline gap-3">
-              <span className="text-4xl font-bold text-ink">{formatVnd(detail.price)}</span>
+              <TextCustom variant="price" className="text-4xl">{formatVnd(detail.price)}</TextCustom>
               {detail.oldPrice && (
-                <span className="text-xl text-ink/40 line-through decoration-ink/40">
-                  {formatVnd(detail.oldPrice)}
-                </span>
+                <TextCustom variant="price-old">{formatVnd(detail.oldPrice)}</TextCustom>
               )}
               {detail.oldPrice && (
                 <span className="bg-gold-deep px-2.5 py-1 text-sm font-semibold text-white">
@@ -349,12 +370,12 @@ const ProductDetailPage = () => {
 
             {/* Vouchers */}
             <div className="mt-5 border border-dashed border-gold/70 bg-white p-5">
-              <p className="flex items-center gap-2 text-sm font-bold text-ink">
+              <TextCustom as="p" variant="body-sm" className="flex items-center gap-2 font-bold text-ink">
                 <span className="text-gold" aria-hidden>
                   ◈
                 </span>
                 {t("detail.promoTitle")}
-              </p>
+              </TextCustom>
               <div className="mt-2 divide-y divide-line/60">
                 {detail.vouchers.map((v) => (
                   <div key={v.label} className="flex items-center gap-3 py-2.5 text-sm text-ink/80">
@@ -371,16 +392,16 @@ const ProductDetailPage = () => {
 
             {/* Colors */}
             <div className="mt-6">
-              <p className="text-sm font-bold text-ink">
+              <TextCustom variant="label" as="p" className="text-sm">
                 {t("detail.colorLabel")}{" "}
                 <span className="font-normal text-ink/70">{t(selectedColor.nameKey)}</span>
-              </p>
+              </TextCustom>
               <div className="mt-3 flex flex-wrap gap-3">
                 {detail.variantColors.map((v, i) => (
-                  <button
+                  <ButtonCustom
                     key={v.hex}
-                    type="button"
-                    aria-label={t(v.nameKey)}
+                    variant="raw"
+                    ariaLabel={t(v.nameKey)}
                     aria-pressed={i === colorIdx}
                     onClick={() => setColorIdx(i)}
                     className={`h-10 w-10 rounded-full border transition-shadow ${
@@ -398,24 +419,24 @@ const ProductDetailPage = () => {
             {detail.sizes.length > 0 && (
               <div className="mt-6">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-bold text-ink">
+                  <TextCustom variant="label" as="p" className="text-sm">
                     {t("detail.sizeLabel")}{" "}
                     <span className="font-normal text-ink/70">
                       {effectiveSizeIdx !== null ? detail.sizes[effectiveSizeIdx]?.label : ""}
                     </span>
-                  </p>
-                  <button
-                    type="button"
-                    className="text-sm text-gold-deep underline underline-offset-4 transition-colors hover:text-ink"
+                  </TextCustom>
+                  <ButtonCustom
+                    variant="raw"
+                    className="text-sm font-normal text-gold-deep underline underline-offset-4 transition-colors hover:text-ink"
                   >
                     {t("detail.sizeGuide")}
-                  </button>
+                  </ButtonCustom>
                 </div>
                 <div className="mt-3 flex flex-wrap gap-3">
                   {detail.sizes.map((s, i) => (
-                    <button
+                    <ButtonCustom
                       key={s.label}
-                      type="button"
+                      variant="raw"
                       disabled={s.disabled}
                       aria-pressed={i === effectiveSizeIdx}
                       onClick={() => setSizeIdx(i)}
@@ -428,7 +449,7 @@ const ProductDetailPage = () => {
                       }`}
                     >
                       {s.label}
-                    </button>
+                    </ButtonCustom>
                   ))}
                 </div>
               </div>
@@ -437,64 +458,68 @@ const ProductDetailPage = () => {
             {/* Quantity + stock */}
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <div className="flex items-center border border-line divide-x divide-line bg-white">
-                <button
-                  type="button"
-                  aria-label={t("detail.decrease")}
+                <ButtonCustom
+                  variant="raw"
+                  ariaLabel={t("detail.decrease")}
                   onClick={() => setQty((q) => Math.max(1, q - 1))}
-                  className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-paper-2"
+                  className="flex h-11 w-11 items-center justify-center text-lg font-normal text-ink transition-colors hover:bg-paper-2"
                 >
                   −
-                </button>
+                </ButtonCustom>
                 <span className="flex h-11 w-12 items-center justify-center text-sm font-semibold text-ink">
                   {qty}
                 </span>
-                <button
-                  type="button"
-                  aria-label={t("detail.increase")}
+                <ButtonCustom
+                  variant="raw"
+                  ariaLabel={t("detail.increase")}
                   onClick={() => setQty((q) => Math.min(detail.stock, q + 1))}
-                  className="flex h-11 w-11 items-center justify-center text-lg text-ink transition-colors hover:bg-paper-2"
+                  className="flex h-11 w-11 items-center justify-center text-lg font-normal text-ink transition-colors hover:bg-paper-2"
                 >
                   +
-                </button>
+                </ButtonCustom>
               </div>
-              <p className="text-sm font-semibold text-gold-deep">
+              <TextCustom as="p" variant="body-sm" color="!text-gold-deep" className="font-semibold">
                 {t("detail.lowStock", { count: detail.stock })}
-              </p>
+              </TextCustom>
             </div>
 
             {/* CTAs */}
             <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-              <button
-                type="button"
-                className="flex flex-1 items-center justify-center gap-2 border border-ink bg-white py-4 text-base font-bold text-ink transition-colors hover:bg-paper-2"
+              <ButtonCustom
+                variant="outline"
+                size="lg"
+                icon={<CartIcon />}
+                className="flex-1 py-4"
+                onClick={handleAddToCart}
               >
-                <CartIcon />
                 {t("detail.addToCart")}
-              </button>
-              <button
-                type="button"
-                className="flex-1 bg-ink py-4 text-base font-bold text-white transition-colors hover:bg-ink/85"
+              </ButtonCustom>
+              <ButtonCustom
+                variant="primary"
+                size="lg"
+                className="flex-1 py-4"
+                onClick={handleAddToCart}
               >
                 {t("detail.buyNow")}
-              </button>
+              </ButtonCustom>
             </div>
 
             {/* Shipping / guarantee */}
             <div className="mt-6 space-y-3 border-t border-line pt-5 text-sm text-ink/70">
-              <p className="flex items-center gap-3">
+              <TextCustom as="p" variant="body-sm" className="flex items-center gap-3">
                 <TruckIcon />
                 <span>
                   {t("detail.shipEta")} · {t("detail.freeShipThreshold")}
                 </span>
-              </p>
-              <p className="flex items-center gap-3">
+              </TextCustom>
+              <TextCustom as="p" variant="body-sm" className="flex items-center gap-3">
                 <ReturnIcon />
                 {t("detail.returnFree")}
-              </p>
-              <p className="flex items-center gap-3">
+              </TextCustom>
+              <TextCustom as="p" variant="body-sm" className="flex items-center gap-3">
                 <ShieldIcon />
                 {t("detail.guarantee")}
-              </p>
+              </TextCustom>
             </div>
           </div>
         </div>
@@ -503,9 +528,9 @@ const ProductDetailPage = () => {
         <div className="mt-14" id="reviews">
           <div className="flex gap-1 overflow-x-auto border-b border-line no-scrollbar" role="tablist">
             {TABS.map((key) => (
-              <button
+              <ButtonCustom
                 key={key}
-                type="button"
+                variant="raw"
                 role="tab"
                 aria-selected={tab === key}
                 onClick={() => setTab(key)}
@@ -516,7 +541,7 @@ const ProductDetailPage = () => {
                 }`}
               >
                 {tabLabel(key)}
-              </button>
+              </ButtonCustom>
             ))}
           </div>
 
@@ -603,7 +628,7 @@ const ProductDetailPage = () => {
         {related.length > 0 && (
           <section className="mt-10">
             <div className="flex flex-wrap items-end justify-between gap-3">
-              <h2 className="font-serif text-3xl text-ink">{t("detail.related")}</h2>
+              <TextCustom variant="h2">{t("detail.related")}</TextCustom>
               <Link
                 to={
                   subDef ? `/category/${detail.slug}/${detail.subSlug}` : `/category/${detail.slug}`

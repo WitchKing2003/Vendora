@@ -1,3 +1,5 @@
+import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
+
 interface PaginationProps {
   page: number;
   totalPages: number;
@@ -41,15 +43,15 @@ const Pagination = ({ page, totalPages, onChange }: PaginationProps) => {
 
   return (
     <nav aria-label="Pagination" className="mt-10 flex items-center justify-center gap-1.5">
-      <button
-        type="button"
+      <ButtonCustom
+        variant="raw"
         disabled={page === 1}
         onClick={() => onChange(page - 1)}
-        aria-label="Previous page"
+        ariaLabel="Previous page"
         className={`${btn} border border-line text-ink enabled:hover:border-ink disabled:opacity-40`}
       >
         <ChevronIcon dir="left" />
-      </button>
+      </ButtonCustom>
 
       {pageItems(page, totalPages).map((item, i) =>
         item === "…" ? (
@@ -57,31 +59,31 @@ const Pagination = ({ page, totalPages, onChange }: PaginationProps) => {
             …
           </span>
         ) : (
-          <button
+          <ButtonCustom
             key={item}
-            type="button"
+            variant="raw"
             aria-current={item === page ? "page" : undefined}
             onClick={() => onChange(item)}
-            className={`${btn} border ${
+            className={`${btn} border font-normal ${
               item === page
                 ? "border-ink bg-ink font-semibold text-white"
                 : "border-line text-ink hover:border-ink"
             }`}
           >
             {item}
-          </button>
+          </ButtonCustom>
         )
       )}
 
-      <button
-        type="button"
+      <ButtonCustom
+        variant="raw"
         disabled={page === totalPages}
         onClick={() => onChange(page + 1)}
-        aria-label="Next page"
+        ariaLabel="Next page"
         className={`${btn} border border-line text-ink enabled:hover:border-ink disabled:opacity-40`}
       >
         <ChevronIcon dir="right" />
-      </button>
+      </ButtonCustom>
     </nav>
   );
 };

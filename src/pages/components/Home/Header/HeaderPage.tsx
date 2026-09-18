@@ -1,30 +1,36 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import InputCustom from "../../../../components/InputComponent/InputCustom";
+import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
+import TextCustom from "../../../../components/TextComponent/TextCustom";
+import { cartCount, useCartStore } from "../../../../stores/cartStore";
 import CategoryBar from "./CategoryBar";
-
-const CART_ITEM_COUNT = 3;
 
 const HeaderPage = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [accountOpen, setAccountOpen] = useState(false);
+  const cartItems = useCartStore((s) => s.items);
+  const cartBadge = cartCount(cartItems);
 
   return (
     <header>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 py-4 lg:gap-x-8 lg:px-6">
         {/* Logo */}
         <div className="order-1 shrink-0">
-          <p className="text-3xl italic">
+          <TextCustom as="p" variant="h3" className="italic">
             Vendor<span className="text-gold">a</span>
-          </p>
+          </TextCustom>
         </div>
 
         {/* Right actions: cart + account — same row as logo on mobile, right side from sm up */}
         <div className="order-2 ml-auto flex shrink-0 items-center gap-4 sm:gap-6">
           {/* Cart button */}
-          <button
-            type="button"
-            aria-label={t("header.cart")}
+          <ButtonCustom
+            variant="raw"
+            ariaLabel={t("header.cart")}
+            onClick={() => navigate("/cart")}
             className="flex flex-col items-center gap-1 text-ink transition-colors hover:text-gold-deep"
           >
             <span className="relative">
@@ -43,20 +49,22 @@ const HeaderPage = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              {CART_ITEM_COUNT > 0 && (
+              {cartBadge > 0 && (
                 <span className="absolute -right-2 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-gold px-1 text-[10px] font-bold text-white">
-                  {CART_ITEM_COUNT}
+                  {cartBadge}
                 </span>
               )}
             </span>
-            <span className="hidden text-xs sm:block">{t("header.cart")}</span>
-          </button>
+            <TextCustom variant="caption" className="hidden sm:block">
+              {t("header.cart")}
+            </TextCustom>
+          </ButtonCustom>
 
           {/* Account button with dropdown */}
           <div className="relative">
-            <button
-              type="button"
-              aria-label={t("header.account")}
+            <ButtonCustom
+              variant="raw"
+              ariaLabel={t("header.account")}
               aria-expanded={accountOpen}
               onClick={() => setAccountOpen((open) => !open)}
               className="flex flex-col items-center gap-1 text-ink transition-colors hover:text-gold-deep"
@@ -71,8 +79,10 @@ const HeaderPage = () => {
                 <circle cx="12" cy="8" r="3.4" />
                 <path d="M5 20c1.5-3.2 4-4.6 7-4.6s5.5 1.4 7 4.6" strokeLinecap="round" />
               </svg>
-              <span className="hidden text-xs sm:block">{t("header.account")}</span>
-            </button>
+              <TextCustom variant="caption" className="hidden sm:block">
+                {t("header.account")}
+              </TextCustom>
+            </ButtonCustom>
 
             {accountOpen && (
               <>
@@ -82,20 +92,22 @@ const HeaderPage = () => {
                   onClick={() => setAccountOpen(false)}
                 />
                 <div className="fixed inset-x-3 bottom-3 z-50 rounded-lg border border-line bg-white py-1 shadow-2xl sm:hidden">
-                  <button
-                    type="button"
+                  <ButtonCustom
+                    variant="raw"
+                    fullWidth
                     onClick={() => setAccountOpen(false)}
-                    className="block w-full px-4 py-3.5 text-left text-base text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                    className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
                   >
                     {t("header.signIn")}
-                  </button>
-                  <button
-                    type="button"
+                  </ButtonCustom>
+                  <ButtonCustom
+                    variant="raw"
+                    fullWidth
                     onClick={() => setAccountOpen(false)}
-                    className="block w-full px-4 py-3.5 text-left text-base text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                    className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
                   >
                     {t("header.signUp")}
-                  </button>
+                  </ButtonCustom>
                 </div>
 
                 {/* Desktop (sm+): dropdown anchored to the button */}
@@ -104,20 +116,22 @@ const HeaderPage = () => {
                   onClick={() => setAccountOpen(false)}
                 />
                 <div className="absolute right-0 z-20 mt-2 hidden w-44 divide-y divide-line border border-line bg-white py-1 shadow-lg sm:block">
-                  <button
-                    type="button"
+                  <ButtonCustom
+                    variant="raw"
+                    fullWidth
                     onClick={() => setAccountOpen(false)}
-                    className="block w-full px-4 py-2.5 text-left text-sm text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                    className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
                   >
                     {t("header.signIn")}
-                  </button>
-                  <button
-                    type="button"
+                  </ButtonCustom>
+                  <ButtonCustom
+                    variant="raw"
+                    fullWidth
                     onClick={() => setAccountOpen(false)}
-                    className="block w-full px-4 py-2.5 text-left text-sm text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                    className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
                   >
                     {t("header.signUp")}
-                  </button>
+                  </ButtonCustom>
                 </div>
               </>
             )}
@@ -151,12 +165,13 @@ const HeaderPage = () => {
             />
 
             {/* Submit button */}
-            <button
+            <ButtonCustom
               type="submit"
-              className="shrink-0 bg-ink px-3 text-sm font-semibold text-white hover:bg-teal transition-colors sm:px-6"
+              size="sm"
+              className="shrink-0 self-stretch border-teal bg-ink px-3 hover:bg-teal sm:px-6"
             >
               {t("header.search.submit")}
-            </button>
+            </ButtonCustom>
           </form>
         </div>
       </div>

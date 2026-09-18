@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
+import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import {
   CATEGORY_DEFS,
   COLOR_SWATCHES,
@@ -52,15 +53,15 @@ const Section = ({
   const [open, setOpen] = useState(defaultOpen);
   return (
     <div className="border-b border-line py-5 first:pt-0">
-      <button
-        type="button"
+      <ButtonCustom
+        variant="raw"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between text-left text-base font-bold text-ink"
       >
         {title}
         <ChevronIcon open={open} />
-      </button>
+      </ButtonCustom>
       {open && <div className="mt-4">{children}</div>}
     </div>
   );
@@ -207,11 +208,11 @@ const FilterSidebar = ({ filters, onChange, totalProducts }: FilterSidebarProps)
           {COLOR_SWATCHES.map((c) => {
             const active = filters.colors.includes(c.hex);
             return (
-              <button
+              <ButtonCustom
                 key={c.key}
-                type="button"
+                variant="raw"
                 title={t(`listing.colors.${c.key}`)}
-                aria-label={t(`listing.colors.${c.key}`)}
+                ariaLabel={t(`listing.colors.${c.key}`)}
                 aria-pressed={active}
                 onClick={() =>
                   onChange({ ...filters, colors: toggleArrayValue(filters.colors, c.hex) })
@@ -228,7 +229,7 @@ const FilterSidebar = ({ filters, onChange, totalProducts }: FilterSidebarProps)
                     c.hex === "#FFFFFF" ? "border border-line bg-white" : "bg-transparent"
                   }`}
                 />
-              </button>
+              </ButtonCustom>
             );
           })}
         </div>
@@ -290,8 +291,9 @@ const FilterSidebar = ({ filters, onChange, totalProducts }: FilterSidebarProps)
         </div>
       </Section>
 
-      <button
-        type="button"
+      <ButtonCustom
+        variant="outline"
+        fullWidth
         onClick={() =>
           onChange({
             subSlug: filters.subSlug,
@@ -304,10 +306,10 @@ const FilterSidebar = ({ filters, onChange, totalProducts }: FilterSidebarProps)
             isNewOnly: false,
           })
         }
-        className="mt-6 w-full border border-ink bg-transparent py-3 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-white"
+        className="mt-6 bg-transparent py-3"
       >
         {t("listing.filters.clearAll")}
-      </button>
+      </ButtonCustom>
     </aside>
   );
 };

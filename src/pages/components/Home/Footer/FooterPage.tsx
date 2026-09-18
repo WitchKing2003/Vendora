@@ -1,4 +1,6 @@
 import { useTranslation } from "react-i18next";
+import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
+import TextCustom from "../../../../components/TextComponent/TextCustom";
 
 interface FooterColumn {
   titleKey: string;
@@ -87,22 +89,22 @@ const FooterPage = () => {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
         {/* Row 1 — brand */}
         <div>
-          <p className="font-serif text-3xl font-semibold">
+          <TextCustom as="p" variant="h3" className="font-semibold">
             Vendor<span className="text-gold">a</span>
-          </p>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
+          </TextCustom>
+          <TextCustom as="p" variant="body-sm" color="!text-white/70" className="mt-4 max-w-md">
             {t("footer.description")}
-          </p>
+          </TextCustom>
           <div className="mt-6 flex gap-3">
             {SOCIALS.map((s) => (
-              <button
+              <ButtonCustom
                 key={s.name}
-                type="button"
-                aria-label={s.name}
+                variant="raw"
+                ariaLabel={s.name}
                 className="flex h-9 w-9 items-center justify-center border border-white/25 text-white/80 transition-colors hover:border-gold hover:text-gold"
               >
                 {s.icon}
-              </button>
+              </ButtonCustom>
             ))}
           </div>
         </div>
@@ -112,16 +114,18 @@ const FooterPage = () => {
         <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {COLUMNS.map((col) => (
             <div key={col.titleKey}>
-              <p className="text-sm font-bold">{t(col.titleKey)}</p>
+              <TextCustom variant="label" color="!text-white" className="text-sm">
+                {t(col.titleKey)}
+              </TextCustom>
               <ul className="mt-5 space-y-3.5">
                 {col.linkKeys.map((key) => (
                   <li key={key}>
-                    <button
-                      type="button"
-                      className="text-sm text-white/70 transition-colors hover:text-gold"
+                    <ButtonCustom
+                      variant="raw"
+                      className="text-sm font-normal text-white/70 transition-colors hover:text-gold"
                     >
                       {t(key)}
-                    </button>
+                    </ButtonCustom>
                   </li>
                 ))}
               </ul>
@@ -131,7 +135,9 @@ const FooterPage = () => {
 
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center gap-5 border-t border-white/15 pt-6 lg:mt-14 lg:flex-row lg:justify-between">
-          <p className="text-sm text-white/70">{t("footer.copyright")}</p>
+          <TextCustom as="p" variant="body-sm" color="!text-white/70">
+            {t("footer.copyright")}
+          </TextCustom>
 
           <div className="flex gap-2.5">
             {PAYMENTS.map((p) => (
@@ -146,34 +152,34 @@ const FooterPage = () => {
 
           <div className="flex items-center gap-6">
             <div className="flex gap-4 text-sm">
-              <button
-                type="button"
+              <ButtonCustom
+                variant="raw"
                 onClick={() => changeLanguage("vi")}
-                className={`transition-colors ${
+                className={`font-normal transition-colors ${
                   i18n.language === "vi" ? "font-bold text-gold" : "text-white/70 hover:text-gold"
                 }`}
               >
                 {t("footer.langVi")}
-              </button>
-              <button
-                type="button"
+              </ButtonCustom>
+              <ButtonCustom
+                variant="raw"
                 onClick={() => changeLanguage("en")}
-                className={`transition-colors ${
+                className={`font-normal transition-colors ${
                   i18n.language === "en" ? "font-bold text-gold" : "text-white/70 hover:text-gold"
                 }`}
               >
                 {t("footer.langEn")}
-              </button>
+              </ButtonCustom>
             </div>
-            <button
-              type="button"
-              className="flex items-center gap-1 text-sm text-white/70 transition-colors hover:text-gold"
+            <ButtonCustom
+              variant="raw"
+              className="flex items-center gap-1 font-normal text-white/70 transition-colors hover:text-gold"
             >
               {t("footer.currency")}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3.5 w-3.5">
                 <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </button>
+            </ButtonCustom>
           </div>
         </div>
       </div>

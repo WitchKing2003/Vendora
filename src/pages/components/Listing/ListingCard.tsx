@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
+import TextCustom from "../../../components/TextComponent/TextCustom";
 import type { ListingProduct } from "../../../data/categoryData";
 import { formatVnd } from "../Home/Products/ProductSection";
 
@@ -66,10 +68,10 @@ const ListingCard = ({ product, variant = "grid" }: ListingCardProps) => {
               })}
         </span>
       )}
-      <button
-        type="button"
+      <ButtonCustom
+        variant="raw"
         aria-pressed={liked}
-        aria-label={t("listing.addToWishlist")}
+        ariaLabel={t("listing.addToWishlist")}
         onClick={(e) => {
           e.stopPropagation();
           setLiked((v) => !v);
@@ -77,7 +79,7 @@ const ListingCard = ({ product, variant = "grid" }: ListingCardProps) => {
         className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white text-ink shadow-sm transition-transform hover:scale-105"
       >
         <HeartIcon filled={liked} />
-      </button>
+      </ButtonCustom>
     </div>
   );
 
@@ -89,23 +91,25 @@ const ListingCard = ({ product, variant = "grid" }: ListingCardProps) => {
       >
         {image}
         <div className="flex min-w-0 flex-1 flex-col">
-          <p className="text-sm text-ink/60">{product.seller}</p>
-          <h3 className="mt-1 text-base font-semibold text-ink transition-colors group-hover:text-gold-deep">
+          <TextCustom as="p" variant="caption" className="text-sm">{product.seller}</TextCustom>
+          <TextCustom variant="card-title" className="mt-1">
             {product.name}
-          </h3>
+          </TextCustom>
           <div className="mt-1 flex items-center gap-1.5">
             <Stars value={product.rating} />
-            <span className="text-xs text-ink/50">({product.reviews})</span>
+            <TextCustom variant="caption">({product.reviews})</TextCustom>
           </div>
-          <p className="mt-2 hidden text-sm text-ink/60 sm:line-clamp-2">
+          <TextCustom
+            as="p"
+            variant="body-sm"
+            className="mt-2 hidden sm:line-clamp-2"
+          >
             {t("listing.shortDesc", { seller: product.seller })}
-          </p>
+          </TextCustom>
           <div className="mt-auto flex items-baseline gap-2 pt-2">
-            <span className="text-lg font-bold text-ink">{formatVnd(product.price)}</span>
+            <TextCustom variant="price-sm">{formatVnd(product.price)}</TextCustom>
             {product.oldPrice && (
-              <span className="text-sm text-ink/40 line-through decoration-ink/40">
-                {formatVnd(product.oldPrice)}
-              </span>
+              <TextCustom variant="price-old-sm">{formatVnd(product.oldPrice)}</TextCustom>
             )}
           </div>
         </div>
@@ -119,20 +123,18 @@ const ListingCard = ({ product, variant = "grid" }: ListingCardProps) => {
       className="group block cursor-pointer"
     >
       {image}
-      <p className="mt-3 text-sm text-ink/60">{product.seller}</p>
-      <h3 className="mt-0.5 text-base font-semibold text-ink transition-colors group-hover:text-gold-deep">
+      <TextCustom as="p" variant="caption" className="mt-3 text-sm">{product.seller}</TextCustom>
+      <TextCustom variant="card-title" className="mt-0.5">
         {product.name}
-      </h3>
+      </TextCustom>
       <div className="mt-1 flex items-center gap-1.5">
         <Stars value={product.rating} />
-        <span className="text-xs text-ink/50">({product.reviews})</span>
+        <TextCustom variant="caption">({product.reviews})</TextCustom>
       </div>
       <div className="mt-1 flex items-baseline gap-2">
-        <span className="text-lg font-bold text-ink">{formatVnd(product.price)}</span>
+        <TextCustom variant="price-sm">{formatVnd(product.price)}</TextCustom>
         {product.oldPrice && (
-          <span className="text-sm text-ink/40 line-through decoration-ink/40">
-            {formatVnd(product.oldPrice)}
-          </span>
+          <TextCustom variant="price-old-sm">{formatVnd(product.oldPrice)}</TextCustom>
         )}
       </div>
     </Link>
