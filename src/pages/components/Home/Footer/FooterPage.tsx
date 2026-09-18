@@ -89,8 +89,8 @@ const FooterPage = () => {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
         {/* Row 1 — brand */}
         <div>
-          <TextCustom as="p" variant="h3" className="font-semibold">
-            Vendor<span className="text-gold">a</span>
+          <TextCustom as="p" variant="h3" color="!text-white" className="font-semibold">
+            Vendor<span className="text-teal-light">a</span>
           </TextCustom>
           <TextCustom as="p" variant="body-sm" color="!text-white/70" className="mt-4 max-w-md">
             {t("footer.description")}
