@@ -3,6 +3,7 @@ import MainLayout from "../pages/layouts/MainLayout";
 import HomePage from "../pages/components/Home/HomePage";
 import CategoryPage from "../pages/components/Listing/CategoryPage";
 import ProductDetailPage from "../pages/components/Listing/ProductDetailPage";
+import CartPage from "../pages/components/Cart/CartPage";
 
 const AppRoutes = () => {
   return (
@@ -12,6 +13,7 @@ const AppRoutes = () => {
         <Route path="/category/:category" element={<CategoryPage />} />
         <Route path="/category/:category/:sub" element={<CategoryPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Route>
     </Routes>
   );

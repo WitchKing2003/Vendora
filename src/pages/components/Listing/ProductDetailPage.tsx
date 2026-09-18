@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
+import { useNavigate } from "react-router-dom";
+import { useCartStore } from "../../../stores/cartStore";
 import {
   getCategory,
   getProductDetail,
@@ -114,9 +116,11 @@ const REVIEW_AUTHORS = ["Nguyễn Thu Hà", "Trần Minh Quân", "Lê Phương T
 
 const ProductDetailPage = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { id } = useParams();
   const detail = useMemo(() => getProductDetail(id), [id]);
   const related = useMemo(() => (detail ? getRelatedProducts(detail, 4) : []), [detail]);
+  const addToCart = useCartStore((s) => s.addItem);
 
   const [liked, setLiked] = useState(false);
   const [comparing, setComparing] = useState(false);
@@ -124,7 +128,6 @@ const ProductDetailPage = () => {
   const [sizeIdx, setSizeIdx] = useState<number | null>(null);
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<TabKey>("desc");
-
   if (!detail) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-10">
@@ -157,6 +160,24 @@ const ProductDetailPage = () => {
         : null;
 
   const selectedColor = detail.variantColors[colorIdx] ?? detail.variantColors[0];
+
+  const handleAddToCart = () => {
+    if (!detail) return;
+    addToCart({
+      productId: detail.id,
+      name: detail.name,
+      seller: detail.seller,
+      price: detail.price,
+      oldPrice: detail.oldPrice,
+      colorHex: selectedColor.hex,
+      colorKey: selectedColor.nameKey,
+      size: effectiveSizeIdx !== null ? detail.sizes[effectiveSizeIdx]?.label : undefined,
+      qty,
+      stock: detail.stock,
+      inStock: true,
+    });
+    navigate("/cart");
+  };
 
   const thumbs = detail.variantColors;
 
@@ -469,6 +490,7 @@ const ProductDetailPage = () => {
                 size="lg"
                 icon={<CartIcon />}
                 className="flex-1 py-4"
+                onClick={handleAddToCart}
               >
                 {t("detail.addToCart")}
               </ButtonCustom>
@@ -476,6 +498,7 @@ const ProductDetailPage = () => {
                 variant="primary"
                 size="lg"
                 className="flex-1 py-4"
+                onClick={handleAddToCart}
               >
                 {t("detail.buyNow")}
               </ButtonCustom>

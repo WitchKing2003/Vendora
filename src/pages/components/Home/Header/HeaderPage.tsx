@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import InputCustom from "../../../../components/InputComponent/InputCustom";
 import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../../components/TextComponent/TextCustom";
+import { cartCount, useCartStore } from "../../../../stores/cartStore";
 import CategoryBar from "./CategoryBar";
-
-const CART_ITEM_COUNT = 3;
 
 const HeaderPage = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [accountOpen, setAccountOpen] = useState(false);
+  const cartItems = useCartStore((s) => s.items);
+  const cartBadge = cartCount(cartItems);
 
   return (
     <header>
@@ -27,6 +30,7 @@ const HeaderPage = () => {
           <ButtonCustom
             variant="raw"
             ariaLabel={t("header.cart")}
+            onClick={() => navigate("/cart")}
             className="flex flex-col items-center gap-1 text-ink transition-colors hover:text-gold-deep"
           >
             <span className="relative">
@@ -45,9 +49,9 @@ const HeaderPage = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              {CART_ITEM_COUNT > 0 && (
+              {cartBadge > 0 && (
                 <span className="absolute -right-2 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-gold px-1 text-[10px] font-bold text-white">
-                  {CART_ITEM_COUNT}
+                  {cartBadge}
                 </span>
               )}
             </span>
