@@ -91,7 +91,9 @@ const ListingCard = ({ product, variant = "grid" }: ListingCardProps) => {
       >
         {image}
         <div className="flex min-w-0 flex-1 flex-col">
-          <TextCustom as="p" variant="caption" className="text-sm">{product.seller}</TextCustom>
+          <Link to={`/shop/${encodeURIComponent(product.seller)}`} className="w-fit text-sm text-ink/60 transition-colors hover:text-gold-deep">
+            {product.seller}
+          </Link>
           <TextCustom variant="card-title" className="mt-1">
             {product.name}
           </TextCustom>
@@ -123,7 +125,12 @@ const ListingCard = ({ product, variant = "grid" }: ListingCardProps) => {
       className="group block cursor-pointer"
     >
       {image}
-      <TextCustom as="p" variant="caption" className="mt-3 text-sm">{product.seller}</TextCustom>
+      <Link
+        to={`/shop/${encodeURIComponent(product.seller)}`}
+        className="mt-3 block w-fit text-sm text-ink/60 transition-colors hover:text-gold-deep"
+      >
+        {product.seller}
+      </Link>
       <TextCustom variant="card-title" className="mt-0.5">
         {product.name}
       </TextCustom>

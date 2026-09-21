@@ -1,458 +1,573 @@
 {
-    "header": {
-        "search": {
-            "allCategories": "All categories",
-            "fashion": "Fashion",
-            "electronics": "Electronics",
-            "homeLiving": "Home & Living",
-            "beauty": "Beauty",
-            "placeholder": "Search products, brands or sellers...",
-            "submit": "Search"
-        },
-        "cart": "Cart",
-        "account": "Account",
-        "signIn": "Sign in",
-        "signUp": "Sign up"
+  "header": {
+    "search": {
+      "allCategories": "All categories",
+      "fashion": "Fashion",
+      "electronics": "Electronics",
+      "homeLiving": "Home & Living",
+      "beauty": "Beauty",
+      "placeholder": "Search products, brands or sellers...",
+      "submit": "Search"
     },
-    "category": {
-        "toggle": "Categories",
-        "sellWithVendora": "Sell with Vendora",
-        "fashion": {
-            "label": "Fashion",
-            "items": {
-                "men": "Men",
-                "women": "Women",
-                "clothesShoes": "Clothes & Shoes",
-                "hats": "Hats",
-                "accessories": "Accessories"
-            }
-        },
-        "electronics": {
-            "label": "Electronics",
-            "items": {
-                "phones": "Phones",
-                "laptops": "Laptops",
-                "audio": "Headphones & Speakers",
-                "accessories": "Electronics Accessories"
-            }
-        },
-        "homeLiving": {
-            "label": "Home & Living",
-            "items": {
-                "furniture": "Furniture",
-                "kitchen": "Kitchen",
-                "decor": "Decor",
-                "bedding": "Bedding"
-            }
-        },
-        "beauty": {
-            "label": "Beauty",
-            "items": {
-                "skincare": "Skincare",
-                "makeup": "Makeup",
-                "fragrance": "Fragrance"
-            }
-        },
-        "motherBaby": {
-            "label": "Mother & Baby",
-            "items": {
-                "diapers": "Diapers & Wipes",
-                "formula": "Formula Milk",
-                "toys": "Toys",
-                "clothes": "Kids Clothes"
-            }
-        },
-        "sports": {
-            "label": "Sports",
-            "items": {
-                "gym": "Gym & Yoga",
-                "football": "Football",
-                "bicycle": "Bicycle",
-                "swimming": "Swimming"
-            }
-        },
-        "booksOffice": {
-            "label": "Books & Stationery",
-            "items": {
-                "books": "Books",
-                "stationery": "Stationery",
-                "schoolSupplies": "School Supplies"
-            }
-        },
-        "handmade": {
-            "label": "Handmade",
-            "items": {
-                "decor": "Handmade Decor",
-                "jewelry": "Jewelry",
-                "gifts": "Gifts"
-            }
-        }
+    "cart": "Cart",
+    "account": "Account",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "hello": "Hello,",
+    "myOrders": "My orders",
+    "logout": "Sign out"
+  },
+  "category": {
+    "toggle": "Categories",
+    "sellWithVendora": "Sell with Vendora",
+    "fashion": {
+      "label": "Fashion",
+      "items": {
+        "men": "Men",
+        "women": "Women",
+        "clothesShoes": "Clothes & Shoes",
+        "hats": "Hats",
+        "accessories": "Accessories"
+      }
     },
-    "highlight": {
-        "goTo": "Go to slide {{index}}",
-        "prev": "Previous slide",
-        "next": "Next slide",
-        "s1": {
-            "kicker": "Over 4,200 independent sellers",
-            "titleLine1": "One marketplace,",
-            "titlePrefix": "a ",
-            "titleItalic": "stall of your own",
-            "titleSuffix": ".",
-            "desc": "Vendora brings together small sellers, craft workshops and independent brands across Vietnam — every stall with a story and a style of its own.",
-            "ctaPrimary": "Explore stalls",
-            "ctaSecondary": "Open your stall",
-            "tile1": "Bát Tràng Ceramics — Minh Studio",
-            "tile2": "Modern Áo Dài — Lụa & Chi",
-            "tile3": "Hand-roasted Coffee — Vỏi"
-        },
-        "s2": {
-            "kicker": "Fresh every morning from the farms",
-            "titleLine1": "Back to the countryside,",
-            "titlePrefix": "a taste of ",
-            "titleItalic": "the homeland",
-            "titleSuffix": ".",
-            "desc": "Clean vegetables, seasonal fruit and regional specialties sourced from small cooperatives and family farms — delivered to your door the same day.",
-            "ctaPrimary": "Shop farm goods",
-            "ctaSecondary": "See where it grows",
-            "tile1": "Oolong Tea — Mộc Châu hills",
-            "tile2": "Arabica Coffee — Cầu Đất",
-            "tile3": "12-month Fish Sauce — Phú Quốc"
-        },
-        "s3": {
-            "kicker": "Festive collection 2026",
-            "titleLine1": "Going out,",
-            "titlePrefix": "with a touch of ",
-            "titleItalic": "sparkle",
-            "titleSuffix": ".",
-            "desc": "Handmade flowers, scented candles and accessories from recycled materials — small gifts crafted specially for this festive season.",
-            "ctaPrimary": "View the collection",
-            "ctaSecondary": "Find gifts by budget",
-            "tile1": "Handmade Wax Flowers — Petal House",
-            "tile2": "Hand-poured Candles — Nhà Nến",
-            "tile3": "Hand-printed Tote — Gánh Hàng"
-        }
+    "electronics": {
+      "label": "Electronics",
+      "items": {
+        "phones": "Phones",
+        "laptops": "Laptops",
+        "audio": "Headphones & Speakers",
+        "accessories": "Electronics Accessories"
+      }
     },
-    "products": {
-        "featuredTitle": "New in the stalls",
-        "saleTitle": "On sale now",
-        "viewAll": "View all products"
+    "homeLiving": {
+      "label": "Home & Living",
+      "items": {
+        "furniture": "Furniture",
+        "kitchen": "Kitchen",
+        "decor": "Decor",
+        "bedding": "Bedding"
+      }
     },
-    "product": {
-        "badgeNew": "New",
-        "badgeSale": "-{{percent}}%"
+    "beauty": {
+      "label": "Beauty",
+      "items": {
+        "skincare": "Skincare",
+        "makeup": "Makeup",
+        "fragrance": "Fragrance"
+      }
     },
-    "trust": {
-        "shipping": { "title": "Nationwide shipping", "sub": "2-4 working days" },
-        "seller": { "title": "Seller guarantee", "sub": "Verified & order-protected" },
-        "returns": { "title": "7-day returns", "sub": "Free returns" },
-        "payment": { "title": "Flexible payment", "sub": "COD, bank transfer, e-wallet" }
+    "motherBaby": {
+      "label": "Mother & Baby",
+      "items": {
+        "diapers": "Diapers & Wipes",
+        "formula": "Formula Milk",
+        "toys": "Toys",
+        "clothes": "Kids Clothes"
+      }
     },
-    "listing": {
-        "breadcrumbHome": "Home",
-        "resultCount": "products from {{sellers}} independent stalls",
-        "showing": "Showing {{from}}–{{to}} / {{total}}",
-        "sortLabel": "Sort by",
-        "sort": {
-            "relevant": "Most relevant",
-            "newest": "Newest",
-            "priceAsc": "Price: low to high",
-            "priceDesc": "Price: high to low"
-        },
-        "viewGrid": "Grid view",
-        "viewList": "List view",
-        "openFilters": "Filters",
-        "closeFilters": "Close filters",
-        "filtersTitle": "Filters",
-        "showResults": "View {{count}} products",
-        "clearAll": "Clear all",
-        "empty": "No products match the current filters.",
-        "notFound": "Category not found",
-        "backHome": "Back to home",
-        "addToWishlist": "Add to wishlist",
-        "shortDesc": "Handmade by {{seller}}, shipped nationwide.",
-        "colors": {
-            "black": "Black",
-            "white": "White",
-            "red": "Red",
-            "green": "Green",
-            "gold": "Gold",
-            "brown": "Brown",
-            "blue": "Blue"
-        },
-        "filters": {
-            "category": "Category",
-            "allInCategory": "All {{category}}",
-            "priceRange": "Price range",
-            "priceFrom": "Price from",
-            "priceTo": "Price to",
-            "sellers": "Sellers",
-            "colors": "Colors",
-            "rating": "Rating",
-            "ratingUp": "& up",
-            "status": "Status",
-            "inStock": "In stock",
-            "onSale": "On sale",
-            "isNew": "New arrivals",
-            "clearAll": "Clear all filters"
-        }
+    "sports": {
+      "label": "Sports",
+      "items": {
+        "gym": "Gym & Yoga",
+        "football": "Football",
+        "bicycle": "Bicycle",
+        "swimming": "Swimming"
+      }
     },
-    "footer": {
-        "description": "The platform connecting buyers with thousands of independent sellers, craft workshops and small brands across Vietnam.",
-        "copyright": "© 2026 Vendora. All rights reserved.",
-        "langVi": "Tiếng Việt",
-        "langEn": "English",
-        "currency": "VND ₫",
-        "buyer": {
-            "title": "For buyers",
-            "howToOrder": "How to order",
-            "trackOrder": "Track your order",
-            "returnsRefunds": "Returns & refunds",
-            "paymentMethods": "Payment methods"
-        },
-        "seller": {
-            "title": "For sellers",
-            "openStall": "Open a stall",
-            "feesCommission": "Fees & commission",
-            "sellerTools": "Seller tools",
-            "successStories": "Success stories"
-        },
-        "about": {
-            "title": "About Vendora",
-            "introduction": "Introduction",
-            "careers": "Careers",
-            "press": "Press",
-            "terms": "Terms of service"
-        },
-        "support": {
-            "title": "Support",
-            "helpCenter": "Help center",
-            "contact": "Contact us",
-            "privacy": "Privacy policy",
-            "transactionSafety": "Transaction safety"
-        }
+    "booksOffice": {
+      "label": "Books & Stationery",
+      "items": {
+        "books": "Books",
+        "stationery": "Stationery",
+        "schoolSupplies": "School Supplies"
+      }
     },
-    "detail": {
-        "wishlist": "Wishlist",
-        "share": "Share",
-        "compare": "Compare",
-        "prevImage": "Previous image",
-        "nextImage": "Next image",
-        "zoomHint": "Hover to zoom",
-        "sellerLabel": "Stall",
-        "reviewsCount": "{{count}} reviews",
-        "sold": "{{count}} sold",
-        "save": "Save {{amount}}",
-        "promoTitle": "Offers for this product",
-        "vouchers": {
-            "combo": "Extra 10% off orders of 2+ items",
-            "freeShip": "Free shipping on orders from 300.000đ",
-            "momo": "30.000đ off when paying with MoMo wallet"
-        },
-        "colorLabel": "Color:",
-        "sizeLabel": "Size:",
-        "sizeGuide": "Size guide",
-        "decrease": "Decrease quantity",
-        "increase": "Increase quantity",
-        "lowStock": "Only {{count}} left",
-        "addToCart": "Add to cart",
-        "buyNow": "Buy now",
-        "shipEta": "Delivery Sep 24–26",
-        "freeShipThreshold": "Free from 300.000đ",
-        "returnFree": "Free returns within 7 days",
-        "guarantee": "Guaranteed & purchase-protected by Vendora",
-        "tabs": {
-            "desc": "Description",
-            "specs": "Specifications",
-            "reviews": "Reviews ({{count}})",
-            "shipping": "Shipping & returns"
-        },
-        "desc": {
-            "p1": "{{name}} is curated and shipped from {{seller}} — where every product is handmade or carefully selected to Vendora's standard: real materials, meticulous craftsmanship, made to last."
-        },
-        "highlights": {
-            "p1": "Premium materials, carefully sourced from the seller's workshop",
-            "p2": "Meticulous workmanship, hand-finished details",
-            "p3": "Careful packaging, inspected before dispatch",
-            "p4": "Guaranteed & purchase-protected by Vendora until delivery"
-        },
-        "specs": {
-            "material": "Material",
-            "origin": "Origin",
-            "weight": "Weight",
-            "warranty": "Warranty & returns",
-            "dimensions": "Dimensions",
-            "model": "Product code"
-        },
-        "reviews": {
-            "r1": "Very careful packaging; the product matches the description. Material is smooth and the stitching is even.",
-            "r2": "Delivered faster than expected, colors true to the photos. Will buy from this stall again.",
-            "r3": "Beautiful product, well made. Slightly pricey but worth the quality received."
-        },
-        "shipping": {
-            "p1": "Orders are packed and dispatched within 24 business hours of payment confirmation.",
-            "p2": "Free shipping on orders from 300.000đ; smaller orders are charged by distance.",
-            "p3": "Free returns within 7 days if the item is defective, misdescribed or damaged in transit."
-        },
-        "colors": {
-            "black": "Black",
-            "white": "White",
-            "red": "Rust red",
-            "green": "Forest green",
-            "gold": "Antique gold",
-            "brown": "Earth brown",
-            "blue": "Teal blue"
-        },
-        "related": "Related products",
-        "viewAll": "View all {{sub}}"
+    "handmade": {
+      "label": "Handmade",
+      "items": {
+        "decor": "Handmade Decor",
+        "jewelry": "Jewelry",
+        "gifts": "Gifts"
+      }
+    }
+  },
+  "highlight": {
+    "goTo": "Go to slide {{index}}",
+    "prev": "Previous slide",
+    "next": "Next slide",
+    "s1": {
+      "kicker": "Over 4,200 independent sellers",
+      "titleLine1": "One marketplace,",
+      "titlePrefix": "a ",
+      "titleItalic": "stall of your own",
+      "titleSuffix": ".",
+      "desc": "Vendora brings together small sellers, craft workshops and independent brands across Vietnam — every stall with a story and a style of its own.",
+      "ctaPrimary": "Explore stalls",
+      "ctaSecondary": "Open your stall",
+      "tile1": "Bát Tràng Ceramics — Minh Studio",
+      "tile2": "Modern Áo Dài — Lụa & Chi",
+      "tile3": "Hand-roasted Coffee — Vỏi"
     },
-    "cart": {
-        "title": "Your cart",
-        "step1": "Cart",
-        "step2": "Payment",
-        "step3": "Done",
-        "selectAll": "Select all",
-        "selectAllWithCount": "Select all ({{count}} items)",
-        "selectAllSeller": "Select all from {{seller}}",
-        "deleteSelected": "Delete selected",
-        "selectItem": "Select {{name}}",
-        "outOfStock": "Sold out",
-        "tempOutOfStock": "Temporarily sold out",
-        "variantColor": "Color:",
-        "variantSize": "Size",
-        "saveForLater": "Save for later",
-        "removeItem": "Remove from cart",
-        "remainingForFreeShip": "{{amount}} away from free shipping",
-        "freeShipUnlocked": "Free shipping from 300.000đ",
-        "summaryTitle": "Order summary",
-        "voucherApplied": "applied",
-        "voucherPlaceholder": "Enter another discount code",
-        "applyVoucher": "Apply",
-        "removeVoucher": "Remove",
-        "voucherInvalid": "Invalid code. Try COMBO10.",
-        "voucherHint": "Tip: use COMBO10 for 10% off orders of 2+ items",
-        "subtotal": "Subtotal ({{count}} items)",
-        "discount": "Discount ({{code}})",
-        "shipFee": "Shipping fee",
-        "freeShip": "Free",
-        "total": "Total",
-        "vatIncluded": "VAT included",
-        "checkout": "Proceed to checkout",
-        "protection": "Your order is protected by Vendora. Free 7-day returns if you are not satisfied.",
-        "continueShopping": "Continue shopping",
-        "empty": "Your cart is empty.",
-        "suggestions": "You may also like",
-        "viewMore": "View more"
+    "s2": {
+      "kicker": "Fresh every morning from the farms",
+      "titleLine1": "Back to the countryside,",
+      "titlePrefix": "a taste of ",
+      "titleItalic": "the homeland",
+      "titleSuffix": ".",
+      "desc": "Clean vegetables, seasonal fruit and regional specialties sourced from small cooperatives and family farms — delivered to your door the same day.",
+      "ctaPrimary": "Shop farm goods",
+      "ctaSecondary": "See where it grows",
+      "tile1": "Oolong Tea — Mộc Châu hills",
+      "tile2": "Arabica Coffee — Cầu Đất",
+      "tile3": "12-month Fish Sauce — Phú Quốc"
     },
-    "checkout": {
-        "addressTitle": "Shipping address",
-        "defaultAddress": "Default",
-        "addAddress": "Add new address",
-        "shipTitle": "Shipping method",
-        "shipStandard": "Standard delivery",
-        "shipStandardDesc": "Arrives in 2–4 days · GHN partner",
-        "shipExpress": "Express delivery",
-        "shipExpressDesc": "Arrives within 24 hours · Hanoi inner city",
-        "shipPickup": "Pick up at partner stall",
-        "shipPickupDesc": "Free · Ready in 3–5 days",
-        "payTitle": "Payment method",
-        "payCod": "Cash on delivery",
-        "payCodDesc": "Pay cash to the shipper",
-        "payMomo": "MoMo wallet",
-        "payMomoDesc": "Extra 30.000đ off when paying with MoMo",
-        "payVisa": "Credit / debit card",
-        "payVisaDesc": "Visa, Mastercard, JCB",
-        "payBank": "Bank transfer",
-        "payBankDesc": "Direct transfer to Vendora's account",
-        "noteTitle": "Note for the shipper",
-        "noteHint": "E.g. Deliver during office hours, call before arriving, drop it in the bamboo basket at the gate…",
-        "notePlaceholder": "Enter a note for the courier (max 300 characters)",
-        "orderTitle": "Your order",
-        "placeOrder": "Place order",
-        "terms": "By pressing \"Place order\", you agree to Vendora's Terms of service and Return policy.",
-        "emptyTitle": "Nothing to check out",
-        "empty": "Select at least one item in your cart first.",
-        "backToCart": "Back to cart"
+    "s3": {
+      "kicker": "Festive collection 2026",
+      "titleLine1": "Going out,",
+      "titlePrefix": "with a touch of ",
+      "titleItalic": "sparkle",
+      "titleSuffix": ".",
+      "desc": "Handmade flowers, scented candles and accessories from recycled materials — small gifts crafted specially for this festive season.",
+      "ctaPrimary": "View the collection",
+      "ctaSecondary": "Find gifts by budget",
+      "tile1": "Handmade Wax Flowers — Petal House",
+      "tile2": "Hand-poured Candles — Nhà Nến",
+      "tile3": "Hand-printed Tote — Gánh Hàng"
+    }
+  },
+  "products": {
+    "featuredTitle": "New in the stalls",
+    "saleTitle": "On sale now",
+    "viewAll": "View all products"
+  },
+  "product": {
+    "badgeNew": "New",
+    "badgeSale": "-{{percent}}%"
+  },
+  "trust": {
+    "shipping": {
+      "title": "Nationwide shipping",
+      "sub": "2-4 working days"
     },
-    "success": {
-        "kicker": "Order placed successfully",
-        "title": "Thanks for shopping at Vendora!",
-        "descBefore": "Your order has been recorded and forwarded to the sellers. A confirmation email will arrive at",
-        "descAfter": "shortly.",
-        "orderCode": "Order code:",
-        "copyCode": "Copy code",
-        "copied": "Copied!",
-        "tlPlaced": "Placed",
-        "tlConfirmed": "Confirmed",
-        "tlShipping": "Shipping",
-        "tlDelivered": "Delivered",
-        "qty": "qty {{count}}",
-        "subtotal": "Subtotal",
-        "discount": "Discount (COMBO10)",
-        "total": "Total",
-        "shipTo": "Ship to",
-        "payment": "Payment",
-        "eta": "Estimated delivery: {{date}}",
-        "trackOrder": "Track order",
-        "continueShopping": "Continue shopping",
-        "needHelp": "Need help with this order?",
-        "contactSupport": "Contact customer support",
-        "noOrder": "No recent order found."
+    "seller": {
+      "title": "Seller guarantee",
+      "sub": "Verified & order-protected"
     },
-    "account": {
-        "profile": "Account information",
-        "addresses": "Shipping addresses",
-        "wishlist": "Wishlist",
-        "vouchers": "Voucher wallet",
-        "reviews": "My reviews"
+    "returns": {
+      "title": "7-day returns",
+      "sub": "Free returns"
     },
-    "tracking": {
-        "myOrders": "My orders",
-        "myOrdersTitle": "My orders",
-        "tabAll": "All",
-        "tabPending": "Pending",
-        "tabShipping": "Shipping",
-        "tabDelivered": "Delivered",
-        "tabCanceled": "Canceled",
-        "statusPending": "Pending",
-        "statusShipping": "Shipping",
-        "statusDelivered": "Delivered",
-        "statusCanceled": "Canceled",
-        "placedOn": "Placed {{date}}",
-        "itemsCount": "{{count}} items",
-        "viewDetail": "See detail below",
-        "orderTitle": "Order {{code}}",
-        "placedAt": "Placed at {{time}}, {{date}}",
-        "paymentCod": "Payment {{method}}",
-        "contactSeller": "Contact seller",
-        "requestCancel": "Request cancellation",
-        "viewInvoice": "View invoice",
-        "expected": "expected {{eta}}",
-        "carrierPartner": "Vendora's partner carrier",
-        "trackingCode": "Tracking code: {{code}}",
-        "step": {
-            "placed": "Order placed",
-            "confirmed": "Seller confirmed",
-            "handed": "Handed to carrier",
-            "outForDelivery": "Out for delivery",
-            "delivered": "Delivered",
-            "canceled": "Order canceled"
-        },
-        "descPlaced": "The order has been recorded and is awaiting seller confirmation.",
-        "descConfirmed": "The stalls confirmed and are preparing your items.",
-        "descHanded": "The parcel left the Cầu Giấy sorting hub, Hanoi.",
-        "descOutForDelivery": "The courier will call before delivery. Track live in the carrier's app.",
-        "descDelivered": "The order will be marked complete once you receive it.",
-        "descCanceled": "Canceled by buyer. The refund arrives within 1–3 business days.",
-        "productsInOrder": "Products in this order",
-        "qtyShort": "qty {{count}}",
-        "buyAgain": "Buy again",
-        "shipTo": "Shipping address",
-        "paymentDetails": "Payment details",
-        "empty": "No orders in this section yet.",
-        "notFound": "Order not found."
+    "payment": {
+      "title": "Flexible payment",
+      "sub": "COD, bank transfer, e-wallet"
+    }
+  },
+  "listing": {
+    "breadcrumbHome": "Home",
+    "resultCount": "products from {{sellers}} independent stalls",
+    "showing": "Showing {{from}}–{{to}} / {{total}}",
+    "sortLabel": "Sort by",
+    "sort": {
+      "relevant": "Most relevant",
+      "newest": "Newest",
+      "priceAsc": "Price: low to high",
+      "priceDesc": "Price: high to low"
     },
-    "home": "Home",
-    "about": "About",
-    "welcomeToVendora": "Welcome to Vendora",
-    "vendoraDescription": "Vendora is a platform that allows users to easily create and manage their online stores. It provides a user-friendly interface, customizable templates, and a range of features to help businesses sell their products online. With Vendora, users can set up their store, manage inventory, process payments, and track orders all in one place."
+    "viewGrid": "Grid view",
+    "viewList": "List view",
+    "openFilters": "Filters",
+    "closeFilters": "Close filters",
+    "filtersTitle": "Filters",
+    "showResults": "View {{count}} products",
+    "clearAll": "Clear all",
+    "empty": "No products match the current filters.",
+    "notFound": "Category not found",
+    "backHome": "Back to home",
+    "addToWishlist": "Add to wishlist",
+    "shortDesc": "Handmade by {{seller}}, shipped nationwide.",
+    "colors": {
+      "black": "Black",
+      "white": "White",
+      "red": "Red",
+      "green": "Green",
+      "gold": "Gold",
+      "brown": "Brown",
+      "blue": "Blue"
+    },
+    "filters": {
+      "category": "Category",
+      "allInCategory": "All {{category}}",
+      "priceRange": "Price range",
+      "priceFrom": "Price from",
+      "priceTo": "Price to",
+      "sellers": "Sellers",
+      "colors": "Colors",
+      "rating": "Rating",
+      "ratingUp": "& up",
+      "status": "Status",
+      "inStock": "In stock",
+      "onSale": "On sale",
+      "isNew": "New arrivals",
+      "clearAll": "Clear all filters"
+    }
+  },
+  "footer": {
+    "description": "The platform connecting buyers with thousands of independent sellers, craft workshops and small brands across Vietnam.",
+    "copyright": "© 2026 Vendora. All rights reserved.",
+    "langVi": "Tiếng Việt",
+    "langEn": "English",
+    "currency": "VND ₫",
+    "buyer": {
+      "title": "For buyers",
+      "howToOrder": "How to order",
+      "trackOrder": "Track your order",
+      "returnsRefunds": "Returns & refunds",
+      "paymentMethods": "Payment methods"
+    },
+    "seller": {
+      "title": "For sellers",
+      "openStall": "Open a stall",
+      "feesCommission": "Fees & commission",
+      "sellerTools": "Seller tools",
+      "successStories": "Success stories"
+    },
+    "about": {
+      "title": "About Vendora",
+      "introduction": "Introduction",
+      "careers": "Careers",
+      "press": "Press",
+      "terms": "Terms of service"
+    },
+    "support": {
+      "title": "Support",
+      "helpCenter": "Help center",
+      "contact": "Contact us",
+      "privacy": "Privacy policy",
+      "transactionSafety": "Transaction safety"
+    }
+  },
+  "detail": {
+    "wishlist": "Wishlist",
+    "share": "Share",
+    "compare": "Compare",
+    "prevImage": "Previous image",
+    "nextImage": "Next image",
+    "zoomHint": "Hover to zoom",
+    "sellerLabel": "Stall",
+    "reviewsCount": "{{count}} reviews",
+    "sold": "{{count}} sold",
+    "save": "Save {{amount}}",
+    "promoTitle": "Offers for this product",
+    "vouchers": {
+      "combo": "Extra 10% off orders of 2+ items",
+      "freeShip": "Free shipping on orders from 300.000đ",
+      "momo": "30.000đ off when paying with MoMo wallet"
+    },
+    "colorLabel": "Color:",
+    "sizeLabel": "Size:",
+    "sizeGuide": "Size guide",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "lowStock": "Only {{count}} left",
+    "addToCart": "Add to cart",
+    "buyNow": "Buy now",
+    "shipEta": "Delivery Sep 24–26",
+    "freeShipThreshold": "Free from 300.000đ",
+    "returnFree": "Free returns within 7 days",
+    "guarantee": "Guaranteed & purchase-protected by Vendora",
+    "tabs": {
+      "desc": "Description",
+      "specs": "Specifications",
+      "reviews": "Reviews ({{count}})",
+      "shipping": "Shipping & returns"
+    },
+    "desc": {
+      "p1": "{{name}} is curated and shipped from {{seller}} — where every product is handmade or carefully selected to Vendora's standard: real materials, meticulous craftsmanship, made to last."
+    },
+    "highlights": {
+      "p1": "Premium materials, carefully sourced from the seller's workshop",
+      "p2": "Meticulous workmanship, hand-finished details",
+      "p3": "Careful packaging, inspected before dispatch",
+      "p4": "Guaranteed & purchase-protected by Vendora until delivery"
+    },
+    "specs": {
+      "material": "Material",
+      "origin": "Origin",
+      "weight": "Weight",
+      "warranty": "Warranty & returns",
+      "dimensions": "Dimensions",
+      "model": "Product code"
+    },
+    "reviews": {
+      "r1": "Very careful packaging; the product matches the description. Material is smooth and the stitching is even.",
+      "r2": "Delivered faster than expected, colors true to the photos. Will buy from this stall again.",
+      "r3": "Beautiful product, well made. Slightly pricey but worth the quality received."
+    },
+    "shipping": {
+      "p1": "Orders are packed and dispatched within 24 business hours of payment confirmation.",
+      "p2": "Free shipping on orders from 300.000đ; smaller orders are charged by distance.",
+      "p3": "Free returns within 7 days if the item is defective, misdescribed or damaged in transit."
+    },
+    "colors": {
+      "black": "Black",
+      "white": "White",
+      "red": "Rust red",
+      "green": "Forest green",
+      "gold": "Antique gold",
+      "brown": "Earth brown",
+      "blue": "Teal blue"
+    },
+    "related": "Related products",
+    "viewAll": "View all {{sub}}"
+  },
+  "cart": {
+    "title": "Your cart",
+    "step1": "Cart",
+    "step2": "Payment",
+    "step3": "Done",
+    "selectAll": "Select all",
+    "selectAllWithCount": "Select all ({{count}} items)",
+    "selectAllSeller": "Select all from {{seller}}",
+    "deleteSelected": "Delete selected",
+    "selectItem": "Select {{name}}",
+    "outOfStock": "Sold out",
+    "tempOutOfStock": "Temporarily sold out",
+    "variantColor": "Color:",
+    "variantSize": "Size",
+    "saveForLater": "Save for later",
+    "removeItem": "Remove from cart",
+    "remainingForFreeShip": "{{amount}} away from free shipping",
+    "freeShipUnlocked": "Free shipping from 300.000đ",
+    "summaryTitle": "Order summary",
+    "voucherApplied": "applied",
+    "voucherPlaceholder": "Enter another discount code",
+    "applyVoucher": "Apply",
+    "removeVoucher": "Remove",
+    "voucherInvalid": "Invalid code. Try COMBO10.",
+    "voucherHint": "Tip: use COMBO10 for 10% off orders of 2+ items",
+    "subtotal": "Subtotal ({{count}} items)",
+    "discount": "Discount ({{code}})",
+    "shipFee": "Shipping fee",
+    "freeShip": "Free",
+    "total": "Total",
+    "vatIncluded": "VAT included",
+    "checkout": "Proceed to checkout",
+    "protection": "Your order is protected by Vendora. Free 7-day returns if you are not satisfied.",
+    "continueShopping": "Continue shopping",
+    "empty": "Your cart is empty.",
+    "suggestions": "You may also like",
+    "viewMore": "View more"
+  },
+  "checkout": {
+    "addressTitle": "Shipping address",
+    "defaultAddress": "Default",
+    "addAddress": "Add new address",
+    "shipTitle": "Shipping method",
+    "shipStandard": "Standard delivery",
+    "shipStandardDesc": "Arrives in 2–4 days · GHN partner",
+    "shipExpress": "Express delivery",
+    "shipExpressDesc": "Arrives within 24 hours · Hanoi inner city",
+    "shipPickup": "Pick up at partner stall",
+    "shipPickupDesc": "Free · Ready in 3–5 days",
+    "payTitle": "Payment method",
+    "payCod": "Cash on delivery",
+    "payCodDesc": "Pay cash to the shipper",
+    "payMomo": "MoMo wallet",
+    "payMomoDesc": "Extra 30.000đ off when paying with MoMo",
+    "payVisa": "Credit / debit card",
+    "payVisaDesc": "Visa, Mastercard, JCB",
+    "payBank": "Bank transfer",
+    "payBankDesc": "Direct transfer to Vendora's account",
+    "noteTitle": "Note for the shipper",
+    "noteHint": "E.g. Deliver during office hours, call before arriving, drop it in the bamboo basket at the gate…",
+    "notePlaceholder": "Enter a note for the courier (max 300 characters)",
+    "orderTitle": "Your order",
+    "placeOrder": "Place order",
+    "terms": "By pressing \"Place order\", you agree to Vendora's Terms of service and Return policy.",
+    "emptyTitle": "Nothing to check out",
+    "empty": "Select at least one item in your cart first.",
+    "backToCart": "Back to cart"
+  },
+  "success": {
+    "kicker": "Order placed successfully",
+    "title": "Thanks for shopping at Vendora!",
+    "descBefore": "Your order has been recorded and forwarded to the sellers. A confirmation email will arrive at",
+    "descAfter": "shortly.",
+    "orderCode": "Order code:",
+    "copyCode": "Copy code",
+    "copied": "Copied!",
+    "tlPlaced": "Placed",
+    "tlConfirmed": "Confirmed",
+    "tlShipping": "Shipping",
+    "tlDelivered": "Delivered",
+    "qty": "qty {{count}}",
+    "subtotal": "Subtotal",
+    "discount": "Discount (COMBO10)",
+    "total": "Total",
+    "shipTo": "Ship to",
+    "payment": "Payment",
+    "eta": "Estimated delivery: {{date}}",
+    "trackOrder": "Track order",
+    "continueShopping": "Continue shopping",
+    "needHelp": "Need help with this order?",
+    "contactSupport": "Contact customer support",
+    "noOrder": "No recent order found."
+  },
+  "account": {
+    "profile": "Account information",
+    "addresses": "Shipping addresses",
+    "wishlist": "Wishlist",
+    "vouchers": "Voucher wallet",
+    "reviews": "My reviews"
+  },
+  "tracking": {
+    "myOrders": "My orders",
+    "myOrdersTitle": "My orders",
+    "tabAll": "All",
+    "tabPending": "Pending",
+    "tabShipping": "Shipping",
+    "tabDelivered": "Delivered",
+    "tabCanceled": "Canceled",
+    "statusPending": "Pending",
+    "statusShipping": "Shipping",
+    "statusDelivered": "Delivered",
+    "statusCanceled": "Canceled",
+    "placedOn": "Placed {{date}}",
+    "itemsCount": "{{count}} items",
+    "viewDetail": "See detail below",
+    "orderTitle": "Order {{code}}",
+    "placedAt": "Placed at {{time}}, {{date}}",
+    "paymentCod": "Payment {{method}}",
+    "contactSeller": "Contact seller",
+    "requestCancel": "Request cancellation",
+    "viewInvoice": "View invoice",
+    "expected": "expected {{eta}}",
+    "carrierPartner": "Vendora's partner carrier",
+    "trackingCode": "Tracking code: {{code}}",
+    "step": {
+      "placed": "Order placed",
+      "confirmed": "Seller confirmed",
+      "handed": "Handed to carrier",
+      "outForDelivery": "Out for delivery",
+      "delivered": "Delivered",
+      "canceled": "Order canceled"
+    },
+    "descPlaced": "The order has been recorded and is awaiting seller confirmation.",
+    "descConfirmed": "The stalls confirmed and are preparing your items.",
+    "descHanded": "The parcel left the Cầu Giấy sorting hub, Hanoi.",
+    "descOutForDelivery": "The courier will call before delivery. Track live in the carrier's app.",
+    "descDelivered": "The order will be marked complete once you receive it.",
+    "descCanceled": "Canceled by buyer. The refund arrives within 1–3 business days.",
+    "productsInOrder": "Products in this order",
+    "qtyShort": "qty {{count}}",
+    "buyAgain": "Buy again",
+    "shipTo": "Shipping address",
+    "paymentDetails": "Payment details",
+    "empty": "No orders in this section yet.",
+    "notFound": "Order not found."
+  },
+  "shop": {
+    "notFound": "Shop not found.",
+    "bannerAria": "Shop banner background",
+    "followBtn": {
+      "follow": "Message",
+      "track": "Follow"
+    },
+    "stats": {
+      "rating": "Rating",
+      "followers": "Followers",
+      "products": "Products",
+      "response": "Response rate",
+      "years": "years",
+      "joined": "On Vendora since"
+    },
+    "tabs": {
+      "products": "All products",
+      "reviews": "Reviews ({{count}})",
+      "about": "About"
+    },
+    "promo": {
+      "text": "{{percent}} off orders of 2+ items · Code {{code}} · Free shop-wide shipping from {{threshold}}",
+      "default": "Free shipping from {{threshold}}"
+    },
+    "collections": {
+      "aoDai": "Áo dài",
+      "shirt": "Silk shirts",
+      "dress": "Silk dresses",
+      "scarf": "Scarves & accessories"
+    },
+    "showing": "Showing 1–{{to}} / {{total}} products",
+    "sort": {
+      "newest": "Newest",
+      "priceAsc": "Price low → high",
+      "priceDesc": "Price high → low"
+    },
+    "reviews": {
+      "count": "{{count}} reviews",
+      "writeTitle": "Write your review",
+      "placeholder": "Share your experience with this shop…",
+      "submit": "Submit review",
+      "loginRequired": "You need to sign in to write a review.",
+      "loginCta": "Sign in",
+      "tooShort": "Your review is too short."
+    },
+    "about": {
+      "text": "{{name}} is an independent handcrafted shop in {{location}}, joining Vendora to bring handmade products closer to everyone.",
+      "location": "Address",
+      "joined": "Joined",
+      "joinedValue": "{{years}} years ago",
+      "response": "Response rate"
+    }
+  },
+  "auth": {
+    "loginTitle": "Sign in",
+    "loginSubtitle": "Welcome back to Vendora",
+    "signupTitle": "Create account",
+    "signupSubtitle": "Shop and write reviews in a few steps",
+    "name": "Full name",
+    "namePlaceholder": "John Doe",
+    "email": "Email",
+    "emailPlaceholder": "you@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "At least 4 characters",
+    "loginSubmit": "Sign in",
+    "signupSubmit": "Create account",
+    "noAccount": "No account yet?",
+    "toSignup": "Sign up now",
+    "hasAccount": "Already have an account?",
+    "toLogin": "Sign in now",
+    "invalid": "Invalid email or password too short.",
+    "invalidName": "Please enter your full name.",
+    "terms": "By continuing you agree to Vendora Terms of Service and Privacy Policy.",
+    "forgotLink": "Forgot password?",
+    "forgot": {
+      "title": "Forgot password",
+      "subtitle": "Enter your registered email and we will send you a reset link",
+      "submit": "Send reset link",
+      "sentTitle": "Check your email",
+      "sentDesc": "We sent a password reset link to",
+      "sentMockNote": "Demo: click the button below to open the reset page.",
+      "openReset": "Open reset page →",
+      "back": "Use a different email",
+      "backToLogin": "Back to sign in"
+    },
+    "reset": {
+      "title": "Reset password",
+      "subtitle": "Create a new password for your account",
+      "newPass": "New password",
+      "confirm": "Confirm new password",
+      "confirmPlaceholder": "Re-enter the new password",
+      "submit": "Reset password",
+      "invalid": "Password must be at least 4 characters.",
+      "mismatch": "Passwords do not match.",
+      "invalidToken": "This reset link is invalid or has expired.",
+      "successTitle": "Password changed",
+      "successDesc": "You can now sign in with your new password.",
+      "toLogin": "Sign in now"
+    }
+  },
+  "home": "Home",
+  "about": "About",
+  "welcomeToVendora": "Welcome to Vendora",
+  "vendoraDescription": "Vendora is a platform that allows users to easily create and manage their online stores. It provides a user-friendly interface, customizable templates, and a range of features to help businesses sell their products online. With Vendora, users can set up their store, manage inventory, process payments, and track orders all in one place."
 }

@@ -8,6 +8,8 @@ import CheckoutPage from "../pages/components/Cart/CheckoutPage";
 import SuccessPage from "../pages/components/Cart/SuccessPage";
 import MyOrdersPage from "../pages/components/Account/MyOrdersPage";
 import OrderTrackingPage from "../pages/components/Account/OrderTrackingPage";
+import AuthPage from "../pages/components/Account/AuthPage";
+import ShopPage from "../pages/components/Shop/ShopPage";
 
 const AppRoutes = () => {
   return (
@@ -22,6 +24,11 @@ const AppRoutes = () => {
         <Route path="/checkout/success" element={<SuccessPage />} />
         <Route path="/account/orders" element={<MyOrdersPage />} />
         <Route path="/account/orders/:code" element={<OrderTrackingPage />} />
+        <Route path="/login" element={<AuthPage mode="login" />} />
+        <Route path="/signup" element={<AuthPage mode="signup" />} />
+        <Route path="/forgot-password" element={<AuthPage mode="forgot" />} />
+        <Route path="/reset-password" element={<AuthPage mode="reset" />} />
+        <Route path="/shop/:seller" element={<ShopPage />} />
       </Route>
     </Routes>
   );

@@ -5,6 +5,7 @@ import InputCustom from "../../../../components/InputComponent/InputCustom";
 import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../../components/TextComponent/TextCustom";
 import { cartCount, useCartStore } from "../../../../stores/cartStore";
+import { useAuthStore } from "../../../../stores/authStore";
 import CategoryBar from "./CategoryBar";
 
 const HeaderPage = () => {
@@ -13,6 +14,8 @@ const HeaderPage = () => {
   const [accountOpen, setAccountOpen] = useState(false);
   const cartItems = useCartStore((s) => s.items);
   const cartBadge = cartCount(cartItems);
+  const user = useAuthStore((s) => s.user);
+  const logout = useAuthStore((s) => s.logout);
 
   return (
     <header>
@@ -92,22 +95,61 @@ const HeaderPage = () => {
                   onClick={() => setAccountOpen(false)}
                 />
                 <div className="fixed inset-x-3 bottom-3 z-50 rounded-lg border border-line bg-white py-1 shadow-2xl sm:hidden">
-                  <ButtonCustom
-                    variant="raw"
-                    fullWidth
-                    onClick={() => setAccountOpen(false)}
-                    className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                  >
-                    {t("header.signIn")}
-                  </ButtonCustom>
-                  <ButtonCustom
-                    variant="raw"
-                    fullWidth
-                    onClick={() => setAccountOpen(false)}
-                    className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                  >
-                    {t("header.signUp")}
-                  </ButtonCustom>
+                  {user ? (
+                    <>
+                      <TextCustom as="p" variant="body-sm" className="border-b border-line px-4 py-3">
+                        <span className="block text-xs text-ink/50">{t("header.hello")}</span>
+                        <span className="font-semibold">{user.name}</span>
+                      </TextCustom>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          setAccountOpen(false);
+                          navigate("/account/orders");
+                        }}
+                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.myOrders")}
+                      </ButtonCustom>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          logout();
+                          setAccountOpen(false);
+                        }}
+                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.logout")}
+                      </ButtonCustom>
+                    </>
+                  ) : (
+                    <>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          setAccountOpen(false);
+                          navigate("/login");
+                        }}
+                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.signIn")}
+                      </ButtonCustom>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          setAccountOpen(false);
+                          navigate("/signup");
+                        }}
+                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.signUp")}
+                      </ButtonCustom>
+                    </>
+                  )}
                 </div>
 
                 {/* Desktop (sm+): dropdown anchored to the button */}
@@ -116,22 +158,61 @@ const HeaderPage = () => {
                   onClick={() => setAccountOpen(false)}
                 />
                 <div className="absolute right-0 z-20 mt-2 hidden w-44 divide-y divide-line border border-line bg-white py-1 shadow-lg sm:block">
-                  <ButtonCustom
-                    variant="raw"
-                    fullWidth
-                    onClick={() => setAccountOpen(false)}
-                    className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                  >
-                    {t("header.signIn")}
-                  </ButtonCustom>
-                  <ButtonCustom
-                    variant="raw"
-                    fullWidth
-                    onClick={() => setAccountOpen(false)}
-                    className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                  >
-                    {t("header.signUp")}
-                  </ButtonCustom>
+                  {user ? (
+                    <>
+                      <div className="px-4 py-2.5">
+                        <span className="block text-xs text-ink/50">{t("header.hello")}</span>
+                        <span className="block truncate text-sm font-semibold text-ink">{user.name}</span>
+                      </div>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          setAccountOpen(false);
+                          navigate("/account/orders");
+                        }}
+                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.myOrders")}
+                      </ButtonCustom>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          logout();
+                          setAccountOpen(false);
+                        }}
+                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.logout")}
+                      </ButtonCustom>
+                    </>
+                  ) : (
+                    <>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          setAccountOpen(false);
+                          navigate("/login");
+                        }}
+                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.signIn")}
+                      </ButtonCustom>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          setAccountOpen(false);
+                          navigate("/signup");
+                        }}
+                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.signUp")}
+                      </ButtonCustom>
+                    </>
+                  )}
                 </div>
               </>
             )}
