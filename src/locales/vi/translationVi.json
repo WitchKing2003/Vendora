@@ -1,459 +1,574 @@
 {
-    "header": {
-        "search": {
-            "allCategories": "Tất cả danh mục",
-            "fashion": "Thời trang",
-            "electronics": "Điện tử",
-            "homeLiving": "Nhà cửa",
-            "beauty": "Làm đẹp",
-            "placeholder": "Tìm sản phẩm, thương hiệu hoặc người bán...",
-            "submit": "Tìm kiếm"
-        },
-        "cart": "Giỏ hàng",
-        "account": "Tài khoản",
-        "signIn": "Đăng nhập",
-        "signUp": "Đăng ký"
+  "header": {
+    "search": {
+      "allCategories": "Tất cả danh mục",
+      "fashion": "Thời trang",
+      "electronics": "Điện tử",
+      "homeLiving": "Nhà cửa",
+      "beauty": "Làm đẹp",
+      "placeholder": "Tìm sản phẩm, thương hiệu hoặc người bán...",
+      "submit": "Tìm kiếm"
     },
-    "category": {
-        "toggle": "Danh mục",
-        "sellWithVendora": "Bán hàng cùng Vendora",
-        "fashion": {
-            "label": "Thời trang",
-            "items": {
-                "men": "Thời trang nam",
-                "women": "Thời trang nữ",
-                "clothesShoes": "Quần áo, giày dép",
-                "hats": "Mũ, nón",
-                "accessories": "Phụ kiện đi kèm"
-            }
-        },
-        "electronics": {
-            "label": "Điện tử",
-            "items": {
-                "phones": "Điện thoại",
-                "laptops": "Laptop",
-                "audio": "Tai nghe, loa",
-                "accessories": "Phụ kiện điện tử"
-            }
-        },
-        "homeLiving": {
-            "label": "Nhà cửa & Đời sống",
-            "items": {
-                "furniture": "Nội thất",
-                "kitchen": "Nhà bếp",
-                "decor": "Trang trí",
-                "bedding": "Chăn ga, nệm"
-            }
-        },
-        "beauty": {
-            "label": "Làm đẹp",
-            "items": {
-                "skincare": "Chăm sóc da",
-                "makeup": "Trang điểm",
-                "fragrance": "Nước hoa"
-            }
-        },
-        "motherBaby": {
-            "label": "Mẹ & Bé",
-            "items": {
-                "diapers": "Tã, khăn ướt",
-                "formula": "Sữa bột",
-                "toys": "Đồ chơi",
-                "clothes": "Quần áo trẻ em"
-            }
-        },
-        "sports": {
-            "label": "Thể thao",
-            "items": {
-                "gym": "Gym, yoga",
-                "football": "Bóng đá",
-                "bicycle": "Xe đạp",
-                "swimming": "Bơi lội"
-            }
-        },
-        "booksOffice": {
-            "label": "Sách & Văn phòng phẩm",
-            "items": {
-                "books": "Sách",
-                "stationery": "Văn phòng phẩm",
-                "schoolSupplies": "Đồ dùng học tập"
-            }
-        },
-        "handmade": {
-            "label": "Đồ handmade",
-            "items": {
-                "decor": "Trang trí handmade",
-                "jewelry": "Trang sức",
-                "gifts": "Quà tặng"
-            }
-        }
+    "cart": "Giỏ hàng",
+    "account": "Tài khoản",
+    "signIn": "Đăng nhập",
+    "signUp": "Đăng ký",
+    "hello": "Xin chào,",
+    "myOrders": "Đơn hàng của tôi",
+    "logout": "Đăng xuất"
+  },
+  "category": {
+    "toggle": "Danh mục",
+    "sellWithVendora": "Bán hàng cùng Vendora",
+    "fashion": {
+      "label": "Thời trang",
+      "items": {
+        "men": "Thời trang nam",
+        "women": "Thời trang nữ",
+        "clothesShoes": "Quần áo, giày dép",
+        "hats": "Mũ, nón",
+        "accessories": "Phụ kiện đi kèm"
+      }
     },
-    "highlight": {
-        "goTo": "Chuyển đến slide {{index}}",
-        "prev": "Slide trước",
-        "next": "Slide sau",
-        "s1": {
-            "kicker": "Hơn 4.200 người bán độc lập",
-            "titleLine1": "Một khu chợ,",
-            "titlePrefix": "muốn ",
-            "titleItalic": "gian hàng riêng",
-            "titleSuffix": ".",
-            "desc": "Vendora quy tụ những người bán nhỏ, xưởng thủ công và thương hiệu độc lập trên khắp Việt Nam — mỗi gian hàng một câu chuyện, một phong cách riêng.",
-            "ctaPrimary": "Khám phá gian hàng",
-            "ctaSecondary": "Mở gian hàng của bạn",
-            "tile1": "Gốm Bát Tràng — Minh Studio",
-            "tile2": "Áo dài cách tân — Lụa & Chi",
-            "tile3": "Cà phê rang thủ công — Vỏi"
-        },
-        "s2": {
-            "kicker": "Tươi mỗi sáng từ chợ đầu mối",
-            "titleLine1": "Về quê,",
-            "titlePrefix": "gọi ",
-            "titleItalic": "món quà đất",
-            "titleSuffix": ".",
-            "desc": "Rau củ sạch, trái cây theo mùa, đặc sản vùng miền được tuyển chọn từ các hợp tác xã và nông trại nhỏ — giao đến tận nhà trong ngày.",
-            "ctaPrimary": "Mua nông sản",
-            "ctaSecondary": "Xem nguồn gốc vùng trồng",
-            "tile1": "Trà Ô Long — đồi Mộc Châu",
-            "tile2": "Cà phê Arabica — Cầu Đất",
-            "tile3": "Nước mắm 12 tháng — Phú Quốc"
-        },
-        "s3": {
-            "kicker": "Bộ sưu tập lễ hội 2026",
-            "titleLine1": "Đi chơi,",
-            "titlePrefix": "cần ",
-            "titleItalic": "một chút rực rỡ",
-            "titleSuffix": ".",
-            "desc": "Hoa thủ công, nến thơm và phụ kiện làm từ chất liệu tái chế — những món quà nhỏ được chế tác riêng cho mùa lễ hội năm nay.",
-            "ctaPrimary": "Xem bộ sưu tập",
-            "ctaSecondary": "Tìm quà theo ngân sách",
-            "tile1": "Hoa sáp thủ công — Petal House",
-            "tile2": "Nến đúc tay — Nhà Nến",
-            "tile3": "Túi vải in tay — Gánh Hàng"
-        }
+    "electronics": {
+      "label": "Điện tử",
+      "items": {
+        "phones": "Điện thoại",
+        "laptops": "Laptop",
+        "audio": "Tai nghe, loa",
+        "accessories": "Phụ kiện điện tử"
+      }
     },
-    "products": {
-        "featuredTitle": "Mới về gian hàng",
-        "saleTitle": "Đang được giảm giá",
-        "viewAll": "Xem tất cả sản phẩm"
+    "homeLiving": {
+      "label": "Nhà cửa & Đời sống",
+      "items": {
+        "furniture": "Nội thất",
+        "kitchen": "Nhà bếp",
+        "decor": "Trang trí",
+        "bedding": "Chăn ga, nệm"
+      }
     },
-    "product": {
-        "badgeNew": "Mới",
-        "badgeSale": "-{{percent}}%"
+    "beauty": {
+      "label": "Làm đẹp",
+      "items": {
+        "skincare": "Chăm sóc da",
+        "makeup": "Trang điểm",
+        "fragrance": "Nước hoa"
+      }
     },
-    "trust": {
-        "shipping": { "title": "Giao hàng toàn quốc", "sub": "2-4 ngày làm việc" },
-        "seller": { "title": "Đảm bảo người bán", "sub": "Xác minh & bảo vệ đơn hàng" },
-        "returns": { "title": "Đổi trả trong 7 ngày", "sub": "Miễn phí đổi trả" },
-        "payment": { "title": "Thanh toán linh hoạt", "sub": "COD, chuyển khoản, ví điện tử" }
+    "motherBaby": {
+      "label": "Mẹ & Bé",
+      "items": {
+        "diapers": "Tã, khăn ướt",
+        "formula": "Sữa bột",
+        "toys": "Đồ chơi",
+        "clothes": "Quần áo trẻ em"
+      }
     },
-    "listing": {
-        "breadcrumbHome": "Trang chủ",
-        "resultCount": "sản phẩm từ {{sellers}} gian hàng độc lập",
-        "showing": "Hiển thị {{from}}–{{to}} / {{total}}",
-        "sortLabel": "Sắp xếp theo",
-        "sort": {
-            "relevant": "Liên quan nhất",
-            "newest": "Mới nhất",
-            "priceAsc": "Giá thấp đến cao",
-            "priceDesc": "Giá cao đến thấp"
-        },
-        "viewGrid": "Xem dạng lưới",
-        "viewList": "Xem dạng danh sách",
-        "openFilters": "Bộ lọc",
-        "closeFilters": "Đóng bộ lọc",
-        "filtersTitle": "Bộ lọc",
-        "showResults": "Xem {{count}} sản phẩm",
-        "clearAll": "Xoá hết",
-        "empty": "Không có sản phẩm nào phù hợp với bộ lọc.",
-        "notFound": "Không tìm thấy danh mục",
-        "backHome": "Về trang chủ",
-        "addToWishlist": "Thêm vào yêu thích",
-        "shortDesc": "Được làm thủ công bởi {{seller}}, giao hàng toàn quốc.",
-        "colors": {
-            "black": "Đen",
-            "white": "Trắng",
-            "red": "Đỏ",
-            "green": "Xanh lá",
-            "gold": "Vàng",
-            "brown": "Nâu",
-            "blue": "Xanh dương"
-        },
-        "filters": {
-            "category": "Danh mục",
-            "allInCategory": "Tất cả {{category}}",
-            "priceRange": "Khoảng giá",
-            "priceFrom": "Giá từ",
-            "priceTo": "Giá đến",
-            "sellers": "Người bán",
-            "colors": "Màu sắc",
-            "rating": "Đánh giá",
-            "ratingUp": "trở lên",
-            "status": "Tình trạng",
-            "inStock": "Còn hàng",
-            "onSale": "Đang giảm giá",
-            "isNew": "Hàng mới về",
-            "clearAll": "Xoá tất cả bộ lọc"
-        }
+    "sports": {
+      "label": "Thể thao",
+      "items": {
+        "gym": "Gym, yoga",
+        "football": "Bóng đá",
+        "bicycle": "Xe đạp",
+        "swimming": "Bơi lội"
+      }
     },
-    "footer": {
-        "description": "Nền tảng kết nối người mua với hàng nghìn người bán độc lập, xưởng thủ công và thương hiệu nhỏ trên khắp Việt Nam.",
-        "copyright": "© 2026 Vendora. Bảo lưu mọi quyền.",
-        "langVi": "Tiếng Việt",
-        "langEn": "English",
-        "currency": "VND ₫",
-        "buyer": {
-            "title": "Dành cho người mua",
-            "howToOrder": "Cách đặt hàng",
-            "trackOrder": "Theo dõi đơn hàng",
-            "returnsRefunds": "Đổi trả & hoàn tiền",
-            "paymentMethods": "Phương thức thanh toán"
-        },
-        "seller": {
-            "title": "Dành cho người bán",
-            "openStall": "Mở gian hàng",
-            "feesCommission": "Phí & hoa hồng",
-            "sellerTools": "Công cụ người bán",
-            "successStories": "Câu chuyện thành công"
-        },
-        "about": {
-            "title": "Về Vendora",
-            "introduction": "Giới thiệu",
-            "careers": "Tuyển dụng",
-            "press": "Báo chí",
-            "terms": "Điều khoản dịch vụ"
-        },
-        "support": {
-            "title": "Hỗ trợ",
-            "helpCenter": "Trung tâm trợ giúp",
-            "contact": "Liên hệ",
-            "privacy": "Chính sách bảo mật",
-            "transactionSafety": "An toàn giao dịch"
-        }
+    "booksOffice": {
+      "label": "Sách & Văn phòng phẩm",
+      "items": {
+        "books": "Sách",
+        "stationery": "Văn phòng phẩm",
+        "schoolSupplies": "Đồ dùng học tập"
+      }
     },
-    "detail": {
-        "wishlist": "Yêu thích",
-        "share": "Chia sẻ",
-        "compare": "So sánh",
-        "prevImage": "Ảnh trước",
-        "nextImage": "Ảnh sau",
-        "zoomHint": "Di chuột để phóng to",
-        "sellerLabel": "Gian hàng",
-        "reviewsCount": "{{count}} đánh giá",
-        "sold": "Đã bán {{count}}",
-        "save": "Tiết kiệm {{amount}}",
-        "promoTitle": "Ưu đãi cho sản phẩm này",
-        "vouchers": {
-            "combo": "Giảm thêm 10% cho đơn từ 2 sản phẩm",
-            "freeShip": "Miễn phí vận chuyển cho đơn từ 300.000đ",
-            "momo": "Giảm 30.000đ khi thanh toán qua ví MoMo"
-        },
-        "colorLabel": "Màu sắc:",
-        "sizeLabel": "Kích cỡ:",
-        "sizeGuide": "Hướng dẫn chọn size",
-        "decrease": "Giảm số lượng",
-        "increase": "Tăng số lượng",
-        "lowStock": "Chỉ còn {{count}} sản phẩm",
-        "addToCart": "Thêm vào giỏ",
-        "buyNow": "Mua ngay",
-        "shipEta": "Giao hàng dự kiến 24–26/9",
-        "freeShipThreshold": "Miễn phí từ 300.000đ",
-        "returnFree": "Đổi trả miễn phí trong 7 ngày",
-        "guarantee": "Được Vendora đảm bảo & bảo vệ đơn hàng",
-        "tabs": {
-            "desc": "Mô tả sản phẩm",
-            "specs": "Thông số",
-            "reviews": "Đánh giá ({{count}})",
-            "shipping": "Vận chuyển & đổi trả"
-        },
-        "desc": {
-            "p1": "{{name}} được tuyển chọn và gửi đi từ gian hàng {{seller}} — nơi từng sản phẩm được làm thủ công hoặc tuyển kỹ theo tiêu chí của Vendora: chất liệu thật, gia công tỉ mỉ và bền với thời gian."
-        },
-        "highlights": {
-            "p1": "Chất liệu cao cấp, tuyển chọn kỹ lưỡng từ xưởng của người bán",
-            "p2": "Gia công tỉ mỉ, hoàn thiện thủ công từng chi tiết",
-            "p3": "Đóng gói cẩn thận, kiểm tra trước khi giao",
-            "p4": "Được Vendora đảm bảo & bảo vệ đơn hàng đến khi nhận"
-        },
-        "specs": {
-            "material": "Chất liệu",
-            "origin": "Xuất xứ",
-            "weight": "Trọng lượng",
-            "warranty": "Bảo hành đổi trả",
-            "dimensions": "Kích thước",
-            "model": "Mã sản phẩm"
-        },
-        "reviews": {
-            "r1": "Đóng gói rất cẩn thận, sản phẩm đúng như mô tả. Chất liệu đếm mịn, đường may đều đẹp.",
-            "r2": "Giao hàng nhanh hơn dự kiến, màu sắc chuẩn như hình. Sẽ ủng hộ gian hàng thêm nhiều lần nữa.",
-            "r3": "Sản phẩm đẹp, gia công cẩn thận. Giá hơi cao nhưng xứng đáng với chất lượng nhận được."
-        },
-        "shipping": {
-            "p1": "Đơn hàng được đóng gói và gửi đi trong vòng 24 giờ làm việc kể từ khi xác nhận thanh toán.",
-            "p2": "Miễn phí vận chuyển cho đơn từ 300.000đ; đơn dưới ngưỡng tính phí theo khoảng cách địa lý.",
-            "p3": "Đổi trả miễn phí trong 7 ngày nếu sản phẩm lỗi, sai mô tả hoặc hư hỏng khi vận chuyển."
-        },
-        "colors": {
-            "black": "Đen",
-            "white": "Trắng",
-            "red": "Đỏ đất",
-            "green": "Xanh rêu",
-            "gold": "Vàng đồng",
-            "brown": "Nâu đất",
-            "blue": "Xanh cổ vịt"
-        },
-        "related": "Sản phẩm cùng danh mục",
-        "viewAll": "Xem tất cả {{sub}}"
+    "handmade": {
+      "label": "Đồ handmade",
+      "items": {
+        "decor": "Trang trí handmade",
+        "jewelry": "Trang sức",
+        "gifts": "Quà tặng"
+      }
+    }
+  },
+  "highlight": {
+    "goTo": "Chuyển đến slide {{index}}",
+    "prev": "Slide trước",
+    "next": "Slide sau",
+    "s1": {
+      "kicker": "Hơn 4.200 người bán độc lập",
+      "titleLine1": "Một khu chợ,",
+      "titlePrefix": "muốn ",
+      "titleItalic": "gian hàng riêng",
+      "titleSuffix": ".",
+      "desc": "Vendora quy tụ những người bán nhỏ, xưởng thủ công và thương hiệu độc lập trên khắp Việt Nam — mỗi gian hàng một câu chuyện, một phong cách riêng.",
+      "ctaPrimary": "Khám phá gian hàng",
+      "ctaSecondary": "Mở gian hàng của bạn",
+      "tile1": "Gốm Bát Tràng — Minh Studio",
+      "tile2": "Áo dài cách tân — Lụa & Chi",
+      "tile3": "Cà phê rang thủ công — Vỏi"
     },
-    "cart": {
-        "title": "Giỏ hàng của bạn",
-        "step1": "Giỏ hàng",
-        "step2": "Thanh toán",
-        "step3": "Hoàn tất",
-        "selectAll": "Chọn tất cả",
-        "selectAllWithCount": "Chọn tất cả ({{count}} sản phẩm)",
-        "selectAllSeller": "Chọn tất cả của {{seller}}",
-        "deleteSelected": "Xoá mục đã chọn",
-        "selectItem": "Chọn {{name}}",
-        "outOfStock": "Hết hàng",
-        "tempOutOfStock": "Tạm hết hàng",
-        "variantColor": "Màu:",
-        "variantSize": "Size",
-        "saveForLater": "Lưu vào yêu thích",
-        "removeItem": "Xoá khỏi giỏ",
-        "remainingForFreeShip": "Còn {{amount}} để freeship",
-        "freeShipUnlocked": "Freeship đơn từ 300.000đ",
-        "summaryTitle": "Tóm tắt đơn hàng",
-        "voucherApplied": "đã áp dụng",
-        "voucherPlaceholder": "Nhập mã giảm giá khác",
-        "applyVoucher": "Áp dụng",
-        "removeVoucher": "Gỡ bỏ",
-        "voucherInvalid": "Mã không hợp lệ. Thử COMBO10.",
-        "voucherHint": "Mẹo: dùng mã COMBO10 để giảm 10% cho đơn từ 2 sản phẩm",
-        "subtotal": "Tạm tính ({{count}} sản phẩm)",
-        "discount": "Giảm giá ({{code}})",
-        "shipFee": "Phí vận chuyển",
-        "freeShip": "Miễn phí",
-        "total": "Tổng cộng",
-        "vatIncluded": "Đã bao gồm VAT",
-        "checkout": "Tiến hành thanh toán",
-        "protection": "Đơn hàng được Vendora bảo vệ. Bạn có thể đổi trả miễn phí trong 7 ngày nếu không hài lòng.",
-        "continueShopping": "Tiếp tục mua sắm",
-        "empty": "Giỏ hàng của bạn đang trống.",
-        "suggestions": "Có thể bạn cũng thích",
-        "viewMore": "Xem thêm"
+    "s2": {
+      "kicker": "Tươi mỗi sáng từ chợ đầu mối",
+      "titleLine1": "Về quê,",
+      "titlePrefix": "gọi ",
+      "titleItalic": "món quà đất",
+      "titleSuffix": ".",
+      "desc": "Rau củ sạch, trái cây theo mùa, đặc sản vùng miền được tuyển chọn từ các hợp tác xã và nông trại nhỏ — giao đến tận nhà trong ngày.",
+      "ctaPrimary": "Mua nông sản",
+      "ctaSecondary": "Xem nguồn gốc vùng trồng",
+      "tile1": "Trà Ô Long — đồi Mộc Châu",
+      "tile2": "Cà phê Arabica — Cầu Đất",
+      "tile3": "Nước mắm 12 tháng — Phú Quốc"
     },
-    "checkout": {
-        "addressTitle": "Địa chỉ giao hàng",
-        "defaultAddress": "Mặc định",
-        "addAddress": "Thêm địa chỉ mới",
-        "shipTitle": "Phương thức vận chuyển",
-        "shipStandard": "Giao hàng tiêu chuẩn",
-        "shipStandardDesc": "Nhận hàng trong 2–4 ngày · Đối tác Giao Hàng Nhanh",
-        "shipExpress": "Giao hàng nhanh",
-        "shipExpressDesc": "Nhận hàng trong 24 giờ · Nội thành Hà Nội",
-        "shipPickup": "Nhận tại gian hàng đối tác",
-        "shipPickupDesc": "Miễn phí · Nhận trong 3–5 ngày",
-        "payTitle": "Phương thức thanh toán",
-        "payCod": "Thanh toán khi nhận hàng",
-        "payCodDesc": "Trả tiền mặt cho shipper",
-        "payMomo": "Ví MoMo",
-        "payMomoDesc": "Giảm thêm 30.000đ khi thanh toán qua MoMo",
-        "payVisa": "Thẻ tín dụng / ghi nợ",
-        "payVisaDesc": "Visa, Mastercard, JCB",
-        "payBank": "Chuyển khoản ngân hàng",
-        "payBankDesc": "Chuyển khoản trực tiếp qua tài khoản Vendora",
-        "noteTitle": "Ghi chú cho shipper",
-        "noteHint": "VD: Giao giờ hành chính, gọi trước khi tới, bỏ đồ vào chõng treo ở cổng…",
-        "notePlaceholder": "Nhập ghi chú cho người giao hàng (tối đa 300 ký tự)",
-        "orderTitle": "Đơn hàng của bạn",
-        "placeOrder": "Đặt hàng",
-        "terms": "Bằng việc nhấn \"Đặt hàng\", bạn đồng ý với Điều khoản dịch vụ và Chính sách đổi trả của Vendora.",
-        "emptyTitle": "Không có sản phẩm để thanh toán",
-        "empty": "Hãy chọn ít nhất một sản phẩm trong giỏ hàng.",
-        "backToCart": "Về giỏ hàng"
+    "s3": {
+      "kicker": "Bộ sưu tập lễ hội 2026",
+      "titleLine1": "Đi chơi,",
+      "titlePrefix": "cần ",
+      "titleItalic": "một chút rực rỡ",
+      "titleSuffix": ".",
+      "desc": "Hoa thủ công, nến thơm và phụ kiện làm từ chất liệu tái chế — những món quà nhỏ được chế tác riêng cho mùa lễ hội năm nay.",
+      "ctaPrimary": "Xem bộ sưu tập",
+      "ctaSecondary": "Tìm quà theo ngân sách",
+      "tile1": "Hoa sáp thủ công — Petal House",
+      "tile2": "Nến đúc tay — Nhà Nến",
+      "tile3": "Túi vải in tay — Gánh Hàng"
+    }
+  },
+  "products": {
+    "featuredTitle": "Mới về gian hàng",
+    "saleTitle": "Đang được giảm giá",
+    "viewAll": "Xem tất cả sản phẩm"
+  },
+  "product": {
+    "badgeNew": "Mới",
+    "badgeSale": "-{{percent}}%"
+  },
+  "trust": {
+    "shipping": {
+      "title": "Giao hàng toàn quốc",
+      "sub": "2-4 ngày làm việc"
     },
-    "success": {
-        "kicker": "Đặt hàng thành công",
-        "title": "Cảm ơn bạn đã mua sắm tại Vendora!",
-        "descBefore": "Đơn hàng của bạn đã được ghi nhận và chuyển đến người bán. Bạn sẽ nhận email xác nhận tại",
-        "descAfter": "trong ít phút.",
-        "orderCode": "Mã đơn hàng:",
-        "copyCode": "Sao chép mã",
-        "copied": "Đã sao chép!",
-        "tlPlaced": "Đã đặt hàng",
-        "tlConfirmed": "Đã xác nhận",
-        "tlShipping": "Đang giao",
-        "tlDelivered": "Đã nhận hàng",
-        "qty": "số lượng {{count}}",
-        "subtotal": "Tạm tính",
-        "discount": "Giảm giá (COMBO10)",
-        "total": "Tổng thanh toán",
-        "shipTo": "Giao đến",
-        "payment": "Thanh toán",
-        "eta": "Dự kiến giao: {{date}}",
-        "trackOrder": "Theo dõi đơn hàng",
-        "continueShopping": "Tiếp tục mua sắm",
-        "needHelp": "Cần hỗ trợ với đơn hàng này?",
-        "contactSupport": "Liên hệ chăm sóc khách hàng",
-        "noOrder": "Chưa có đơn hàng nào vừa được đặt."
+    "seller": {
+      "title": "Đảm bảo người bán",
+      "sub": "Xác minh & bảo vệ đơn hàng"
     },
-    "account": {
-        "profile": "Thông tin tài khoản",
-        "addresses": "Địa chỉ giao hàng",
-        "wishlist": "Sản phẩm yêu thích",
-        "vouchers": "Ví voucher",
-        "reviews": "Đánh giá của tôi"
+    "returns": {
+      "title": "Đổi trả trong 7 ngày",
+      "sub": "Miễn phí đổi trả"
     },
-    "tracking": {
-        "myOrders": "Đơn hàng của tôi",
-        "myOrdersTitle": "Đơn hàng của tôi",
-        "tabAll": "Tất cả",
-        "tabPending": "Chờ xác nhận",
-        "tabShipping": "Đang giao",
-        "tabDelivered": "Đã giao",
-        "tabCanceled": "Đã huỷ",
-        "statusPending": "Chờ xác nhận",
-        "statusShipping": "Đang giao",
-        "statusDelivered": "Đã giao",
-        "statusCanceled": "Đã huỷ",
-        "placedOn": "Đặt ngày {{date}}",
-        "itemsCount": "{{count}} sản phẩm",
-        "viewDetail": "Xem chi tiết bên dưới",
-        "orderTitle": "Đơn hàng {{code}}",
-        "placedAt": "Đặt lúc {{time}}, {{date}}",
-        "paymentCod": "Thanh toán {{method}}",
-        "contactSeller": "Liên hệ người bán",
-        "requestCancel": "Yêu cầu huỷ đơn",
-        "viewInvoice": "Xem hoá đơn",
-        "expected": "dự kiến {{eta}}",
-        "carrierPartner": "Đơn vị vận chuyển đối tác của Vendora",
-        "trackingCode": "Mã vận đơn: {{code}}",
-        "step": {
-            "placed": "Đã đặt hàng",
-            "confirmed": "Người bán đã xác nhận",
-            "handed": "Đã giao cho đơn vị vận chuyển",
-            "outForDelivery": "Đang giao đến bạn",
-            "delivered": "Giao hàng thành công",
-            "canceled": "Đơn hàng đã huỷ"
-        },
-        "descPlaced": "Đơn hàng đã được ghi nhận và chờ người bán xác nhận.",
-        "descConfirmed": "Các gian hàng đã xác nhận và đang chuẩn bị hàng.",
-        "descHanded": "Kiện hàng đã rời kho phân loại Cầu Giấy, Hà Nội.",
-        "descOutForDelivery": "Shipper sẽ liên hệ trước khi giao. Bạn có thể theo dõi trực tiếp trên ứng dụng đối tác vận chuyển.",
-        "descDelivered": "Đơn hàng sẽ được đánh dấu hoàn tất sau khi bạn nhận hàng.",
-        "descCanceled": "Người mua huỷ đơn. Số tiền sẽ được hoàn lại trong 1–3 ngày làm việc.",
-        "productsInOrder": "Sản phẩm trong đơn",
-        "qtyShort": "SL {{count}}",
-        "buyAgain": "Mua lại",
-        "shipTo": "Địa chỉ giao hàng",
-        "paymentDetails": "Chi tiết thanh toán",
-        "empty": "Chưa có đơn hàng nào ở mục này.",
-        "notFound": "Không tìm thấy đơn hàng."
+    "payment": {
+      "title": "Thanh toán linh hoạt",
+      "sub": "COD, chuyển khoản, ví điện tử"
+    }
+  },
+  "listing": {
+    "breadcrumbHome": "Trang chủ",
+    "resultCount": "sản phẩm từ {{sellers}} gian hàng độc lập",
+    "showing": "Hiển thị {{from}}–{{to}} / {{total}}",
+    "sortLabel": "Sắp xếp theo",
+    "sort": {
+      "relevant": "Liên quan nhất",
+      "newest": "Mới nhất",
+      "priceAsc": "Giá thấp đến cao",
+      "priceDesc": "Giá cao đến thấp"
     },
-    "welcome": "Xin chào",
-    "home": "Trang chủ",
-    "about": "Giới thiệu",
-    "welcomeToVendora": "Chào mừng đến với Vendora",
-    "vendoraDescription": "Vendora là một nền tảng cho phép người dùng dễ dàng tạo và quản lý các cửa hàng trực tuyến của họ. Nó cung cấp một giao diện thân thiện với người dùng, các mẫu có thể tùy chỉnh, và một loạt tính năng để giúp các doanh nghiệp bán sản phẩm của họ trực tuyến. Với Vendora, người dùng có thể thiết lập cửa hàng của họ, quản lý tồn kho, xử lý thanh toán, và theo dõi đơn hàng tất cả trong một nơi."
+    "viewGrid": "Xem dạng lưới",
+    "viewList": "Xem dạng danh sách",
+    "openFilters": "Bộ lọc",
+    "closeFilters": "Đóng bộ lọc",
+    "filtersTitle": "Bộ lọc",
+    "showResults": "Xem {{count}} sản phẩm",
+    "clearAll": "Xoá hết",
+    "empty": "Không có sản phẩm nào phù hợp với bộ lọc.",
+    "notFound": "Không tìm thấy danh mục",
+    "backHome": "Về trang chủ",
+    "addToWishlist": "Thêm vào yêu thích",
+    "shortDesc": "Được làm thủ công bởi {{seller}}, giao hàng toàn quốc.",
+    "colors": {
+      "black": "Đen",
+      "white": "Trắng",
+      "red": "Đỏ",
+      "green": "Xanh lá",
+      "gold": "Vàng",
+      "brown": "Nâu",
+      "blue": "Xanh dương"
+    },
+    "filters": {
+      "category": "Danh mục",
+      "allInCategory": "Tất cả {{category}}",
+      "priceRange": "Khoảng giá",
+      "priceFrom": "Giá từ",
+      "priceTo": "Giá đến",
+      "sellers": "Người bán",
+      "colors": "Màu sắc",
+      "rating": "Đánh giá",
+      "ratingUp": "trở lên",
+      "status": "Tình trạng",
+      "inStock": "Còn hàng",
+      "onSale": "Đang giảm giá",
+      "isNew": "Hàng mới về",
+      "clearAll": "Xoá tất cả bộ lọc"
+    }
+  },
+  "footer": {
+    "description": "Nền tảng kết nối người mua với hàng nghìn người bán độc lập, xưởng thủ công và thương hiệu nhỏ trên khắp Việt Nam.",
+    "copyright": "© 2026 Vendora. Bảo lưu mọi quyền.",
+    "langVi": "Tiếng Việt",
+    "langEn": "English",
+    "currency": "VND ₫",
+    "buyer": {
+      "title": "Dành cho người mua",
+      "howToOrder": "Cách đặt hàng",
+      "trackOrder": "Theo dõi đơn hàng",
+      "returnsRefunds": "Đổi trả & hoàn tiền",
+      "paymentMethods": "Phương thức thanh toán"
+    },
+    "seller": {
+      "title": "Dành cho người bán",
+      "openStall": "Mở gian hàng",
+      "feesCommission": "Phí & hoa hồng",
+      "sellerTools": "Công cụ người bán",
+      "successStories": "Câu chuyện thành công"
+    },
+    "about": {
+      "title": "Về Vendora",
+      "introduction": "Giới thiệu",
+      "careers": "Tuyển dụng",
+      "press": "Báo chí",
+      "terms": "Điều khoản dịch vụ"
+    },
+    "support": {
+      "title": "Hỗ trợ",
+      "helpCenter": "Trung tâm trợ giúp",
+      "contact": "Liên hệ",
+      "privacy": "Chính sách bảo mật",
+      "transactionSafety": "An toàn giao dịch"
+    }
+  },
+  "detail": {
+    "wishlist": "Yêu thích",
+    "share": "Chia sẻ",
+    "compare": "So sánh",
+    "prevImage": "Ảnh trước",
+    "nextImage": "Ảnh sau",
+    "zoomHint": "Di chuột để phóng to",
+    "sellerLabel": "Gian hàng",
+    "reviewsCount": "{{count}} đánh giá",
+    "sold": "Đã bán {{count}}",
+    "save": "Tiết kiệm {{amount}}",
+    "promoTitle": "Ưu đãi cho sản phẩm này",
+    "vouchers": {
+      "combo": "Giảm thêm 10% cho đơn từ 2 sản phẩm",
+      "freeShip": "Miễn phí vận chuyển cho đơn từ 300.000đ",
+      "momo": "Giảm 30.000đ khi thanh toán qua ví MoMo"
+    },
+    "colorLabel": "Màu sắc:",
+    "sizeLabel": "Kích cỡ:",
+    "sizeGuide": "Hướng dẫn chọn size",
+    "decrease": "Giảm số lượng",
+    "increase": "Tăng số lượng",
+    "lowStock": "Chỉ còn {{count}} sản phẩm",
+    "addToCart": "Thêm vào giỏ",
+    "buyNow": "Mua ngay",
+    "shipEta": "Giao hàng dự kiến 24–26/9",
+    "freeShipThreshold": "Miễn phí từ 300.000đ",
+    "returnFree": "Đổi trả miễn phí trong 7 ngày",
+    "guarantee": "Được Vendora đảm bảo & bảo vệ đơn hàng",
+    "tabs": {
+      "desc": "Mô tả sản phẩm",
+      "specs": "Thông số",
+      "reviews": "Đánh giá ({{count}})",
+      "shipping": "Vận chuyển & đổi trả"
+    },
+    "desc": {
+      "p1": "{{name}} được tuyển chọn và gửi đi từ gian hàng {{seller}} — nơi từng sản phẩm được làm thủ công hoặc tuyển kỹ theo tiêu chí của Vendora: chất liệu thật, gia công tỉ mỉ và bền với thời gian."
+    },
+    "highlights": {
+      "p1": "Chất liệu cao cấp, tuyển chọn kỹ lưỡng từ xưởng của người bán",
+      "p2": "Gia công tỉ mỉ, hoàn thiện thủ công từng chi tiết",
+      "p3": "Đóng gói cẩn thận, kiểm tra trước khi giao",
+      "p4": "Được Vendora đảm bảo & bảo vệ đơn hàng đến khi nhận"
+    },
+    "specs": {
+      "material": "Chất liệu",
+      "origin": "Xuất xứ",
+      "weight": "Trọng lượng",
+      "warranty": "Bảo hành đổi trả",
+      "dimensions": "Kích thước",
+      "model": "Mã sản phẩm"
+    },
+    "reviews": {
+      "r1": "Đóng gói rất cẩn thận, sản phẩm đúng như mô tả. Chất liệu đếm mịn, đường may đều đẹp.",
+      "r2": "Giao hàng nhanh hơn dự kiến, màu sắc chuẩn như hình. Sẽ ủng hộ gian hàng thêm nhiều lần nữa.",
+      "r3": "Sản phẩm đẹp, gia công cẩn thận. Giá hơi cao nhưng xứng đáng với chất lượng nhận được."
+    },
+    "shipping": {
+      "p1": "Đơn hàng được đóng gói và gửi đi trong vòng 24 giờ làm việc kể từ khi xác nhận thanh toán.",
+      "p2": "Miễn phí vận chuyển cho đơn từ 300.000đ; đơn dưới ngưỡng tính phí theo khoảng cách địa lý.",
+      "p3": "Đổi trả miễn phí trong 7 ngày nếu sản phẩm lỗi, sai mô tả hoặc hư hỏng khi vận chuyển."
+    },
+    "colors": {
+      "black": "Đen",
+      "white": "Trắng",
+      "red": "Đỏ đất",
+      "green": "Xanh rêu",
+      "gold": "Vàng đồng",
+      "brown": "Nâu đất",
+      "blue": "Xanh cổ vịt"
+    },
+    "related": "Sản phẩm cùng danh mục",
+    "viewAll": "Xem tất cả {{sub}}"
+  },
+  "cart": {
+    "title": "Giỏ hàng của bạn",
+    "step1": "Giỏ hàng",
+    "step2": "Thanh toán",
+    "step3": "Hoàn tất",
+    "selectAll": "Chọn tất cả",
+    "selectAllWithCount": "Chọn tất cả ({{count}} sản phẩm)",
+    "selectAllSeller": "Chọn tất cả của {{seller}}",
+    "deleteSelected": "Xoá mục đã chọn",
+    "selectItem": "Chọn {{name}}",
+    "outOfStock": "Hết hàng",
+    "tempOutOfStock": "Tạm hết hàng",
+    "variantColor": "Màu:",
+    "variantSize": "Size",
+    "saveForLater": "Lưu vào yêu thích",
+    "removeItem": "Xoá khỏi giỏ",
+    "remainingForFreeShip": "Còn {{amount}} để freeship",
+    "freeShipUnlocked": "Freeship đơn từ 300.000đ",
+    "summaryTitle": "Tóm tắt đơn hàng",
+    "voucherApplied": "đã áp dụng",
+    "voucherPlaceholder": "Nhập mã giảm giá khác",
+    "applyVoucher": "Áp dụng",
+    "removeVoucher": "Gỡ bỏ",
+    "voucherInvalid": "Mã không hợp lệ. Thử COMBO10.",
+    "voucherHint": "Mẹo: dùng mã COMBO10 để giảm 10% cho đơn từ 2 sản phẩm",
+    "subtotal": "Tạm tính ({{count}} sản phẩm)",
+    "discount": "Giảm giá ({{code}})",
+    "shipFee": "Phí vận chuyển",
+    "freeShip": "Miễn phí",
+    "total": "Tổng cộng",
+    "vatIncluded": "Đã bao gồm VAT",
+    "checkout": "Tiến hành thanh toán",
+    "protection": "Đơn hàng được Vendora bảo vệ. Bạn có thể đổi trả miễn phí trong 7 ngày nếu không hài lòng.",
+    "continueShopping": "Tiếp tục mua sắm",
+    "empty": "Giỏ hàng của bạn đang trống.",
+    "suggestions": "Có thể bạn cũng thích",
+    "viewMore": "Xem thêm"
+  },
+  "checkout": {
+    "addressTitle": "Địa chỉ giao hàng",
+    "defaultAddress": "Mặc định",
+    "addAddress": "Thêm địa chỉ mới",
+    "shipTitle": "Phương thức vận chuyển",
+    "shipStandard": "Giao hàng tiêu chuẩn",
+    "shipStandardDesc": "Nhận hàng trong 2–4 ngày · Đối tác Giao Hàng Nhanh",
+    "shipExpress": "Giao hàng nhanh",
+    "shipExpressDesc": "Nhận hàng trong 24 giờ · Nội thành Hà Nội",
+    "shipPickup": "Nhận tại gian hàng đối tác",
+    "shipPickupDesc": "Miễn phí · Nhận trong 3–5 ngày",
+    "payTitle": "Phương thức thanh toán",
+    "payCod": "Thanh toán khi nhận hàng",
+    "payCodDesc": "Trả tiền mặt cho shipper",
+    "payMomo": "Ví MoMo",
+    "payMomoDesc": "Giảm thêm 30.000đ khi thanh toán qua MoMo",
+    "payVisa": "Thẻ tín dụng / ghi nợ",
+    "payVisaDesc": "Visa, Mastercard, JCB",
+    "payBank": "Chuyển khoản ngân hàng",
+    "payBankDesc": "Chuyển khoản trực tiếp qua tài khoản Vendora",
+    "noteTitle": "Ghi chú cho shipper",
+    "noteHint": "VD: Giao giờ hành chính, gọi trước khi tới, bỏ đồ vào chõng treo ở cổng…",
+    "notePlaceholder": "Nhập ghi chú cho người giao hàng (tối đa 300 ký tự)",
+    "orderTitle": "Đơn hàng của bạn",
+    "placeOrder": "Đặt hàng",
+    "terms": "Bằng việc nhấn \"Đặt hàng\", bạn đồng ý với Điều khoản dịch vụ và Chính sách đổi trả của Vendora.",
+    "emptyTitle": "Không có sản phẩm để thanh toán",
+    "empty": "Hãy chọn ít nhất một sản phẩm trong giỏ hàng.",
+    "backToCart": "Về giỏ hàng"
+  },
+  "success": {
+    "kicker": "Đặt hàng thành công",
+    "title": "Cảm ơn bạn đã mua sắm tại Vendora!",
+    "descBefore": "Đơn hàng của bạn đã được ghi nhận và chuyển đến người bán. Bạn sẽ nhận email xác nhận tại",
+    "descAfter": "trong ít phút.",
+    "orderCode": "Mã đơn hàng:",
+    "copyCode": "Sao chép mã",
+    "copied": "Đã sao chép!",
+    "tlPlaced": "Đã đặt hàng",
+    "tlConfirmed": "Đã xác nhận",
+    "tlShipping": "Đang giao",
+    "tlDelivered": "Đã nhận hàng",
+    "qty": "số lượng {{count}}",
+    "subtotal": "Tạm tính",
+    "discount": "Giảm giá (COMBO10)",
+    "total": "Tổng thanh toán",
+    "shipTo": "Giao đến",
+    "payment": "Thanh toán",
+    "eta": "Dự kiến giao: {{date}}",
+    "trackOrder": "Theo dõi đơn hàng",
+    "continueShopping": "Tiếp tục mua sắm",
+    "needHelp": "Cần hỗ trợ với đơn hàng này?",
+    "contactSupport": "Liên hệ chăm sóc khách hàng",
+    "noOrder": "Chưa có đơn hàng nào vừa được đặt."
+  },
+  "account": {
+    "profile": "Thông tin tài khoản",
+    "addresses": "Địa chỉ giao hàng",
+    "wishlist": "Sản phẩm yêu thích",
+    "vouchers": "Ví voucher",
+    "reviews": "Đánh giá của tôi"
+  },
+  "tracking": {
+    "myOrders": "Đơn hàng của tôi",
+    "myOrdersTitle": "Đơn hàng của tôi",
+    "tabAll": "Tất cả",
+    "tabPending": "Chờ xác nhận",
+    "tabShipping": "Đang giao",
+    "tabDelivered": "Đã giao",
+    "tabCanceled": "Đã huỷ",
+    "statusPending": "Chờ xác nhận",
+    "statusShipping": "Đang giao",
+    "statusDelivered": "Đã giao",
+    "statusCanceled": "Đã huỷ",
+    "placedOn": "Đặt ngày {{date}}",
+    "itemsCount": "{{count}} sản phẩm",
+    "viewDetail": "Xem chi tiết bên dưới",
+    "orderTitle": "Đơn hàng {{code}}",
+    "placedAt": "Đặt lúc {{time}}, {{date}}",
+    "paymentCod": "Thanh toán {{method}}",
+    "contactSeller": "Liên hệ người bán",
+    "requestCancel": "Yêu cầu huỷ đơn",
+    "viewInvoice": "Xem hoá đơn",
+    "expected": "dự kiến {{eta}}",
+    "carrierPartner": "Đơn vị vận chuyển đối tác của Vendora",
+    "trackingCode": "Mã vận đơn: {{code}}",
+    "step": {
+      "placed": "Đã đặt hàng",
+      "confirmed": "Người bán đã xác nhận",
+      "handed": "Đã giao cho đơn vị vận chuyển",
+      "outForDelivery": "Đang giao đến bạn",
+      "delivered": "Giao hàng thành công",
+      "canceled": "Đơn hàng đã huỷ"
+    },
+    "descPlaced": "Đơn hàng đã được ghi nhận và chờ người bán xác nhận.",
+    "descConfirmed": "Các gian hàng đã xác nhận và đang chuẩn bị hàng.",
+    "descHanded": "Kiện hàng đã rời kho phân loại Cầu Giấy, Hà Nội.",
+    "descOutForDelivery": "Shipper sẽ liên hệ trước khi giao. Bạn có thể theo dõi trực tiếp trên ứng dụng đối tác vận chuyển.",
+    "descDelivered": "Đơn hàng sẽ được đánh dấu hoàn tất sau khi bạn nhận hàng.",
+    "descCanceled": "Người mua huỷ đơn. Số tiền sẽ được hoàn lại trong 1–3 ngày làm việc.",
+    "productsInOrder": "Sản phẩm trong đơn",
+    "qtyShort": "SL {{count}}",
+    "buyAgain": "Mua lại",
+    "shipTo": "Địa chỉ giao hàng",
+    "paymentDetails": "Chi tiết thanh toán",
+    "empty": "Chưa có đơn hàng nào ở mục này.",
+    "notFound": "Không tìm thấy đơn hàng."
+  },
+  "welcome": "Xin chào",
+  "shop": {
+    "notFound": "Không tìm thấy gian hàng.",
+    "bannerAria": "Nền banner gian hàng",
+    "followBtn": {
+      "follow": "Nhắn tin",
+      "track": "Theo dõi"
+    },
+    "stats": {
+      "rating": "Đánh giá",
+      "followers": "Người theo dõi",
+      "products": "Sản phẩm",
+      "response": "Tỉ lệ phản hồi",
+      "years": "năm",
+      "joined": "Tham gia Vendora"
+    },
+    "tabs": {
+      "products": "Tất cả sản phẩm",
+      "reviews": "Đánh giá ({{count}})",
+      "about": "Giới thiệu"
+    },
+    "promo": {
+      "text": "Giảm {{percent}} cho đơn từ 2 sản phẩm · Mã {{code}} · Miễn phí vận chuyển toàn bộ gian hàng cho đơn từ {{threshold}}",
+      "default": "Miễn phí vận chuyển cho đơn từ {{threshold}}"
+    },
+    "collections": {
+      "aoDai": "Áo dài",
+      "shirt": "Sơ mi lụa",
+      "dress": "Váy lụa",
+      "scarf": "Khăn & phụ kiện"
+    },
+    "showing": "Hiển thị 1–{{to}} / {{total}} sản phẩm",
+    "sort": {
+      "newest": "Mới nhất",
+      "priceAsc": "Giá thấp → cao",
+      "priceDesc": "Giá cao → thấp"
+    },
+    "reviews": {
+      "count": "{{count}} đánh giá",
+      "writeTitle": "Viết đánh giá của bạn",
+      "placeholder": "Chia sẻ trải nghiệm của bạn về gian hàng này…",
+      "submit": "Gửi đánh giá",
+      "loginRequired": "Bạn cần đăng nhập để viết đánh giá.",
+      "loginCta": "Đăng nhập",
+      "tooShort": "Nội dung đánh giá quá ngắn."
+    },
+    "about": {
+      "text": "{{name}} là gian hàng thủ công độc lập tại {{location}}, tham gia Vendora với mong muốn đưa các sản phẩm làm thủ công đến gần hơn với mọi người.",
+      "location": "Địa chỉ",
+      "joined": "Tham gia",
+      "joinedValue": "{{years}} năm trước",
+      "response": "Tỉ lệ phản hồi"
+    }
+  },
+  "auth": {
+    "loginTitle": "Đăng nhập",
+    "loginSubtitle": "Chào mừng bạn quay lại Vendora",
+    "signupTitle": "Tạo tài khoản",
+    "signupSubtitle": "Mua sắm và viết đánh giá chỉ với vài bước",
+    "name": "Họ tên",
+    "namePlaceholder": "Nguyễn Văn A",
+    "email": "Email",
+    "emailPlaceholder": "ban@email.com",
+    "password": "Mật khẩu",
+    "passwordPlaceholder": "Tối thiểu 4 ký tự",
+    "loginSubmit": "Đăng nhập",
+    "signupSubmit": "Tạo tài khoản",
+    "noAccount": "Chưa có tài khoản?",
+    "toSignup": "Đăng ký ngay",
+    "hasAccount": "Đã có tài khoản?",
+    "toLogin": "Đăng nhập ngay",
+    "invalid": "Email không hợp lệ hoặc mật khẩu quá ngắn.",
+    "invalidName": "Vui lòng nhập họ tên.",
+    "terms": "Bằng việc tiếp tục, bạn đồng ý với Điều khoản sử dụng và Chính sách bảo mật của Vendora.",
+    "forgotLink": "Quên mật khẩu?",
+    "forgot": {
+      "title": "Quên mật khẩu",
+      "subtitle": "Nhập email đã đăng ký, chúng tôi sẽ gửi liên kết đặt lại mật khẩu",
+      "submit": "Gửi liên kết đặt lại",
+      "sentTitle": "Kiểm tra email của bạn",
+      "sentDesc": "Chúng tôi đã gửi liên kết đặt lại mật khẩu đến",
+      "sentMockNote": "Bản demo: bấm nút bên dưới để mở trang đặt lại mật khẩu.",
+      "openReset": "Mở trang đặt lại mật khẩu →",
+      "back": "Dùng email khác",
+      "backToLogin": "Quay lại đăng nhập"
+    },
+    "reset": {
+      "title": "Đặt lại mật khẩu",
+      "subtitle": "Tạo mật khẩu mới cho tài khoản của bạn",
+      "newPass": "Mật khẩu mới",
+      "confirm": "Nhập lại mật khẩu mới",
+      "confirmPlaceholder": "Nhập lại mật khẩu mới",
+      "submit": "Đặt lại mật khẩu",
+      "invalid": "Mật khẩu phải có tối thiểu 4 ký tự.",
+      "mismatch": "Mật khẩu nhập lại không khớp.",
+      "invalidToken": "Liên kết đặt lại không hợp lệ hoặc đã hết hạn.",
+      "successTitle": "Đổi mật khẩu thành công",
+      "successDesc": "Bây giờ bạn có thể đăng nhập bằng mật khẩu mới.",
+      "toLogin": "Đăng nhập ngay"
+    }
+  },
+  "home": "Trang chủ",
+  "about": "Giới thiệu",
+  "welcomeToVendora": "Chào mừng đến với Vendora",
+  "vendoraDescription": "Vendora là một nền tảng cho phép người dùng dễ dàng tạo và quản lý các cửa hàng trực tuyến của họ. Nó cung cấp một giao diện thân thiện với người dùng, các mẫu có thể tùy chỉnh, và một loạt tính năng để giúp các doanh nghiệp bán sản phẩm của họ trực tuyến. Với Vendora, người dùng có thể thiết lập cửa hàng của họ, quản lý tồn kho, xử lý thanh toán, và theo dõi đơn hàng tất cả trong một nơi."
 }

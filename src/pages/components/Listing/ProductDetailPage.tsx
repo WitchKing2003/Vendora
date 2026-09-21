@@ -332,7 +332,12 @@ const ProductDetailPage = () => {
             <TextCustom as="p" variant="body-sm" className="flex items-center gap-2">
               <span className="text-ink/60">{t("detail.sellerLabel")}</span>
               <span className="h-1 w-1 rounded-full bg-gold" aria-hidden />
-              <span className="font-medium text-gold-deep">{detail.seller}</span>
+              <Link
+                to={`/shop/${encodeURIComponent(detail.seller)}`}
+                className="font-medium text-gold-deep transition-colors hover:underline"
+              >
+                {detail.seller}
+              </Link>
             </TextCustom>
 
             <TextCustom variant="h2" as="h1" className="mt-2 sm:text-4xl">
