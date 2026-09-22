@@ -9,6 +9,7 @@ import SuccessPage from "../pages/components/Cart/SuccessPage";
 import MyOrdersPage from "../pages/components/Account/MyOrdersPage";
 import OrderTrackingPage from "../pages/components/Account/OrderTrackingPage";
 import AuthPage from "../pages/components/Account/AuthPage";
+import AccountPage from "../pages/components/Account/AccountPage";
 import ShopPage from "../pages/components/Shop/ShopPage";
 
 const AppRoutes = () => {
@@ -22,6 +23,7 @@ const AppRoutes = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/checkout/success" element={<SuccessPage />} />
+        <Route path="/account" element={<AccountPage />} />
         <Route path="/account/orders" element={<MyOrdersPage />} />
         <Route path="/account/orders/:code" element={<OrderTrackingPage />} />
         <Route path="/login" element={<AuthPage mode="login" />} />

@@ -106,6 +106,17 @@ const HeaderPage = () => {
                         fullWidth
                         onClick={() => {
                           setAccountOpen(false);
+                          navigate("/account");
+                        }}
+                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.accountInfo")}
+                      </ButtonCustom>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          setAccountOpen(false);
                           navigate("/account/orders");
                         }}
                         className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
@@ -164,6 +175,17 @@ const HeaderPage = () => {
                         <span className="block text-xs text-ink/50">{t("header.hello")}</span>
                         <span className="block truncate text-sm font-semibold text-ink">{user.name}</span>
                       </div>
+                      <ButtonCustom
+                        variant="raw"
+                        fullWidth
+                        onClick={() => {
+                          setAccountOpen(false);
+                          navigate("/account");
+                        }}
+                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                      >
+                        {t("header.accountInfo")}
+                      </ButtonCustom>
                       <ButtonCustom
                         variant="raw"
                         fullWidth
