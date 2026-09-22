@@ -185,8 +185,8 @@ const HighlightSlider = () => {
               </ButtonCustom>
             </div>
 
-            {/* Controls: dots + prev/next arrows */}
-            <div className="mt-10 flex items-center justify-between gap-4 sm:justify-start sm:gap-8">
+            {/* Controls: dots (left) + prev/next arrows (right) */}
+            <div className="mt-10 flex items-center justify-between gap-4">
               <div className="flex items-center gap-2.5">
                 {SLIDES.map((s, i) => (
                   <ButtonCustom
