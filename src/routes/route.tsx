@@ -11,6 +11,11 @@ import OrderTrackingPage from "../pages/components/Account/OrderTrackingPage";
 import AuthPage from "../pages/components/Account/AuthPage";
 import AccountPage from "../pages/components/Account/AccountPage";
 import ShopPage from "../pages/components/Shop/ShopPage";
+import AdminLayout from "../pages/components/Admin/AdminLayout";
+import AdminCategoriesPage from "../pages/components/Admin/AdminCategoriesPage";
+import AdminProductsPage from "../pages/components/Admin/AdminProductsPage";
+import AdminUsersPage from "../pages/components/Admin/AdminUsersPage";
+import AdminSellerApplicationsPage from "../pages/components/Admin/AdminSellerApplicationsPage";
 
 const AppRoutes = () => {
   return (
@@ -31,6 +36,13 @@ const AppRoutes = () => {
         <Route path="/forgot-password" element={<AuthPage mode="forgot" />} />
         <Route path="/reset-password" element={<AuthPage mode="reset" />} />
         <Route path="/shop/:seller" element={<ShopPage />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminCategoriesPage />} />
+          <Route path="categories" element={<AdminCategoriesPage />} />
+          <Route path="products" element={<AdminProductsPage />} />
+          <Route path="users" element={<AdminUsersPage />} />
+          <Route path="applications" element={<AdminSellerApplicationsPage />} />
+        </Route>
       </Route>
     </Routes>
   );
