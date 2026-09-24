@@ -16,6 +16,12 @@ import AdminCategoriesPage from "../pages/components/Admin/AdminCategoriesPage";
 import AdminProductsPage from "../pages/components/Admin/AdminProductsPage";
 import AdminUsersPage from "../pages/components/Admin/AdminUsersPage";
 import AdminSellerApplicationsPage from "../pages/components/Admin/AdminSellerApplicationsPage";
+import AdminDashboardPage from "../pages/components/Admin/AdminDashboardPage";
+import AdminNotificationsPage from "../pages/components/Admin/AdminNotificationsPage";
+import AdminSlidersPage from "../pages/components/Admin/AdminSlidersPage";
+import AdminHomepageSectionsPage from "../pages/components/Admin/AdminHomepageSectionsPage";
+import AdminAnalyticsPage from "../pages/components/Admin/AdminAnalyticsPage";
+import AdminSettingsPage from "../pages/components/Admin/AdminSettingsPage";
 
 const AppRoutes = () => {
   return (
@@ -36,13 +42,20 @@ const AppRoutes = () => {
         <Route path="/forgot-password" element={<AuthPage mode="forgot" />} />
         <Route path="/reset-password" element={<AuthPage mode="reset" />} />
         <Route path="/shop/:seller" element={<ShopPage />} />
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminCategoriesPage />} />
-          <Route path="categories" element={<AdminCategoriesPage />} />
-          <Route path="products" element={<AdminProductsPage />} />
-          <Route path="users" element={<AdminUsersPage />} />
-          <Route path="applications" element={<AdminSellerApplicationsPage />} />
-        </Route>
+      </Route>
+
+      {/* Admin dashboard runs in its own shell — no storefront header/footer. */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<AdminDashboardPage />} />
+        <Route path="products" element={<AdminProductsPage />} />
+        <Route path="categories" element={<AdminCategoriesPage />} />
+        <Route path="users" element={<AdminUsersPage />} />
+        <Route path="notifications" element={<AdminNotificationsPage />} />
+        <Route path="sliders" element={<AdminSlidersPage />} />
+        <Route path="sections" element={<AdminHomepageSectionsPage />} />
+        <Route path="analytics" element={<AdminAnalyticsPage />} />
+        <Route path="applications" element={<AdminSellerApplicationsPage />} />
+        <Route path="settings" element={<AdminSettingsPage />} />
       </Route>
     </Routes>
   );
