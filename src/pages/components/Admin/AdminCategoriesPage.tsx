@@ -20,6 +20,7 @@ const AdminCategoriesPage = () => {
     addSub,
     updateSub,
     deleteSub,
+    toggleCategory,
   } = useAdminStore();
 
   const [query, setQuery] = useState("");
@@ -143,14 +144,31 @@ const AdminCategoriesPage = () => {
             {/* Category row */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-line bg-paper-2/50 px-5 py-4">
               <div className="min-w-0">
-                <TextCustom as="p" variant="body-sm" className="font-bold text-ink">
-                  {cat.name} <span className="font-normal text-ink/40">· {cat.slug}</span>
-                </TextCustom>
+                <div className="flex flex-wrap items-center gap-2">
+                  <TextCustom as="p" variant="body-sm" className="font-bold text-ink">
+                    {cat.name} <span className="font-normal text-ink/40">· {cat.slug}</span>
+                  </TextCustom>
+                  <span
+                    className={`px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide ${
+                      cat.enabled ? "bg-teal-light/40 text-teal" : "bg-paper-2 text-ink/50"
+                    }`}
+                  >
+                    {cat.enabled ? t("admin.active") : t("admin.categoryDisabled")}
+                  </span>
+                </div>
                 <TextCustom as="p" variant="caption" className="mt-0.5">
                   {cat.nameEn} · {t("admin.subCount", { count: cat.subs.length })} · {t("admin.productCount", { count: productCount(cat) })}
                 </TextCustom>
               </div>
               <div className="ml-auto flex gap-2">
+                <ButtonCustom
+variant="raw"
+                  type="button"
+                  onClick={() => toggleCategory(cat.slug)}
+                  className="border border-line bg-white px-2.5 py-1 text-xs font-bold text-ink transition-colors hover:border-ink"
+                >
+                  {cat.enabled ? t("admin.disable") : t("admin.enable")}
+                </ButtonCustom>
                 <ButtonCustom
 variant="raw"
                   type="button"

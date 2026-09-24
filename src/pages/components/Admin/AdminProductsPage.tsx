@@ -171,7 +171,9 @@ variant="raw"
               <th className="px-4 py-3.5 font-bold">{t("admin.colCategory")}</th>
               <th className="px-4 py-3.5 font-bold">{t("admin.colSeller")}</th>
               <th className="px-4 py-3.5 font-bold">{t("admin.colPrice")}</th>
+              <th className="px-4 py-3.5 font-bold">{t("admin.colStock")}</th>
               <th className="px-4 py-3.5 font-bold">{t("admin.colStatus")}</th>
+              <th className="px-4 py-3.5 font-bold">{t("admin.colPublish")}</th>
               <th className="px-5 py-3.5 text-right font-bold">{t("admin.colActions")}</th>
             </tr>
           </thead>
@@ -218,6 +220,16 @@ variant="raw"
                   )}
                 </td>
                 <td className="px-4 py-3.5">
+                  <TextCustom as="span" variant="body-sm" className={`font-bold ${p.stock <= 10 ? "text-[#8B3A2B]" : "text-ink/70"}`}>
+                    {p.stock}
+                  </TextCustom>
+                  {p.stock <= 10 && (
+                    <TextCustom as="p" variant="caption" className="mt-0.5 !text-[#8B3A2B]">
+                      {t("admin.lowStock")}
+                    </TextCustom>
+                  )}
+                </td>
+                <td className="px-4 py-3.5">
                   <ButtonCustom
 variant="raw"
                     type="button"
@@ -228,6 +240,29 @@ variant="raw"
                   >
                     {p.inStock ? t("admin.inStock") : t("admin.outOfStock")}
                   </ButtonCustom>
+                </td>
+                <td className="px-4 py-3.5">
+                  <select
+                    value={p.status}
+                    onChange={(e) => updateProduct(p.id, { status: e.target.value as AdminProduct["status"] })}
+                    className={`cursor-pointer border-0 px-2.5 py-1 text-xs font-bold outline-none ${
+                      p.status === "active"
+                        ? "bg-teal-light/40 text-teal"
+                        : p.status === "draft"
+                          ? "bg-gold/15 text-gold-deep"
+                          : "bg-paper-2 text-ink/60"
+                    }`}
+                  >
+                    <option value="active" className="bg-white text-ink">
+                      {t("admin.publish.active")}
+                    </option>
+                    <option value="draft" className="bg-white text-ink">
+                      {t("admin.publish.draft")}
+                    </option>
+                    <option value="hidden" className="bg-white text-ink">
+                      {t("admin.publish.hidden")}
+                    </option>
+                  </select>
                 </td>
                 <td className="px-5 py-3.5">
                   <div className="flex justify-end gap-2">
