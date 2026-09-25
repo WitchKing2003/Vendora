@@ -1,110 +1,608 @@
 @import 'tailwindcss';
 
+/* ==========================================================================
+   VENDORA — BRAND FOUNDATION
+   --------------------------------------------------------------------------
+   Identity: a "phiên chợ" — the travelling market fair where artisans set up
+   their stalls. Materials are paper, ink, gold leaf and indigo. Craft shows in
+   the details: hand-stitched frames, woven bamboo lattice, wax-seal badges.
+
+   Signature elements (recognisable without the logo):
+     1. Gold stitched corner brackets  → .brand-frame
+     2. Woven bamboo lattice surface   → .loom
+     3. Dashed gold thread rules       → .stitch-rule / .stitch-x
+     4. Cut corners (woven strip ends) → .strip-cut
+     5. Wax-seal badges                → .seal
+   ========================================================================== */
+
 @theme {
-    --color-ink: #1A1B1E;
-    --color-paper: #F3EFE6;
-    --color-paper-2: #EAE4D4;
-    --color-gold: #C68A2E;
-    --color-gold-deep: #9C6B1F;
-    --color-teal: #2C4A43;
-    --color-teal-light: #9DB8B2;
-    --color-line: #D9D0BC;
+  /* ----------------------------- typography ----------------------------- */
+  --font-display: 'Playfair Display', 'Lora', 'Times New Roman', Georgia, serif;
+  --font-body: 'Be Vietnam Pro', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* Re-point Tailwind's defaults so every existing `font-serif` / base text
+     inherits the brand instead of the OS defaults. */
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
+
+  /* ------------------------------- paper -------------------------------- */
+  --color-paper: #f3efe6;
+  --color-paper-2: #eae4d4;
+  --color-paper-3: #ded5bf;
+  --color-paper-4: #cdc2a8;
+
+  /* -------------------------------- ink --------------------------------- */
+  --color-ink: #1a1b1e;
+  --color-ink-2: #2a2c31;
+  --color-ink-3: #46484f;
+
+  /* ------------------------------- gold --------------------------------- */
+  --color-gold: #c68a2e;
+  --color-gold-deep: #9c6b1f;
+  --color-gold-soft: #e0be7a;
+  --color-gold-mist: #f0e2c4;
+
+  /* -------------------------------- jade -------------------------------- */
+  --color-teal: #2c4a43;
+  --color-teal-deep: #16302b;
+  --color-teal-light: #9db8b2;
+
+  /* ------------------------------ lacquer ------------------------------- */
+  --color-lacquer: #8b3a2b;
+  --color-lacquer-deep: #6b2a1e;
+
+  /* ------------------------------- indigo ------------------------------- */
+  --color-indigo-ink: #3e5c76;
+  --color-indigo-soft: #b9c8d6;
+
+  /* ------------------------------ support ------------------------------- */
+  --color-line: #d9d0bc;
+  --color-line-strong: #c2b79e;
+  --color-success: #2f6f4f;
+  --color-danger: #a3392a;
+  --color-warning: #b4761f;
+
+  /* --------------------------- semantic tokens -------------------------- */
+  --color-surface: #ffffff;
+  --color-surface-sunken: var(--color-paper-2);
+  --color-text: var(--color-ink);
+  --color-text-muted: rgba(26, 27, 30, 0.62);
+  --color-focus: var(--color-gold-deep);
+
+  /* -------------------------------- shape ------------------------------- */
+  /* Deliberately sharp — an editorial, printed-catalogue feel. */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+  --radius-pill: 999px;
+
+  /* ------------------------------- elevation ---------------------------- */
+  /* Warm, ink-tinted shadows so nothing reads as generic grey. */
+  --shadow-hair: 0 1px 0 0 rgba(26, 27, 30, 0.06);
+  --shadow-soft: 0 1px 2px rgba(26, 27, 30, 0.05), 0 10px 26px -14px rgba(26, 27, 30, 0.22);
+  --shadow-lift: 0 2px 4px rgba(26, 27, 30, 0.06), 0 22px 48px -18px rgba(26, 27, 30, 0.34);
+  --shadow-float: 0 34px 70px -28px rgba(26, 27, 30, 0.45);
+  --shadow-seal: 0 8px 20px -8px rgba(198, 138, 46, 0.6);
+
+  /* -------------------------------- motion ------------------------------ */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-swift: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ------------------------------ animations ---------------------------- */
+  --animate-rise: rise 620ms var(--ease-brand) both;
+  --animate-fade: fade 420ms var(--ease-swift) both;
+  --animate-draw: draw 900ms var(--ease-brand) both;
+  --animate-cart-bump: cart-bump 460ms var(--ease-spring);
+  --animate-wish-pop: wish-pop 520ms var(--ease-spring);
+  --animate-seal-in: seal-in 520ms var(--ease-spring) both;
+  --animate-toast-in: toast-in 420ms var(--ease-brand) both;
+  --animate-sheet-in: sheet-in 420ms var(--ease-brand) both;
+  --animate-sheet-up: sheet-up 420ms var(--ease-brand) both;
+  --animate-page-in: page-enter 460ms var(--ease-brand) both;
+  --animate-fly: fly-arc 720ms var(--ease-swift) forwards;
+  --animate-shimmer: shimmer 1600ms linear infinite;
+  --animate-marquee: marquee 34s linear infinite;
+  --animate-thread: thread 2200ms var(--ease-swift) infinite;
+  --animate-pulse-ring: pulse-ring 1600ms var(--ease-swift) infinite;
 }
 
+/* ============================ legacy aliases ============================= */
 :root {
-    --ink: #1A1B1E;
-    --paper: #F3EFE6;
-    --paper-2: #EAE4D4;
-    --gold: #C68A2E;
-    --gold-deep: #9C6B1F;
-    --teal: #2C4A43;
-    --line: #D9D0BC;
-    --white: #FFFFFF;
-    --stall-1: #C68A2E;
-    --stall-2: #2C4A43;
-    --stall-3: #8B3A2B;
-    --stall-4: #5B4636;
-    --stall-5: #3E5C76;
+  --ink: #1a1b1e;
+  --paper: #f3efe6;
+  --paper-2: #eae4d4;
+  --gold: #c68a2e;
+  --gold-deep: #9c6b1f;
+  --teal: #2c4a43;
+  --line: #d9d0bc;
+  --white: #ffffff;
+  --stall-1: #c68a2e;
+  --stall-2: #2c4a43;
+  --stall-3: #8b3a2b;
+  --stall-4: #5b4636;
+  --stall-5: #3e5c76;
+}
+
+/* ================================ base ================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--paper);
+  margin: 0;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Hide horizontal scrollbar on the category strip while keeping it scrollable */
-.no-scrollbar {
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-ink);
+}
+
+/* Warm, quiet scrollbars that match the paper surface */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: var(--radius-pill);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+  background-clip: content-box;
+}
+
+/* Visible, high-contrast keyboard focus everywhere — accessibility first. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* Headings default to the display face (existing markup often sets font-serif
+   explicitly, this catches the rest). */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ============================== layers ================================== */
+@layer utilities {
+  /* ----------------------- signature: stitched frame --------------------- */
+  /* Gold corner brackets that read as hand-stitched and grow on hover. */
+  .brand-frame {
+    position: relative;
+  }
+  .brand-frame::before,
+  .brand-frame::after {
+    content: '';
+    position: absolute;
+    width: var(--frame-size, 14px);
+    height: var(--frame-size, 14px);
+    pointer-events: none;
+    border-color: var(--frame-color, var(--color-gold));
+    transition:
+      width 320ms var(--ease-brand),
+      height 320ms var(--ease-brand),
+      border-color 320ms var(--ease-brand);
+    z-index: 2;
+  }
+  /* Width/style only (never the shorthand) so `border-color` above survives —
+     a shorthand would reset the corner to currentColor and lose the gold. */
+  /* Colour is set per side, not via the shorthand, so nothing upstream can
+     reset the stitch to currentColor — the gold is the whole point. */
+  .brand-frame::before {
+    top: 6px;
+    left: 6px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: var(--frame-color, var(--color-gold));
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-left-color: var(--frame-color, var(--color-gold));
+  }
+  .brand-frame::after {
+    right: 6px;
+    bottom: 6px;
+    border-right-width: 2px;
+    border-right-style: solid;
+    border-right-color: var(--frame-color, var(--color-gold));
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--frame-color, var(--color-gold));
+  }
+  .brand-frame:hover::before,
+  .brand-frame:hover::after,
+  .group:hover .brand-frame::before,
+  .group:hover .brand-frame::after {
+    width: calc(var(--frame-size, 14px) * 2);
+    height: calc(var(--frame-size, 14px) * 2);
+    border-color: var(--frame-color-hover, var(--color-gold-deep));
+  }
+
+  /* Frame anchored outside the element (for cards with their own background) */
+  .brand-frame-out::before {
+    top: 0;
+    left: 0;
+  }
+  .brand-frame-out::after {
+    right: 0;
+    bottom: 0;
+  }
+
+  /* ------------------------- signature: loom lattice --------------------- */
+  /* Woven bamboo surface used behind product visuals and promo bands. */
+  .loom {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        color-mix(in srgb, var(--loom-ink, #1a1b1e) var(--loom-alpha, 6%), transparent) 0 1px,
+        transparent 1px var(--loom-gap, 13px)
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        color-mix(in srgb, var(--loom-ink, #1a1b1e) var(--loom-alpha, 6%), transparent) 0 1px,
+        transparent 1px var(--loom-gap, 13px)
+      );
+  }
+  .loom-light {
+    --loom-ink: #ffffff;
+    --loom-alpha: 9%;
+  }
+  .loom-strong {
+    --loom-alpha: 13%;
+  }
+
+  /* --------------------------- signature: threads ------------------------ */
+  .stitch-x {
+    border-top: 1px dashed color-mix(in srgb, var(--color-gold) 55%, transparent);
+  }
+  .stitch-y {
+    border-left: 1px dashed color-mix(in srgb, var(--color-gold) 55%, transparent);
+  }
+  .stitch-rule {
+    height: 1px;
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--stitch-color, var(--color-line-strong)) 0 5px,
+      transparent 5px 10px
+    );
+  }
+
+  /* ---------------------- signature: cut strip corners ------------------- */
+  /* Cut opposite corners — the end of a woven bamboo strip. */
+  .strip-cut {
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--cut, 10px)) 0,
+      100% var(--cut, 10px),
+      100% 100%,
+      var(--cut, 10px) 100%,
+      0 calc(100% - var(--cut, 10px))
+    );
+  }
+
+  /* ------------------------ signature: wax seal badge -------------------- */
+  .seal {
+    border-radius: 999px;
+    box-shadow: var(--shadow-seal);
+  }
+
+  /* ------------------------------ helpers ------------------------------- */
+  .scrollbar-none {
     scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Fade the edges of horizontal scrollers so overflow is discoverable */
+  .mask-fade-x {
+    mask-image: linear-gradient(90deg, transparent 0, #000 18px, #000 calc(100% - 18px), transparent 100%);
+  }
+
+  .lift {
+    transition:
+      transform 420ms var(--ease-brand),
+      box-shadow 420ms var(--ease-brand);
+  }
+  .lift:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Gradient text used for the wordmark accent and headline highlights */
+  .text-gold-leaf {
+    background: linear-gradient(100deg, #e0be7a 0%, #c68a2e 42%, #9c6b1f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Keep numerals from jittering when counts animate */
+  .nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  /* Themeable surface used by cards across the site */
+  .surface {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+  }
+}
+
+/* ============================== keyframes =============================== */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: var(--draw-length, 120);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cart-bump {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  28% {
+    transform: translateY(-6px) scale(1.16) rotate(-7deg);
+  }
+  58% {
+    transform: translateY(1px) scale(0.94) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+@keyframes wish-pop {
+  0% {
+    transform: scale(1);
+  }
+  32% {
+    transform: scale(1.42);
+  }
+  62% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes seal-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-18deg);
+  }
+  62% {
+    opacity: 1;
+    transform: scale(1.08) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* The branded loader: a gold thread travels the stitching */
+@keyframes thread {
+  0% {
+    stroke-dashoffset: 220;
+    opacity: 0.35;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.35;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* The gold thread that flies from a product to the cart (see FlyToCart) */
+@keyframes fly-arc {
+  from {
+    transform: translate3d(var(--fx), var(--fy), 0) scale(1);
+    opacity: 1;
+  }
+  62% {
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(var(--tx), var(--ty), 0) scale(0.18);
+    opacity: 0;
+  }
+}
+
+/* Page-level transition between routes */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================== legacy bits ============================= */
+/* Kept for existing call sites. */
+.no-scrollbar {
+  scrollbar-width: none;
 }
 .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-/* Product card placeholder texture (diagonal hatch like the mockup) */
+/* Weave-textured placeholder for products without photography yet. */
 .placeholder-diagonal {
-    background-image: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(26, 27, 30, 0.06) 10px,
-        rgba(26, 27, 30, 0.06) 11px
-    );
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(26, 27, 30, 0.06) 10px,
+    rgba(26, 27, 30, 0.06) 11px
+  );
 }
 
-/* Highlight slider: fade + rise when the slide changes */
-@keyframes highlight-slide-enter {
-    from {
-        opacity: 0;
-        transform: translateY(14px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 .highlight-slide-enter {
-    animation: highlight-slide-enter 600ms ease-out both;
+  animation: rise 620ms var(--ease-brand) both;
 }
 
-/* Dual range slider: transparent tracks so the shared gold segment shows through,
-   thumbs remain draggable (classic two-input overlay pattern) */
+.tab-panel-enter {
+  animation: rise 400ms var(--ease-brand) both;
+}
+
+/* Dual range slider: transparent tracks so the shared gold segment shows
+   through, thumbs remain draggable (classic two-input overlay pattern). */
 .range-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    background: transparent;
-    height: 20px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 20px;
 }
 .range-thumb::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    pointer-events: auto;
-    height: 16px;
-    width: 16px;
-    border-radius: 9999px;
-    background: var(--ink);
-    border: 2px solid var(--paper);
-    cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  border: 2px solid var(--color-paper);
+  cursor: pointer;
 }
 .range-thumb::-moz-range-thumb {
-    pointer-events: auto;
-    height: 16px;
-    width: 16px;
-    border-radius: 9999px;
-    background: var(--ink);
-    border: 2px solid var(--paper);
-    cursor: pointer;
+  pointer-events: auto;
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  border: 2px solid var(--color-paper);
+  cursor: pointer;
 }
 
-/* Product detail tab content: fade + rise */
-@keyframes tab-panel-enter {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.tab-panel-enter {
-    animation: tab-panel-enter 400ms ease-out both;
+/* ========================= reduced motion support ======================= */
+/* Accessibility: honour the OS preference. State changes still apply — they
+   just land instantly instead of animating. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .lift:hover {
+    transform: none;
+  }
 }

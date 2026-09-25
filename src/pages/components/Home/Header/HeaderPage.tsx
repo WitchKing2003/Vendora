@@ -1,202 +1,251 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import InputCustom from "../../../../components/InputComponent/InputCustom";
-import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
-import TextCustom from "../../../../components/TextComponent/TextCustom";
-import { cartCount, useCartStore } from "../../../../stores/cartStore";
-import { useAuthStore } from "../../../../stores/authStore";
-import CategoryBar from "./CategoryBar";
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import ButtonCustom from '../../../../components/ButtonComponent/ButtonCustom';
+import Icon from '../../../../components/brand/Icon';
+import Logo from '../../../../components/brand/Logo';
+import { cartCount, useCartStore } from '../../../../stores/cartStore';
+import { useAuthStore } from '../../../../stores/authStore';
+import { useUiStore } from '../../../../stores/uiStore';
+import { useWishlistStore } from '../../../../stores/wishlistStore';
+import AnnouncementBar from './AnnouncementBar';
+import BrandSearch from './BrandSearch';
+import MainNav from './MainNav';
 
+/**
+ * The sticky header.
+ *
+ * Order is fixed and always the same, so the shopper never has to re-learn it:
+ * menu → brand → search → wishlist → cart → account. It compresses on scroll
+ * (the announcement strip folds away, a hairline shadow appears) which hands
+ * roughly 50px of vertical space back to the products.
+ */
 const HeaderPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const [scrolled, setScrolled] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
+
   const cartItems = useCartStore((s) => s.items);
   const cartBadge = cartCount(cartItems);
+  const wishlistCount = useWishlistStore((s) => s.items.length);
+
+  const bumpToken = useUiStore((s) => s.cartBumpToken);
+  const openCart = useUiStore((s) => s.openCart);
+  const setMenuOpen = useUiStore((s) => s.setMenuOpen);
+
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
 
-  return (
-    <header>
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 py-4 lg:gap-x-8 lg:px-6">
-        {/* Logo */}
-        <div className="order-1 shrink-0">
-          <TextCustom as="p" variant="h3" className="italic">
-            Vendor<span className="text-gold">a</span>
-          </TextCustom>
-        </div>
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-        {/* Right actions: cart + account — same row as logo on mobile, right side from sm up */}
-        <div className="order-2 ml-auto flex shrink-0 items-center gap-4 sm:gap-6">
-          {/* Cart button */}
+  // The account sheet never survives a navigation. Adjusted during render —
+  // the documented way to react to a changed value without an effect.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (lastPathname !== pathname) {
+    setLastPathname(pathname);
+    setAccountOpen(false);
+  }
+
+  const iconButton =
+    'relative flex h-11 w-11 items-center justify-center text-ink transition-colors hover:text-gold-deep';
+
+  const accountItems = user
+    ? [
+        { key: 'header.accountInfo', to: '/account', icon: 'user' as const },
+        { key: 'header.myOrders', to: '/account/orders', icon: 'package' as const },
+        { key: 'nav.wishlist', to: '/wishlist', icon: 'heart' as const },
+      ]
+    : [];
+
+  return (
+    <header className="sticky top-0 z-[70]">
+      <AnnouncementBar collapsed={scrolled} />
+
+      <div
+        className={`border-b bg-paper/92 backdrop-blur-md transition-all duration-300 ease-[var(--ease-brand)] ${
+          scrolled ? 'border-line shadow-soft' : 'border-line/60'
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-2.5 sm:gap-3 sm:px-6 lg:gap-6 lg:px-10">
+          {/* Menu — mobile only */}
           <ButtonCustom
             variant="raw"
-            ariaLabel={t("header.cart")}
-            onClick={() => navigate("/cart")}
-            className="flex flex-col items-center gap-1 text-ink transition-colors hover:text-gold-deep"
+            ariaLabel={t('nav.openMenu', 'Mở menu')}
+            onClick={() => setMenuOpen(true)}
+            className={`${iconButton} -ml-2 lg:hidden`}
           >
-            <span className="relative">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.8}
-                className="h-6 w-6"
-              >
-                <circle cx="9" cy="20" r="1.4" />
-                <circle cx="17" cy="20" r="1.4" />
-                <path
-                  d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L20 8H6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              {cartBadge > 0 && (
-                <span className="absolute -right-2 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-gold px-1 text-[10px] font-bold text-white">
-                  {cartBadge}
-                </span>
-              )}
-            </span>
-            <TextCustom variant="caption" className="hidden sm:block">
-              {t("header.cart")}
-            </TextCustom>
+            <Icon name="menu" className="h-5.5 w-5.5" />
           </ButtonCustom>
 
-          {/* Account button with dropdown */}
-          <div className="relative">
+          {/* Brand */}
+          <Link to="/" aria-label="Vendora" className="shrink-0">
+            <Logo
+              withMark
+              markClassName="h-8 w-8 sm:h-9 sm:w-9"
+              className="text-xl sm:text-2xl"
+            />
+          </Link>
+
+          {/* Search */}
+          <div className="mx-auto hidden w-full min-w-0 max-w-2xl md:block">
+            <BrandSearch />
+          </div>
+
+          {/* Actions */}
+          <div className="ml-auto flex shrink-0 items-center gap-0.5 sm:gap-1">
             <ButtonCustom
               variant="raw"
-              ariaLabel={t("header.account")}
-              aria-expanded={accountOpen}
-              onClick={() => setAccountOpen((open) => !open)}
-              className="flex flex-col items-center gap-1 text-ink transition-colors hover:text-gold-deep"
+              ariaLabel={t('header.search.submit', 'Tìm kiếm')}
+              onClick={() => navigate('/search')}
+              className={`${iconButton} md:hidden`}
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.8}
-                className="h-6 w-6"
+              <Icon name="search" className="h-5.5 w-5.5" />
+            </ButtonCustom>
+
+            <Link
+              to="/wishlist"
+              aria-label={t('nav.wishlist', 'Yêu thích')}
+              className={iconButton}
+            >
+              <Icon name="heart" className="h-5.5 w-5.5" />
+              {wishlistCount > 0 && (
+                <span
+                  key={wishlistCount}
+                  className="nums absolute right-1.5 top-1.5 flex h-4 min-w-4 animate-wish-pop items-center justify-center rounded-full bg-lacquer px-1 font-body text-[10px] font-bold text-white"
+                >
+                  {wishlistCount > 9 ? '9+' : wishlistCount}
+                </span>
+              )}
+            </Link>
+
+            {/* Cart — the fly-to-cart landing zone and the bump reaction */}
+            <span data-cart-target className="relative inline-flex">
+              <ButtonCustom
+                variant="raw"
+                ariaLabel={t('header.cart', 'Giỏ hàng')}
+                onClick={openCart}
+                className={iconButton}
               >
-                <circle cx="12" cy="8" r="3.4" />
-                <path d="M5 20c1.5-3.2 4-4.6 7-4.6s5.5 1.4 7 4.6" strokeLinecap="round" />
-              </svg>
-              <TextCustom variant="caption" className="hidden sm:block">
-                {t("header.account")}
-              </TextCustom>
+                <span
+                  key={bumpToken}
+                  className={`inline-flex ${bumpToken > 0 ? 'animate-cart-bump' : ''}`}
+                >
+                  <Icon name="cart" className="h-5.5 w-5.5" />
+                </span>
+                {cartBadge > 0 && (
+                  <span className="nums absolute right-1 top-0.5 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-gold px-1 font-body text-[10px] font-bold text-white">
+                    {cartBadge > 99 ? '99+' : cartBadge}
+                  </span>
+                )}
+              </ButtonCustom>
+            </span>
+
+            <ButtonCustom
+              variant="raw"
+              ariaLabel={t('header.account', 'Tài khoản')}
+              aria-expanded={accountOpen}
+              onClick={() => setAccountOpen((v) => !v)}
+              className={iconButton}
+            >
+              <Icon name="user" className="h-5.5 w-5.5" />
             </ButtonCustom>
 
             {accountOpen && (
               <>
-                {/* Mobile (<sm): full-screen dim + bottom sheet */}
                 <div
-                  className="fixed inset-0 z-40 bg-ink/40 sm:hidden"
+                  className="fixed inset-0 z-[74] bg-ink/40 sm:hidden"
                   onClick={() => setAccountOpen(false)}
                 />
-                <div className="fixed inset-x-3 bottom-3 z-50 rounded-lg border border-line bg-white py-1 shadow-2xl sm:hidden">
-                  {user ? (
-                    <>
-                      <TextCustom as="p" variant="body-sm" className="border-b border-line px-4 py-3">
-                        <span className="block text-xs text-ink/50">{t("header.hello")}</span>
-                        <span className="font-semibold">{user.name}</span>
-                      </TextCustom>
-                      <ButtonCustom
-                        variant="raw"
-                        fullWidth
-                        onClick={() => {
-                          setAccountOpen(false);
-                          navigate("/account");
-                        }}
-                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                      >
-                        {t("header.accountInfo")}
-                      </ButtonCustom>
-                      <ButtonCustom
-                        variant="raw"
-                        fullWidth
-                        onClick={() => {
-                          setAccountOpen(false);
-                          navigate("/account/orders");
-                        }}
-                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                      >
-                        {t("header.myOrders")}
-                      </ButtonCustom>
-                      <ButtonCustom
-                        variant="raw"
-                        fullWidth
-                        onClick={() => {
-                          logout();
-                          setAccountOpen(false);
-                        }}
-                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                      >
-                        {t("header.logout")}
-                      </ButtonCustom>
-                    </>
-                  ) : (
-                    <>
-                      <ButtonCustom
-                        variant="raw"
-                        fullWidth
-                        onClick={() => {
-                          setAccountOpen(false);
-                          navigate("/login");
-                        }}
-                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                      >
-                        {t("header.signIn")}
-                      </ButtonCustom>
-                      <ButtonCustom
-                        variant="raw"
-                        fullWidth
-                        onClick={() => {
-                          setAccountOpen(false);
-                          navigate("/signup");
-                        }}
-                        className="block px-4 py-3.5 text-left text-base font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                      >
-                        {t("header.signUp")}
-                      </ButtonCustom>
-                    </>
-                  )}
+                <div className="fixed inset-x-3 bottom-3 z-[75] animate-sheet-up border border-line bg-surface py-1 shadow-float sm:hidden">
+                  <div className="flex items-center justify-between border-b border-line px-4 py-3">
+                    <span className="font-body text-sm">
+                      {user ? (
+                        <>
+                          <span className="block text-[11px] uppercase tracking-[0.14em] text-ink/45">
+                            {t('header.hello', 'Xin chào,')}
+                          </span>
+                          <span className="font-semibold text-ink">{user.name}</span>
+                        </>
+                      ) : (
+                        <span className="font-semibold text-ink">
+                          {t('header.guest', 'Khách của Vendora')}
+                        </span>
+                      )}
+                    </span>
+                    <ButtonCustom
+                      variant="raw"
+                      ariaLabel={t('nav.closeMenu', 'Đóng')}
+                      onClick={() => setAccountOpen(false)}
+                      className="flex h-9 w-9 items-center justify-center text-ink/45"
+                    >
+                      <Icon name="close" className="h-4 w-4" />
+                    </ButtonCustom>
+                  </div>
+
+                  {(user
+                    ? [...accountItems, { key: 'header.logout', to: null, icon: 'logout' as const }]
+                    : [
+                        { key: 'header.signIn', to: '/login', icon: 'user' as const },
+                        { key: 'header.signUp', to: '/signup', icon: 'thread' as const },
+                      ]
+                  ).map((item) => (
+                    <ButtonCustom
+                      key={item.key}
+                      variant="raw"
+                      fullWidth
+                      onClick={() => {
+                        setAccountOpen(false);
+                        if (item.to) navigate(item.to);
+                        else logout();
+                      }}
+                      className="flex items-center gap-3 px-4 py-3.5 text-left font-body text-[15px] font-normal text-ink transition-colors hover:bg-paper-2"
+                    >
+                      <Icon name={item.icon} className="h-4 w-4 text-ink/45" />
+                      {t(item.key)}
+                    </ButtonCustom>
+                  ))}
                 </div>
 
-                {/* Desktop (sm+): dropdown anchored to the button */}
+                {/* Desktop dropdown */}
                 <div
-                  className="fixed inset-0 z-10 hidden sm:block"
+                  className="fixed inset-0 z-[74] hidden sm:block"
                   onClick={() => setAccountOpen(false)}
                 />
-                <div className="absolute right-0 z-20 mt-2 hidden w-44 divide-y divide-line border border-line bg-white py-1 shadow-lg sm:block">
+                <div className="absolute right-4 top-full z-[75] mt-2 hidden w-64 animate-fade border border-line bg-surface shadow-float sm:block lg:right-10">
+                  <div className="brand-frame relative border-b border-line bg-paper-2/60 px-4 py-3.5">
+                    <span className="font-body text-[11px] font-bold uppercase tracking-[0.16em] text-gold-deep">
+                      {user ? t('header.hello', 'Xin chào,') : t('header.welcome', 'Chào mừng')}
+                    </span>
+                    <p className="mt-0.5 truncate font-display text-lg text-ink">
+                      {user ? user.name : t('header.guestName', 'bạn ghé phiên chợ')}
+                    </p>
+                  </div>
+
                   {user ? (
                     <>
-                      <div className="px-4 py-2.5">
-                        <span className="block text-xs text-ink/50">{t("header.hello")}</span>
-                        <span className="block truncate text-sm font-semibold text-ink">{user.name}</span>
-                      </div>
-                      <ButtonCustom
-                        variant="raw"
-                        fullWidth
-                        onClick={() => {
-                          setAccountOpen(false);
-                          navigate("/account");
-                        }}
-                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                      >
-                        {t("header.accountInfo")}
-                      </ButtonCustom>
-                      <ButtonCustom
-                        variant="raw"
-                        fullWidth
-                        onClick={() => {
-                          setAccountOpen(false);
-                          navigate("/account/orders");
-                        }}
-                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
-                      >
-                        {t("header.myOrders")}
-                      </ButtonCustom>
+                      {accountItems.map((item) => (
+                        <ButtonCustom
+                          key={item.key}
+                          variant="raw"
+                          fullWidth
+                          onClick={() => {
+                            setAccountOpen(false);
+                            navigate(item.to);
+                          }}
+                          className="flex items-center gap-3 border-b border-line/70 px-4 py-2.5 text-left font-body text-sm font-normal text-ink transition-colors hover:bg-paper-2"
+                        >
+                          <Icon name={item.icon} className="h-4 w-4 text-ink/45" />
+                          {t(item.key)}
+                        </ButtonCustom>
+                      ))}
                       <ButtonCustom
                         variant="raw"
                         fullWidth
@@ -204,9 +253,10 @@ const HeaderPage = () => {
                           logout();
                           setAccountOpen(false);
                         }}
-                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                        className="flex items-center gap-3 px-4 py-2.5 text-left font-body text-sm font-normal text-lacquer transition-colors hover:bg-lacquer/5"
                       >
-                        {t("header.logout")}
+                        <Icon name="logout" className="h-4 w-4" />
+                        {t('header.logout', 'Đăng xuất')}
                       </ButtonCustom>
                     </>
                   ) : (
@@ -216,22 +266,24 @@ const HeaderPage = () => {
                         fullWidth
                         onClick={() => {
                           setAccountOpen(false);
-                          navigate("/login");
+                          navigate('/login');
                         }}
-                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                        className="flex items-center gap-3 border-b border-line/70 px-4 py-2.5 text-left font-body text-sm font-normal text-ink transition-colors hover:bg-paper-2"
                       >
-                        {t("header.signIn")}
+                        <Icon name="user" className="h-4 w-4 text-ink/45" />
+                        {t('header.signIn', 'Đăng nhập')}
                       </ButtonCustom>
                       <ButtonCustom
                         variant="raw"
                         fullWidth
                         onClick={() => {
                           setAccountOpen(false);
-                          navigate("/signup");
+                          navigate('/signup');
                         }}
-                        className="block px-4 py-2.5 text-left text-sm font-normal text-ink transition-colors hover:bg-paper-2 hover:text-gold-deep"
+                        className="flex items-center gap-3 px-4 py-2.5 text-left font-body text-sm font-normal text-ink transition-colors hover:bg-paper-2"
                       >
-                        {t("header.signUp")}
+                        <Icon name="thread" className="h-4 w-4 text-ink/45" />
+                        {t('header.signUp', 'Đăng ký')}
                       </ButtonCustom>
                     </>
                   )}
@@ -240,45 +292,9 @@ const HeaderPage = () => {
             )}
           </div>
         </div>
-
-        {/* Custom search bar — own full-width row on mobile, middle of the row from sm up */}
-        <div className="order-3 flex w-full min-w-0 flex-1 basis-full sm:order-none sm:w-auto sm:basis-auto">
-          <form
-            className="flex min-w-0 w-full max-w-2xl items-stretch border border-line bg-white sm:mx-auto"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            {/* Category select */}
-            <select
-              name="category"
-              defaultValue=""
-              className="w-36 shrink-0 border-r border-line bg-white px-2 text-sm text-ink outline-none sm:w-44 sm:px-3"
-            >
-              <option value="">{t("header.search.allCategories")}</option>
-              <option value="fashion">{t("header.search.fashion")}</option>
-              <option value="electronics">{t("header.search.electronics")}</option>
-              <option value="home">{t("header.search.homeLiving")}</option>
-              <option value="beauty">{t("header.search.beauty")}</option>
-            </select>
-
-            {/* Keyword input */}
-            <InputCustom
-              name="keyword"
-              placeholder={t("header.search.placeholder")}
-              className="min-w-0 flex-1 bg-white px-4 py-2.5 text-sm text-ink placeholder:text-gray-400 outline-none"
-            />
-
-            {/* Submit button */}
-            <ButtonCustom
-              type="submit"
-              size="sm"
-              className="shrink-0 self-stretch border-teal bg-ink px-3 hover:bg-teal sm:px-6"
-            >
-              {t("header.search.submit")}
-            </ButtonCustom>
-          </form>
-        </div>
       </div>
-      <CategoryBar />
+
+      <MainNav />
     </header>
   );
 };

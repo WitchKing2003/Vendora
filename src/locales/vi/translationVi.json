@@ -16,7 +16,10 @@
     "hello": "Xin chào,",
     "myOrders": "Đơn hàng của tôi",
     "logout": "Đăng xuất",
-    "accountInfo": "Thông tin tài khoản"
+    "accountInfo": "Thông tin tài khoản",
+    "guest": "Khách của Vendora",
+    "welcome": "Chào mừng",
+    "guestName": "bạn ghé phiên chợ"
   },
   "category": {
     "toggle": "Danh mục",
@@ -137,9 +140,13 @@
     }
   },
   "products": {
-    "featuredTitle": "Mới về gian hàng",
-    "saleTitle": "Đang được giảm giá",
-    "viewAll": "Xem tất cả sản phẩm"
+    "featuredTitle": "Hàng mới về chợ",
+    "saleTitle": "Đang giảm giá",
+    "viewAll": "Xem tất cả sản phẩm",
+    "newKicker": "Vừa lên kệ hôm nay",
+    "featuredDesc": "Những món vừa được các xưởng nhỏ hoàn thiện và đưa lên gian hàng.",
+    "saleKicker": "Gian hàng xả kho",
+    "saleDesc": "Giá đã hạ trực tiếp từ nhà bán — số lượng thường không còn nhiều."
   },
   "product": {
     "badgeNew": "Mới",
@@ -926,5 +933,259 @@
       "inactive": "Không hoạt động"
     },
     "pendingBadge": "mục đang chờ xử lý"
+  },
+  "nav": {
+    "main": "Điều hướng chính",
+    "home": "Trang chủ",
+    "shop": "Cửa hàng",
+    "categories": "Danh mục",
+    "new": "Hàng mới",
+    "sale": "Khuyến mãi",
+    "wishlist": "Yêu thích",
+    "cart": "Giỏ hàng",
+    "search": "Tìm kiếm",
+    "account": "Tài khoản",
+    "menu": "Menu",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu",
+    "mobileTabs": "Điều hướng nhanh",
+    "allCategories": "Toàn bộ danh mục",
+    "browse": "Duyệt theo nhóm",
+    "viewAllIn": "Tất cả {{category}}",
+    "featured": "Nổi bật trong nhóm",
+    "viewProduct": "Xem sản phẩm",
+    "openCategory": "Mở {{category}}",
+    "expandCategory": "Mở rộng"
+  },
+  "announce": {
+    "shipping": "Miễn phí vận chuyển từ 300.000đ",
+    "handmade": "4.200 gian hàng độc lập, đã xác minh",
+    "protection": "Bảo vệ người mua tới khi nhận hàng",
+    "gift": "Gói quà thủ công, miễn phí khi yêu cầu",
+    "dismiss": "Ẩn thông báo"
+  },
+  "common": {
+    "loading": "Đang dệt gian hàng…",
+    "decrease": "Giảm số lượng",
+    "increase": "Tăng số lượng"
+  },
+  "card": {
+    "quickView": "Xem nhanh",
+    "addToCart": "Thêm vào giỏ",
+    "outOfStock": "Hết hàng",
+    "openProduct": "Xem {{name}}"
+  },
+  "feedback": {
+    "addedTitle": "Đã thêm vào giỏ",
+    "viewCart": "Xem giỏ hàng",
+    "notifications": "Thông báo",
+    "dismiss": "Đóng thông báo",
+    "ratingLabel": "Đánh giá {{value}} trên 5",
+    "wishlistAdded": "Đã lưu vào yêu thích",
+    "wishlistRemoved": "Đã bỏ khỏi yêu thích",
+    "wishlistRemove": "Bỏ khỏi yêu thích"
+  },
+  "drawer": {
+    "items": "sản phẩm",
+    "close": "Đóng giỏ hàng",
+    "viewFullCart": "Xem giỏ & thanh toán",
+    "emptyTitle": "Giỏ hàng đang trống",
+    "emptyMessage": "Bắt đầu dệt nên đơn hàng của bạn — ghé thăm các gian hàng trong phiên chợ nhé.",
+    "browse": "Khám phá gian hàng",
+    "removed": "Đã xoá khỏi giỏ",
+    "undo": "Hoàn tác",
+    "savedForLater": "Đã lưu để mua sau"
+  },
+  "quickView": {
+    "close": "Đóng xem nhanh",
+    "viewDetails": "Xem chi tiết sản phẩm",
+    "save": "Tiết kiệm {{percent}}%",
+    "inStock": "Còn {{count}} sản phẩm"
+  },
+  "search": {
+    "suggestions": "Gợi ý",
+    "noSuggestion": "Không có gợi ý cho “{{term}}”.",
+    "searchAnyway": "Vẫn tìm kiếm",
+    "recent": "Tìm gần đây",
+    "clearRecent": "Xoá",
+    "popularLabel": "Tìm nhiều nhất",
+    "browseCategories": "Hoặc duyệt theo danh mục",
+    "popular": {
+      "ceramics": "Gốm thủ công",
+      "silk": "Lụa",
+      "coffee": "Cà phê",
+      "candle": "Nến thơm",
+      "audio": "Tai nghe",
+      "bag": "Túi vải"
+    }
+  },
+  "hero": {
+    "label": "Giới thiệu Vendora",
+    "slides": "Các trang giới thiệu",
+    "seal": "Phiên chợ 2026",
+    "stats": {
+      "stalls": "gian hàng độc lập",
+      "orders": "đơn đã giao",
+      "rating": "điểm đánh giá"
+    }
+  },
+  "homeSections": {
+    "categories": {
+      "kicker": "Bốn khu chợ chính",
+      "title": "Bắt đầu từ đâu cũng được",
+      "desc": "Mỗi khu có màu riêng, người bán riêng và những món đồ không nơi nào có."
+    }
+  },
+  "promo": {
+    "kicker": "Ưu đãi phiên chợ",
+    "title": "Giảm 30% cho đơn từ 2 gian hàng",
+    "desc": "Gom đồ thủ công từ nhiều gian hàng trong cùng một đơn — chúng tôi gộp gói và gửi đi một lần, bạn tiết kiệm cả phí vận chuyển lẫn giá.",
+    "copy": "Sao chép",
+    "cta": "Xem hàng đang giảm",
+    "ends": "Áp dụng đến hết 30/09 cho toàn bộ gian hàng.",
+    "copiedTitle": "Đã sao chép mã giảm giá",
+    "copiedMessage": "Mã {{code}} sẵn sàng dùng ở bước thanh toán.",
+    "panel1": "Đồ thủ công",
+    "panel2": "Nhà cửa",
+    "panel3": "Làm đẹp"
+  },
+  "story": {
+    "kicker": "Về Vendora",
+    "title": "Một phiên chợ, không phải một cái kho.",
+    "p1": "Vendora bắt đầu từ những xưởng nhỏ: một lò gốm ở Bát Tràng, một khung cửi ở Hà Đông, một mẻ cà phê rang tay. Chúng tôi gom họ lại thành một phiên chợ — nơi mỗi gian hàng vẫn giữ được tên, câu chuyện và giá của chính mình.",
+    "p2": "Không có hàng loạt, không có ảnh chụp chung. Mỗi món đồ bạn mua ở đây đều đi ra từ một xưởng cụ thể, do một người cụ thể làm.",
+    "point1": {
+      "title": "Làm bằng tay",
+      "desc": "Mỗi món đều được làm hoặc tuyển chọn tại xưởng mà chúng tôi đã tới và xác minh."
+    },
+    "point2": {
+      "title": "Mua được bảo vệ",
+      "desc": "Tiền của bạn được giữ lại cho tới khi món hàng tới tay và đúng như mô tả."
+    },
+    "point3": {
+      "title": "Một lần giao, nhiều gian hàng",
+      "desc": "Đặt từ nhiều nhà bán khác nhau, chúng tôi gộp chung thành một kiện hàng."
+    }
+  },
+  "personal": {
+    "kicker": "Dành riêng cho bạn",
+    "greeting": "Chào {{time}}, {{name}}.",
+    "greetingGuest": "Chào {{time}} — phiên chợ vẫn đang mở.",
+    "morning": "buổi sáng",
+    "afternoon": "buổi chiều",
+    "evening": "buổi tối",
+    "subtitle": "Bạn đã ghé {{count}} sản phẩm. Tiếp tục từ chỗ dừng nhé?",
+    "openWishlist": "Bộ sưu tập",
+    "openOrders": "Đơn của tôi",
+    "viewed": {
+      "kicker": "Bạn đã xem",
+      "title": "Xem tiếp gần đây",
+      "desc": "Những món bạn vừa ghé qua, vẫn còn ở đây."
+    },
+    "recommended": {
+      "kicker": "Dành cho bạn",
+      "title": "Có thể bạn cũng thích",
+      "desc": "Gợi ý dựa trên những gì bạn đã xem và đã lưu — không dựa trên quảng cáo."
+    },
+    "purchased": {
+      "kicker": "Mua lại",
+      "title": "Những món bạn đã mua",
+      "desc": "Hết hàng rồi? Thêm lại vào giỏ chỉ một chạm."
+    },
+    "wishlist": {
+      "kicker": "Bộ sưu tập của bạn",
+      "count": "{{count}} sản phẩm đang chờ bạn quay lại.",
+      "clear": "Xoá tất cả",
+      "cleared": "Đã xoá danh sách yêu thích",
+      "emptyTitle": "Chưa có gì trong bộ sưu tập",
+      "emptyMessage": "Chạm vào trái tim trên sản phẩm bạn thích — chúng sẽ được giữ ở đây, kể cả khi bạn rời đi.",
+      "startBrowsing": "Bắt đầu dạo chợ"
+    }
+  },
+  "discover": {
+    "all": {
+      "kicker": "Mọi gian hàng, một trang",
+      "title": "Dạo toàn bộ phiên chợ",
+      "desc": "{{count}} sản phẩm từ các nhà bán độc lập trên khắp Việt Nam."
+    },
+    "new": {
+      "kicker": "Vừa cập bến",
+      "title": "Hàng mới về chợ",
+      "desc": "{{count}} món vừa hoàn thiện trong tuần này tại các xưởng nhỏ."
+    },
+    "sale": {
+      "kicker": "Đang giảm",
+      "title": "Gian hàng đang xả kho",
+      "desc": "{{count}} sản phẩm được nhà bán hạ giá trực tiếp."
+    },
+    "search": {
+      "kicker": "Kết quả tìm kiếm",
+      "title": "Kết quả cho “{{q}}”",
+      "desc": "Tìm thấy {{count}} sản phẩm từ các gian hàng độc lập.",
+      "emptyTitle": "Bạn muốn tìm gì?",
+      "emptyDesc": "Nhập từ khoá ở thanh tìm kiếm phía trên, hoặc bắt đầu từ một tìm kiếm phổ biến."
+    },
+    "noResults": "Chưa có gian hàng nào cho “{{q}}”",
+    "noResultsHint": "Thử một từ khoá ngắn hơn, hoặc duyệt theo danh mục xem sao.",
+    "browseAll": "Xem toàn bộ sản phẩm",
+    "collections": {
+      "title": "Bộ sưu tập được chọn",
+      "new": "Hàng mới tuần này",
+      "sale": "Giảm tới 40%",
+      "handmade": "Chỉ đồ thủ công",
+      "decor": "Đồ trang trí nhà"
+    }
+  },
+  "categories": {
+    "kicker": "Toàn bộ phiên chợ",
+    "title": "Tám gian hàng, một phiên chợ",
+    "desc": "Mỗi nhóm hàng là một khu chợ nhỏ với màu sắc và biểu tượng riêng — chọn một khu để bắt đầu dạo.",
+    "productCount": "{{count}} sản phẩm",
+    "enter": "Ghé gian hàng",
+    "intro": {
+      "fashion": "Lụa, linen và vải nhuộm tay được may để mặc bền nhiều năm.",
+      "electronics": "Âm thanh, phụ kiện và đồ công nghệ thường ngày từ các xưởng nhỏ.",
+      "homeLiving": "Gốm, gỗ và vải dệt tay càng dùng càng đẹp.",
+      "beauty": "Công thức thiên nhiên, pha theo mẻ nhỏ, không thử nghiệm trên động vật.",
+      "motherBaby": "Cotton mềm và đồ chơi gỗ an toàn, được các bố mẹ khác chọn.",
+      "sports": "Dụng cụ cho một thói quen vận động bền bỉ.",
+      "booksOffice": "Giấy, mực và đồ dùng bàn làm việc có dấu của người làm.",
+      "handmade": "Nến, hoa sáp, trang sức — làm từng món một."
+    }
+  },
+  "openshop": {
+    "kicker": "Dành cho nhà bán",
+    "title": "Dựng gian hàng của bạn trong phiên chợ Vendora",
+    "desc": "Một gian hàng nhỏ, một câu chuyện riêng. Chúng tôi lo phần vận chuyển, thanh toán và bảo vệ người mua để bạn chỉ cần làm ra sản phẩm thật tốt.",
+    "badge": "Miễn phí 3 tháng đầu",
+    "previewStalls": "Xem các gian hàng đang bán",
+    "formTitle": "Đăng ký mở gian hàng",
+    "formDesc": "Mất khoảng một phút. Chúng tôi sẽ liên hệ lại để duyệt.",
+    "shopName": "Tên gian hàng",
+    "shopNamePlaceholder": "Ví dụ: Gốm Nhà",
+    "email": "Email liên hệ",
+    "category": "Nhóm hàng chính",
+    "story": "Giới thiệu ngắn",
+    "storyPlaceholder": "Bạn làm gì, ở đâu, và điều gì khiến sản phẩm của bạn khác biệt?",
+    "submit": "Gửi đăng ký",
+    "privacy": "Bằng việc gửi, bạn đồng ý để Vendora liên hệ về đơn đăng ký này.",
+    "submittedTitle": "Đã nhận đơn mở gian hàng",
+    "submittedMessage": "Cảm ơn {{name}} — đội ngũ Vendora sẽ liên hệ trong 2 ngày làm việc.",
+    "benefit1": {
+      "title": "Gian hàng của riêng bạn",
+      "desc": "Tên, ảnh và giá do bạn quyết — dựng xong trong vài phút, không cần code."
+    },
+    "benefit2": {
+      "title": "Chúng tôi lo đóng gói",
+      "desc": "Nhận đơn, in nhãn và theo dõi giao hàng từ một bảng điều khiển."
+    },
+    "benefit3": {
+      "title": "Khách đến vì đồ thủ công",
+      "desc": "Tiếp cận lượng người mua của 4.200 nhà bán độc lập đang tìm đồ thủ công."
+    },
+    "benefit4": {
+      "title": "Thanh toán đúng hẹn",
+      "desc": "Tiền được chuyển vào mỗi thứ Sáu, có bảo vệ cho cả hai phía."
+    }
   }
 }

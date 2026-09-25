@@ -9,7 +9,7 @@ import {
   getCategory,
   type ListingProduct,
 } from "../../../data/categoryData";
-import { formatVnd } from "../Home/Products/ProductSection";
+import { formatVnd } from "../../../utils/format";
 import FilterSidebar from "./FilterSidebar";
 import ListingCard from "./ListingCard";
 import Pagination from "./Pagination";

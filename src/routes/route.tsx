@@ -10,7 +10,11 @@ import MyOrdersPage from "../pages/components/Account/MyOrdersPage";
 import OrderTrackingPage from "../pages/components/Account/OrderTrackingPage";
 import AuthPage from "../pages/components/Account/AuthPage";
 import AccountPage from "../pages/components/Account/AccountPage";
+import WishlistPage from "../pages/components/Account/WishlistPage";
 import ShopPage from "../pages/components/Shop/ShopPage";
+import OpenShopPage from "../pages/components/Shop/OpenShopPage";
+import DiscoverPage from "../pages/components/Discover/DiscoverPage";
+import CategoryIndexPage from "../pages/components/Discover/CategoryIndexPage";
 import AdminLayout from "../pages/components/Admin/AdminLayout";
 import AdminCategoriesPage from "../pages/components/Admin/AdminCategoriesPage";
 import AdminProductsPage from "../pages/components/Admin/AdminProductsPage";
@@ -28,19 +32,33 @@ const AppRoutes = () => {
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
+
+        {/* Discovery — one page, four collections */}
+        <Route path="/shop" element={<DiscoverPage mode="all" />} />
+        <Route path="/new" element={<DiscoverPage mode="new" />} />
+        <Route path="/sale" element={<DiscoverPage mode="sale" />} />
+        <Route path="/search" element={<DiscoverPage mode="search" />} />
+        <Route path="/categories" element={<CategoryIndexPage />} />
+
         <Route path="/category/:category" element={<CategoryPage />} />
         <Route path="/category/:category/:sub" element={<CategoryPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
+
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/checkout/success" element={<SuccessPage />} />
+
+        <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/account/orders" element={<MyOrdersPage />} />
         <Route path="/account/orders/:code" element={<OrderTrackingPage />} />
+
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/signup" element={<AuthPage mode="signup" />} />
         <Route path="/forgot-password" element={<AuthPage mode="forgot" />} />
         <Route path="/reset-password" element={<AuthPage mode="reset" />} />
+
+        <Route path="/openshop" element={<OpenShopPage />} />
         <Route path="/shop/:seller" element={<ShopPage />} />
       </Route>
 
