@@ -16,7 +16,10 @@
     "hello": "Hello,",
     "myOrders": "My orders",
     "logout": "Sign out",
-    "accountInfo": "Account information"
+    "accountInfo": "Account information",
+    "guest": "Vendora guest",
+    "welcome": "Welcome",
+    "guestName": "visitor"
   },
   "category": {
     "toggle": "Categories",
@@ -139,7 +142,11 @@
   "products": {
     "featuredTitle": "New in the stalls",
     "saleTitle": "On sale now",
-    "viewAll": "View all products"
+    "viewAll": "View all products",
+    "newKicker": "Fresh on the shelf today",
+    "featuredDesc": "Just finished in small workshops and put up on their stalls.",
+    "saleKicker": "Stalls clearing stock",
+    "saleDesc": "Prices cut directly by the makers — stock rarely lasts long."
   },
   "product": {
     "badgeNew": "New",
@@ -925,5 +932,259 @@
       "inactive": "Inactive Customer"
     },
     "pendingBadge": "items pending"
+  },
+  "nav": {
+    "main": "Main navigation",
+    "home": "Home",
+    "shop": "Shop",
+    "categories": "Categories",
+    "new": "New arrivals",
+    "sale": "Sale",
+    "wishlist": "Wishlist",
+    "cart": "Cart",
+    "search": "Search",
+    "account": "Account",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mobileTabs": "Quick navigation",
+    "allCategories": "All categories",
+    "browse": "Browse by group",
+    "viewAllIn": "All {{category}}",
+    "featured": "Featured in this section",
+    "viewProduct": "View product",
+    "openCategory": "Open {{category}}",
+    "expandCategory": "Expand"
+  },
+  "announce": {
+    "shipping": "Free shipping from 300.000đ",
+    "handmade": "4.200 independent stalls, every one verified",
+    "protection": "Purchase protection until delivery",
+    "gift": "Handmade gift wrapping, free on request",
+    "dismiss": "Hide announcement"
+  },
+  "common": {
+    "loading": "Weaving your stall…",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity"
+  },
+  "card": {
+    "quickView": "Quick view",
+    "addToCart": "Add to cart",
+    "outOfStock": "Sold out",
+    "openProduct": "View {{name}}"
+  },
+  "feedback": {
+    "addedTitle": "Added to cart",
+    "viewCart": "View cart",
+    "notifications": "Notifications",
+    "dismiss": "Dismiss notification",
+    "ratingLabel": "Rated {{value}} out of 5",
+    "wishlistAdded": "Saved to your wishlist",
+    "wishlistRemoved": "Removed from your wishlist",
+    "wishlistRemove": "Remove from wishlist"
+  },
+  "drawer": {
+    "items": "products",
+    "close": "Close cart",
+    "viewFullCart": "View cart & check out",
+    "emptyTitle": "Your cart is empty",
+    "emptyMessage": "Let's start weaving your order — take a stroll through the stalls.",
+    "browse": "Browse the stalls",
+    "removed": "Removed from cart",
+    "undo": "Undo",
+    "savedForLater": "Saved for later"
+  },
+  "quickView": {
+    "close": "Close quick view",
+    "viewDetails": "See full details",
+    "save": "Save {{percent}}%",
+    "inStock": "{{count}} left in stock"
+  },
+  "search": {
+    "suggestions": "Suggestions",
+    "noSuggestion": "No suggestions for “{{term}}”.",
+    "searchAnyway": "Search anyway",
+    "recent": "Recent searches",
+    "clearRecent": "Clear",
+    "popularLabel": "Most searched",
+    "browseCategories": "Or browse by category",
+    "popular": {
+      "ceramics": "Handmade ceramics",
+      "silk": "Silk",
+      "coffee": "Coffee",
+      "candle": "Candles",
+      "audio": "Headphones",
+      "bag": "Bags"
+    }
+  },
+  "hero": {
+    "label": "Introducing Vendora",
+    "slides": "Intro slides",
+    "seal": "Market fair 2026",
+    "stats": {
+      "stalls": "independent stalls",
+      "orders": "orders delivered",
+      "rating": "average rating"
+    }
+  },
+  "homeSections": {
+    "categories": {
+      "kicker": "Four main quarters",
+      "title": "Start anywhere you like",
+      "desc": "Every quarter has its own colour, its own makers, and pieces you will not find anywhere else."
+    }
+  },
+  "promo": {
+    "kicker": "Market fair offer",
+    "title": "30% off orders from two stalls",
+    "desc": "Gather handmade pieces from several stalls into one order — we pack and send them together, so you save on shipping as well as price.",
+    "copy": "Copy",
+    "cta": "See what's on sale",
+    "ends": "Valid until 30 September across every stall.",
+    "copiedTitle": "Discount code copied",
+    "copiedMessage": "Code {{code}} is ready to use at checkout.",
+    "panel1": "Handmade",
+    "panel2": "Home",
+    "panel3": "Beauty"
+  },
+  "story": {
+    "kicker": "About Vendora",
+    "title": "A market fair, not a warehouse.",
+    "p1": "Vendora began in small workshops: a kiln in Bát Tràng, a loom in Hà Đông, a hand-roasted batch of coffee. We gathered them into one market fair — where every stall keeps its own name, its own story and its own price.",
+    "p2": "No mass production, no shared stock photos. Everything you buy here comes out of one specific workshop, made by one specific person.",
+    "point1": {
+      "title": "Made by hand",
+      "desc": "Every piece is made or selected in a workshop we have visited and verified."
+    },
+    "point2": {
+      "title": "Protected purchases",
+      "desc": "Your money is held until the item arrives and matches what was described."
+    },
+    "point3": {
+      "title": "One delivery, many stalls",
+      "desc": "Order from several makers and we consolidate the parcel for you."
+    }
+  },
+  "personal": {
+    "kicker": "Just for you",
+    "greeting": "Good {{time}}, {{name}}.",
+    "greetingGuest": "Good {{time}} — the market is still open.",
+    "morning": "morning",
+    "afternoon": "afternoon",
+    "evening": "evening",
+    "subtitle": "You have visited {{count}} products. Pick up where you left off?",
+    "openWishlist": "Your collection",
+    "openOrders": "My orders",
+    "viewed": {
+      "kicker": "You had a look",
+      "title": "Continue where you stopped",
+      "desc": "The pieces you just visited are still right here."
+    },
+    "recommended": {
+      "kicker": "For you",
+      "title": "You may also like",
+      "desc": "Suggested from what you viewed and saved — not from advertising."
+    },
+    "purchased": {
+      "kicker": "Buy again",
+      "title": "Pieces you have bought",
+      "desc": "Ran out? Add it back to your cart in one tap."
+    },
+    "wishlist": {
+      "kicker": "Your collection",
+      "count": "{{count}} products waiting for you to come back.",
+      "clear": "Clear all",
+      "cleared": "Wishlist cleared",
+      "emptyTitle": "Nothing in your collection yet",
+      "emptyMessage": "Tap the heart on anything you like — we keep it here, even after you leave.",
+      "startBrowsing": "Start browsing"
+    }
+  },
+  "discover": {
+    "all": {
+      "kicker": "Every stall, one page",
+      "title": "Shop the whole market",
+      "desc": "{{count}} products from independent makers across Vietnam."
+    },
+    "new": {
+      "kicker": "Just arrived",
+      "title": "New at the market",
+      "desc": "{{count}} pieces finished this week by small workshops."
+    },
+    "sale": {
+      "kicker": "Reduced now",
+      "title": "Stalls clearing stock",
+      "desc": "{{count}} products cut in price directly by their makers."
+    },
+    "search": {
+      "kicker": "Search results",
+      "title": "Results for “{{q}}”",
+      "desc": "Found {{count}} products from independent stalls.",
+      "emptyTitle": "What are you looking for?",
+      "emptyDesc": "Type into the search bar above, or start from one of the popular searches."
+    },
+    "noResults": "No stalls match “{{q}}” yet",
+    "noResultsHint": "Try a shorter keyword, or browse by category instead.",
+    "browseAll": "See every product",
+    "collections": {
+      "title": "Curated collections",
+      "new": "New arrivals this week",
+      "sale": "Up to 40% off",
+      "handmade": "Handmade only",
+      "decor": "Home decor"
+    }
+  },
+  "categories": {
+    "kicker": "The whole market",
+    "title": "Eight quarters, one market fair",
+    "desc": "Each group of goods is a small market of its own, with its own colour and glyph — pick a quarter and start wandering.",
+    "productCount": "{{count}} products",
+    "enter": "Visit the stall",
+    "intro": {
+      "fashion": "Silk, linen and hand-dyed cloth made to be worn for years.",
+      "electronics": "Audio, accessories and everyday tech from small workshops.",
+      "homeLiving": "Ceramics, wood and woven textiles that quietly last.",
+      "beauty": "Natural formulas, mixed in small batches and never tested on animals.",
+      "motherBaby": "Soft cotton and safe wooden toys, chosen by other parents.",
+      "sports": "Gear for a daily routine that sticks.",
+      "booksOffice": "Paper, ink and desk objects with a maker's mark.",
+      "handmade": "Candles, dried flowers, jewellery — one piece at a time."
+    }
+  },
+  "openshop": {
+    "kicker": "For sellers",
+    "title": "Set up your stall at the Vendora market fair",
+    "desc": "One small stall, one story of your own. We handle shipping, payments and buyer protection so you can concentrate on making things well.",
+    "badge": "First 3 months free",
+    "previewStalls": "See the stalls already trading",
+    "formTitle": "Apply to open a stall",
+    "formDesc": "It takes about a minute. We'll get back to you to review it.",
+    "shopName": "Stall name",
+    "shopNamePlaceholder": "e.g. Gốm Nhà",
+    "email": "Contact email",
+    "category": "Main goods group",
+    "story": "Short introduction",
+    "storyPlaceholder": "What do you make, where, and what makes it different?",
+    "submit": "Send application",
+    "privacy": "By submitting you agree that Vendora may contact you about this application.",
+    "submittedTitle": "Application received",
+    "submittedMessage": "Thank you {{name}} — the Vendora team will be in touch within 2 working days.",
+    "benefit1": {
+      "title": "Your own stallfront",
+      "desc": "Your name, your photos, your prices — set up in minutes, no code."
+    },
+    "benefit2": {
+      "title": "We handle packing",
+      "desc": "Collect orders, print labels and track deliveries from one dashboard."
+    },
+    "benefit3": {
+      "title": "Buyers who came for handmade",
+      "desc": "Reach 4.200 independent makers' worth of shoppers already looking for craft."
+    },
+    "benefit4": {
+      "title": "Paid on time",
+      "desc": "Payouts leave every Friday, with buyer protection on both sides."
+    }
   }
 }

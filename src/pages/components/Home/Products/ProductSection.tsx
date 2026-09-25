@@ -1,94 +1,40 @@
-import { useTranslation } from "react-i18next";
-import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
-import TextCustom from "../../../../components/TextComponent/TextCustom";
-
-export interface Product {
-  id: string;
-  seller: string;
-  name: string;
-  price: number;
-  oldPrice?: number;
-  badge?: "new" | "sale";
-  color: string;
-}
-
-export const formatVnd = (n: number) =>
-  n.toLocaleString("vi-VN").replace(/,/g, ".") + "\u00a0\u0111";
-
-const ProductCard = ({ product }: { product: Product }) => {
-  const { t } = useTranslation();
-
-  return (
-    <div className="group cursor-pointer">
-      {/* Image area */}
-      <div
-        className="relative aspect-square overflow-hidden"
-        style={{ backgroundColor: product.color }}
-      >
-        {/* Diagonal placeholder texture like the mockup */}
-        <div className="placeholder-diagonal absolute inset-6 opacity-40" />
-
-        {product.badge && (
-          <span
-            className={`absolute left-3 top-3 px-2.5 py-1 text-xs font-bold text-white ${
-              product.badge === "new" ? "bg-gold" : "bg-gold-deep"
-            }`}
-          >
-            {product.badge === "new"
-              ? t("product.badgeNew")
-              : t("product.badgeSale", {
-                  percent: Math.round(
-                    (1 - product.price / (product.oldPrice ?? product.price)) * 100
-                  ),
-                })}
-          </span>
-        )}
-      </div>
-
-      {/* Info */}
-      <TextCustom as="p" variant="caption" className="mt-3 text-sm">{product.seller}</TextCustom>
-      <TextCustom variant="card-title" className="mt-0.5">
-        {product.name}
-      </TextCustom>
-      <div className="mt-1 flex items-baseline gap-2">
-        <TextCustom variant="price-sm">{formatVnd(product.price)}</TextCustom>
-        {product.oldPrice && (
-          <TextCustom variant="price-old-sm">{formatVnd(product.oldPrice)}</TextCustom>
-        )}
-      </div>
-    </div>
-  );
-};
+import { useTranslation } from 'react-i18next';
+import ProductRail from '../../../../components/product/ProductRail';
+import type { SnapshotSource } from '../../../../types/product';
 
 interface ProductSectionProps {
+  /** i18n keys, so every consumer keeps its own copy. */
+  kickerKey?: string;
   titleKey: string;
   viewAllKey: string;
-  products: Product[];
+  viewAllTo?: string;
+  products: SnapshotSource[];
+  id?: string;
 }
 
-const ProductSection = ({ titleKey, viewAllKey, products }: ProductSectionProps) => {
+/**
+ * A homepage product section — now just the shared rail with i18n wired up,
+ * so a product looks and behaves identically here, in a search result and in
+ * the wishlist.
+ */
+const ProductSection = ({
+  kickerKey,
+  titleKey,
+  viewAllKey,
+  viewAllTo,
+  products,
+  id,
+}: ProductSectionProps) => {
   const { t } = useTranslation();
-
   return (
-    <section className="bg-paper">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-10">
-        <div className="flex items-end justify-between gap-4">
-          <TextCustom variant="h2">{t(titleKey)}</TextCustom>
-          <ButtonCustom
-            variant="raw"
-            className="shrink-0 text-sm font-semibold text-ink underline decoration-ink underline-offset-8 transition-colors hover:text-gold-deep"
-          >
-            {t(viewAllKey)}
-          </ButtonCustom>
-        </div>
-
-        <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4">
-          {products.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <ProductRail
+      id={id ?? titleKey}
+      kicker={kickerKey ? t(kickerKey) : undefined}
+      title={t(titleKey)}
+      products={products}
+      viewAllTo={viewAllTo}
+      viewAllLabel={t(viewAllKey)}
+    />
   );
 };
 

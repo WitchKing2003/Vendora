@@ -1,16 +1,19 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
-import { useNavigate } from "react-router-dom";
-import { useCartStore } from "../../../stores/cartStore";
+import Icon from "../../../components/brand/Icon";
+import { useHistoryStore } from "../../../stores/historyStore";
+import { useWishlistStore } from "../../../stores/wishlistStore";
+import { useToastStore } from "../../../stores/toastStore";
+import useAddToCart from "../../../hooks/useAddToCart";
 import {
   getCategory,
   getProductDetail,
   getRelatedProducts,
 } from "../../../data/categoryData";
-import { formatVnd } from "../Home/Products/ProductSection";
+import { formatVnd } from "../../../utils/format";
 import ListingCard from "./ListingCard";
 
 /* ------------------------------ icons ------------------------------ */
@@ -53,14 +56,6 @@ const ChevronIcon = ({ dir }: { dir: "left" | "right" }) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
-);
-
-const CartIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-    <circle cx="9" cy="20" r="1.6" />
-    <circle cx="17" cy="20" r="1.6" />
-    <path d="M2 3h3l2.6 12.4a1 1 0 0 0 1 .6h8.7a1 1 0 0 0 1-.7L21 8H6" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -116,18 +111,44 @@ const REVIEW_AUTHORS = ["Nguyễn Thu Hà", "Trần Minh Quân", "Lê Phương T
 
 const ProductDetailPage = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { id } = useParams();
   const detail = useMemo(() => getProductDetail(id), [id]);
   const related = useMemo(() => (detail ? getRelatedProducts(detail, 4) : []), [detail]);
-  const addToCart = useCartStore((s) => s.addItem);
+  // The single branded add-to-cart path: swatch flies, cart reacts, toast confirms.
+  const addToCart = useAddToCart();
+  const pushViewed = useHistoryStore((s) => s.pushViewed);
+  const toggleWishlist = useWishlistStore((s) => s.toggle);
+  const wishlisted = useWishlistStore((s) =>
+    detail ? s.items.some((i) => i.id === detail.id) : false
+  );
+  const pushToast = useToastStore((s) => s.push);
 
-  const [liked, setLiked] = useState(false);
+  const galleryRef = useRef<HTMLDivElement>(null);
   const [comparing, setComparing] = useState(false);
   const [colorIdx, setColorIdx] = useState(0);
   const [sizeIdx, setSizeIdx] = useState<number | null>(null);
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<TabKey>("desc");
+
+  // Personalisation: remember the visit so the homepage can offer to continue.
+  useEffect(() => {
+    if (!detail) return;
+    pushViewed({
+      id: detail.id,
+      name: detail.name,
+      seller: detail.seller,
+      price: detail.price,
+      oldPrice: detail.oldPrice,
+      color: detail.color,
+      colorHex: detail.colorHex,
+      rating: detail.rating,
+      reviews: detail.reviews,
+      badge: detail.badge,
+      subSlug: detail.subSlug,
+      categorySlug: detail.slug,
+    });
+  }, [detail, pushViewed]);
+
   if (!detail) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-10">
@@ -161,7 +182,7 @@ const ProductDetailPage = () => {
 
   const selectedColor = detail.variantColors[colorIdx] ?? detail.variantColors[0];
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (buyNow = false) => {
     if (!detail) return;
     addToCart({
       productId: detail.id,
@@ -175,8 +196,37 @@ const ProductDetailPage = () => {
       qty,
       stock: detail.stock,
       inStock: true,
+      origin: galleryRef.current,
+      swatch: detail.color,
+      // "Buy now" also slides the cart drawer open, so the next step is visible.
+      openDrawer: buyNow,
     });
-    navigate("/cart");
+  };
+
+  const handleWishlist = () => {
+    const added = toggleWishlist({
+      id: detail.id,
+      name: detail.name,
+      seller: detail.seller,
+      price: detail.price,
+      oldPrice: detail.oldPrice,
+      color: detail.color,
+      colorHex: detail.colorHex,
+      rating: detail.rating,
+      reviews: detail.reviews,
+      badge: detail.badge,
+      subSlug: detail.subSlug,
+      categorySlug: detail.slug,
+    });
+    pushToast({
+      tone: added ? "success" : "info",
+      title: added
+        ? t('feedback.wishlistAdded', 'Đã lưu vào yêu thích')
+        : t('feedback.wishlistRemoved', 'Đã bỏ khỏi yêu thích'),
+      message: detail.name,
+      icon: "heart",
+      duration: 2600,
+    });
   };
 
   const thumbs = detail.variantColors;
@@ -219,14 +269,14 @@ const ProductDetailPage = () => {
             <div className="hidden flex-col gap-3 md:flex">
               <ButtonCustom
                 variant="raw"
-                aria-pressed={liked}
+                aria-pressed={wishlisted}
                 ariaLabel={t("detail.wishlist")}
-                onClick={() => setLiked((v) => !v)}
-                className={`flex h-12 w-12 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-ink ${
-                  liked ? "border-[#8B3A2B]/40" : ""
+                onClick={handleWishlist}
+                className={`flex h-12 w-12 items-center justify-center border bg-white transition-colors hover:border-ink ${
+                  wishlisted ? "border-lacquer text-lacquer" : "border-line text-ink"
                 }`}
               >
-                <HeartIcon filled={liked} />
+                <HeartIcon filled={wishlisted} />
               </ButtonCustom>
               <ButtonCustom
                 variant="raw"
@@ -258,7 +308,9 @@ const ProductDetailPage = () => {
             {/* Gallery */}
             <div className="min-w-0 flex-1">
               <div
-                className="relative aspect-square w-full overflow-hidden"
+                ref={galleryRef}
+                data-fly-origin
+                className="brand-frame relative aspect-square w-full overflow-hidden border border-line"
                 style={{ backgroundColor: detail.color }}
               >
                 <div className="placeholder-diagonal absolute inset-16 opacity-40" />
@@ -493,17 +545,18 @@ const ProductDetailPage = () => {
               <ButtonCustom
                 variant="outline"
                 size="lg"
-                icon={<CartIcon />}
-                className="flex-1 py-4"
-                onClick={handleAddToCart}
+                onClick={() => handleAddToCart(false)}
+                className="flex-1 rounded-none py-4"
+                icon={<Icon name="cart" className="h-4 w-4" />}
               >
                 {t("detail.addToCart")}
               </ButtonCustom>
               <ButtonCustom
                 variant="primary"
                 size="lg"
-                className="flex-1 py-4"
-                onClick={handleAddToCart}
+                className="flex-1 rounded-none py-4"
+                onClick={() => handleAddToCart(true)}
+                icon={<Icon name="arrowRight" className="h-4 w-4" />}
               >
                 {t("detail.buyNow")}
               </ButtonCustom>

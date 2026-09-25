@@ -1,5 +1,5 @@
 // TODO: replace with API data later — everything here is deterministic mock data
-import type { Product } from "../pages/components/Home/Products/ProductSection";
+import type { SnapshotSource } from "../types/product";
 
 export interface SubDef {
   slug: string;
@@ -12,7 +12,7 @@ export interface CategoryDef {
   subs: SubDef[];
 }
 
-export interface ListingProduct extends Product {
+export interface ListingProduct extends SnapshotSource {
   rating: number;
   reviews: number;
   colorHex: string;

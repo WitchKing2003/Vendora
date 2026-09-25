@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
 import { PRODUCTS_BY_CATEGORY } from "../../../data/categoryData";
-import { formatVnd } from "../Home/Products/ProductSection";
+import { formatVnd } from "../../../utils/format";
 import {
   cartTotals,
   remainingForFreeShip,
