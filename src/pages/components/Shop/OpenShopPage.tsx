@@ -59,7 +59,7 @@ const OpenShopPage = () => {
           aria-hidden
           className="absolute -right-24 -top-24 h-72 w-72 rotate-45 border border-gold/20"
         />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:px-10 lg:py-20">
+        <div className="relative mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 sm:py-12 lg:grid-cols-[1.1fr_1fr] lg:px-10 lg:py-14">
           <div>
             <Kicker tone="light">{t('openshop.kicker', 'Dành cho nhà bán')}</Kicker>
             <h1 className="mt-4 max-w-xl font-display text-3xl leading-[1.08] tracking-[-0.02em] sm:text-5xl">
@@ -161,7 +161,6 @@ const OpenShopPage = () => {
                 size="lg"
                 fullWidth
                 disabled={!canSubmit}
-                className="rounded-none"
               >
                 {t('openshop.submit', 'Gửi đăng ký')}
               </ButtonCustom>
@@ -178,7 +177,7 @@ const OpenShopPage = () => {
       </section>
 
       {/* Benefits */}
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-10">
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
         <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
           {BENEFITS.map((b, i) => (
             <div key={b.key} className="brand-frame relative border border-line bg-surface p-5">

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
+import Icon from "../../../components/brand/Icon";
 import TextCustom from "../../../components/TextComponent/TextCustom";
 import InputCustom from "../../../components/InputComponent/InputCustom";
 import { useAuthStore } from "../../../stores/authStore";
@@ -263,7 +264,13 @@ const AuthPage = ({ mode }: { mode: AuthMode }) => {
                     </TextCustom>
                   )}
 
-                  <ButtonCustom type="submit" variant="primary" fullWidth className="py-3.5">
+                  <ButtonCustom
+                    type="submit"
+                    variant="primary"
+                    fullWidth
+                    className="py-3.5"
+                    icon={<Icon name="arrowRight" className="h-4 w-4" />}
+                  >
                     {mode === "login"
                       ? t("auth.loginSubmit")
                       : mode === "signup"

@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import ButtonCustom from "../../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../../components/TextComponent/TextCustom";
+import PaymentMarks from "../../../../components/ui/PaymentMarks";
 
 interface FooterColumn {
   titleKey: string;
@@ -75,8 +76,6 @@ const SOCIALS = [
   },
 ];
 
-const PAYMENTS = ["VISA", "MOMO", "ZaloPay", "COD"];
-
 const FooterPage = () => {
   const { t, i18n } = useTranslation();
 
@@ -86,7 +85,7 @@ const FooterPage = () => {
 
   return (
     <footer className="border-t-4 border-gold bg-ink text-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
         {/* Row 1 — brand */}
         <div>
           <TextCustom as="p" variant="h3" color="!text-white" className="font-semibold">
@@ -95,7 +94,7 @@ const FooterPage = () => {
           <TextCustom as="p" variant="body-sm" color="!text-white/70" className="mt-4 max-w-md">
             {t("footer.description")}
           </TextCustom>
-          <div className="mt-6 flex gap-3">
+          <div className="mt-5 flex gap-2.5">
             {SOCIALS.map((s) => (
               <ButtonCustom
                 key={s.name}
@@ -111,13 +110,13 @@ const FooterPage = () => {
 
         {/* Row 2 — link groups: vertical stack on phones, 2 across on sm,
             all 4 lying horizontally on lg+ */}
-        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="mt-9 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {COLUMNS.map((col) => (
             <div key={col.titleKey}>
               <TextCustom variant="label" color="!text-white" className="text-sm">
                 {t(col.titleKey)}
               </TextCustom>
-              <ul className="mt-5 space-y-3.5">
+              <ul className="mt-4 space-y-3">
                 {col.linkKeys.map((key) => (
                   <li key={key}>
                     <ButtonCustom
@@ -134,21 +133,12 @@ const FooterPage = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center gap-5 border-t border-white/15 pt-6 lg:mt-14 lg:flex-row lg:justify-between">
+        <div className="mt-9 flex flex-col items-center gap-5 border-t border-white/15 pt-5 lg:mt-10 lg:flex-row lg:justify-between">
           <TextCustom as="p" variant="body-sm" color="!text-white/70">
             {t("footer.copyright")}
           </TextCustom>
 
-          <div className="flex gap-2.5">
-            {PAYMENTS.map((p) => (
-              <span
-                key={p}
-                className="border border-white/25 px-3 py-1.5 text-xs font-semibold text-white/80"
-              >
-                {p}
-              </span>
-            ))}
-          </div>
+          <PaymentMarks tone="onDark" />
 
           <div className="flex items-center gap-6">
             <div className="flex gap-4 text-sm">

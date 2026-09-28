@@ -9,10 +9,12 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   raw: "",
 };
 
+/* Three sizes, one rhythm: 34 / 40 / 46px tall. Radius comes from the base
+   layer (every control is --radius-lg), so variants never have to repeat it. */
 const SIZE_CLASSES: Record<ButtonSize, string> = {
-  sm: "px-3 py-1.5 text-sm",
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-7 py-3.5 text-base",
+  sm: "px-3 py-1.5 text-[13px]",
+  md: "px-4 py-2 text-sm",
+  lg: "px-6 py-3 text-[15px]",
 };
 
 export default function ButtonCustom({

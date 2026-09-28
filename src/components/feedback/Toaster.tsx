@@ -35,7 +35,7 @@ const Toaster = () => {
           <div
             key={toast.id}
             role="status"
-            className="pointer-events-auto animate-toast-in overflow-hidden border border-line bg-surface shadow-lift"
+            className="pointer-events-auto animate-toast-in overflow-hidden rounded-xl border border-line bg-surface shadow-lift"
           >
             {/* Stitched gold edge — the brand's signature on every notice */}
             <div className="flex">

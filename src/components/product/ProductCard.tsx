@@ -113,7 +113,7 @@ const ProductCard = ({
     <div
       ref={setVisual}
       data-fly-origin
-      className={`brand-frame relative shrink-0 overflow-hidden border border-line bg-paper-2 ${
+      className={`brand-frame relative shrink-0 overflow-hidden rounded-xl border border-line bg-paper-2 ${
         layout === 'grid' ? 'aspect-square w-full' : compact ? 'aspect-square w-28' : 'aspect-square w-36 sm:w-48'
       }`}
     >
@@ -237,7 +237,7 @@ const ProductCard = ({
 
   if (layout === 'list') {
     return (
-      <article className={`group relative flex gap-4 border border-line bg-surface p-3 transition-colors hover:border-ink/40 sm:gap-5 sm:p-4 ${className}`}>
+      <article className={`group relative flex gap-4 rounded-xl border border-line bg-surface p-3 transition-colors hover:border-ink/40 sm:gap-5 sm:p-4 ${className}`}>
         {visualBlock}
 
         <div className="flex min-w-0 flex-1 flex-col">
@@ -284,7 +284,6 @@ const ProductCard = ({
                   variant="outline"
                   size="sm"
                   onClick={() => openQuickView(product.id)}
-                  className="rounded-none"
                   icon={<Icon name="eye" className="h-3.5 w-3.5" />}
                 >
                   {t('card.quickView', 'Xem nhanh')}
@@ -293,7 +292,6 @@ const ProductCard = ({
                   variant="primary"
                   size="sm"
                   onClick={handleAdd}
-                  className="rounded-none"
                   icon={<Icon name="cart" className="h-3.5 w-3.5" />}
                 >
                   {t('card.addToCart', 'Thêm vào giỏ')}

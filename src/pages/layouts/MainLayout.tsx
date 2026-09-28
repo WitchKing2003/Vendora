@@ -22,7 +22,7 @@ const MainLayout = () => {
       {/* Keyboard users should never have to tab through a 40-link header. */}
       <a
         href="#content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[120] focus:border focus:border-ink focus:bg-surface focus:px-4 focus:py-2 focus:font-body focus:text-sm focus:font-semibold focus:text-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[120] focus:rounded-lg focus:border focus:border-ink focus:bg-surface focus:px-4 focus:py-2 focus:font-body focus:text-sm focus:font-semibold focus:text-ink"
       >
         Bỏ qua tới nội dung
       </a>

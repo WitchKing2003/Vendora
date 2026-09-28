@@ -25,7 +25,7 @@ export const FeaturedCategories = () => {
 
   return (
     <section className="border-y border-line bg-paper-2/50">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
         <SectionHeading
           id="home-categories"
           kicker={t('homeSections.categories.kicker', 'Bốn khu chợ chính')}
@@ -49,7 +49,7 @@ export const FeaturedCategories = () => {
           }
         />
 
-        <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((cat) => (
             <CategoryCard key={cat.slug} category={cat} />
           ))}
@@ -89,25 +89,25 @@ export const PromoBand = () => {
         className="absolute -left-24 top-1/2 h-80 w-80 -translate-y-1/2 rotate-45 border border-gold/20"
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:px-10 lg:py-20">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:px-10 lg:py-14">
         <div>
           <Kicker tone="light">{t('promo.kicker', 'Ưu đãi phiên chợ')}</Kicker>
           <h2 className="mt-4 max-w-xl font-display text-3xl leading-[1.1] tracking-[-0.02em] sm:text-[2.9rem]">
             {t('promo.title', 'Giảm 30% cho đơn từ 2 gian hàng')}
           </h2>
-          <p className="mt-5 max-w-lg font-body text-sm leading-relaxed text-white/70 sm:text-base">
+          <p className="mt-4 max-w-lg font-body text-sm leading-relaxed text-white/70 sm:text-base">
             {t(
               'promo.desc',
               'Gom đồ thủ công từ nhiều gian hàng trong cùng một đơn — chúng tôi gộp gói và gửi đi một lần, bạn tiết kiệm cả phí vận chuyển lẫn giá.'
             )}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-7 flex flex-wrap items-center gap-4">
             {/* The code, as a woven ticket you can tear off */}
             <ButtonCustom
               variant="raw"
               onClick={copyCode}
-              className="group flex items-stretch border border-dashed border-gold-soft/80 bg-white/5 transition-colors hover:bg-white/10"
+              className="group flex items-stretch rounded-lg border border-dashed border-gold-soft/80 bg-white/5 transition-colors hover:bg-white/10"
             >
               <span className="flex items-center px-4 py-3 font-body text-sm font-bold uppercase tracking-[0.22em] text-gold-soft">
                 {code}
@@ -121,7 +121,7 @@ export const PromoBand = () => {
 
             <Link
               to="/sale"
-              className="group inline-flex items-center gap-2.5 border border-white/25 px-6 py-3.5 font-body text-sm font-semibold text-white transition-colors hover:border-gold hover:bg-gold hover:text-ink"
+              className="group inline-flex items-center gap-2.5 rounded-lg border border-white/25 px-6 py-3 font-body text-sm font-semibold text-white transition-colors hover:border-gold hover:bg-gold hover:text-ink"
             >
               {t('promo.cta', 'Xem hàng đang giảm')}
               <Icon
@@ -192,8 +192,8 @@ export const BrandStory = () => {
 
   return (
     <section className="border-y border-line bg-paper-2/40">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-10">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-12">
           <div>
             <Kicker>{t('story.kicker', 'Về Vendora')}</Kicker>
             <h2 className="mt-4 font-display text-3xl leading-[1.12] tracking-[-0.02em] text-ink sm:text-[2.5rem]">
@@ -205,7 +205,7 @@ export const BrandStory = () => {
                 'Vendora bắt đầu từ những xưởng nhỏ: một lò gốm ở Bát Tràng, một khung cửi ở Hà Đông, một mẻ cà phê rang tay. Chúng tôi gom họ lại thành một phiên chợ — nơi mỗi gian hàng vẫn giữ được tên, câu chuyện và giá của chính mình.'
               )}
             </p>
-            <StitchRule className="my-6" />
+            <StitchRule className="my-5" />
             <p className="font-body text-sm leading-relaxed text-ink/65">
               {t(
                 'story.p2',
@@ -214,13 +214,13 @@ export const BrandStory = () => {
             </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-3">
             {POINTS.map((p) => (
-              <div key={p.key} className="brand-frame relative border border-line bg-surface p-5">
-                <span className="flex h-11 w-11 items-center justify-center bg-gold-mist text-gold-deep">
+              <div key={p.key} className="brand-frame relative border border-line bg-surface p-4">
+                <span className="flex h-10 w-10 items-center justify-center bg-gold-mist text-gold-deep">
                   <Icon name={p.icon} className="h-5 w-5" />
                 </span>
-                <p className="mt-4 font-display text-lg leading-snug text-ink">
+                <p className="mt-3.5 font-display text-lg leading-snug text-ink">
                   {t(`${p.key}.title`, { defaultValue: '' })}
                 </p>
                 <p className="mt-2 font-body text-[13px] leading-relaxed text-ink/60">

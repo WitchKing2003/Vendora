@@ -37,7 +37,7 @@ const ProductRail = ({
 
   return (
     <section aria-labelledby={id} className="bg-paper">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
         <SectionHeading
           id={id}
           kicker={kicker}
@@ -61,7 +61,7 @@ const ProductRail = ({
 
         {children}
 
-        <div className="scrollbar-none mask-fade-x -mx-4 mt-8 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-x-6 lg:overflow-visible lg:px-0 lg:pb-0">
+        <div className="scrollbar-none mask-fade-x -mx-4 mt-7 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-x-6 lg:overflow-visible lg:px-0 lg:pb-0">
           {products.map((p) => (
             <ProductCard
               key={p.id}

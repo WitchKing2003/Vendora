@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
+import Icon from "../../../components/brand/Icon";
 import {
   CATEGORY_DEFS,
   COLOR_SWATCHES,
@@ -22,15 +23,10 @@ interface FilterSidebarProps {
 }
 
 const ChevronIcon = ({ open }: { open: boolean }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
+  <Icon
+    name="chevronDown"
     className={`h-4 w-4 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
-  >
-    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
+  />
 );
 
 const Stars = ({ value }: { value: number }) => (
@@ -307,6 +303,7 @@ const FilterSidebar = ({ filters, onChange, totalProducts }: FilterSidebarProps)
           })
         }
         className="mt-6 bg-transparent py-3"
+        icon={<Icon name="refresh" className="h-4 w-4" />}
       >
         {t("listing.filters.clearAll")}
       </ButtonCustom>

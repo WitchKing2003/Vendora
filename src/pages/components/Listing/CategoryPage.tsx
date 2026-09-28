@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
+import Icon from "../../../components/brand/Icon";
 import {
   PRICE_BOUNDS,
   PRODUCTS_BY_CATEGORY,
@@ -40,11 +41,7 @@ const COLOR_LABEL_KEYS: Record<string, string> = {
   "#3E5C76": "listing.colors.blue",
 };
 
-const XIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3.5 w-3.5">
-    <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-  </svg>
-);
+const XIcon = () => <Icon name="close" className="h-3.5 w-3.5" />;
 
 const CategoryPage = () => {
   const { t } = useTranslation();
@@ -324,6 +321,7 @@ const CategoryPage = () => {
                   variant="outline"
                   onClick={() => setMobileFiltersOpen(true)}
                   className="lg:hidden"
+                  icon={<Icon name="filter" className="h-4 w-4" />}
                 >
                   {t("listing.openFilters")}
                 </ButtonCustom>
@@ -361,7 +359,7 @@ const CategoryPage = () => {
             onClick={() => setMobileFiltersOpen(false)}
             className="absolute inset-0 bg-ink/40"
           />
-          <div className="absolute inset-y-0 right-0 flex w-[85%] max-w-sm flex-col bg-paper shadow-2xl">
+          <div className="absolute inset-y-0 right-0 flex w-[85%] max-w-sm flex-col overflow-hidden rounded-l-xl bg-paper shadow-2xl">
             <div className="flex items-center justify-between border-b border-line px-5 py-4">
               <TextCustom variant="label" className="text-base">
                 {t("listing.filtersTitle")}
@@ -382,6 +380,7 @@ const CategoryPage = () => {
                 fullWidth
                 onClick={() => setMobileFiltersOpen(false)}
                 className="py-3"
+                icon={<Icon name="check" className="h-4 w-4" />}
               >
                 {t("listing.showResults", { count: sorted.length.toLocaleString("vi-VN") })}
               </ButtonCustom>

@@ -169,11 +169,29 @@ body {
   background-clip: content-box;
 }
 
-/* Visible, high-contrast keyboard focus everywhere — accessibility first. */
-:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-  border-radius: var(--radius-xs);
+/* ----------------------------------------------------------------------
+   ONE SHAPE SYSTEM
+   ----------------------------------------------------------------------
+   Two radii, applied everywhere, so the interface never argues with itself:
+     • controls — buttons, inputs, selects, textareas → --radius-lg (6px)
+     • surfaces — cards, panels, drawers, dialogs     → --radius-xl (10px)
+   Written in the base layer on purpose: any utility (rounded-full badges,
+   ringed swatches, the pill toggle) still wins over it. */
+@layer base {
+  button,
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea {
+    border-radius: var(--radius-lg);
+  }
+
+  /* Visible, high-contrast keyboard focus everywhere — accessibility first.
+     The outline simply follows each element's own radius, and a component can
+     still quiet it with `outline-none` when it draws its own focus state. */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
 }
 
 /* Headings default to the display face (existing markup often sets font-serif

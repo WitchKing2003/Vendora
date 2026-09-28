@@ -95,15 +95,13 @@ const BrandSearch = ({ autoFocus = false }: { autoFocus?: boolean }) => {
 
   return (
     <div ref={rootRef} className="relative w-full">
-      {/* Signature: the field is a strip of woven tape, stitched in gold on focus */}
+      {/* One quiet pill-free bar: field first, the magnifier lives inside the
+          submit button on the right so the left edge stays a clean text line. */}
       <div
-        className={`flex items-stretch border bg-surface transition-all duration-300 ease-[var(--ease-brand)] ${
+        className={`flex items-center gap-2 rounded-lg border bg-surface p-1.5 pl-3.5 transition-all duration-300 ease-[var(--ease-brand)] ${
           open ? 'border-gold shadow-soft' : 'border-line hover:border-line-strong'
         }`}
       >
-        <span className="flex w-11 shrink-0 items-center justify-center pl-1 text-ink/45">
-          <Icon name="search" className="h-4.5 w-4.5" />
-        </span>
         <input
           ref={inputRef}
           type="search"
@@ -124,19 +122,20 @@ const BrandSearch = ({ autoFocus = false }: { autoFocus?: boolean }) => {
           }}
           onFocus={() => setOpen(true)}
           onKeyDown={onKeyDown}
-          className="min-w-0 flex-1 bg-transparent py-2.5 pr-2 font-body text-sm text-ink outline-none placeholder:text-ink/40 focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden"
+          className="min-w-0 flex-1 bg-transparent py-1 font-body text-sm text-ink outline-none placeholder:text-ink/40 focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden"
         />
         <ButtonCustom
           variant="raw"
+          ariaLabel={t('header.search.submit', 'Tìm kiếm')}
           onClick={() => submit(value)}
-          className="my-1 mr-1 hidden items-center gap-1.5 bg-ink px-4 font-body text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-teal sm:flex"
+          className="flex h-8 w-8 shrink-0 items-center justify-center bg-ink text-white transition-colors hover:bg-teal"
         >
-          {t('header.search.submit', 'Tìm')}
+          <Icon name="search" className="h-4 w-4" />
         </ButtonCustom>
       </div>
 
       {showPanel && (
-        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-[80] animate-fade overflow-hidden border border-line bg-surface shadow-float">
+        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-[80] animate-fade overflow-hidden rounded-xl border border-line bg-surface shadow-float">
           {/* Live suggestions */}
           {value.trim().length > 0 && (
             <div id={LISTBOX_ID} role="listbox" aria-label={t('search.suggestions', 'Gợi ý')}>

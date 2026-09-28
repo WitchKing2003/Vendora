@@ -184,14 +184,14 @@ const DiscoverView = ({ mode, query }: { mode: DiscoverMode; query: string }) =>
                 <div className="flex flex-wrap items-center justify-center gap-3">
                   <Link
                     to="/categories"
-                    className="inline-flex items-center gap-2 border border-ink bg-ink px-5 py-2.5 font-body text-sm font-semibold text-white transition-colors hover:bg-teal"
+                    className="inline-flex items-center gap-2 rounded-lg border border-ink bg-ink px-5 py-2.5 font-body text-sm font-semibold text-white transition-colors hover:bg-teal"
                   >
                     <Icon name="weave" className="h-4 w-4" />
                     {t('nav.allCategories', 'Toàn bộ danh mục')}
                   </Link>
                   <Link
                     to="/shop"
-                    className="inline-flex items-center gap-2 border border-ink px-5 py-2.5 font-body text-sm font-semibold text-ink transition-colors hover:bg-paper-2"
+                    className="inline-flex items-center gap-2 rounded-lg border border-ink px-5 py-2.5 font-body text-sm font-semibold text-ink transition-colors hover:bg-paper-2"
                   >
                     {t('discover.browseAll', 'Xem toàn bộ sản phẩm')}
                   </Link>

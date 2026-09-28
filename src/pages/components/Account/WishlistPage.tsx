@@ -88,7 +88,7 @@ const WishlistPage = () => {
               action={
                 <Link
                   to="/shop"
-                  className="inline-flex items-center gap-2 border border-ink bg-ink px-5 py-2.5 font-body text-sm font-semibold text-white transition-colors hover:bg-teal"
+                  className="inline-flex items-center gap-2 rounded-lg border border-ink bg-ink px-5 py-2.5 font-body text-sm font-semibold text-white transition-colors hover:bg-teal"
                 >
                   <Icon name="stall" className="h-4 w-4" />
                   {t('personal.wishlist.startBrowsing', 'Bắt đầu dạo chợ')}

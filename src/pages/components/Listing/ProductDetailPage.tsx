@@ -18,75 +18,32 @@ import ListingCard from "./ListingCard";
 
 /* ------------------------------ icons ------------------------------ */
 
+/*
+ * Icon wrappers.
+ *
+ * These used to be one-off inline SVGs, which drifted away from the brand
+ * glyph set (heavier strokes, square caps). They now delegate to `Icon`, so
+ * every glyph on the page shares the same 1.6px rounded stroke.
+ */
 const HeartIcon = ({ filled }: { filled: boolean }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill={filled ? "#8B3A2B" : "none"}
-    stroke={filled ? "#8B3A2B" : "currentColor"}
-    strokeWidth={2}
-    className="h-5 w-5"
-  >
-    <path
-      d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+  <Icon name="heart" filled={filled} className={`h-5 w-5 ${filled ? "text-lacquer" : ""}`} />
 );
 
-const ShareIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-    <circle cx="18" cy="5" r="3" />
-    <circle cx="6" cy="12" r="3" />
-    <circle cx="18" cy="19" r="3" />
-    <path d="M8.6 10.6l6.8-4.2M8.6 13.4l6.8 4.2" strokeLinecap="round" />
-  </svg>
-);
+const ShareIcon = () => <Icon name="share" className="h-5 w-5" />;
 
-const CompareIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-    <path d="M8 4v14M8 18l-3-3M8 18l3-3M16 20V6M16 6l-3 3M16 6l3 3" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const CompareIcon = () => <Icon name="compare" className="h-5 w-5" />;
 
 const ChevronIcon = ({ dir }: { dir: "left" | "right" }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-    <path
-      d={dir === "left" ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+  <Icon name={dir === "left" ? "chevronLeft" : "chevronRight"} className="h-5 w-5" />
 );
 
-const TruckIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5 shrink-0">
-    <path d="M1 6h13v10H1zM14 9h4l3 3v4h-7z" strokeLinejoin="round" />
-    <circle cx="5.5" cy="17.5" r="1.8" />
-    <circle cx="17.5" cy="17.5" r="1.8" />
-  </svg>
-);
+const TruckIcon = () => <Icon name="truck" className="h-5 w-5 shrink-0" />;
 
-const ReturnIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5 shrink-0">
-    <path d="M3 12a9 9 0 1 0 2.6-6.4L3 8" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M3 3v5h5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const ReturnIcon = () => <Icon name="refresh" className="h-5 w-5 shrink-0" />;
 
-const ShieldIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5 shrink-0">
-    <path d="M12 2l8 3.5v5.2c0 5.1-3.4 9.6-8 11.3-4.6-1.7-8-6.2-8-11.3V5.5L12 2z" strokeLinejoin="round" />
-    <path d="M9 12l2 2 4-4.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const ShieldIcon = () => <Icon name="shield" className="h-5 w-5 shrink-0" />;
 
-const ZoomIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
-    <circle cx="11" cy="11" r="7" />
-    <path d="M21 21l-4.5-4.5M11 8v6M8 11h6" strokeLinecap="round" />
-  </svg>
-);
+const ZoomIcon = () => <Icon name="search" className="h-4 w-4" />;
 
 const Stars = ({ value, size = "text-base" }: { value: number; size?: string }) => (
   <span className={`${size} text-gold`} aria-hidden>
@@ -546,7 +503,7 @@ const ProductDetailPage = () => {
                 variant="outline"
                 size="lg"
                 onClick={() => handleAddToCart(false)}
-                className="flex-1 rounded-none py-4"
+                className="flex-1 py-4"
                 icon={<Icon name="cart" className="h-4 w-4" />}
               >
                 {t("detail.addToCart")}
@@ -554,7 +511,7 @@ const ProductDetailPage = () => {
               <ButtonCustom
                 variant="primary"
                 size="lg"
-                className="flex-1 rounded-none py-4"
+                className="flex-1 py-4"
                 onClick={() => handleAddToCart(true)}
                 icon={<Icon name="arrowRight" className="h-4 w-4" />}
               >
@@ -583,7 +540,7 @@ const ProductDetailPage = () => {
         </div>
 
         {/* ---------- Tabs ---------- */}
-        <div className="mt-14" id="reviews">
+        <div className="mt-12" id="reviews">
           <div className="flex gap-1 overflow-x-auto border-b border-line no-scrollbar" role="tablist">
             {TABS.map((key) => (
               <ButtonCustom
