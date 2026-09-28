@@ -129,7 +129,7 @@ const CartDrawer = () => {
         aria-modal="true"
         aria-label={t('cart.title', 'Giỏ hàng')}
         tabIndex={-1}
-        className={`fixed right-0 top-0 z-[86] flex h-full w-full max-w-[26.5rem] flex-col border-l border-line bg-paper shadow-float transition-transform duration-[420ms] ease-[var(--ease-brand)] ${
+        className={`fixed right-0 top-0 z-[86] flex h-full w-full max-w-[26.5rem] flex-col overflow-hidden rounded-l-xl border-l border-line bg-paper shadow-float transition-transform duration-[420ms] ease-[var(--ease-brand)] ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -205,7 +205,6 @@ const CartDrawer = () => {
                     closeCart();
                     navigate('/category/handmade');
                   }}
-                  className="rounded-none"
                   icon={<Icon name="stall" className="h-4 w-4" />}
                 >
                   {t('drawer.browse', 'Khám phá gian hàng')}
@@ -326,7 +325,6 @@ const CartDrawer = () => {
                     closeCart();
                     navigate('/cart');
                   }}
-                  className="rounded-none"
                   icon={<Icon name="arrowRight" className="h-4 w-4" />}
                 >
                   {t('drawer.viewFullCart', 'Xem giỏ & thanh toán')}

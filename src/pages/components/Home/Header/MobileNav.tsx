@@ -74,7 +74,7 @@ const MobileNav = () => {
         aria-modal="true"
         aria-label={t('nav.menu', 'Menu')}
         tabIndex={-1}
-        className={`fixed left-0 top-0 z-[97] flex h-full w-[88%] max-w-sm flex-col border-r border-line bg-paper shadow-float transition-transform duration-360 ease-[var(--ease-brand)] lg:hidden ${
+        className={`fixed left-0 top-0 z-[97] flex h-full w-[88%] max-w-sm flex-col overflow-hidden rounded-r-xl border-r border-line bg-paper shadow-float transition-transform duration-360 ease-[var(--ease-brand)] lg:hidden ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >

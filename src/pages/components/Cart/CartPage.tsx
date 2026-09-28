@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
+import Icon from "../../../components/brand/Icon";
+import PaymentMarks from "../../../components/ui/PaymentMarks";
 import { PRODUCTS_BY_CATEGORY } from "../../../data/categoryData";
 import { formatVnd } from "../../../utils/format";
 import {
@@ -13,41 +15,16 @@ import {
 } from "../../../stores/cartStore";
 
 const CheckIcon = ({ className = "h-3.5 w-3.5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} className={className}>
-    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
+  <Icon name="check" strokeWidth={3} className={className} />
 );
 
-const TrashIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-4 w-4">
-    <path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-9 0 1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M10 11v5M14 11v5" strokeLinecap="round" />
-  </svg>
-);
+const TrashIcon = () => <Icon name="trash" className="h-4 w-4" />;
 
-const HeartSmallIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-3.5 w-3.5">
-    <path
-      d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
+const HeartSmallIcon = () => <Icon name="heart" className="h-3.5 w-3.5" />;
 
-const StoreIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-4 w-4">
-    <path d="M4 9l1.5-5h13L20 9M4 9v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M4 9h16M9 13h6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const StoreIcon = () => <Icon name="stall" className="h-4 w-4" />;
 
-const ShieldSmallIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-4 w-4 shrink-0 mt-0.5">
-    <path d="M12 2l8 3.5v5.2c0 5.1-3.4 9.6-8 11.3-4.6-1.7-8-6.2-8-11.3V5.5L12 2z" strokeLinejoin="round" />
-    <path d="M9 12l2 2 4-4.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
+const ShieldSmallIcon = () => <Icon name="shield" className="h-4 w-4 shrink-0 mt-0.5" />;
 /** Checkbox in the mockup style: gold square with white check */
 const GoldCheckbox = ({
   checked,
@@ -241,7 +218,6 @@ const CartRow = ({
   );
 };
 
-const PAYMENTS = ["VISA", "MOMO", "ZaloPay", "COD"];
 
 const CartPage = () => {
   const { t } = useTranslation();
@@ -297,7 +273,13 @@ const CartPage = () => {
           <TextCustom as="p" variant="body" color="!text-ink/60" className="mt-4">
             {t("cart.empty")}
           </TextCustom>
-          <ButtonCustom variant="primary" size="lg" className="mt-8" onClick={() => navigate("/")}>
+          <ButtonCustom
+            variant="primary"
+            size="lg"
+            className="mt-8"
+            onClick={() => navigate("/")}
+            icon={<Icon name="stall" className="h-4 w-4" />}
+          >
             {t("cart.continueShopping")}
           </ButtonCustom>
         </div>
@@ -414,7 +396,11 @@ const CartPage = () => {
                   voucherError ? "border-[#8B3A2B]" : "border-line focus:border-gold"
                 }`}
               />
-              <ButtonCustom variant="primary" onClick={handleApplyVoucher}>
+              <ButtonCustom
+                variant="primary"
+                onClick={handleApplyVoucher}
+                icon={<Icon name="tag" className="h-4 w-4" />}
+              >
                 {t("cart.applyVoucher")}
               </ButtonCustom>
             </div>
@@ -473,21 +459,12 @@ const CartPage = () => {
               disabled={totals.selectedCount === 0}
               className="mt-6"
               onClick={() => navigate("/checkout")}
+              icon={<Icon name="arrowRight" className="h-4 w-4" />}
             >
               {t("cart.checkout")}
-              <span aria-hidden>→</span>
             </ButtonCustom>
 
-            <div className="mt-4 flex flex-wrap justify-center gap-2">
-              {PAYMENTS.map((p) => (
-                <span
-                  key={p}
-                  className="border border-line px-2.5 py-1 text-xs font-semibold text-ink/70"
-                >
-                  {p}
-                </span>
-              ))}
-            </div>
+            <PaymentMarks className="mt-4" />
 
             <p className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-ink/60">
               <ShieldSmallIcon />
@@ -498,7 +475,7 @@ const CartPage = () => {
 
         {/* Suggestions */}
         {suggestions.length > 0 && (
-          <section className="mt-16">
+          <section className="mt-12">
             <div className="flex items-end justify-between gap-4">
               <TextCustom variant="h2">{t("cart.suggestions")}</TextCustom>
               <Link

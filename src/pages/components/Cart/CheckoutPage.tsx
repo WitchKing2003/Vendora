@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
+import Icon from "../../../components/brand/Icon";
+import { PaymentMarkChip } from "../../../components/ui/PaymentMarks";
+import { PAYMENT_MARK_BY_ID } from "../../../data/paymentMarks";
 import {
   cartTotals,
   useCartStore,
@@ -138,7 +141,13 @@ const CheckoutPage = () => {
           <TextCustom as="p" variant="body" color="!text-ink/60" className="mt-4">
             {t("checkout.empty")}
           </TextCustom>
-          <ButtonCustom variant="primary" size="lg" className="mt-8" onClick={() => navigate("/cart")}>
+          <ButtonCustom
+            variant="primary"
+            size="lg"
+            className="mt-8"
+            onClick={() => navigate("/cart")}
+            icon={<Icon name="arrowLeft" className="h-4 w-4" />}
+          >
             {t("checkout.backToCart")}
           </ButtonCustom>
         </div>
@@ -260,13 +269,7 @@ const CheckoutPage = () => {
                       }`}
                     >
                       <RadioDot selected={selected} />
-                      <span
-                        className={`shrink-0 px-2 py-1 text-xs font-bold ${
-                          selected ? "bg-paper-2 text-ink" : "border border-line bg-paper-2 text-ink/70"
-                        }`}
-                      >
-                        {p.badge}
-                      </span>
+                      <PaymentMarkChip mark={PAYMENT_MARK_BY_ID[p.id]} />
                       <span className="min-w-0 flex-1">
                         <TextCustom as="span" variant="body-sm" className="block font-bold text-ink">
                           {t(p.nameKey)}
@@ -373,9 +376,15 @@ const CheckoutPage = () => {
               </TextCustom>
             </div>
 
-            <ButtonCustom variant="primary" fullWidth size="lg" className="mt-6" onClick={handlePlaceOrder}>
+            <ButtonCustom
+              variant="primary"
+              fullWidth
+              size="lg"
+              className="mt-6"
+              onClick={handlePlaceOrder}
+              icon={<Icon name="lock" className="h-4 w-4" />}
+            >
               {t("checkout.placeOrder")}
-              <span aria-hidden>→</span>
             </ButtonCustom>
 
             <TextCustom as="p" variant="caption" className="mt-4 block text-center leading-relaxed">

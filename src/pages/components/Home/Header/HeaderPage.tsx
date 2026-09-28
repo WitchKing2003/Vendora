@@ -164,7 +164,7 @@ const HeaderPage = () => {
                   className="fixed inset-0 z-[74] bg-ink/40 sm:hidden"
                   onClick={() => setAccountOpen(false)}
                 />
-                <div className="fixed inset-x-3 bottom-3 z-[75] animate-sheet-up border border-line bg-surface py-1 shadow-float sm:hidden">
+                <div className="fixed inset-x-3 bottom-3 z-[75] animate-sheet-up overflow-hidden rounded-xl border border-line bg-surface py-1 shadow-float sm:hidden">
                   <div className="flex items-center justify-between border-b border-line px-4 py-3">
                     <span className="font-body text-sm">
                       {user ? (
@@ -219,7 +219,7 @@ const HeaderPage = () => {
                   className="fixed inset-0 z-[74] hidden sm:block"
                   onClick={() => setAccountOpen(false)}
                 />
-                <div className="absolute right-4 top-full z-[75] mt-2 hidden w-64 animate-fade border border-line bg-surface shadow-float sm:block lg:right-10">
+                <div className="absolute right-4 top-full z-[75] mt-2 hidden w-64 animate-fade overflow-hidden rounded-xl border border-line bg-surface shadow-float sm:block lg:right-10">
                   <div className="brand-frame relative border-b border-line bg-paper-2/60 px-4 py-3.5">
                     <span className="font-body text-[11px] font-bold uppercase tracking-[0.16em] text-gold-deep">
                       {user ? t('header.hello', 'Xin chào,') : t('header.welcome', 'Chào mừng')}

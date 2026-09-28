@@ -116,16 +116,16 @@ const Hero = () => {
         className="pointer-events-none absolute -right-32 top-8 h-96 w-96 rotate-45 border border-gold/15"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
-        <div key={slide.key} className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
-          {/* Copy */}
-          <div>
+      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
+          {/* Copy — keyed per slide so the entrance sequence replays */}
+          <div key={`copy-${slide.key}`}>
             <div className="animate-rise" style={stagger(0)}>
               <Kicker>{t(`highlight.${slide.key}.kicker`)}</Kicker>
             </div>
 
             <h1
-              className="animate-rise mt-5 font-display text-4xl leading-[1.06] tracking-[-0.025em] text-ink sm:text-5xl lg:text-[3.9rem]"
+              className="animate-rise mt-4 font-display text-4xl leading-[1.06] tracking-[-0.025em] text-ink sm:text-5xl lg:text-[3.6rem]"
               style={stagger(70)}
             >
               {t(`highlight.${slide.key}.titleLine1`)}
@@ -138,7 +138,7 @@ const Hero = () => {
             </h1>
 
             <p
-              className="animate-rise mt-6 max-w-xl font-body text-sm leading-relaxed text-ink/70 sm:text-base"
+              className="animate-rise mt-5 max-w-xl font-body text-sm leading-relaxed text-ink/70 sm:text-base"
               style={stagger(140)}
             >
               {t(`highlight.${slide.key}.desc`)}
@@ -150,7 +150,7 @@ const Hero = () => {
             >
               <Link
                 to="/categories"
-                className="group inline-flex items-center gap-2.5 border border-ink bg-ink px-6 py-3.5 font-body text-sm font-semibold text-white transition-colors hover:bg-teal"
+                className="group inline-flex items-center gap-2.5 rounded-lg border border-ink bg-ink px-6 py-3 font-body text-sm font-semibold text-white transition-colors hover:bg-teal"
               >
                 {t(`highlight.${slide.key}.ctaPrimary`)}
                 <Icon
@@ -160,7 +160,7 @@ const Hero = () => {
               </Link>
               <Link
                 to="/openshop"
-                className="group inline-flex items-center gap-2 font-body text-sm font-semibold text-ink underline decoration-gold decoration-2 underline-offset-8 transition-colors hover:text-gold-deep"
+                className="group inline-flex items-center gap-2 rounded-lg border border-transparent px-1 font-body text-sm font-semibold text-ink underline decoration-gold decoration-2 underline-offset-8 transition-colors hover:text-gold-deep"
               >
                 {t(`highlight.${slide.key}.ctaSecondary`)}
               </Link>
@@ -168,7 +168,7 @@ const Hero = () => {
 
             {/* Proof, not promises */}
             <dl
-              className="animate-rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-line pt-6"
+              className="animate-rise mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line pt-5"
               style={stagger(280)}
             >
               {STATS.map((s) => (
@@ -181,8 +181,9 @@ const Hero = () => {
               ))}
             </dl>
 
-            {/* Controls */}
-            <div className="mt-9 flex items-center justify-between gap-4">
+            {/* Controls: dots on the left, a quiet position read-out on the
+                right — the prev/next pair lives on the banner itself */}
+            <div className="mt-8 flex items-center justify-between gap-4">
               <div className="flex items-center gap-2.5" role="tablist" aria-label={t('hero.slides', 'Các trang giới thiệu')}>
                 {SLIDES.map((s, i) => (
                   <ButtonCustom
@@ -199,28 +200,18 @@ const Hero = () => {
                 ))}
               </div>
 
-              <div className="flex items-center gap-2">
-                {[
-                  { dir: 'prev' as const, icon: 'chevronLeft' as const, label: t('highlight.prev', 'Trước') },
-                  { dir: 'next' as const, icon: 'chevronRight' as const, label: t('highlight.next', 'Tiếp') },
-                ].map((btn) => (
-                  <ButtonCustom
-                    key={btn.dir}
-                    variant="raw"
-                    ariaLabel={btn.label}
-                    onClick={() => goTo(btn.dir === 'prev' ? index - 1 : index + 1)}
-                    className="flex h-11 w-11 items-center justify-center border border-line bg-surface text-ink transition-colors hover:border-ink hover:bg-ink hover:text-white"
-                  >
-                    <Icon name={btn.icon} className="h-4 w-4" />
-                  </ButtonCustom>
-                ))}
-              </div>
+              <span className="nums font-body text-[11px] font-semibold tracking-[0.2em] text-ink/45">
+                {String(index + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}
+              </span>
             </div>
           </div>
 
-          {/* Collage */}
-          <div className="animate-rise relative" style={stagger(160)}>
-            <div className="brand-frame relative grid h-[330px] grid-cols-[1.35fr_1fr] grid-rows-2 gap-3 border border-line bg-surface p-3 sm:h-[430px] lg:h-[500px]">
+          {/* Collage — the banner itself */}
+          <div className="relative animate-rise" style={stagger(160)}>
+            <div
+              key={`art-${slide.key}`}
+              className="brand-frame grid h-[300px] grid-cols-[1.35fr_1fr] grid-rows-2 gap-3 border border-line bg-surface p-3 sm:h-[400px] lg:h-[460px]"
+            >
               {slide.tiles.map((tile, i) => (
                 <div
                   key={`${slide.key}-${i}`}
@@ -259,6 +250,25 @@ const Hero = () => {
                 {t('hero.seal', 'Phiên chợ 2026')}
               </Seal>
             </span>
+
+            {/* Prev / next — one button on each side of the banner. Kept
+                outside the keyed slide so keyboard focus survives a change. */}
+            <div className="absolute -left-3 -right-3 inset-y-0 flex items-center justify-between px-1">
+              {[
+                { dir: 'prev' as const, icon: 'chevronLeft' as const, label: t('highlight.prev', 'Trước') },
+                { dir: 'next' as const, icon: 'chevronRight' as const, label: t('highlight.next', 'Tiếp') },
+              ].map((btn) => (
+                <ButtonCustom
+                  key={btn.dir}
+                  variant="raw"
+                  ariaLabel={btn.label}
+                  onClick={() => goTo(btn.dir === 'prev' ? index - 1 : index + 1)}
+                  className="flex h-11 w-11 items-center justify-center rounded-lg border border-line bg-surface/92 text-ink shadow-soft backdrop-blur-sm transition-colors hover:border-ink hover:bg-ink hover:text-white"
+                >
+                  <Icon name={btn.icon} className="h-4.5 w-4.5" />
+                </ButtonCustom>
+              ))}
+            </div>
           </div>
         </div>
       </div>

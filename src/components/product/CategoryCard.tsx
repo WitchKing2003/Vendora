@@ -28,7 +28,7 @@ const CategoryCard = ({
   return (
     <Link
       to={`/category/${category.slug}`}
-      className="group relative flex h-full flex-col overflow-hidden border border-line bg-surface transition-all duration-500 ease-[var(--ease-brand)] hover:border-ink/35 hover:shadow-lift"
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition-all duration-500 ease-[var(--ease-brand)] hover:border-ink/35 hover:shadow-lift"
     >
       <div
         className="brand-frame relative overflow-hidden"

@@ -1,10 +1,7 @@
 import { useTranslation } from "react-i18next";
+import Icon from "../../../components/brand/Icon";
 
-const CheckIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} className="h-3.5 w-3.5">
-    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const CheckIcon = () => <Icon name="check" strokeWidth={3} className="h-3.5 w-3.5" />;
 
 const STEPS = ["cart.step1", "cart.step2", "cart.step3"];
 

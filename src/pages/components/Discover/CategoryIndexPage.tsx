@@ -72,7 +72,7 @@ const CategoryIndexPage = () => {
         </div>
 
         {/* Collections */}
-        <div className="mt-14">
+        <div className="mt-10">
           <StitchRule className="mb-8" />
           <h2 className="font-display text-2xl text-ink sm:text-3xl">
             {t('discover.collections.title', 'Bộ sưu tập được chọn')}

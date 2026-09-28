@@ -92,7 +92,7 @@ const QuickViewBody = ({
           aria-modal="true"
           aria-label={detail.name}
           tabIndex={-1}
-          className={`relative max-h-[92vh] w-full max-w-4xl overflow-y-auto border border-line bg-paper shadow-float transition-all duration-300 ease-[var(--ease-brand)] sm:max-h-[88vh] ${
+          className={`relative max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-t-xl border border-line bg-paper shadow-float transition-all duration-300 ease-[var(--ease-brand)] sm:max-h-[88vh] sm:rounded-xl ${
             isOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
@@ -300,7 +300,6 @@ const QuickViewBody = ({
                   variant="primary"
                   fullWidth
                   size="lg"
-                  className="rounded-none"
                   disabled={detail.stock <= 0}
                   onClick={handleAdd}
                   icon={<Icon name="cart" className="h-4 w-4" />}

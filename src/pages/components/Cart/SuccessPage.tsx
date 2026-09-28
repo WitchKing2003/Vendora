@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
+import Icon from "../../../components/brand/Icon";
 import { useOrderStore } from "../../../stores/orderStore";
 
 interface SuccessLocationState {
@@ -12,17 +13,10 @@ interface SuccessLocationState {
 import Stepper from "./Stepper";
 
 const CheckIcon = ({ className = "h-8 w-8" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className={className}>
-    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
+  <Icon name="check" strokeWidth={2.5} className={className} />
 );
 
-const CopyIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-4 w-4">
-    <rect x="9" y="9" width="11" height="11" rx="1.5" />
-    <path d="M5 15V5a1 1 0 0 1 1-1h10" strokeLinecap="round" />
-  </svg>
-);
+const CopyIcon = () => <Icon name="copy" className="h-4 w-4" />;
 
 const TIMELINE_KEYS = ["success.tlPlaced", "success.tlConfirmed", "success.tlShipping", "success.tlDelivered"];
 

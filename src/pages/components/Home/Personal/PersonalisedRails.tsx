@@ -74,14 +74,14 @@ const PersonalisedRails = () => {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 to="/wishlist"
-                className="inline-flex items-center gap-2 border border-ink px-4 py-2.5 font-body text-xs font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-ink hover:text-white"
+                className="inline-flex items-center gap-2 rounded-lg border border-ink px-4 py-2.5 font-body text-xs font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-ink hover:text-white"
               >
                 <Icon name="heart" className="h-4 w-4" />
                 {t('personal.openWishlist', 'Bộ sưu tập')}
               </Link>
               <Link
                 to="/account/orders"
-                className="inline-flex items-center gap-2 border border-ink px-4 py-2.5 font-body text-xs font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-ink hover:text-white"
+                className="inline-flex items-center gap-2 rounded-lg border border-ink px-4 py-2.5 font-body text-xs font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-ink hover:text-white"
               >
                 <Icon name="package" className="h-4 w-4" />
                 {t('personal.openOrders', 'Đơn của tôi')}
