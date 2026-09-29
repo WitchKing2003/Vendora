@@ -129,7 +129,7 @@ const AdminCategoriesPage = () => {
             <ButtonCustom
               variant="raw"
               onClick={resetForm}
-              className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+              className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
             >
               {t("admin.cancel")}
             </ButtonCustom>
@@ -140,7 +140,7 @@ const AdminCategoriesPage = () => {
       {/* Category list */}
       <div className="space-y-4">
         {filtered.map((cat) => (
-          <section key={cat.slug} className="border border-line bg-white">
+          <section key={cat.slug} className="rounded-lg border border-line bg-white">
             {/* Category row */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-line bg-paper-2/50 px-5 py-4">
               <div className="min-w-0">
@@ -165,7 +165,7 @@ const AdminCategoriesPage = () => {
 variant="raw"
                   type="button"
                   onClick={() => toggleCategory(cat.slug)}
-                  className="border border-line bg-white px-2.5 py-1 text-xs font-bold text-ink transition-colors hover:border-ink"
+                  className="rounded-lg border border-line bg-white px-2.5 py-1 text-xs font-bold text-ink transition-colors hover:border-ink"
                 >
                   {cat.enabled ? t("admin.disable") : t("admin.enable")}
                 </ButtonCustom>
@@ -210,7 +210,7 @@ variant="raw"
 variant="raw"
                     type="button"
                     onClick={() => setConfirmSlug(null)}
-                    className="border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
+                    className="rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
                   >
                     {t("admin.cancel")}
                   </ButtonCustom>
@@ -278,7 +278,7 @@ variant="raw"
 variant="raw"
                     type="button"
                     onClick={() => setSubTarget(null)}
-                    className="border border-line bg-white px-3.5 py-2 text-xs font-bold text-ink transition-colors hover:border-ink"
+                    className="rounded-lg border border-line bg-white px-3.5 py-2 text-xs font-bold text-ink transition-colors hover:border-ink"
                   >
                     {t("admin.cancel")}
                   </ButtonCustom>
@@ -320,7 +320,7 @@ variant="raw"
               <ButtonCustom
                 variant="raw"
                 onClick={() => setEditing(null)}
-                className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
               >
                 {t("admin.cancel")}
               </ButtonCustom>

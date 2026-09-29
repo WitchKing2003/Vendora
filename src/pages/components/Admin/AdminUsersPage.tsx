@@ -107,7 +107,7 @@ const AdminUsersPage = () => {
             <ButtonCustom
               variant="raw"
               onClick={() => setShowForm(false)}
-              className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+              className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
             >
               {t("admin.cancel")}
             </ButtonCustom>
@@ -144,7 +144,7 @@ const AdminUsersPage = () => {
       </div>
 
       {/* Table */}
-      <section className="overflow-x-auto border border-line bg-white">
+      <section className="overflow-x-auto rounded-lg border border-line bg-white">
         <table className="w-full min-w-[900px] text-left text-sm">
           <thead>
             <tr className="border-b border-line bg-paper-2/60 text-xs uppercase tracking-wide text-ink/60">
@@ -246,7 +246,7 @@ const AdminUsersPage = () => {
                         variant="raw"
                         type="button"
                         onClick={() => setHistoryId(u.id)}
-                        className="border border-line bg-white px-2.5 py-1 text-xs font-bold text-ink transition-colors hover:border-ink"
+                        className="rounded-lg border border-line bg-white px-2.5 py-1 text-xs font-bold text-ink transition-colors hover:border-ink"
                       >
                         {t("admin.history")}
                       </ButtonCustom>
@@ -371,7 +371,7 @@ const AdminUsersPage = () => {
             <ButtonCustom
               variant="raw"
               onClick={() => setHistoryId(null)}
-              className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+              className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
             >
               {t("admin.close")}
             </ButtonCustom>
@@ -393,7 +393,7 @@ const AdminUsersPage = () => {
               <ButtonCustom
                 variant="raw"
                 onClick={() => setConfirmId(null)}
-                className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
               >
                 {t("admin.cancel")}
               </ButtonCustom>

@@ -80,7 +80,7 @@ const AdminSlidersPage = () => {
       </div>
 
       {/* Live-ish homepage preview */}
-      <section className="border border-line bg-white p-6">
+      <section className="rounded-lg border border-line bg-white p-6">
         <div className="flex items-center justify-between gap-3">
           <TextCustom variant="h4">{t("admin.sliders.homePreview")}</TextCustom>
           <Pill tone="teal">{t("admin.sliders.onlyActive")}</Pill>
@@ -118,7 +118,7 @@ const AdminSlidersPage = () => {
       </section>
 
       {/* Slide list */}
-      <section className="border border-line bg-white">
+      <section className="rounded-lg border border-line bg-white">
         <div className="border-b border-line px-6 py-5">
           <TextCustom variant="h4">{t("admin.sliders.listTitle", { count: ordered.length })}</TextCustom>
         </div>
@@ -179,7 +179,7 @@ const AdminSlidersPage = () => {
                 <ButtonCustom
                   variant="raw"
                   onClick={() => openEdit(s)}
-                  className="border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
+                  className="rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
                 >
                   {t("admin.edit")}
                 </ButtonCustom>
@@ -277,7 +277,7 @@ const AdminSlidersPage = () => {
                   setShowForm(false);
                   setEditing(null);
                 }}
-                className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
               >
                 {t("admin.cancel")}
               </ButtonCustom>
@@ -300,7 +300,7 @@ const AdminSlidersPage = () => {
             <ButtonCustom
               variant="raw"
               onClick={() => setConfirmId(null)}
-              className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+              className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
             >
               {t("admin.cancel")}
             </ButtonCustom>

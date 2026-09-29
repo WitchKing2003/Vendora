@@ -1,4 +1,5 @@
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
+import Icon from "../../../components/brand/Icon";
 
 interface PaginationProps {
   page: number;
@@ -6,21 +7,8 @@ interface PaginationProps {
   onChange: (page: number) => void;
 }
 
-const ChevronIcon = ({ dir }: { dir: "left" | "right" }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    className="h-4 w-4"
-  >
-    {dir === "left" ? (
-      <path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
-    ) : (
-      <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-    )}
-  </svg>
-);
+/** Shared control metrics so pagination rows line up with inputs on the same row. */
+export const PAGE_BTN = "h-9 min-w-9 px-2 text-sm";
 
 /** Page numbers with ellipses: 1 … 4 5 6 … 12 */
 const pageItems = (page: number, total: number): (number | "…")[] => {
@@ -38,8 +26,7 @@ const pageItems = (page: number, total: number): (number | "…")[] => {
 const Pagination = ({ page, totalPages, onChange }: PaginationProps) => {
   if (totalPages <= 1) return null;
 
-  const btn =
-    "flex h-9 min-w-9 items-center justify-center px-2 text-sm transition-colors";
+  const btn = `flex ${PAGE_BTN} items-center justify-center transition-transform duration-150 active:scale-90`;
 
   return (
     <nav aria-label="Pagination" className="mt-10 flex items-center justify-center gap-1.5">
@@ -48,9 +35,9 @@ const Pagination = ({ page, totalPages, onChange }: PaginationProps) => {
         disabled={page === 1}
         onClick={() => onChange(page - 1)}
         ariaLabel="Previous page"
-        className={`${btn} border border-line text-ink enabled:hover:border-ink disabled:opacity-40`}
+        className={`${btn} border border-line text-ink enabled:hover:border-ink enabled:hover:-translate-x-0.5 disabled:opacity-40 disabled:active:scale-100`}
       >
-        <ChevronIcon dir="left" />
+        <Icon name="chevronLeft" className="h-4 w-4" />
       </ButtonCustom>
 
       {pageItems(page, totalPages).map((item, i) =>
@@ -66,7 +53,7 @@ const Pagination = ({ page, totalPages, onChange }: PaginationProps) => {
             onClick={() => onChange(item)}
             className={`${btn} border font-normal ${
               item === page
-                ? "border-ink bg-ink font-semibold text-white"
+                ? "animate-page-pop border-ink bg-ink font-semibold text-white"
                 : "border-line text-ink hover:border-ink"
             }`}
           >
@@ -80,9 +67,9 @@ const Pagination = ({ page, totalPages, onChange }: PaginationProps) => {
         disabled={page === totalPages}
         onClick={() => onChange(page + 1)}
         ariaLabel="Next page"
-        className={`${btn} border border-line text-ink enabled:hover:border-ink disabled:opacity-40`}
+        className={`${btn} border border-line text-ink enabled:hover:border-ink enabled:hover:translate-x-0.5 disabled:opacity-40 disabled:active:scale-100`}
       >
-        <ChevronIcon dir="right" />
+        <Icon name="chevronRight" className="h-4 w-4" />
       </ButtonCustom>
     </nav>
   );

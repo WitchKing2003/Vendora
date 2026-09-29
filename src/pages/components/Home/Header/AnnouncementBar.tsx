@@ -14,12 +14,13 @@ const MESSAGES: { icon: IconName; key: string }[] = [
 const DISMISS_KEY = 'vendora-announce-dismissed';
 
 /**
- * The strip above the header. Keeps the marketplace promise (shipping,
- * handmade, protection) permanently in the shopper's peripheral vision, and
- * folds away the moment they start scrolling so it never eats screen space
- * on the products they came for.
+ * The strip above the sticky header, in normal page flow. It scrolls away
+ * with the page instead of folding inside the sticky header — folding there
+ * changed the header's height while scrolling and fought the browser's
+ * scroll anchoring, producing an endless jitter loop near the fold
+ * threshold. Keeping it static removes the layout shift entirely.
  */
-const AnnouncementBar = ({ collapsed }: { collapsed: boolean }) => {
+const AnnouncementBar = () => {
   const { t } = useTranslation();
   const reducedMotion = useReducedMotion();
   const [dismissed, setDismissed] = useState(() => {
@@ -46,11 +47,7 @@ const AnnouncementBar = ({ collapsed }: { collapsed: boolean }) => {
   );
 
   return (
-    <div
-      className={`overflow-hidden bg-ink transition-all duration-500 ease-[var(--ease-brand)] ${
-        collapsed ? 'max-h-0 opacity-0' : 'max-h-12 opacity-100'
-      }`}
-    >
+    <div className="overflow-hidden bg-ink">
       <div className="mx-auto flex max-w-[110rem] items-center">
         <div className="mask-fade-x flex min-w-0 flex-1 overflow-hidden">
           {reducedMotion ? (

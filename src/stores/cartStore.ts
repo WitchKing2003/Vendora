@@ -199,3 +199,28 @@ export const cartTotals = (items: CartItem[], selectedIds: string[], voucher: Ap
 /** How much more the buyer needs to add for free shipping (0 when already free). */
 export const remainingForFreeShip = (subtotal: number) =>
   Math.max(0, FREE_SHIP_THRESHOLD - subtotal);
+
+/* --------------------------- checkout draft ---------------------------- */
+/*
+ * The checkout page renders either the ticked cart lines or, when the buyer
+ * pressed "Buy now" on a product page, a one-off snapshot of that product with
+ * its chosen variant. The snapshot keeps checkout self-contained: nothing is
+ * added to the cart behind the buyer's back, and placing the order only
+ * empties the cart when the order actually came from the cart.
+ */
+
+export type CheckoutDraft =
+  | { mode: "cart" }
+  | { mode: "buyNow"; item: CartItem };
+
+interface CheckoutDraftState {
+  draft: CheckoutDraft;
+  setBuyNowItem: (item: Omit<CartItem, "id">) => void;
+  clearBuyNow: () => void;
+}
+
+export const useCheckoutDraftStore = create<CheckoutDraftState>((set) => ({
+  draft: { mode: "cart" },
+  setBuyNowItem: (item) => set({ draft: { mode: "buyNow", item: { ...item, id: "buy-now" } } }),
+  clearBuyNow: () => set((s) => (s.draft.mode === "buyNow" ? { draft: { mode: "cart" } } : s)),
+}));

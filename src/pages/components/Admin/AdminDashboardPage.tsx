@@ -168,7 +168,7 @@ const AdminDashboardPage = () => {
 
       {/* Sales overview + order status */}
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.6fr_1fr]">
-        <section className="border border-line bg-white p-6">
+        <section className="rounded-lg border border-line bg-white p-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <TextCustom variant="h4">{t("admin.dashboard.salesOverview")}</TextCustom>
@@ -194,7 +194,7 @@ const AdminDashboardPage = () => {
           </div>
         </section>
 
-        <section className="border border-line bg-white p-6">
+        <section className="rounded-lg border border-line bg-white p-6">
           <TextCustom variant="h4">{t("admin.dashboard.orderStatus")}</TextCustom>
           <ul className="mt-5 space-y-4">
             {statusRows.map((r) => {
@@ -231,7 +231,7 @@ const AdminDashboardPage = () => {
 
       {/* Top categories, low stock, activity */}
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <section className="border border-line bg-white p-6">
+        <section className="rounded-lg border border-line bg-white p-6">
           <div className="flex items-center justify-between gap-3">
             <TextCustom variant="h4">{t("admin.dashboard.topCategories")}</TextCustom>
             <Link to="/admin/analytics" className="text-xs font-bold text-gold-deep hover:underline">
@@ -261,7 +261,7 @@ const AdminDashboardPage = () => {
           </ul>
         </section>
 
-        <section className="border border-line bg-white p-6">
+        <section className="rounded-lg border border-line bg-white p-6">
           <div className="flex items-center justify-between gap-3">
             <TextCustom variant="h4">{t("admin.dashboard.lowStock")}</TextCustom>
             <Link to="/admin/products" className="text-xs font-bold text-gold-deep hover:underline">
@@ -292,7 +292,7 @@ const AdminDashboardPage = () => {
           </ul>
         </section>
 
-        <section className="border border-line bg-white p-6">
+        <section className="rounded-lg border border-line bg-white p-6">
           <TextCustom variant="h4">{t("admin.dashboard.recentActivity")}</TextCustom>
           <ul className="mt-5 space-y-4">
             {recent.map((r) => (

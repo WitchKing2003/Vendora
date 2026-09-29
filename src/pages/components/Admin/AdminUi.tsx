@@ -54,7 +54,7 @@ export const Sparkline = ({ data, color = "var(--color-gold)" }: { data: number[
 };
 
 export const StatCard = ({ label, value, delta, deltaUp = true, icon, spark }: StatCardProps) => (
-  <section className="border border-line bg-white p-5">
+  <section className="rounded-lg border border-line bg-white p-5">
     <div className="flex items-start justify-between gap-3">
       <div>
         <TextCustom as="p" variant="caption" className="font-bold uppercase tracking-wide">
@@ -100,13 +100,16 @@ export const BarChart = ({
   return (
     <div className="flex items-end gap-2 sm:gap-3" style={{ height }}>
       {data.map((d, i) => (
-        <div key={i} className="group flex h-full flex-1 flex-col items-center justify-end gap-2">
+        <div key={i} className="group flex h-full min-w-0 flex-1 flex-col items-center justify-end gap-2">
           <TextCustom as="span" variant="caption" className="opacity-0 transition-opacity group-hover:opacity-100">
             {format(d.value)}
           </TextCustom>
           <div
-            className="w-full bg-gold/25 transition-colors group-hover:bg-gold"
-            style={{ height: `${Math.max(2, (d.value / max) * 100)}%` }}
+            className="w-full max-w-5 origin-bottom animate-chart-grow rounded-sm bg-gold/25 transition-colors group-hover:bg-gold"
+            style={{
+              height: `${Math.max(2, (d.value / max) * 100)}%`,
+              animationDelay: `${i * 45}ms`,
+            }}
           />
           <TextCustom as="span" variant="caption" className="truncate">
             {d.label}
@@ -179,7 +182,7 @@ export const Modal = ({
 }) => (
   <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/40 p-4 sm:items-center" onClick={onClose}>
     <section
-      className={`my-8 w-full ${wide ? "max-w-2xl" : "max-w-lg"} border border-line bg-white p-6`}
+      className={`my-8 w-full ${wide ? "max-w-2xl" : "max-w-lg"} rounded-lg border border-line bg-white p-6`}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="flex items-start justify-between gap-4">
