@@ -66,8 +66,8 @@ const AdminSellerApplicationsPage = () => {
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="flex flex-wrap items-center gap-2">
+      {/* Filters — pills and search share one 40px row height */}
+      <div className="flex flex-wrap items-center gap-2 [&>*]:animate-fade-up">
         {TABS.map((key) => {
           const n =
             key === "all"
@@ -78,7 +78,7 @@ const AdminSellerApplicationsPage = () => {
               key={key}
               variant="raw"
               onClick={() => setTab(key)}
-              className={`border px-4 py-2 text-xs font-bold transition-colors ${
+              className={`flex h-10 items-center border px-4 text-xs font-bold transition-colors ${
                 tab === key
                   ? "border-ink bg-ink text-white"
                   : "border-line bg-white text-ink/70 hover:border-gold hover:text-gold-deep"
@@ -93,7 +93,7 @@ const AdminSellerApplicationsPage = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t("admin.seller.search")}
-          className={`${inputCls} !w-64`}
+          className={`${inputCls} h-10 !w-64 py-0`}
         />
       </div>
 
@@ -176,7 +176,7 @@ const ApplicationCard = ({
     .toUpperCase();
 
   return (
-    <article className="border border-line bg-white p-5 transition-colors hover:border-gold/50">
+    <article className="rounded-lg border border-line bg-white p-5 transition-colors hover:border-gold/50">
       <div className="flex flex-wrap items-start gap-4">
         {/* Avatar */}
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold/20 text-sm font-bold text-gold-deep">
@@ -240,7 +240,7 @@ const ApplicationCard = ({
                 <ButtonCustom
                   variant="raw"
                   onClick={onCancelReject}
-                  className="border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
+                  className="rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
                 >
                   {t("admin.cancel")}
                 </ButtonCustom>
@@ -260,7 +260,7 @@ const ApplicationCard = ({
                 <ButtonCustom
                   variant="raw"
                   onClick={onCancelDelete}
-                  className="border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
+                  className="rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
                 >
                   {t("admin.cancel")}
                 </ButtonCustom>
@@ -280,7 +280,7 @@ const ApplicationCard = ({
                 <ButtonCustom
                   variant="raw"
                   onClick={onStartReject}
-                  className="border border-line bg-white px-4 py-2 text-xs font-bold text-ink transition-colors hover:border-[#8B3A2B] hover:text-[#8B3A2B]"
+                  className="rounded-lg border border-line bg-white px-4 py-2 text-xs font-bold text-ink transition-colors hover:border-[#8B3A2B] hover:text-[#8B3A2B]"
                 >
                   {t("admin.seller.reject")}
                 </ButtonCustom>

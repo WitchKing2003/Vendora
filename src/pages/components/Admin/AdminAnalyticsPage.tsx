@@ -74,14 +74,14 @@ const AdminAnalyticsPage = () => {
             {t("admin.analytics.subtitle")}
           </TextCustom>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 [&>*]:animate-fade-up">
           {RANGES.map((r) => (
             <ButtonCustom
               key={r}
               variant="raw"
               onClick={() => setRange(r)}
-              className={`px-4 py-2 text-xs font-bold uppercase tracking-wide transition-colors ${
-                range === r ? "bg-ink text-white" : "border border-line bg-white text-ink hover:border-ink"
+              className={`flex h-10 items-center border px-4 text-xs font-bold uppercase tracking-wide transition-colors ${
+                range === r ? "border-ink bg-ink text-white" : "border-line bg-white text-ink hover:border-ink"
               }`}
             >
               {t(`admin.analytics.range.${r}`)}
@@ -96,7 +96,7 @@ const AdminAnalyticsPage = () => {
         <StatCard label={t("admin.dashboard.unitsSold")} value={String(totals.units)} delta={`9,8% ${t("admin.dashboard.vsLastMonth")}`} />
       </div>
 
-      <section className="border border-line bg-white p-6">
+      <section className="rounded-lg border border-line bg-white p-6">
         <TextCustom variant="h4">{t("admin.analytics.trend")}</TextCustom>
         <TextCustom as="p" variant="caption" className="mt-1">
           {t(`admin.analytics.trendDesc.${range}`)}
@@ -111,7 +111,7 @@ const AdminAnalyticsPage = () => {
       </section>
 
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.5fr_1fr]">
-        <section className="overflow-hidden border border-line bg-white">
+        <section className="overflow-hidden rounded-lg border border-line bg-white">
           <div className="flex items-center justify-between gap-3 border-b border-line px-6 py-5">
             <TextCustom variant="h4">{t("admin.analytics.byCategory")}</TextCustom>
             <TextCustom as="span" variant="caption">
@@ -157,8 +157,11 @@ const AdminAnalyticsPage = () => {
                     </td>
                     <td className="px-6 py-3.5">
                       <div className="flex items-center gap-3">
-                        <div className="h-2 w-24 bg-paper-2">
-                          <div className="h-full bg-teal" style={{ width: `${(r.share / maxShare) * 100}%` }} />
+                        <div className="h-2 w-24 overflow-hidden rounded-full bg-paper-2">
+                          <div
+                            className="h-full rounded-full bg-teal transition-[width] duration-500"
+                            style={{ width: `${(r.share / maxShare) * 100}%` }}
+                          />
                         </div>
                         <TextCustom as="span" variant="caption" className="font-bold !text-ink">
                           {r.share.toFixed(1)}%
@@ -179,7 +182,7 @@ const AdminAnalyticsPage = () => {
           </div>
         </section>
 
-        <section className="border border-line bg-white p-6">
+        <section className="rounded-lg border border-line bg-white p-6">
           <TextCustom variant="h4">{t("admin.analytics.revenueShare")}</TextCustom>
           <div className="mt-5">
             <DonutChart slices={rows.slice(0, 6).map((r) => ({ label: r.name, value: r.revenue, color: r.color }))} />

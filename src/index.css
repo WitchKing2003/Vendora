@@ -101,6 +101,9 @@
   --animate-sheet-in: sheet-in 420ms var(--ease-brand) both;
   --animate-sheet-up: sheet-up 420ms var(--ease-brand) both;
   --animate-page-in: page-enter 460ms var(--ease-brand) both;
+  --animate-page-pop: page-pop 320ms var(--ease-spring) both;
+  --animate-chart-grow: chart-grow 640ms var(--ease-brand) both;
+  --animate-fade-up: fade-up 420ms var(--ease-brand) both;
   --animate-fly: fly-arc 720ms var(--ease-swift) forwards;
   --animate-shimmer: shimmer 1600ms linear infinite;
   --animate-marquee: marquee 34s linear infinite;
@@ -541,6 +544,43 @@ h4 {
   from {
     opacity: 0;
     transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Pagination: the active page pill pops in as it takes over */
+@keyframes page-pop {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.35;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Bar charts: columns rise from the chart floor (origin-bottom) */
+@keyframes chart-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Toolbar items: filter pills / search rise in one by one */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
   to {
     opacity: 1;

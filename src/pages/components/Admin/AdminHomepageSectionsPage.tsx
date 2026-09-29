@@ -65,7 +65,7 @@ const AdminHomepageSectionsPage = () => {
         </ButtonCustom>
       </div>
 
-      <section className="border border-line bg-white p-6">
+      <section className="rounded-lg border border-line bg-white p-6">
         <TextCustom variant="h4">{t("admin.sections.homePreview")}</TextCustom>
         <TextCustom as="p" variant="caption" className="mt-1">
           {t("admin.sections.homePreviewDesc")}
@@ -97,7 +97,7 @@ const AdminHomepageSectionsPage = () => {
         </div>
       </section>
 
-      <section className="border border-line bg-white">
+      <section className="rounded-lg border border-line bg-white">
         <div className="border-b border-line px-6 py-5">
           <TextCustom variant="h4">{t("admin.sections.listTitle", { count: ordered.length })}</TextCustom>
         </div>
@@ -156,7 +156,7 @@ const AdminHomepageSectionsPage = () => {
                 <ButtonCustom
                   variant="raw"
                   onClick={() => openEdit(s)}
-                  className="border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
+                  className="rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
                 >
                   {t("admin.edit")}
                 </ButtonCustom>
@@ -224,7 +224,7 @@ const AdminHomepageSectionsPage = () => {
                   setShowForm(false);
                   setEditing(null);
                 }}
-                className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
               >
                 {t("admin.cancel")}
               </ButtonCustom>
@@ -247,7 +247,7 @@ const AdminHomepageSectionsPage = () => {
             <ButtonCustom
               variant="raw"
               onClick={() => setConfirmId(null)}
-              className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+              className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
             >
               {t("admin.cancel")}
             </ButtonCustom>

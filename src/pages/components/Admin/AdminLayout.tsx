@@ -114,7 +114,7 @@ const AdminLayout = () => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[240px_1fr]">
           {/* Sidebar */}
           <aside
-            className={`${mobileOpen ? "block" : "hidden"} h-fit border border-line bg-white p-3 lg:sticky lg:top-6 lg:block`}
+            className={`${mobileOpen ? "block" : "hidden"} h-fit rounded-lg border border-line bg-white p-3 lg:sticky lg:top-6 lg:block`}
           >
             <nav className="space-y-1">
               {NAV.map((item) => (

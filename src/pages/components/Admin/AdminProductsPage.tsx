@@ -9,6 +9,7 @@ import {
   slugify,
   type AdminProduct,
 } from "../../../stores/adminStore";
+import Pagination from "../Listing/Pagination";
 
 const PAGE_SIZE = 10;
 
@@ -163,7 +164,7 @@ variant="raw"
       </div>
 
       {/* Table */}
-      <section className="overflow-x-auto border border-line bg-white">
+      <section className="overflow-x-auto rounded-lg border border-line bg-white">
         <table className="w-full min-w-[720px] text-left text-sm">
           <thead>
             <tr className="border-b border-line bg-paper-2/60 text-xs uppercase tracking-wide text-ink/60">
@@ -298,41 +299,12 @@ variant="raw"
         )}
       </section>
 
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2">
-          <ButtonCustom
-            variant="raw"
-            aria-label={t("admin.prevPage")}
-            disabled={safePage === 1}
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
-            className="flex h-9 w-9 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-ink disabled:opacity-40"
-          >
-            ‹
-          </ButtonCustom>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-            <ButtonCustom
-              key={n}
-              variant="raw"
-              onClick={() => setPage(n)}
-              className={`h-9 w-9 text-sm font-bold transition-colors ${
-                n === safePage ? "bg-ink text-white" : "border border-line bg-white text-ink hover:border-ink"
-              }`}
-            >
-              {n}
-            </ButtonCustom>
-          ))}
-          <ButtonCustom
-            variant="raw"
-            aria-label={t("admin.nextPage")}
-            disabled={safePage === totalPages}
-            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-            className="flex h-9 w-9 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-ink disabled:opacity-40"
-          >
-            ›
-          </ButtonCustom>
-        </div>
-      )}
+      {/* Pagination — shared component: ellipses instead of ~100 buttons */}
+      <Pagination
+        page={safePage}
+        totalPages={totalPages}
+        onChange={(n) => setPage(n)}
+      />
 
       {/* Add / Edit modal */}
       {showForm && (
@@ -453,7 +425,7 @@ variant="raw"
               <ButtonCustom
                 variant="raw"
                 onClick={() => setShowForm(false)}
-                className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
               >
                 {t("admin.cancel")}
               </ButtonCustom>
@@ -477,7 +449,7 @@ variant="raw"
               <ButtonCustom
                 variant="raw"
                 onClick={() => setConfirmId(null)}
-                className="border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
               >
                 {t("admin.cancel")}
               </ButtonCustom>

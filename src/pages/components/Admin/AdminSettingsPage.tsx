@@ -57,7 +57,7 @@ const AdminSettingsPage = () => {
         ))}
       </div>
 
-      <section className="border border-line bg-white p-6">
+      <section className="rounded-lg border border-line bg-white p-6">
         <TextCustom variant="h4">{t(`admin.settings.tab.${tab}`)}</TextCustom>
         <TextCustom as="p" variant="caption" className="mt-1">
           {t(`admin.settings.desc.${tab}`)}
