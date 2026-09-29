@@ -17,7 +17,7 @@
 
 @theme {
   /* ----------------------------- typography ----------------------------- */
-  --font-display: 'Playfair Display', 'Lora', 'Times New Roman', Georgia, serif;
+  --font-display: 'Lora', Georgia, 'Times New Roman', serif;
   --font-body: 'Be Vietnam Pro', ui-sans-serif, system-ui, -apple-system, sans-serif;
   /* Re-point Tailwind's defaults so every existing `font-serif` / base text
      inherits the brand instead of the OS defaults. */

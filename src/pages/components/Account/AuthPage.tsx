@@ -6,6 +6,7 @@ import Icon from "../../../components/brand/Icon";
 import TextCustom from "../../../components/TextComponent/TextCustom";
 import InputCustom from "../../../components/InputComponent/InputCustom";
 import { useAuthStore } from "../../../stores/authStore";
+import Logo from "../../../components/brand/Logo";
 
 export type AuthMode = "login" | "signup" | "forgot" | "reset";
 
@@ -93,14 +94,12 @@ const AuthPage = ({ mode }: { mode: AuthMode }) => {
 
   return (
     <div className="bg-paper">
-      <div className="mx-auto flex max-w-7xl flex-col items-center px-4 py-14 sm:px-6 lg:px-10">
-        <Link to="/" className="mb-8">
-          <TextCustom as="p" variant="h3" className="italic">
-            Vendor<span className="text-gold">a</span>
-          </TextCustom>
+      <div className="mx-auto flex max-w-7xl flex-col items-center px-4 py-10 sm:px-6 lg:px-10 sm:py-12">
+        <Link to="/" aria-label="Vendora" className="mb-6">
+          <Logo className="text-2xl" />
         </Link>
 
-        <div className="w-full max-w-md border border-line bg-white p-7 sm:p-9">
+        <div className="w-full max-w-md border border-line bg-white p-6 sm:p-8">
           {/* ---------- Forgot: email sent confirmation ---------- */}
           {mode === "forgot" && sentTo ? (
             <div className="text-center">
@@ -144,7 +143,7 @@ const AuthPage = ({ mode }: { mode: AuthMode }) => {
 
               {/* ---------- Reset: invalid token ---------- */}
               {mode === "reset" && !token ? (
-                <div className="mt-7 text-center">
+                <div className="mt-6 text-center">
                   <TextCustom as="p" variant="body-sm" color="!text-[#8B3A2B]">
                     {t("auth.reset.invalidToken")}
                   </TextCustom>
@@ -159,7 +158,7 @@ const AuthPage = ({ mode }: { mode: AuthMode }) => {
                 </div>
               ) : mode === "reset" && resetDone ? (
                 /* ---------- Reset: success ---------- */
-                <div className="mt-7 text-center">
+                <div className="mt-6 text-center">
                   <span
                     className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-teal text-2xl text-white"
                     aria-hidden
@@ -183,7 +182,7 @@ const AuthPage = ({ mode }: { mode: AuthMode }) => {
                 </div>
               ) : (
                 /* ---------- Forms ---------- */
-                <form onSubmit={submit} className="mt-7 space-y-4">
+                <form onSubmit={submit} className="mt-6 space-y-4">
                   {mode === "signup" && (
                     <label className="block">
                       <TextCustom as="span" variant="label" className="text-sm">
@@ -282,7 +281,7 @@ const AuthPage = ({ mode }: { mode: AuthMode }) => {
                 </form>
               )}
 
-              <TextCustom as="p" variant="body-sm" color="!text-ink/60" className="mt-6 text-center">
+              <TextCustom as="p" variant="body-sm" color="!text-ink/60" className="mt-5 text-center">
                 {mode === "login" && (
                   <>
                     {t("auth.noAccount")}{" "}
@@ -309,7 +308,7 @@ const AuthPage = ({ mode }: { mode: AuthMode }) => {
           )}
         </div>
 
-        <TextCustom as="p" variant="caption" color="!text-ink/45" className="mt-6 max-w-sm text-center">
+        <TextCustom as="p" variant="caption" color="!text-ink/45" className="mt-5 max-w-sm text-center">
           {t("auth.terms")}
         </TextCustom>
       </div>

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
 import Icon from "../../../components/brand/Icon";
@@ -8,6 +8,7 @@ import { useHistoryStore } from "../../../stores/historyStore";
 import { useWishlistStore } from "../../../stores/wishlistStore";
 import { useToastStore } from "../../../stores/toastStore";
 import useAddToCart from "../../../hooks/useAddToCart";
+import { useCheckoutDraftStore } from "../../../stores/cartStore";
 import {
   getCategory,
   getProductDetail,
@@ -73,6 +74,8 @@ const ProductDetailPage = () => {
   const related = useMemo(() => (detail ? getRelatedProducts(detail, 4) : []), [detail]);
   // The single branded add-to-cart path: swatch flies, cart reacts, toast confirms.
   const addToCart = useAddToCart();
+  const navigate = useNavigate();
+  const setBuyNowItem = useCheckoutDraftStore((s) => s.setBuyNowItem);
   const pushViewed = useHistoryStore((s) => s.pushViewed);
   const toggleWishlist = useWishlistStore((s) => s.toggle);
   const wishlisted = useWishlistStore((s) =>
@@ -141,6 +144,25 @@ const ProductDetailPage = () => {
 
   const handleAddToCart = (buyNow = false) => {
     if (!detail) return;
+    if (buyNow) {
+      // Buy Now skips the cart entirely: snapshot the chosen variant (colour,
+      // size, quantity) into the checkout draft and go straight to checkout.
+      setBuyNowItem({
+        productId: detail.id,
+        name: detail.name,
+        seller: detail.seller,
+        price: detail.price,
+        oldPrice: detail.oldPrice,
+        colorHex: selectedColor.hex,
+        colorKey: selectedColor.nameKey,
+        size: effectiveSizeIdx !== null ? detail.sizes[effectiveSizeIdx]?.label : undefined,
+        qty,
+        stock: detail.stock,
+        inStock: true,
+      });
+      navigate("/checkout");
+      return;
+    }
     addToCart({
       productId: detail.id,
       name: detail.name,
@@ -155,8 +177,6 @@ const ProductDetailPage = () => {
       inStock: true,
       origin: galleryRef.current,
       swatch: detail.color,
-      // "Buy now" also slides the cart drawer open, so the next step is visible.
-      openDrawer: buyNow,
     });
   };
 

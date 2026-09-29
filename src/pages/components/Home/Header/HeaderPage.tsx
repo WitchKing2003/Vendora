@@ -16,9 +16,11 @@ import MainNav from './MainNav';
  * The sticky header.
  *
  * Order is fixed and always the same, so the shopper never has to re-learn it:
- * menu → brand → search → wishlist → cart → account. It compresses on scroll
- * (the announcement strip folds away, a hairline shadow appears) which hands
- * roughly 50px of vertical space back to the products.
+ * menu → brand → search → wishlist → cart → account. The announcement strip
+ * above it scrolls away with the page (it is NOT inside this sticky element —
+ * an in-header fold changed the header height while scrolling and jittered
+ * against the browser's scroll anchoring). Only a hairline shadow appears
+ * once the page is scrolled.
  */
 const HeaderPage = () => {
   const { t } = useTranslation();
@@ -39,11 +41,38 @@ const HeaderPage = () => {
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
 
+  /*
+   * Fold state with hysteresis.
+   *
+   * The announcement bar sits inside this sticky header, so folding it
+   * changes the header's height by ~40px. With a single threshold the
+   * browser's scroll anchoring compensates that shift by nudging scrollY
+   * back across the threshold, and the bar fold/unfolds in an endless
+   * jitter loop while scrolling slowly near the boundary (bottom-of-page
+   * scroll clamping triggers the same loop). Two thresholds wider than the
+   * bar itself make the compensation physically unable to re-cross:
+   * fold above 64px, only unfold back below 8px. rAF-throttled so we
+   * evaluate at most once per frame.
+   */
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      setScrolled((prev) => {
+        const y = window.scrollY;
+        if (prev) return y > 8;
+        return y > 64;
+      });
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   // The account sheet never survives a navigation. Adjusted during render —
@@ -66,8 +95,14 @@ const HeaderPage = () => {
     : [];
 
   return (
-    <header className="sticky top-0 z-[70]">
-      <AnnouncementBar collapsed={scrolled} />
+    <>
+      {/* Sits in normal flow above the sticky header: it scrolls away with
+          the page instead of folding inside the sticky element, so header
+          height never changes while scrolling (the old in-header max-h fold
+          fought the browser's scroll anchoring and jittered). */}
+      <AnnouncementBar />
+
+      <header className="sticky top-0 z-[70]">
 
       <div
         className={`border-b bg-paper/92 backdrop-blur-md transition-all duration-300 ease-[var(--ease-brand)] ${
@@ -220,12 +255,14 @@ const HeaderPage = () => {
                   onClick={() => setAccountOpen(false)}
                 />
                 <div className="absolute right-4 top-full z-[75] mt-2 hidden w-64 animate-fade overflow-hidden rounded-xl border border-line bg-surface shadow-float sm:block lg:right-10">
-                  <div className="brand-frame relative border-b border-line bg-paper-2/60 px-4 py-3.5">
-                    <span className="font-body text-[11px] font-bold uppercase tracking-[0.16em] text-gold-deep">
-                      {user ? t('header.hello', 'Xin chào,') : t('header.welcome', 'Chào mừng')}
-                    </span>
-                    <p className="mt-0.5 truncate font-display text-lg text-ink">
-                      {user ? user.name : t('header.guestName', 'bạn ghé phiên chợ')}
+                  <div className="brand-frame relative border-b border-line bg-paper-2/60 px-4 py-2.5">
+                    <p className="flex min-w-0 items-baseline gap-2">
+                      <span className="shrink-0 font-body text-[11px] font-bold uppercase tracking-[0.14em] text-gold-deep">
+                        {user ? t('header.hello', 'Xin chào,') : t('header.welcome', 'Chào mừng')}
+                      </span>
+                      <span className="truncate font-display text-[15px] font-semibold leading-tight text-ink">
+                        {user ? user.name : t('header.guestName', 'bạn ghé phiên chợ')}
+                      </span>
                     </p>
                   </div>
 
@@ -296,6 +333,7 @@ const HeaderPage = () => {
 
       <MainNav />
     </header>
+    </>
   );
 };
 
