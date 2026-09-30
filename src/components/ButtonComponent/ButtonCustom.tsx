@@ -1,7 +1,7 @@
 import type { ButtonProps, ButtonSize, ButtonVariant } from "./index";
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: "bg-ink text-white hover:bg-ink/85 border border-ink",
+  primary: "bg-ink text-white hover:bg-ink-2 border border-ink", /* hover = subtle ink lightening, never black */
   outline: "bg-white text-ink border border-ink hover:bg-paper-2",
   gold: "bg-gold text-white border border-gold hover:bg-gold-deep hover:border-gold-deep",
   ghost: "bg-transparent text-ink border border-transparent hover:bg-paper-2",
@@ -47,8 +47,8 @@ export default function ButtonCustom({
       aria-busy={loading}
       className={
         isRaw
-          ? className
-          : `inline-flex items-center justify-center gap-2 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
+          ? `cursor-pointer ${className}`
+          : `inline-flex cursor-pointer items-center justify-center gap-2 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
               VARIANT_CLASSES[variant]
             } ${SIZE_CLASSES[size]} ${fullWidth ? "w-full" : ""} ${className}`
       }

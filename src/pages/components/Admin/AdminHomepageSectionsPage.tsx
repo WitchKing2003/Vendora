@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
 import { useAdminStore, type HomeSection } from "../../../stores/adminStore";
-import { EmptyState, Field, Modal, Pill, Toggle, inputCls } from "./AdminUi";
+import { EmptyState, Field, Pill, Toggle, inputCls } from "./AdminUi";
+import Dialog, { ConfirmDialog } from "../../../components/ui/Dialog";
 
 interface FormState {
   title: string;
@@ -175,12 +176,27 @@ const AdminHomepageSectionsPage = () => {
       </section>
 
       {showForm && (
-        <Modal
+        <Dialog
           title={editing !== null ? t("admin.sections.editTitle") : t("admin.sections.createTitle")}
           onClose={() => {
             setShowForm(false);
             setEditing(null);
           }}
+          actions={[
+            {
+              label: t("admin.cancel"),
+              onClick: () => {
+                setShowForm(false);
+                setEditing(null);
+              },
+              cancel: true,
+            },
+            {
+              label: editing !== null ? t("admin.save") : t("admin.sections.add"),
+              onClick: submit,
+              disabled: !form.title.trim(),
+            },
+          ]}
         >
           <div className="space-y-4">
             <Field label={t("admin.sections.fieldTitle")}>
@@ -217,52 +233,24 @@ const AdminHomepageSectionsPage = () => {
               onChange={(v) => setForm({ ...form, visible: v })}
               label={t("admin.sections.fieldVisible")}
             />
-            <div className="flex justify-end gap-3 pt-2">
-              <ButtonCustom
-                variant="raw"
-                onClick={() => {
-                  setShowForm(false);
-                  setEditing(null);
-                }}
-                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-              >
-                {t("admin.cancel")}
-              </ButtonCustom>
-              <ButtonCustom variant="primary" onClick={submit} disabled={!form.title.trim()}>
-                {editing !== null ? t("admin.save") : t("admin.sections.add")}
-              </ButtonCustom>
-            </div>
           </div>
-        </Modal>
+        </Dialog>
       )}
 
-      {confirmId !== null && (
-        <Modal title={t("admin.sections.deleteTitle")} onClose={() => setConfirmId(null)}>
-          <TextCustom as="p" variant="body-sm" color="!text-ink/70">
-            {t("admin.sections.deleteConfirm", {
-              title: sections.find((s) => s.id === confirmId)?.title ?? "",
-            })}
-          </TextCustom>
-          <div className="mt-6 flex justify-end gap-3">
-            <ButtonCustom
-              variant="raw"
-              onClick={() => setConfirmId(null)}
-              className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-            >
-              {t("admin.cancel")}
-            </ButtonCustom>
-            <ButtonCustom
-              variant="danger"
-              onClick={() => {
-                deleteSection(confirmId);
-                setConfirmId(null);
-              }}
-            >
-              {t("admin.deleteConfirm")}
-            </ButtonCustom>
-          </div>
-        </Modal>
-      )}
+      <ConfirmDialog
+        open={confirmId !== null}
+        title={t("admin.sections.deleteTitle")}
+        message={t("admin.sections.deleteConfirm", {
+          title: sections.find((s) => s.id === confirmId)?.title ?? "",
+        })}
+        confirmLabel={t("admin.deleteConfirm")}
+        cancelLabel={t("admin.cancel")}
+        onCancel={() => setConfirmId(null)}
+        onConfirm={() => {
+          if (confirmId !== null) deleteSection(confirmId);
+          setConfirmId(null);
+        }}
+      />
     </div>
   );
 };

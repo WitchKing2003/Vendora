@@ -169,40 +169,6 @@ export const DonutChart = ({ slices }: { slices: { label: string; value: number;
   );
 };
 
-export const Modal = ({
-  title,
-  onClose,
-  children,
-  wide = false,
-}: {
-  title: string;
-  onClose: () => void;
-  children: ReactNode;
-  wide?: boolean;
-}) => (
-  <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/40 p-4 sm:items-center" onClick={onClose}>
-    <section
-      className={`my-8 w-full ${wide ? "max-w-2xl" : "max-w-lg"} rounded-lg border border-line bg-white p-6`}
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="flex items-start justify-between gap-4">
-        <TextCustom variant="h4">{title}</TextCustom>
-        <ButtonCustom
-          variant="raw"
-          aria-label="Close"
-          onClick={onClose}
-          className="flex h-8 w-8 items-center justify-center text-ink/50 transition-colors hover:text-ink"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-            <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-          </svg>
-        </ButtonCustom>
-      </div>
-      <div className="mt-5">{children}</div>
-    </section>
-  </div>
-);
-
 export const Field = ({ label, children }: { label: string; children: ReactNode }) => (
   <label className="block">
     <TextCustom as="span" variant="caption" className="font-bold uppercase tracking-wide">

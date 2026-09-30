@@ -10,6 +10,7 @@ import {
   type AdminProduct,
 } from "../../../stores/adminStore";
 import Pagination from "../Listing/Pagination";
+import Dialog, { ConfirmDialog } from "../../../components/ui/Dialog";
 
 const PAGE_SIZE = 10;
 
@@ -306,12 +307,17 @@ variant="raw"
         onChange={(n) => setPage(n)}
       />
 
-      {/* Add / Edit modal */}
+      {/* Add / Edit dialog — closes only via Cancel or the close icon */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4" onClick={() => setShowForm(false)}>
-          <section className="max-h-[90vh] w-full max-w-lg overflow-y-auto border border-line bg-white p-6" onClick={(e) => e.stopPropagation()}>
-            <TextCustom variant="h4">{editId ? t("admin.editProduct") : t("admin.newProduct")}</TextCustom>
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Dialog
+          title={editId ? t("admin.editProduct") : t("admin.newProduct")}
+          onClose={() => setShowForm(false)}
+          actions={[
+            { label: t("admin.cancel"), onClick: () => setShowForm(false), cancel: true },
+            { label: editId ? t("admin.save") : t("admin.create"), onClick: submit },
+          ]}
+        >
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <label className="block sm:col-span-2">
                 <TextCustom as="span" variant="label" className="mb-1.5 block">
                   {t("admin.fieldName")}
@@ -421,53 +427,24 @@ variant="raw"
                 </TextCustom>
               </label>
             </div>
-            <div className="mt-6 flex justify-end gap-3">
-              <ButtonCustom
-                variant="raw"
-                onClick={() => setShowForm(false)}
-                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-              >
-                {t("admin.cancel")}
-              </ButtonCustom>
-              <ButtonCustom variant="primary" onClick={submit}>
-                {editId ? t("admin.save") : t("admin.create")}
-              </ButtonCustom>
-            </div>
-          </section>
-        </div>
+        </Dialog>
       )}
 
-      {/* Delete confirm modal */}
-      {confirmId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4" onClick={() => setConfirmId(null)}>
-          <section className="w-full max-w-sm border border-line bg-white p-6" onClick={(e) => e.stopPropagation()}>
-            <TextCustom variant="h4">{t("admin.deleteProductTitle")}</TextCustom>
-            <TextCustom as="p" variant="body-sm" color="!text-ink/70" className="mt-2">
-              {t("admin.deleteProductConfirm", { name: products.find((p) => p.id === confirmId)?.name ?? "" })}
-            </TextCustom>
-            <div className="mt-6 flex justify-end gap-3">
-              <ButtonCustom
-                variant="raw"
-                onClick={() => setConfirmId(null)}
-                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-              >
-                {t("admin.cancel")}
-              </ButtonCustom>
-              <ButtonCustom
-variant="raw"
-                type="button"
-                onClick={() => {
-                  deleteProduct(confirmId);
-                  setConfirmId(null);
-                }}
-                className="bg-[#8B3A2B] px-5 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
-              >
-                {t("admin.deleteConfirm")}
-              </ButtonCustom>
-            </div>
-          </section>
-        </div>
-      )}
+      {/* Delete confirm dialog */}
+      <ConfirmDialog
+        open={!!confirmId}
+        title={t("admin.deleteProductTitle")}
+        message={t("admin.deleteProductConfirm", {
+          name: products.find((p) => p.id === confirmId)?.name ?? "",
+        })}
+        confirmLabel={t("admin.deleteConfirm")}
+        cancelLabel={t("admin.cancel")}
+        onCancel={() => setConfirmId(null)}
+        onConfirm={() => {
+          if (confirmId) deleteProduct(confirmId);
+          setConfirmId(null);
+        }}
+      />
     </div>
   );
 };

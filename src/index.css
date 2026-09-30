@@ -188,6 +188,16 @@ body {
     border-radius: var(--radius-lg);
   }
 
+  /* Every interactive control invites a click — links, buttons, selects and
+     toggles all show the pointer. Disabled controls are excluded. */
+  button:not(:disabled),
+  select:not(:disabled),
+  summary,
+  label:has(> input[type='checkbox']),
+  label:has(> input[type='radio']) {
+    cursor: pointer;
+  }
+
   /* Visible, high-contrast keyboard focus everywhere — accessibility first.
      The outline simply follows each element's own radius, and a component can
      still quiet it with `outline-none` when it draws its own focus state. */

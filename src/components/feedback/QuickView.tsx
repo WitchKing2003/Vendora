@@ -100,7 +100,7 @@ const QuickViewBody = ({
             variant="raw"
             ariaLabel={t('quickView.close', 'Đóng xem nhanh')}
             onClick={onClose}
-            className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center border border-line bg-surface/90 text-ink backdrop-blur transition-colors hover:bg-ink hover:text-white"
+            className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center border border-line bg-surface/90 text-ink backdrop-blur transition-colors hover:border-gold hover:text-gold-deep"
           >
             <Icon name="close" className="h-4.5 w-4.5" />
           </ButtonCustom>

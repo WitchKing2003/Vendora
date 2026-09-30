@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
 import { useAdminStore, type AdminNotification, type NotificationTarget } from "../../../stores/adminStore";
-import { EmptyState, Field, Modal, Pill, inputCls, vnd } from "./AdminUi";
+import { EmptyState, Field, Pill, inputCls, vnd } from "./AdminUi";
+import Dialog, { ConfirmDialog } from "../../../components/ui/Dialog";
 
 const TARGETS: NotificationTarget[] = ["all", "vip", "frequent", "rare", "new"];
 
@@ -192,15 +193,30 @@ const AdminNotificationsPage = () => {
         )}
       </div>
 
-      {/* Create / edit modal */}
+      {/* Create / edit dialog */}
       {showForm && (
-        <Modal
+        <Dialog
+          size="lg"
           title={editing !== null ? t("admin.notifications.editTitle") : t("admin.notifications.createTitle")}
           onClose={() => {
             setShowForm(false);
             setEditing(null);
           }}
-          wide
+          actions={[
+            {
+              label: t("admin.cancel"),
+              onClick: () => {
+                setShowForm(false);
+                setEditing(null);
+              },
+              cancel: true,
+            },
+            {
+              label: editing !== null ? t("admin.save") : t("admin.notifications.create"),
+              onClick: submit,
+              disabled: !form.title.trim() || !form.body.trim(),
+            },
+          ]}
         >
           <div className="space-y-4">
             <Field label={t("admin.notifications.fieldTitle")}>
@@ -250,53 +266,25 @@ const AdminNotificationsPage = () => {
             <TextCustom as="p" variant="caption">
               {t("admin.notifications.reachHint", { count: audience[form.target], amount: vnd(audience[form.target]) })}
             </TextCustom>
-            <div className="flex justify-end gap-3 pt-2">
-              <ButtonCustom
-                variant="raw"
-                onClick={() => {
-                  setShowForm(false);
-                  setEditing(null);
-                }}
-                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-              >
-                {t("admin.cancel")}
-              </ButtonCustom>
-              <ButtonCustom variant="primary" onClick={submit} disabled={!form.title.trim() || !form.body.trim()}>
-                {editing !== null ? t("admin.save") : t("admin.notifications.create")}
-              </ButtonCustom>
-            </div>
           </div>
-        </Modal>
+        </Dialog>
       )}
 
       {/* Delete confirm */}
-      {confirmId !== null && (
-        <Modal title={t("admin.notifications.deleteTitle")} onClose={() => setConfirmId(null)}>
-          <TextCustom as="p" variant="body-sm" color="!text-ink/70">
-            {t("admin.notifications.deleteConfirm", {
-              title: notifications.find((n) => n.id === confirmId)?.title ?? "",
-            })}
-          </TextCustom>
-          <div className="mt-6 flex justify-end gap-3">
-            <ButtonCustom
-              variant="raw"
-              onClick={() => setConfirmId(null)}
-              className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-            >
-              {t("admin.cancel")}
-            </ButtonCustom>
-            <ButtonCustom
-              variant="danger"
-              onClick={() => {
-                deleteNotification(confirmId);
-                setConfirmId(null);
-              }}
-            >
-              {t("admin.deleteConfirm")}
-            </ButtonCustom>
-          </div>
-        </Modal>
-      )}
+      <ConfirmDialog
+        open={confirmId !== null}
+        title={t("admin.notifications.deleteTitle")}
+        message={t("admin.notifications.deleteConfirm", {
+          title: notifications.find((n) => n.id === confirmId)?.title ?? "",
+        })}
+        confirmLabel={t("admin.deleteConfirm")}
+        cancelLabel={t("admin.cancel")}
+        onCancel={() => setConfirmId(null)}
+        onConfirm={() => {
+          if (confirmId !== null) deleteNotification(confirmId);
+          setConfirmId(null);
+        }}
+      />
     </div>
   );
 };
