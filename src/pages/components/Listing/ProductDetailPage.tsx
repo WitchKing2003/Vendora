@@ -348,7 +348,7 @@ const ProductDetailPage = () => {
                 ))}
                 <ButtonCustom
                   variant="raw"
-                  className="flex h-24 w-24 items-center justify-center bg-ink/60 text-lg font-bold text-white transition-colors hover:bg-ink"
+                  className="flex h-24 w-24 items-center justify-center bg-ink/60 text-lg font-bold text-white transition-colors hover:bg-ink/80"
                 >
                   +6
                 </ButtonCustom>

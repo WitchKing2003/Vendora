@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
 import { useAdminStore, type HomeSlide } from "../../../stores/adminStore";
-import { EmptyState, Field, Modal, Pill, Toggle, inputCls } from "./AdminUi";
+import { EmptyState, Field, Pill, Toggle, inputCls } from "./AdminUi";
+import Dialog, { ConfirmDialog } from "../../../components/ui/Dialog";
 
 interface FormState {
   title: string;
@@ -198,13 +199,28 @@ const AdminSlidersPage = () => {
       </section>
 
       {showForm && (
-        <Modal
+        <Dialog
+          size="lg"
           title={editing !== null ? t("admin.sliders.editTitle") : t("admin.sliders.createTitle")}
           onClose={() => {
             setShowForm(false);
             setEditing(null);
           }}
-          wide
+          actions={[
+            {
+              label: t("admin.cancel"),
+              onClick: () => {
+                setShowForm(false);
+                setEditing(null);
+              },
+              cancel: true,
+            },
+            {
+              label: editing !== null ? t("admin.save") : t("admin.sliders.add"),
+              onClick: submit,
+              disabled: !form.title.trim(),
+            },
+          ]}
         >
           <div className="space-y-4">
             <Field label={t("admin.sliders.fieldTitle")}>
@@ -270,52 +286,24 @@ const AdminSlidersPage = () => {
               onChange={(v) => setForm({ ...form, active: v })}
               label={t("admin.sliders.fieldActive")}
             />
-            <div className="flex justify-end gap-3 pt-2">
-              <ButtonCustom
-                variant="raw"
-                onClick={() => {
-                  setShowForm(false);
-                  setEditing(null);
-                }}
-                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-              >
-                {t("admin.cancel")}
-              </ButtonCustom>
-              <ButtonCustom variant="primary" onClick={submit} disabled={!form.title.trim()}>
-                {editing !== null ? t("admin.save") : t("admin.sliders.add")}
-              </ButtonCustom>
-            </div>
           </div>
-        </Modal>
+        </Dialog>
       )}
 
-      {confirmId !== null && (
-        <Modal title={t("admin.sliders.deleteTitle")} onClose={() => setConfirmId(null)}>
-          <TextCustom as="p" variant="body-sm" color="!text-ink/70">
-            {t("admin.sliders.deleteConfirm", {
-              title: slides.find((s) => s.id === confirmId)?.title ?? "",
-            })}
-          </TextCustom>
-          <div className="mt-6 flex justify-end gap-3">
-            <ButtonCustom
-              variant="raw"
-              onClick={() => setConfirmId(null)}
-              className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-            >
-              {t("admin.cancel")}
-            </ButtonCustom>
-            <ButtonCustom
-              variant="danger"
-              onClick={() => {
-                deleteSlide(confirmId);
-                setConfirmId(null);
-              }}
-            >
-              {t("admin.deleteConfirm")}
-            </ButtonCustom>
-          </div>
-        </Modal>
-      )}
+      <ConfirmDialog
+        open={confirmId !== null}
+        title={t("admin.sliders.deleteTitle")}
+        message={t("admin.sliders.deleteConfirm", {
+          title: slides.find((s) => s.id === confirmId)?.title ?? "",
+        })}
+        confirmLabel={t("admin.deleteConfirm")}
+        cancelLabel={t("admin.cancel")}
+        onCancel={() => setConfirmId(null)}
+        onConfirm={() => {
+          if (confirmId !== null) deleteSlide(confirmId);
+          setConfirmId(null);
+        }}
+      />
     </div>
   );
 };

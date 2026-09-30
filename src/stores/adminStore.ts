@@ -28,6 +28,22 @@ export interface AdminProduct extends ListingProduct {
 
 export type UserRole = "admin" | "seller" | "customer";
 
+/** Editable role entity — managed from the Users page via dialogs. */
+export interface AdminRole {
+  id: number;
+  /** Stable value stored on users ("admin" | "seller" | "customer" ...). */
+  name: string;
+  description: string;
+  /** Built-in roles cannot be deleted. */
+  system: boolean;
+}
+
+const SEED_ROLES: AdminRole[] = [
+  { id: 1, name: "admin", description: "Toàn quyền quản trị cửa hàng", system: true },
+  { id: 2, name: "seller", description: "Quản lý gian hàng và đơn hàng của mình", system: true },
+  { id: 3, name: "customer", description: "Mua sắm và theo dõi đơn hàng", system: true },
+];
+
 /** Customer segmentation badge — manually assigned by an admin. */
 export type CustomerBadge = "vip" | "loyal" | "new" | "inactive";
 
@@ -35,7 +51,8 @@ export interface AdminUser {
   id: number;
   name: string;
   email: string;
-  role: UserRole;
+  /** Role *value* — resolved for display against the roles list. */
+  role: string;
   status: "active" | "locked";
   joined: string;
   orders: number;
@@ -379,6 +396,7 @@ interface AdminState {
   categories: AdminCategory[];
   products: AdminProduct[];
   users: AdminUser[];
+  roles: AdminRole[];
   applications: SellerApplication[];
   notifications: AdminNotification[];
   slides: HomeSlide[];
@@ -404,6 +422,13 @@ interface AdminState {
   deleteProduct: (id: string) => void;
   toggleProductStock: (id: string) => void;
   addUser: (name: string, email: string, role: UserRole) => void;
+  updateUser: (
+    id: number,
+    patch: Partial<Pick<AdminUser, "name" | "email" | "role" | "badge">>
+  ) => void;
+  addRole: (name: string, description: string) => void;
+  updateRole: (id: number, patch: Partial<Pick<AdminRole, "name" | "description">>) => void;
+  deleteRole: (id: number) => void;
   toggleUserStatus: (id: number) => void;
   setUserRole: (id: number, role: UserRole) => void;
   setUserBadge: (id: number, badge: CustomerBadge) => void;
@@ -443,6 +468,7 @@ const useAdminStore = create<AdminState>()((set) => ({
   categories: CATEGORY_DEFS.map(toAdminCategory),
   products: ALL_PRODUCTS,
   users: SEED_USERS,
+  roles: SEED_ROLES,
   applications: SEED_APPLICATIONS,
   notifications: SEED_NOTIFICATIONS,
   slides: SEED_SLIDES,
@@ -545,9 +571,32 @@ const useAdminStore = create<AdminState>()((set) => ({
         u.id === id ? { ...u, status: u.status === "active" ? "locked" : "active" } : u
       ),
     })),
+  updateUser: (id, patch) =>
+    set((s) => ({ users: s.users.map((u) => (u.id === id ? { ...u, ...patch } : u)) })),
   setUserRole: (id, role) =>
     set((s) => ({ users: s.users.map((u) => (u.id === id ? { ...u, role } : u)) })),
   deleteUser: (id) => set((s) => ({ users: s.users.filter((u) => u.id !== id) })),
+
+  addRole: (name, description) =>
+    set((s) => {
+      const key = name.trim().toLowerCase();
+      if (!key || s.roles.some((r) => r.name.toLowerCase() === key)) return s;
+      return {
+        roles: [...s.roles, { id: Math.max(0, ...s.roles.map((r) => r.id)) + 1, name: key, description, system: false }],
+      };
+    }),
+  updateRole: (id, patch) =>
+    set((s) => ({ roles: s.roles.map((r) => (r.id === id ? { ...r, ...patch } : r)) })),
+  deleteRole: (id) =>
+    set((s) => {
+      const role = s.roles.find((r) => r.id === id);
+      if (!role || role.system) return s;
+      // Users on a deleted role fall back to "customer" so nothing dangles.
+      return {
+        roles: s.roles.filter((r) => r.id !== id),
+        users: s.users.map((u) => (u.role === role.name ? { ...u, role: "customer" } : u)),
+      };
+    }),
 
   approveApplication: (id) =>
     set((s) => {

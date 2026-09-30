@@ -263,7 +263,7 @@ const Hero = () => {
                   variant="raw"
                   ariaLabel={btn.label}
                   onClick={() => goTo(btn.dir === 'prev' ? index - 1 : index + 1)}
-                  className="flex h-11 w-11 items-center justify-center rounded-lg border border-line bg-surface/92 text-ink shadow-soft backdrop-blur-sm transition-colors hover:border-ink hover:bg-ink hover:text-white"
+                  className="flex h-11 w-11 items-center justify-center rounded-lg border border-line bg-surface/92 text-ink shadow-soft backdrop-blur-sm transition-colors hover:border-gold hover:text-gold-deep"
                 >
                   <Icon name={btn.icon} className="h-4.5 w-4.5" />
                 </ButtonCustom>

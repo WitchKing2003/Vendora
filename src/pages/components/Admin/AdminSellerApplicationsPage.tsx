@@ -7,6 +7,8 @@ import {
   type ApplicationStatus,
   type SellerApplication,
 } from "../../../stores/adminStore";
+import Dialog, { ConfirmDialog } from "../../../components/ui/Dialog";
+import { Field } from "./AdminUi";
 
 const inputCls =
   "w-full border border-line bg-paper-2/60 px-3.5 py-2.5 text-sm text-ink outline-none transition-colors focus:border-gold focus:bg-white";
@@ -104,23 +106,12 @@ const AdminSellerApplicationsPage = () => {
             key={app.id}
             app={app}
             catName={catName(app.category)}
-            rejecting={rejectId === app.id}
-            confirmDelete={confirmDeleteId === app.id}
-            rejectNote={rejectNote}
-            onRejectNote={setRejectNote}
             onApprove={() => approveApplication(app.id)}
             onStartReject={() => {
               setRejectId(app.id);
               setRejectNote("");
             }}
-            onCancelReject={() => setRejectId(null)}
-            onSubmitReject={submitReject}
             onStartDelete={() => setConfirmDeleteId(app.id)}
-            onCancelDelete={() => setConfirmDeleteId(null)}
-            onConfirmDelete={() => {
-              deleteApplication(app.id);
-              setConfirmDeleteId(null);
-            }}
           />
         ))}
       </div>
@@ -132,6 +123,50 @@ const AdminSellerApplicationsPage = () => {
           </TextCustom>
         </div>
       )}
+
+      {/* Reject dialog — the reason is captured here, not inline on the card */}
+      {rejectId !== null && (
+        <Dialog
+          title={t("admin.seller.reject")}
+          onClose={() => setRejectId(null)}
+          actions={[
+            { label: t("admin.cancel"), onClick: () => setRejectId(null), cancel: true },
+            { label: t("admin.seller.confirmReject"), onClick: submitReject, variant: "danger" },
+          ]}
+        >
+          <Field label={t("admin.seller.rejectNoteLabel")}>
+            <textarea
+              value={rejectNote}
+              onChange={(e) => setRejectNote(e.target.value)}
+              rows={3}
+              placeholder={t("admin.seller.rejectNotePlaceholder")}
+              className={`${inputCls} resize-none`}
+              autoFocus
+            />
+          </Field>
+          <p className="mt-3 text-xs text-ink/50">
+            {t("admin.seller.rejectTarget", {
+              shop: applications.find((a) => a.id === rejectId)?.shopName ?? "",
+            })}
+          </p>
+        </Dialog>
+      )}
+
+      {/* Delete application confirm */}
+      <ConfirmDialog
+        open={confirmDeleteId !== null}
+        title={t("admin.delete")}
+        message={t("admin.seller.deleteConfirm", {
+          shop: applications.find((a) => a.id === confirmDeleteId)?.shopName ?? "",
+        })}
+        confirmLabel={t("admin.deleteConfirm")}
+        cancelLabel={t("admin.cancel")}
+        onCancel={() => setConfirmDeleteId(null)}
+        onConfirm={() => {
+          if (confirmDeleteId !== null) deleteApplication(confirmDeleteId);
+          setConfirmDeleteId(null);
+        }}
+      />
     </div>
   );
 };
@@ -139,33 +174,17 @@ const AdminSellerApplicationsPage = () => {
 interface CardProps {
   app: SellerApplication;
   catName: string;
-  rejecting: boolean;
-  confirmDelete: boolean;
-  rejectNote: string;
-  onRejectNote: (v: string) => void;
   onApprove: () => void;
   onStartReject: () => void;
-  onCancelReject: () => void;
-  onSubmitReject: () => void;
   onStartDelete: () => void;
-  onCancelDelete: () => void;
-  onConfirmDelete: () => void;
 }
 
 const ApplicationCard = ({
   app,
   catName,
-  rejecting,
-  confirmDelete,
-  rejectNote,
-  onRejectNote,
   onApprove,
   onStartReject,
-  onCancelReject,
-  onSubmitReject,
   onStartDelete,
-  onCancelDelete,
-  onConfirmDelete,
 }: CardProps) => {
   const { t } = useTranslation();
   const initials = app.shopName
@@ -220,58 +239,10 @@ const ApplicationCard = ({
               {t("admin.seller.rejectReason", { note: app.note })}
             </p>
           )}
-
-          {rejecting && (
-            <div className="mt-3 border border-[#8B3A2B]/30 bg-[#8B3A2B]/5 p-3">
-              <TextCustom as="p" variant="label" className="mb-2">
-                {t("admin.seller.rejectNoteLabel")}
-              </TextCustom>
-              <textarea
-                value={rejectNote}
-                onChange={(e) => onRejectNote(e.target.value)}
-                rows={2}
-                placeholder={t("admin.seller.rejectNotePlaceholder")}
-                className={`${inputCls} resize-none`}
-              />
-              <div className="mt-2 flex gap-2">
-                <ButtonCustom variant="raw" onClick={onSubmitReject} className="bg-[#8B3A2B] px-3 py-1.5 text-xs font-bold text-white transition-opacity hover:opacity-90">
-                  {t("admin.seller.confirmReject")}
-                </ButtonCustom>
-                <ButtonCustom
-                  variant="raw"
-                  onClick={onCancelReject}
-                  className="rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
-                >
-                  {t("admin.cancel")}
-                </ButtonCustom>
-              </div>
-            </div>
-          )}
-
-          {confirmDelete && (
-            <div className="mt-3 border border-[#8B3A2B]/30 bg-[#8B3A2B]/5 p-3">
-              <TextCustom as="p" variant="body-sm" className="font-bold text-ink">
-                {t("admin.seller.deleteConfirm", { shop: app.shopName })}
-              </TextCustom>
-              <div className="mt-2 flex gap-2">
-                <ButtonCustom variant="raw" onClick={onConfirmDelete} className="bg-[#8B3A2B] px-3 py-1.5 text-xs font-bold text-white transition-opacity hover:opacity-90">
-                  {t("admin.deleteConfirm")}
-                </ButtonCustom>
-                <ButtonCustom
-                  variant="raw"
-                  onClick={onCancelDelete}
-                  className="rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
-                >
-                  {t("admin.cancel")}
-                </ButtonCustom>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Actions */}
-        {!rejecting && !confirmDelete && (
-          <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+        <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
             {app.status === "pending" && (
               <>
                 <ButtonCustom variant="primary" onClick={onApprove} className="!px-4 !py-2 !text-xs">
@@ -294,7 +265,6 @@ const ApplicationCard = ({
               {t("admin.delete")}
             </ButtonCustom>
           </div>
-        )}
       </div>
     </article>
   );

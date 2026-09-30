@@ -2,12 +2,11 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ButtonCustom from "../../../components/ButtonComponent/ButtonCustom";
 import TextCustom from "../../../components/TextComponent/TextCustom";
+import Dialog, { ConfirmDialog } from "../../../components/ui/Dialog";
 import { useAdminStore, type AdminCategory } from "../../../stores/adminStore";
+import { Field, inputCls } from "./AdminUi";
 
 type EditTarget = { kind: "category"; slug: string } | { kind: "sub"; catSlug: string; subSlug: string } | null;
-
-const inputCls =
-  "w-full border border-line bg-paper-2/60 px-3.5 py-2.5 text-sm text-ink outline-none transition-colors focus:border-gold focus:bg-white";
 
 const AdminCategoriesPage = () => {
   const { t } = useTranslation();
@@ -27,12 +26,15 @@ const AdminCategoriesPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState("");
   const [nameEn, setNameEn] = useState("");
+  const [formError, setFormError] = useState<string | null>(null);
   const [editing, setEditing] = useState<EditTarget>(null);
   const [editName, setEditName] = useState("");
   const [editNameEn, setEditNameEn] = useState("");
+  const [editError, setEditError] = useState<string | null>(null);
   const [subTarget, setSubTarget] = useState<string | null>(null);
   const [subName, setSubName] = useState("");
   const [subNameEn, setSubNameEn] = useState("");
+  const [subError, setSubError] = useState<string | null>(null);
   const [confirmSlug, setConfirmSlug] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
@@ -53,11 +55,13 @@ const AdminCategoriesPage = () => {
   const resetForm = () => {
     setName("");
     setNameEn("");
+    setFormError(null);
     setShowForm(false);
   };
 
   const openEdit = (target: NonNullable<EditTarget>) => {
     setEditing(target);
+    setEditError(null);
     if (target.kind === "category") {
       const c = categories.find((x) => x.slug === target.slug);
       setEditName(c?.name ?? "");
@@ -71,7 +75,10 @@ const AdminCategoriesPage = () => {
   };
 
   const submitEdit = () => {
-    if (!editing || !editName.trim()) return;
+    if (!editing || !editName.trim()) {
+      setEditError(t("admin.dialog.errCategoryName"));
+      return;
+    }
     if (editing.kind === "category") {
       updateCategory(editing.slug, { name: editName.trim(), nameEn: editNameEn.trim() || editName.trim() });
     } else {
@@ -99,43 +106,11 @@ const AdminCategoriesPage = () => {
             placeholder={t("admin.searchCategories")}
             className={`${inputCls} !w-56`}
           />
-          <ButtonCustom variant="primary" onClick={() => setShowForm((s) => !s)}>
-            {showForm ? t("admin.closeForm") : `+ ${t("admin.addCategory")}`}
+          <ButtonCustom variant="primary" onClick={() => setShowForm(true)}>
+            + {t("admin.addCategory")}
           </ButtonCustom>
         </div>
       </div>
-
-      {/* Add form */}
-      {showForm && (
-        <section className="border border-gold/40 bg-gold/5 p-5">
-          <TextCustom as="p" variant="body-sm" className="font-bold text-ink">
-            {t("admin.newCategory")}
-          </TextCustom>
-          <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t("admin.nameVi")} className={inputCls} />
-            <input value={nameEn} onChange={(e) => setNameEn(e.target.value)} placeholder={t("admin.nameEn")} className={inputCls} />
-          </div>
-          <div className="mt-4 flex gap-3">
-            <ButtonCustom
-              variant="primary"
-              onClick={() => {
-                if (!name.trim()) return;
-                addCategory(name.trim(), nameEn.trim() || name.trim());
-                resetForm();
-              }}
-            >
-              {t("admin.create")}
-            </ButtonCustom>
-            <ButtonCustom
-              variant="raw"
-              onClick={resetForm}
-              className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-            >
-              {t("admin.cancel")}
-            </ButtonCustom>
-          </div>
-        </section>
-      )}
 
       {/* Category list */}
       <div className="space-y-4">
@@ -165,7 +140,7 @@ const AdminCategoriesPage = () => {
 variant="raw"
                   type="button"
                   onClick={() => toggleCategory(cat.slug)}
-                  className="rounded-lg border border-line bg-white px-2.5 py-1 text-xs font-bold text-ink transition-colors hover:border-ink"
+                  className="rounded-lg border border-line bg-white px-2.5 py-1 text-xs font-bold text-ink transition-colors hover:border-gold hover:text-gold-deep"
                 >
                   {cat.enabled ? t("admin.disable") : t("admin.enable")}
                 </ButtonCustom>
@@ -180,43 +155,13 @@ variant="raw"
                 <ButtonCustom
 variant="raw"
                   type="button"
-                  onClick={() => setConfirmSlug(confirmSlug === cat.slug ? null : cat.slug)}
+                  onClick={() => setConfirmSlug(cat.slug)}
                   className="border border-[#8B3A2B]/40 bg-[#8B3A2B]/5 px-2.5 py-1 text-xs font-bold text-[#8B3A2B] transition-colors hover:bg-[#8B3A2B]/10"
                 >
                   {t("admin.delete")}
                 </ButtonCustom>
               </div>
             </div>
-
-            {/* Delete confirm inline */}
-            {confirmSlug === cat.slug && (
-              <div className="flex flex-wrap items-center gap-3 border-b border-line bg-[#8B3A2B]/5 px-5 py-3">
-                <TextCustom as="p" variant="body-sm" className="text-[#8B3A2B]">
-                  {t("admin.deleteCategoryConfirm", { count: productCount(cat) })}
-                </TextCustom>
-                <div className="ml-auto flex gap-2">
-                  <ButtonCustom
-variant="raw"
-                    type="button"
-                    onClick={() => {
-                      deleteCategory(cat.slug);
-                      setConfirmSlug(null);
-                    }}
-                    className="bg-[#8B3A2B] px-3 py-1.5 text-xs font-bold text-white transition-colors hover:opacity-90"
-                  >
-                    {t("admin.deleteConfirm")}
-                  </ButtonCustom>
-                  <ButtonCustom
-variant="raw"
-                    type="button"
-                    onClick={() => setConfirmSlug(null)}
-                    className="rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink transition-colors hover:border-ink"
-                  >
-                    {t("admin.cancel")}
-                  </ButtonCustom>
-                </div>
-              </div>
-            )}
 
             {/* Subs */}
             <div className="px-5 py-4">
@@ -249,41 +194,17 @@ variant="raw"
                 <ButtonCustom
 variant="raw"
                   type="button"
-                  onClick={() => setSubTarget(subTarget === cat.slug ? null : cat.slug)}
+                  onClick={() => {
+                    setSubTarget(cat.slug);
+                    setSubName("");
+                    setSubNameEn("");
+                    setSubError(null);
+                  }}
                   className="border border-dashed border-line px-3 py-1.5 text-xs font-bold text-ink/60 transition-colors hover:border-gold hover:text-gold-deep"
                 >
                   + {t("admin.addSub")}
                 </ButtonCustom>
               </div>
-
-              {subTarget === cat.slug && (
-                <div className="mt-3 flex flex-wrap items-center gap-3 border border-dashed border-gold/50 bg-gold/5 p-3">
-                  <input value={subName} onChange={(e) => setSubName(e.target.value)} placeholder={t("admin.nameVi")} className={`${inputCls} !w-44`} />
-                  <input value={subNameEn} onChange={(e) => setSubNameEn(e.target.value)} placeholder={t("admin.nameEn")} className={`${inputCls} !w-44`} />
-                  <ButtonCustom
-variant="raw"
-                    type="button"
-                    onClick={() => {
-                      if (!subName.trim()) return;
-                      addSub(cat.slug, subName.trim(), subNameEn.trim() || subName.trim());
-                      setSubName("");
-                      setSubNameEn("");
-                      setSubTarget(null);
-                    }}
-                    className="bg-ink px-3.5 py-2 text-xs font-bold text-white transition-colors hover:bg-teal"
-                  >
-                    {t("admin.create")}
-                  </ButtonCustom>
-                  <ButtonCustom
-variant="raw"
-                    type="button"
-                    onClick={() => setSubTarget(null)}
-                    className="rounded-lg border border-line bg-white px-3.5 py-2 text-xs font-bold text-ink transition-colors hover:border-ink"
-                  >
-                    {t("admin.cancel")}
-                  </ButtonCustom>
-                </div>
-              )}
             </div>
           </section>
         ))}
@@ -297,40 +218,133 @@ variant="raw"
         )}
       </div>
 
-      {/* Edit modal */}
-      {editing && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4" onClick={() => setEditing(null)}>
-          <section className="w-full max-w-md border border-line bg-white p-6" onClick={(e) => e.stopPropagation()}>
-            <TextCustom variant="h4">{t("admin.editTitle")}</TextCustom>
-            <div className="mt-4 space-y-3">
-              <label className="block">
-                <TextCustom as="span" variant="label" className="mb-1.5 block">
-                  {t("admin.nameVi")}
-                </TextCustom>
-                <input value={editName} onChange={(e) => setEditName(e.target.value)} className={inputCls} />
-              </label>
-              <label className="block">
-                <TextCustom as="span" variant="label" className="mb-1.5 block">
-                  {t("admin.nameEn")}
-                </TextCustom>
-                <input value={editNameEn} onChange={(e) => setEditNameEn(e.target.value)} className={inputCls} />
-              </label>
-            </div>
-            <div className="mt-6 flex justify-end gap-3">
-              <ButtonCustom
-                variant="raw"
-                onClick={() => setEditing(null)}
-                className="rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
-              >
-                {t("admin.cancel")}
-              </ButtonCustom>
-              <ButtonCustom variant="primary" onClick={submitEdit}>
-                {t("admin.save")}
-              </ButtonCustom>
-            </div>
-          </section>
-        </div>
+      {/* Create dialog */}
+      {showForm && (
+        <Dialog
+          title={t("admin.newCategory")}
+          onClose={resetForm}
+          actions={[
+            { label: t("admin.cancel"), onClick: resetForm, cancel: true },
+            {
+              label: t("admin.create"),
+              onClick: () => {
+                if (!name.trim()) {
+                  setFormError(t("admin.dialog.errCategoryName"));
+                  return;
+                }
+                addCategory(name.trim(), nameEn.trim() || name.trim());
+                resetForm();
+              },
+            },
+          ]}
+        >
+          <div className="space-y-4">
+            <Field label={t("admin.nameVi")}>
+              <input
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setFormError(null);
+                }}
+                placeholder={t("admin.nameVi")}
+                className={inputCls}
+                autoFocus
+              />
+              {formError && <p className="mt-1.5 text-xs font-semibold text-[#8B3A2B]">{formError}</p>}
+            </Field>
+            <Field label={t("admin.nameEn")}>
+              <input value={nameEn} onChange={(e) => setNameEn(e.target.value)} placeholder={t("admin.nameEn")} className={inputCls} />
+            </Field>
+          </div>
+        </Dialog>
       )}
+
+      {/* Edit dialog (category or sub) */}
+      {editing && (
+        <Dialog
+          title={t("admin.editTitle")}
+          onClose={() => setEditing(null)}
+          actions={[
+            { label: t("admin.cancel"), onClick: () => setEditing(null), cancel: true },
+            { label: t("admin.save"), onClick: submitEdit },
+          ]}
+        >
+          <div className="space-y-4">
+            <Field label={t("admin.nameVi")}>
+              <input
+                value={editName}
+                onChange={(e) => {
+                  setEditName(e.target.value);
+                  setEditError(null);
+                }}
+                className={inputCls}
+                autoFocus
+              />
+              {editError && <p className="mt-1.5 text-xs font-semibold text-[#8B3A2B]">{editError}</p>}
+            </Field>
+            <Field label={t("admin.nameEn")}>
+              <input value={editNameEn} onChange={(e) => setEditNameEn(e.target.value)} className={inputCls} />
+            </Field>
+          </div>
+        </Dialog>
+      )}
+
+      {/* Add sub dialog */}
+      {subTarget && (
+        <Dialog
+          title={t("admin.addSub")}
+          onClose={() => setSubTarget(null)}
+          actions={[
+            { label: t("admin.cancel"), onClick: () => setSubTarget(null), cancel: true },
+            {
+              label: t("admin.create"),
+              onClick: () => {
+                if (!subName.trim()) {
+                  setSubError(t("admin.dialog.errCategoryName"));
+                  return;
+                }
+                addSub(subTarget, subName.trim(), subNameEn.trim() || subName.trim());
+                setSubTarget(null);
+              },
+            },
+          ]}
+        >
+          <div className="space-y-4">
+            <Field label={t("admin.nameVi")}>
+              <input
+                value={subName}
+                onChange={(e) => {
+                  setSubName(e.target.value);
+                  setSubError(null);
+                }}
+                placeholder={t("admin.nameVi")}
+                className={inputCls}
+                autoFocus
+              />
+              {subError && <p className="mt-1.5 text-xs font-semibold text-[#8B3A2B]">{subError}</p>}
+            </Field>
+            <Field label={t("admin.nameEn")}>
+              <input value={subNameEn} onChange={(e) => setSubNameEn(e.target.value)} placeholder={t("admin.nameEn")} className={inputCls} />
+            </Field>
+          </div>
+        </Dialog>
+      )}
+
+      {/* Delete category confirm */}
+      <ConfirmDialog
+        open={confirmSlug !== null}
+        title={t("admin.deleteCategoryTitle")}
+        message={t("admin.deleteCategoryConfirm", {
+          count: confirmSlug ? products.filter((p) => p.category === confirmSlug).length : 0,
+        })}
+        confirmLabel={t("admin.deleteConfirm")}
+        cancelLabel={t("admin.cancel")}
+        onCancel={() => setConfirmSlug(null)}
+        onConfirm={() => {
+          if (confirmSlug) deleteCategory(confirmSlug);
+          setConfirmSlug(null);
+        }}
+      />
     </div>
   );
 };
